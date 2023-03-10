@@ -1,28 +1,45 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
 const hre = require("hardhat");
 
+
+
+
+
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const setTokenCreatorAddr = '0xeF72D3278dC3Eba6Dc2614965308d1435FFd748a';
+  const navModuleAddr = '0xaB9a964c6b95fA529CA7F27DAc1E7175821f2334';
 
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
-
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+  const SetTokenCreator = await hre.ethers.getContractFactory('CreateSet');
+  const setTokenCreator = await SetTokenCreator.deploy(
+    setTokenCreatorAddr, navModuleAddr
   );
+  await setTokenCreator.deployed();
+  console.log('CreateSet deployed to: ', setTokenCreator.address);
+
+  await setTokenCreator.createNInit();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
