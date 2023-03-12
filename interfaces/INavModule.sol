@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 
 import './ISetToken.sol';
-import './INAVIssuanceHook.sol'
+import './INAVIssuanceHook.sol';
 
 
 interface INavModule {
@@ -25,6 +25,22 @@ interface INavModule {
         ISetToken _setToken,
         NAVIssuanceSettings memory _navIssuanceSettings
     ) external;
+
+    function getReserveAssets(ISetToken _setToken) external view returns (address[] memory);
+
+    function issue(
+        ISetToken _setToken,
+        address _reserveAsset,
+        uint256 _reserveAssetQuantity,
+        uint256 _minSetTokenReceiveQuantity,
+        address _to
+    ) external;
+
+    function issueWithEther(
+        ISetToken _setToken,
+        uint256 _minSetTokenReceiveQuantity,
+        address _to
+    ) external payable;
 
 
 }

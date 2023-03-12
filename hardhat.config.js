@@ -7,9 +7,13 @@ module.exports = {
   solidity: "0.8.19",
   networks: {
     hardhat: {
+      // forking: {
+      //   url: process.env.MAINNET,
+      //   blockNumber: 16814476
+      // },
       forking: {
-        url: process.env.MAINNET,
-        blockNumber: 16794201
+        url: process.env.ARBITRUM,
+        blockNumber: 69254391
       }
     }
   }
