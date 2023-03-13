@@ -7,19 +7,34 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 import 'hardhat/console.sol';
 
-contract EnergyETH is ERC20 {
+contract EnergyETHFacet is ERC20 {
 
-    AggregatorV3Interface private priceFeed;
+    AggregatorV3Interface private wtiFeed;
+    AggregatorV3Interface private volatilityFeed;
+    AggregatorV3Interface private ethUsdFeed;
 
     
-    constructor(address priceFeed_) ERC20('Energy ETH', 'eETH') {
-        priceFeed = AggregatorV3Interface(priceFeed_);
+    constructor(
+        address wtiFeed_,
+        address volatilityFeed_,
+        address ethUsdFeed_
+    ) ERC20('Energy ETH', 'eETH') {
+        wtiFeed = AggregatorV3Interface(wtiFeed_);
+        volatilityFeed = AggregatorV3Interface(volatilityFeed_);
+        ethUsdFeed = AggregatorV3Interface(ethUsdFeed_);
     }
 
 
-    function getPrice() public view returns(uint256) {
-        (,int256 price,,,) = priceFeed.latestRoundData();
-        return uint256(price);
+    function getPrice() public view returns(uint256, uint256, uint256) {
+        (,int256 oilPrice,,,) = wtiFeed.latestRoundData();
+        (,int256 volPrice,,,) = volatilityFeed.latestRoundData();
+        (,int256 ethPrice,,,) = ethUsdFeed.latestRoundData();
+        
+        return (
+            uint256(oilPrice),
+            uint256(volPrice),
+            uint256(ethPrice)
+        );
     }
 
 

@@ -1,11 +1,20 @@
 const hre = require("hardhat");
 const { ethers } = require('ethers');
+
 const { 
   parseEther, 
   formatEther,
+  formatUnits
 } = require("ethers/lib/utils");
 
 
+const { 
+  wtiFeedAddr,
+  volatilityFeedAddr,
+  ethUsdFeed
+} = require('../state-vars');
+
+const { deployContract } = require('../helpers');
 
 
 async function main2() {
@@ -88,24 +97,22 @@ async function main2() {
 
 
 async function main() {
-  let oilFeedAddr;
-  let network = 'arbitrum';
+  
 
-  switch(network) {
-    case 'arbitrum':
-      oilFeedAddr = '0x594b919AD828e693B935705c3F816221729E7AE8';
-      break;
-    case 'mainnet':
-      oilFeedAddr = '0xf3584F4dd3b467e73C2339EfD008665a70A4185c';
-  }
+  // const EnergyETH = await hre.ethers.getContractFactory('EnergyETHFacet');
+  // const energyETH = await EnergyETH.deploy(wtiFeedAddr, volatilityFeedAddr, ethUsdFeed);
+  // await energyETH.deployed();
+  // console.log('EnergyETHFacet deployed to: ', energyETH.address);
 
-  const EnergyETH = await hre.ethers.getContractFactory('EnergyETH');
-  const energyETH = await EnergyETH.deploy(oilFeedAddr);
-  await energyETH.deployed();
-  console.log('EnergyETH deployed to: ', energyETH.address);
+  const energyETH = await deployContract(
+    'EnergyETHFacet',
+    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
+  );
 
-  const price = await energyETH.getPrice();
-  console.log('price: ', price / 10 ** 8);
+  const [ oil, volatility, ethUsd ] = await energyETH.getPrice();
+  console.log('oil price: ', formatUnits(oil, 8));
+  console.log('volatility: ', formatEther(volatility));
+  console.log('eth price: ', formatUnits(ethUsd, 8));
 
 }
 
