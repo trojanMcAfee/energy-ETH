@@ -99,11 +99,6 @@ async function main2() {
 async function main() {
   
 
-  // const EnergyETH = await hre.ethers.getContractFactory('EnergyETHFacet');
-  // const energyETH = await EnergyETH.deploy(wtiFeedAddr, volatilityFeedAddr, ethUsdFeed);
-  // await energyETH.deployed();
-  // console.log('EnergyETHFacet deployed to: ', energyETH.address);
-
   const energyETH = await deployContract(
     'EnergyETHFacet',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
