@@ -39,11 +39,6 @@ contract EnergyETHFacet is ERC20 {
     }
 
 
-    function getPrice() public returns(uint wtiPrice, uint volPrice, uint ethPrice) {
-        (wtiPrice, volPrice, ethPrice) = _getFeeds();
-
-        return (wtiPrice, volPrice, ethPrice);
-    }
 
     function _getDataFeeds() private view returns(int, int, int) {
         (,int volatility,,,) = volatilityFeed.latestRoundData();
@@ -53,41 +48,19 @@ contract EnergyETHFacet is ERC20 {
         return (volatility, wtiPrice, ethPrice);
     }
 
-    function _getFeeds() private returns(uint, uint, uint) {
-        // (int volatility, int wtiPrice, int ethPrice) = _getDataFeeds();
-        (,int volatility,,,) = volatilityFeed.latestRoundData();
+    function getLastPrice() external view returns(uint) {
+        (int volatility, int wtiPrice, int ethPrice) = _getDataFeeds();
 
-        (,int wtiPrice,,,) = wtiFeed.latestRoundData();
         int implWti2 = _setImplWti(wtiPrice, volatility); 
-
-        (,int ethPrice,,,) = ethUsdFeed.latestRoundData();
         int implEth = _setImplEth(ethPrice);
 
         int netDiff = implWti2 + implEth;
 
-        eETHprice = eETHprice + ( (netDiff * eETHprice) / (100 * EIGHT_DEC) );
-        console.log(uint(eETHprice));
+        return uint(eETHprice + ( (netDiff * eETHprice) / (100 * EIGHT_DEC) ));
 
-
- 
-        return (
-            1,
-            2,
-            3
-        );
     }
 
 
-
-
-    // function _setVolIndex(int newVal_) private returns(int) {
-    //     if (newVal_ == currVol) {
-    //         return currVol;
-    //     } else {
-    //         currVol = newVal_;
-    //         return currVol;
-    //     }
-    // }
 
  
     function _setImplWti(int currWti_, int currVol_) private view returns(int) {

@@ -104,10 +104,8 @@ async function main() {
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
   );
 
-  const [ oil, volatility, ethUsd ] = await energyETH.getPrice();
-  console.log('oil price: ', formatUnits(oil, 8));
-  console.log('volatility: ', formatEther(volatility));
-  console.log('eth price: ', formatUnits(ethUsd, 8));
+  const price = await energyETH.getLastPrice();
+  console.log('price: ', formatUnits(price, 8));
 
 }
 
