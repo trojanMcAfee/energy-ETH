@@ -16,13 +16,16 @@ contract EnergyETHFacet is ERC20 {
     AggregatorV3Interface private volatilityFeed;
     AggregatorV3Interface private ethUsdFeed;
 
-    uint prevWtiPrice = 7474808000;
+    int prevWtiPrice = 7474808000;
     uint prevVol = 0;
     int prevEthPrice = 161900260000;
 
-    uint currVol; 
+    int currVol; 
 
-    uint startPrice = 1000;
+    int EIGHT_DEC = 1e8;
+
+    int eETHprice = 1000 * EIGHT_DEC;
+
 
     
     constructor(
@@ -42,25 +45,29 @@ contract EnergyETHFacet is ERC20 {
         return (wtiPrice, volPrice, ethPrice);
     }
 
-    function _getFeeds() private returns(uint, uint, uint) {
-        // uint implWti;
-        // uint implVol;
-        // uint implEth;
-
+    function _getDataFeeds() private view returns(int, int, int) {
         (,int volatility,,,) = volatilityFeed.latestRoundData();
-        uint implVol2 = _setVolIndex(uint(volatility));
+        (,int wtiPrice,,,) = wtiFeed.latestRoundData();
+        (,int ethPrice,,,) = ethUsdFeed.latestRoundData();
+
+        return (volatility, wtiPrice, ethPrice);
+    }
+
+    function _getFeeds() private returns(uint, uint, uint) {
+        // (int volatility, int wtiPrice, int ethPrice) = _getDataFeeds();
+        (,int volatility,,,) = volatilityFeed.latestRoundData();
 
         (,int wtiPrice,,,) = wtiFeed.latestRoundData();
-        uint implWti2 = _setImplWti(uint(wtiPrice), uint(volatility)); //currVol
-        console.log('implWti: ', implWti2);
-
+        int implWti2 = _setImplWti(wtiPrice, volatility); 
 
         (,int ethPrice,,,) = ethUsdFeed.latestRoundData();
-        _setImplEth(ethPrice);
+        int implEth = _setImplEth(ethPrice);
 
-        // uint implWti = _setImplPrice(uint(wtiPrice), prevWtiPrice);
-        // uint implVol = _setImplPrice(uint(volatility), prevVol);
-        // uint implEth = _setImplPrice(uint(ethPrice), prevEthPrice);
+        int netDiff = implWti2 + implEth;
+
+        eETHprice = eETHprice + ( (netDiff * eETHprice) / (100 * EIGHT_DEC) );
+        console.log(uint(eETHprice));
+
 
  
         return (
@@ -71,40 +78,29 @@ contract EnergyETHFacet is ERC20 {
     }
 
 
-    // function _setImplPrice(uint curr_, uint prev_) private returns(uint implPrice) {
-    //     if (curr_ > prev_) {
-    //         implPrice = curr_;
-    //     } else if (curr_ <= prev_) {
-    //         implPrice = prev_;
+
+
+    // function _setVolIndex(int newVal_) private returns(int) {
+    //     if (newVal_ == currVol) {
+    //         return currVol;
+    //     } else {
+    //         currVol = newVal_;
+    //         return currVol;
     //     }
     // }
 
-    function _setVolIndex(uint newVal_) private returns(uint) {
-        if (newVal_ == currVol) {
-            return currVol;
-        } else {
-            currVol = newVal_;
-            return currVol;
-        }
-    }
-
  
-    function _setImplWti(uint currWti_, uint currVol_) private view returns(uint) {
-        uint netDiff = currWti_ - prevWtiPrice;
-        // if (netDiff <= 0) return 0;
-        return netDiff.mulDivDown(100 * 1e8, currWti_) * (currVol_ / 1e19);
+    function _setImplWti(int currWti_, int currVol_) private view returns(int) {
+        int netDiff = currWti_ - prevWtiPrice;
+        return ( (netDiff * 100 * EIGHT_DEC) / currWti_ ) * (currVol_ / 1e19);
     }
 
-    function _setImplEth(int currEth_) private view returns(uint) {
-        int netDiff = currEth_ - prevEthPrice;
-        console.log(uint(int(0) - netDiff));
-        console.log('^^^^');
+    function _setImplEth(int currEth_) private view returns(int) {
+        int netDiff2 = currEth_ - prevEthPrice;
+        return (netDiff2 * 100 * EIGHT_DEC) / prevEthPrice;
     }
-
 
 
 }
 
 
-// currWti --- 100%
-// netDiff ----- x
