@@ -14,17 +14,27 @@ contract EnergyETHFacet is ERC20 {
 
     AggregatorV3Interface private wtiFeed;
     AggregatorV3Interface private volatilityFeed;
-    AggregatorV3Interface private ethUsdFeed;
+    AggregatorV3Interface private ethFeed;
 
-    int prevWtiPrice = 7474808000;
-    uint prevVol = 0;
-    int prevEthPrice = 161900260000;
-
-    int currVol; 
+    // int prevWtiPrice = 7474808000;
+    // int prevEthPrice = 161900260000;
 
     int EIGHT_DEC = 1e8;
+    int NINETN_DEC = 1e19;
 
     int eETHprice = 1000 * EIGHT_DEC;
+
+
+    struct DataInfo {
+        uint80 roundId;
+        int value;
+    }
+
+    struct Data {
+        DataInfo volIndex;
+        DataInfo wtiPrice;
+        DataInfo ethPrice;
+    }
 
 
     
@@ -35,42 +45,71 @@ contract EnergyETHFacet is ERC20 {
     ) ERC20('Energy ETH', 'eETH') {
         wtiFeed = AggregatorV3Interface(wtiFeed_);
         volatilityFeed = AggregatorV3Interface(volatilityFeed_);
-        ethUsdFeed = AggregatorV3Interface(ethUsdFeed_);
+        ethFeed = AggregatorV3Interface(ethUsdFeed_);
     }
 
 
 
-    function _getDataFeeds() private view returns(int, int, int) {
+    function _getDataFeeds() private view returns(Data memory data) {
         (,int volatility,,,) = volatilityFeed.latestRoundData();
-        (,int wtiPrice,,,) = wtiFeed.latestRoundData();
-        (,int ethPrice,,,) = ethUsdFeed.latestRoundData();
+        (uint80 wtiId, int wtiPrice,,,) = wtiFeed.latestRoundData();
+        (uint80 ethId, int ethPrice,,,) = ethFeed.latestRoundData();
 
-        return (volatility, wtiPrice, ethPrice);
+        data = Data({
+            volIndex: DataInfo({
+                roundId: 0,
+                value: volatility
+            }),
+            wtiPrice: DataInfo({
+                roundId: wtiId,
+                value: wtiPrice
+            }),
+            ethPrice: DataInfo({
+                roundId: ethId,
+                value: ethPrice
+            })
+        });
     }
 
-    function getLastPrice() external view returns(uint) {
-        (int volatility, int wtiPrice, int ethPrice) = _getDataFeeds();
+    function _getPrevFeed(
+        uint80 roundId_, 
+        AggregatorV3Interface feed_
+    ) private view returns(int) {
+        (,int prevPrice,,,) = feed_.getRoundData(roundId_ - 1);
+        return prevPrice;
+    }
 
-        int implWti2 = _setImplWti(wtiPrice, volatility); 
-        int implEth = _setImplEth(ethPrice);
+    //**** MAIN ******/
+    function getLastPrice() external view returns(uint) {
+        Data memory data = _getDataFeeds();
+
+        int implWti2 = _setImplWti(data.wtiPrice, data.volIndex.value, wtiFeed); 
+        int implEth = _setImplEth(data.ethPrice, ethFeed);
 
         int netDiff = implWti2 + implEth;
 
         return uint(eETHprice + ( (netDiff * eETHprice) / (100 * EIGHT_DEC) ));
-
     }
 
 
 
- 
-    function _setImplWti(int currWti_, int currVol_) private view returns(int) {
-        int netDiff = currWti_ - prevWtiPrice;
-        return ( (netDiff * 100 * EIGHT_DEC) / currWti_ ) * (currVol_ / 1e19);
+    function _setImplWti(
+        DataInfo memory wtiPrice_,
+        int volIndex_,
+        AggregatorV3Interface feed_
+    ) private view returns(int) {
+        int currWti = wtiPrice_.value;
+        int netDiff = currWti - _getPrevFeed(wtiPrice_.roundId, feed_);
+        return ( (netDiff * 100 * EIGHT_DEC) / currWti ) * (volIndex_ / NINETN_DEC);
     }
 
-    function _setImplEth(int currEth_) private view returns(int) {
-        int netDiff2 = currEth_ - prevEthPrice;
-        return (netDiff2 * 100 * EIGHT_DEC) / prevEthPrice;
+    function _setImplEth(
+        DataInfo memory ethPrice_,
+        AggregatorV3Interface feed_
+    ) private view returns(int) {
+        int prevEthPrice = _getPrevFeed(ethPrice_.roundId, feed_);
+        int netDiff = ethPrice_.value - prevEthPrice;
+        return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
     }
 
 
