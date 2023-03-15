@@ -30,6 +30,9 @@ async function main() {
   const wtiFeed = await deployContract('WtiFeed');
   const wtiFeedAddr = wtiFeed.address;
 
+  const ethFeed = await deployContract('EthUsdFeed');
+  const ethUsdFeed = ethFeed.address;
+
   const energyETH = await deployContract(
     'EnergyETHFacet',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
@@ -38,46 +41,89 @@ async function main() {
   let price = await energyETH.testFeed();
   console.log('price 0: ', formatUnits(price, 8));
 
+  price = await energyETH.testFeed2();
+  console.log('eth price 0: ', formatUnits(price, 8));
+  console.log('.');
+
   await mine(1300);
 
   price = await energyETH.testFeed();
   console.log('price 1: ', formatUnits(price, 8));
+
+  price = await energyETH.testFeed2();
+  console.log('eth price 1: ', formatUnits(price, 8));
+  console.log('.');
 
   await mine(5000);
 
   price = await energyETH.testFeed();
   console.log('price 2: ', formatUnits(price, 8));
 
+  price = await energyETH.testFeed2();
+  console.log('eth price 2: ', formatUnits(price, 8));
+  console.log('.');
+
   await mine(34000);
 
   price = await energyETH.testFeed();
   console.log('price 3: ', formatUnits(price, 8));
+
+  price = await energyETH.testFeed2();
+  console.log('eth price 3: ', formatUnits(price, 8));
+  console.log('.');
 
   await mine(1000);
 
   price = await energyETH.testFeed();
   console.log('price 4: ', formatUnits(price, 8));
 
+  price = await energyETH.testFeed2();
+  console.log('eth price 4: ', formatUnits(price, 8));
+  console.log('.');
+
   await mine(2000);
 
   price = await energyETH.testFeed();
   console.log('price 5: ', formatUnits(price, 8));
+
+  price = await energyETH.testFeed2();
+  console.log('eth price 5: ', formatUnits(price, 8));
+  console.log('.');
 
   await mine(83000);
 
   price = await energyETH.testFeed();
   console.log('price 6: ', formatUnits(price, 8));
 
+  price = await energyETH.testFeed2();
+  console.log('eth price 6: ', formatUnits(price, 8));
+  console.log('.');
+
   await mine(41000);
 
   price = await energyETH.testFeed();
   console.log('price 7: ', formatUnits(price, 8));
 
+  price = await energyETH.testFeed2();
+  console.log('eth price 7: ', formatUnits(price, 8));
+  console.log('.');
+
 }
 
 
 
+async function main2() {
 
+  const energyETH = await deployContract(
+    'EnergyETHFacet',
+    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
+  );
+
+  let price = await energyETH.testFeed();
+  console.log('price 0: ', formatUnits(price, 8));
+
+
+}
 
 
 

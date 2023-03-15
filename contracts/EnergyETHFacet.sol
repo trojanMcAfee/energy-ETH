@@ -49,9 +49,14 @@ contract EnergyETHFacet is ERC20 {
     }
 
     //------
-    function testFeed() public view returns(uint) {
+    function testFeed() public view returns(uint) { 
         (,int wtiPrice,,,) = wtiFeed.latestRoundData();
         return uint(wtiPrice);
+    }
+
+    function testFeed2() public view returns(uint) { 
+        (,int ethPrice,,,) = ethFeed.latestRoundData();
+        return uint(ethPrice);
     }
 
     //------

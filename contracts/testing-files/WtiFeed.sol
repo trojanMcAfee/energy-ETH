@@ -11,14 +11,14 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 69254393 { result := 7632500000 } //0
-            case 69255693 { result := 7672000000 } //1
-            case 69260693 { result := 7717200000 } //2
-            case 69294693 { result := 7677600000 } //3
-            case 69295693 { result := 7704200000 } //4
-            case 69297693 { result := 7639200000 } //5
-            case 69380693 { result := 7674920000 } //6
-            case 69421693 { result := 7592500000 } //7
+            case 69254394 { result := 7632500000 } 
+            case 69255694 { result := 7672000000 } 
+            case 69260694 { result := 7717200000 } 
+            case 69294694 { result := 7677600000 } 
+            case 69295694 { result := 7704200000 } 
+            case 69297694 { result := 7639200000 } 
+            case 69380694 { result := 7674920000 } 
+            case 69421694 { result := 7592500000 } 
         }
 
         return (0,result,0,0,0);
