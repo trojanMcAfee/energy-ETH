@@ -5,8 +5,6 @@ import 'hardhat/console.sol';
 
 contract WtiFeed {
 
-    event DeadVar(uint80 roundId);
-
     function latestRoundData() external view returns(int, int, int, int, int) {
         uint blockNum = block.number;
         int result;
