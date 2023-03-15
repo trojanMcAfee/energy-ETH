@@ -83,13 +83,6 @@ contract EnergyETHFacet is ERC20 {
         });
     }
 
-    function _getPrevFeed(
-        uint80 roundId_, 
-        AggregatorV3Interface feed_
-    ) private view returns(int) {
-        (,int prevPrice,,,) = feed_.getRoundData(roundId_ - 1);
-        return prevPrice;
-    }
 
     //**** MAIN ******/
     function getLastPrice() external view returns(uint) {
@@ -104,6 +97,13 @@ contract EnergyETHFacet is ERC20 {
     }
 
 
+     function _getPrevFeed(
+        uint80 roundId_, 
+        AggregatorV3Interface feed_
+    ) private view returns(int) {
+        (,int prevPrice,,,) = feed_.getRoundData(roundId_ - 1);
+        return prevPrice;
+    }
 
     function _setImplWti(
         DataInfo memory wtiPrice_,

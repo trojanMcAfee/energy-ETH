@@ -50,13 +50,13 @@ async function main() {
   );
   //------
 
-  for (let i=0; i < blockDiff.length; i++) {
-    await callEeth(energyETH, blockDiff[i], i);
-  }
-
   // for (let i=0; i < blockDiff.length; i++) {
-  //   await getLastPrice(energyETH, blockDiff[i], i);
+  //   await callEeth(energyETH, blockDiff[i], i);
   // }
+
+  for (let i=0; i < blockDiff.length; i++) {
+    await getLastPrice(energyETH, blockDiff[i], i);
+  }
 
 
 
