@@ -16,9 +16,6 @@ contract EnergyETHFacet is ERC20 {
     AggregatorV3Interface private volatilityFeed;
     AggregatorV3Interface private ethFeed;
 
-    // int prevWtiPrice = 7474808000;
-    // int prevEthPrice = 161900260000;
-
     int EIGHT_DEC = 1e8;
     int NINETN_DEC = 1e19;
 
@@ -88,10 +85,10 @@ contract EnergyETHFacet is ERC20 {
     function getLastPrice() external view returns(uint) {
         Data memory data = _getDataFeeds();
 
-        int implWti2 = _setImplWti(data.wtiPrice, data.volIndex.value, wtiFeed); 
+        int implWti = _setImplWti(data.wtiPrice, data.volIndex.value, wtiFeed); 
         int implEth = _setImplEth(data.ethPrice, ethFeed);
 
-        int netDiff = implWti2 + implEth;
+        int netDiff = implWti + implEth;
 
         return uint(eETHprice + ( (netDiff * eETHprice) / (100 * EIGHT_DEC) ));
     }
