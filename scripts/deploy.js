@@ -17,10 +17,20 @@ const {
   blocks
 } = require('../state-vars');
 
-const { deployContract } = require('../helpers');
+const { deployContract, callEeth } = require('../helpers');
 
 
 
+// async function callEeth(energyETH_, blockDifference_) {
+//   let price = await energyETH_.testFeed();
+//   console.log('price 0: ', formatUnits(price, 8));
+
+//   price = await energyETH_.testFeed2();
+//   console.log('eth price 0: ', formatUnits(price, 8));
+//   console.log('.');
+
+//   await mine(blockDifference_);
+// }
 
 
 
@@ -37,76 +47,87 @@ async function main() {
     'EnergyETHFacet',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
   );
+  //------
 
-  let price = await energyETH.testFeed();
-  console.log('price 0: ', formatUnits(price, 8));
+  // let price = await energyETH.testFeed();
+  // console.log('price 0: ', formatUnits(price, 8));
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 0: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 0: ', formatUnits(price, 8));
+  // console.log('.');
 
-  await mine(1300);
+  // await mine(1300);
 
-  price = await energyETH.testFeed();
-  console.log('price 1: ', formatUnits(price, 8));
+  await callEeth(energyETH, 1300, 0);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 1: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 1: ', formatUnits(price, 8));
 
-  await mine(5000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 1: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 2: ', formatUnits(price, 8));
+  await callEeth(energyETH, 5000, 1);
+  // await mine(5000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 2: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 2: ', formatUnits(price, 8));
 
-  await mine(34000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 2: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 3: ', formatUnits(price, 8));
+  await callEeth(energyETH, 34000, 2);
+  // await mine(34000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 3: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 3: ', formatUnits(price, 8));
 
-  await mine(1000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 3: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 4: ', formatUnits(price, 8));
+  await callEeth(energyETH, 1000, 3);
+  // await mine(1000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 4: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 4: ', formatUnits(price, 8));
 
-  await mine(2000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 4: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 5: ', formatUnits(price, 8));
+  await callEeth(energyETH, 2000, 4);
+  // await mine(2000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 5: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 5: ', formatUnits(price, 8));
 
-  await mine(83000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 5: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 6: ', formatUnits(price, 8));
+  await callEeth(energyETH, 83000, 5);
+  // await mine(83000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 6: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 6: ', formatUnits(price, 8));
 
-  await mine(41000);
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 6: ', formatUnits(price, 8));
+  // console.log('.');
 
-  price = await energyETH.testFeed();
-  console.log('price 7: ', formatUnits(price, 8));
+  await callEeth(energyETH, 41000, 6);
+  // await mine(41000);
 
-  price = await energyETH.testFeed2();
-  console.log('eth price 7: ', formatUnits(price, 8));
-  console.log('.');
+  // price = await energyETH.testFeed();
+  // console.log('price 7: ', formatUnits(price, 8));
+
+  // price = await energyETH.testFeed2();
+  // console.log('eth price 7: ', formatUnits(price, 8));
+  // console.log('.');
+
+  await callEeth(energyETH, '', 7);
 
 }
 
