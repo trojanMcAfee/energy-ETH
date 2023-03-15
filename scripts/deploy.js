@@ -48,6 +48,31 @@ async function main() {
   price = await energyETH.testFeed();
   console.log('price 2: ', formatUnits(price, 8));
 
+  await mine(34000);
+
+  price = await energyETH.testFeed();
+  console.log('price 3: ', formatUnits(price, 8));
+
+  await mine(1000);
+
+  price = await energyETH.testFeed();
+  console.log('price 4: ', formatUnits(price, 8));
+
+  await mine(2000);
+
+  price = await energyETH.testFeed();
+  console.log('price 5: ', formatUnits(price, 8));
+
+  await mine(83000);
+
+  price = await energyETH.testFeed();
+  console.log('price 6: ', formatUnits(price, 8));
+
+  await mine(41000);
+
+  price = await energyETH.testFeed();
+  console.log('price 7: ', formatUnits(price, 8));
+
 }
 
 
