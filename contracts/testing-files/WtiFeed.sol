@@ -24,7 +24,7 @@ contract WtiFeed {
         return (0,result,0,0,0);
     }
 
-    function getRoundData(uint80 roundId_) external view returns(int, int, int, int, int) {
-        
-    }
+    // function getRoundData(uint80 roundId_) external view returns(int, int, int, int, int) {
+
+    // }
 }
