@@ -13,6 +13,8 @@ async function deployContract(contractName, constrArgs) {
             ([ var1, var2, var3 ] = constrArgs);
             contract = await Contract.deploy(var1, var2, var3);
             break;
+        default:
+            contract = await Contract.deploy();
     }
 
 

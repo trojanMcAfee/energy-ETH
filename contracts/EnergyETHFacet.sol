@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
 
@@ -48,6 +48,13 @@ contract EnergyETHFacet is ERC20 {
         ethFeed = AggregatorV3Interface(ethUsdFeed_);
     }
 
+    //------
+    function testFeed() public view returns(uint) {
+        (,int wtiPrice,,,) = wtiFeed.latestRoundData();
+        return uint(wtiPrice);
+    }
+
+    //------
 
 
     function _getDataFeeds() private view returns(Data memory data) {
