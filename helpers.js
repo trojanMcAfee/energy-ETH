@@ -29,17 +29,27 @@ async function deployContract(contractName, constrArgs) {
 async function callEeth(energyETH_, blockDifference_, num_) {
     let price = await energyETH_.testFeed();
     console.log(`price ${num_}: `, formatUnits(price, 8));
-  
+
     price = await energyETH_.testFeed2();
     console.log(`eth price ${num_}: `, formatUnits(price, 8));
     console.log('.');
-  
+
     if (blockDifference_ !== '') await mine(blockDifference_);
-  }
+}
+
+
+async function getLastPrice(energyETH_, blockDifference_, num_) {
+    let price = await energyETH_.getLastPrice();
+    console.log(`eETH price ${num_}: `, formatUnits(price, 8));
+    if (blockDifference_ !== '') await mine(blockDifference_);
+}
+
+
 
 
 
 module.exports = {
     deployContract,
-    callEeth
+    callEeth,
+    getLastPrice
 };

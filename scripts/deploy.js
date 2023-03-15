@@ -17,10 +17,11 @@ const {
   blocks
 } = require('../state-vars');
 
-const { deployContract, callEeth } = require('../helpers');
-
-
-
+const { 
+  deployContract, 
+  callEeth,
+  getLastPrice 
+} = require('../helpers');
 
 
 
@@ -49,20 +50,15 @@ async function main() {
   );
   //------
 
+  // for (let i=0; i < blockDiff.length; i++) {
+  //   await callEeth(energyETH, blockDiff[i], i);
+  // }
+
   for (let i=0; i < blockDiff.length; i++) {
-    // let diff = blockDiff[i];
-    // if (diff === null) diff = '';
-    await callEeth(energyETH, blockDiff[i], i);
+    await getLastPrice(energyETH, blockDiff[i], i);
   }
 
-  // await callEeth(energyETH, 1300, 0);
-  // await callEeth(energyETH, 5000, 1);
-  // await callEeth(energyETH, 34000, 2);
-  // await callEeth(energyETH, 1000, 3);
-  // await callEeth(energyETH, 2000, 4);
-  // await callEeth(energyETH, 83000, 5);
-  // await callEeth(energyETH, 41000, 6);
-  // await callEeth(energyETH, '', 7);
+
 
 }
 
