@@ -101,7 +101,11 @@ contract EnergyETHFacet is ERC20 {
         uint80 roundId_, 
         AggregatorV3Interface feed_
     ) private view returns(int) {
+        // console.log(111);
+        // console.log('roundId_: ', roundId_);
+        // console.log('feed: ', address(feed_));
         (,int prevPrice,,,) = feed_.getRoundData(roundId_ - 1);
+        // console.log(2);
         return prevPrice;
     }
 

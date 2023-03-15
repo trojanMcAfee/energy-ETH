@@ -22,7 +22,7 @@ contract EthUsdFeed {
             case 69421694 { result := 158595420000 } 
         }
 
-        return (0,result,0,0,0);
+        return (1,result,0,0,0);
     }
 
     function getRoundData(uint80 roundId_) external view returns(int, int, int, int, int) {
