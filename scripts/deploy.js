@@ -22,24 +22,10 @@ const { deployContract } = require('../helpers');
 
 
 
-async function deploy() {
-  const energyETH = await deployContract(
-    'EnergyETHFacet',
-    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
-  );
-  return energyETH;
-}
+
 
 
 async function main() {
-  // const url = process.env.ARBITRUM;
-
-  // await reset(url, 69254391);
-
-  // const WtiFeed = await hre.ethers.getContractFactory('WtiFeed');
-  // // const wtiBytecode = WtiFeed.bytecode;
-  // const deployTx = await WtiFeed.getDeployTransaction();
-  // await setCode(wtiFeedAddr, deployTx.data);
 
   const wtiFeed = await deployContract('WtiFeed');
   const wtiFeedAddr = wtiFeed.address;
@@ -52,22 +38,15 @@ async function main() {
   let price = await energyETH.testFeed();
   console.log('price 0: ', formatUnits(price, 8));
 
-  // let energyETH = await loadFixture(deploy);
-
-  // const WtiFeed = await hre.ethers.getContractFactory('WtiFeed');
-  // const wtiBytecode = WtiFeed.bytecode;
-  // await setCode(wtiFeedAddr, wtiBytecode);
-  
-
   await mine(1300);
 
   price = await energyETH.testFeed();
   console.log('price 1: ', formatUnits(price, 8));
 
-  // await reset(url, blocks[1]);
+  await mine(5000);
 
-  // energyETH = await loadFixture(deploy);
-
+  price = await energyETH.testFeed();
+  console.log('price 2: ', formatUnits(price, 8));
 
 }
 
