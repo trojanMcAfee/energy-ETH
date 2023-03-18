@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
-import 'hardhat/console.sol';
+// import 'hardhat/console.sol';
+import "forge-std/console.sol";
 
 contract WtiFeed {
 
@@ -22,6 +23,10 @@ contract WtiFeed {
             case 69380694 { result := 7674920000 } 
             case 69421694 { result := 7592500000 } 
         }
+
+        // console.logInt(result);
+        // console.log(blockNum);
+        // console.logInt(result);
 
         return (0,result,0,0,0);
     }

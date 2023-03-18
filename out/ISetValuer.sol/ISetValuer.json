@@ -1,0 +1,311 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISetToken",
+          "name": "_setToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_quoteAsset",
+          "type": "address"
+        }
+      ],
+      "name": "calculateSetTokenValuation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "calculateSetTokenValuation(address,address)": "6101c540"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ISetToken\",\"name\":\"_setToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_quoteAsset\",\"type\":\"address\"}],\"name\":\"calculateSetTokenValuation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ISetValuer.sol\":\"ISetValuer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/ISetToken.sol\":{\"keccak256\":\"0x04c482a41d152e35386a15fde500cceca2b353b6ba2dd5c020d8269feaa9075f\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://3c231ce1f4d1e588bec93c781d0054b4213535ddc207dbd200b5ceb93e2ec827\",\"dweb:/ipfs/QmfTQ2mMz4rNxmcCDbXnNPxWLgww4nELLy2mJADhp2ox4Y\"]},\"interfaces/ISetValuer.sol\":{\"keccak256\":\"0xed8996c43dc69041e73341ccb0d9d3f0c02a0c6802bcc6bc707c5bac40c44d2f\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://4807650ff388c5afbd790af51f59eb371dba9651d5e9c023778cb7c941e37436\",\"dweb:/ipfs/QmfZGpEbFmgLE4DRGtS74vsyWLxgrerJC8TAppbqWdcQjg\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "contract ISetToken",
+              "name": "_setToken",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "_quoteAsset",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "calculateSetTokenValuation",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":@eth-optimism/=node_modules/@eth-optimism/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=node_modules/hardhat/",
+        ":solmate/=node_modules/solmate/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "interfaces/ISetValuer.sol": "ISetValuer"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "interfaces/ISetToken.sol": {
+        "keccak256": "0x04c482a41d152e35386a15fde500cceca2b353b6ba2dd5c020d8269feaa9075f",
+        "urls": [
+          "bzz-raw://3c231ce1f4d1e588bec93c781d0054b4213535ddc207dbd200b5ceb93e2ec827",
+          "dweb:/ipfs/QmfTQ2mMz4rNxmcCDbXnNPxWLgww4nELLy2mJADhp2ox4Y"
+        ],
+        "license": "UNLICENSED"
+      },
+      "interfaces/ISetValuer.sol": {
+        "keccak256": "0xed8996c43dc69041e73341ccb0d9d3f0c02a0c6802bcc6bc707c5bac40c44d2f",
+        "urls": [
+          "bzz-raw://4807650ff388c5afbd790af51f59eb371dba9651d5e9c023778cb7c941e37436",
+          "dweb:/ipfs/QmfZGpEbFmgLE4DRGtS74vsyWLxgrerJC8TAppbqWdcQjg"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "interfaces/ISetValuer.sol",
+    "id": 838,
+    "exportedSymbols": {
+      "ISetToken": [
+        800
+      ],
+      "ISetValuer": [
+        837
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:193:8",
+    "nodes": [
+      {
+        "id": 825,
+        "nodeType": "PragmaDirective",
+        "src": "39:23:8",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 826,
+        "nodeType": "ImportDirective",
+        "src": "64:25:8",
+        "nodes": [],
+        "absolutePath": "interfaces/ISetToken.sol",
+        "file": "./ISetToken.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 838,
+        "sourceUnit": 801,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 837,
+        "nodeType": "ContractDefinition",
+        "src": "91:141:8",
+        "nodes": [
+          {
+            "id": 836,
+            "nodeType": "FunctionDefinition",
+            "src": "119:110:8",
+            "nodes": [],
+            "functionSelector": "6101c540",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "calculateSetTokenValuation",
+            "nameLocation": "128:26:8",
+            "parameters": {
+              "id": 832,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 829,
+                  "mutability": "mutable",
+                  "name": "_setToken",
+                  "nameLocation": "165:9:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "155:19:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISetToken_$800",
+                    "typeString": "contract ISetToken"
+                  },
+                  "typeName": {
+                    "id": 828,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 827,
+                      "name": "ISetToken",
+                      "nameLocations": [
+                        "155:9:8"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 800,
+                      "src": "155:9:8"
+                    },
+                    "referencedDeclaration": 800,
+                    "src": "155:9:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISetToken_$800",
+                      "typeString": "contract ISetToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 831,
+                  "mutability": "mutable",
+                  "name": "_quoteAsset",
+                  "nameLocation": "184:11:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "176:19:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 830,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "176:7:8",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "154:42:8"
+            },
+            "returnParameters": {
+              "id": 835,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 834,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "220:7:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 833,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "220:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "219:9:8"
+            },
+            "scope": 837,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISetValuer",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          837
+        ],
+        "name": "ISetValuer",
+        "nameLocation": "101:10:8",
+        "scope": 838,
+        "usedErrors": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 8
+}
