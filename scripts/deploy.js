@@ -41,7 +41,7 @@ async function main() {
   const wtiFeed = await deployContract('WtiFeed');
   const wtiFeedAddr = wtiFeed.address;
 
-  const ethFeed = await deployContract('EthUsdFeed');
+  const ethFeed = await deployContract('EthFeed');
   const ethUsdFeed = ethFeed.address;
 
   const energyETH = await deployContract(

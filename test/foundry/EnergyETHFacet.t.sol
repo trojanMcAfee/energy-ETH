@@ -7,20 +7,20 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import '../../contracts/EnergyETHFacet.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
-import '../../contracts/testing-files/EthUsdFeed.sol';
+import '../../contracts/testing-files/EthFeed.sol';
 
 
 contract EnergyETHFacetTest is Test {
 
     EnergyETHFacet private energyETH;
     WtiFeed private wtiFeed;
-    EthUsdFeed private ethFeed;
+    EthFeed private ethFeed;
 
     address volAddress = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
 
     function setUp() public {
         wtiFeed = new WtiFeed();
-        ethFeed = new EthUsdFeed();
+        ethFeed = new EthFeed();
         vm.label(address(wtiFeed), 'wtiFeed');
         vm.label(address(ethFeed), 'ethFeed');
 

@@ -106,10 +106,10 @@
         }
       }
     },
-    "contracts/testing-files/EthUsdFeed.sol": {
+    "contracts/testing-files/EthFeed.sol": {
       "lastModificationDate": 1679074551203,
       "contentHash": "339022f4981226c199cbe7d0b5b5b1f9",
-      "sourceName": "contracts/testing-files/EthUsdFeed.sol",
+      "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -141,8 +141,8 @@
       "imports": [],
       "versionRequirement": "=0.8.19",
       "artifacts": {
-        "EthUsdFeed": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EthUsdFeed.sol/EthUsdFeed.json"
+        "EthFeed": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EthFeed.sol/EthFeed.json"
         }
       }
     },
@@ -1445,7 +1445,7 @@
       },
       "imports": [
         "contracts/EnergyETHFacet.sol",
-        "contracts/testing-files/EthUsdFeed.sol",
+        "contracts/testing-files/EthFeed.sol",
         "contracts/testing-files/WtiFeed.sol",
         "lib/forge-std/lib/ds-test/src/test.sol",
         "lib/forge-std/src/Base.sol",
