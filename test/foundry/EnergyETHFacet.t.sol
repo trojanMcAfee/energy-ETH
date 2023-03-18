@@ -33,21 +33,21 @@ contract EnergyETHFacetTest is Test {
         vm.label(volAddress, 'volFeed');
     }
 
-    function testExample(uint num_) public {
-        require(num_ != 0);
-        bool success = num_ > 2000 ? true : false;
-        assertTrue(success);
-    }
+    // function testExample(uint num_) public {
+    //     require(num_ != 0);
+    //     bool success = num_ > 2000 ? true : false;
+    //     assertTrue(success);
+    // }
 
     function testLastPrice() public {
         uint price = energyETH.getLastPrice();
         assertTrue(price > 0);
     }
 
-    function invariant_neverFails() public pure {
-        bool success = true;
-        require(success);
-    }
+    // function invariant_neverFails() public pure {
+    //     bool success = true;
+    //     require(success);
+    // }
 
 
 }
