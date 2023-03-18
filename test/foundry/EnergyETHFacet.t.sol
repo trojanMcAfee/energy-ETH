@@ -39,8 +39,9 @@ contract EnergyETHFacetTest is Test {
         assertTrue(success);
     }
 
-    function testLastPrice() public view {
-        energyETH.getLastPrice();
+    function testLastPrice() public {
+        uint price = energyETH.getLastPrice();
+        assertTrue(price > 0);
     }
 
     function invariant_neverFails() public pure {
