@@ -1,0 +1,112 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/INAVIssuanceHook.sol\":\"INAVIssuanceHook\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/INAVIssuanceHook.sol\":{\"keccak256\":\"0x1d4dc5835d16177a13449ddec1c6cf1aec11053ae8e4bfd57bfe27334e4465d5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://ce343881a36bbc6fda581396d1880cb3a794fc996c79b1e1d5a0fdb64a4808bf\",\"dweb:/ipfs/QmNh8bVYRum58YDNZA8iLXRF1aYFncdPE65YdP5BfMtiZj\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":@eth-optimism/=node_modules/@eth-optimism/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=node_modules/hardhat/",
+        ":solmate/=node_modules/solmate/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "interfaces/INAVIssuanceHook.sol": "INAVIssuanceHook"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "interfaces/INAVIssuanceHook.sol": {
+        "keccak256": "0x1d4dc5835d16177a13449ddec1c6cf1aec11053ae8e4bfd57bfe27334e4465d5",
+        "urls": [
+          "bzz-raw://ce343881a36bbc6fda581396d1880cb3a794fc996c79b1e1d5a0fdb64a4808bf",
+          "dweb:/ipfs/QmNh8bVYRum58YDNZA8iLXRF1aYFncdPE65YdP5BfMtiZj"
+        ],
+        "license": "UNLICENSED"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "interfaces/INAVIssuanceHook.sol",
+    "id": 621,
+    "exportedSymbols": {
+      "INAVIssuanceHook": [
+        620
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:57:4",
+    "nodes": [
+      {
+        "id": 619,
+        "nodeType": "PragmaDirective",
+        "src": "39:23:4",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 620,
+        "nodeType": "ContractDefinition",
+        "src": "66:30:4",
+        "nodes": [],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "INAVIssuanceHook",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          620
+        ],
+        "name": "INAVIssuanceHook",
+        "nameLocation": "76:16:4",
+        "scope": 621,
+        "usedErrors": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 4
+}

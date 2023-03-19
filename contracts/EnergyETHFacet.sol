@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import 'solmate/src/utils/FixedPointMathLib.sol';
 
-import 'hardhat/console.sol';
+// import 'hardhat/console.sol';
 
 contract EnergyETHFacet is ERC20 {
 
@@ -46,15 +46,15 @@ contract EnergyETHFacet is ERC20 {
     }
 
     //------
-    function testFeed() public view returns(uint) { 
-        (,int wtiPrice,,,) = wtiFeed.latestRoundData();
-        return uint(wtiPrice);
-    }
+    // function testFeed() public view returns(uint) { 
+    //     (,int wtiPrice,,,) = wtiFeed.latestRoundData();
+    //     return uint(wtiPrice);
+    // }
 
-    function testFeed2() public view returns(uint) { 
-        (,int ethPrice,,,) = ethFeed.latestRoundData();
-        return uint(ethPrice);
-    }
+    // function testFeed2() public view returns(uint) { 
+    //     (,int ethPrice,,,) = ethFeed.latestRoundData();
+    //     return uint(ethPrice);
+    // }
 
     //------
 
