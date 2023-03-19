@@ -60,8 +60,8 @@
       }
     },
     "contracts/EnergyETHFacet.sol": {
-      "lastModificationDate": 1679168963355,
-      "contentHash": "5457aa230d3116d94722be0a3177915e",
+      "lastModificationDate": 1679244364516,
+      "contentHash": "3d6b87d1bde5843fd248d4dd65d041e8",
       "sourceName": "contracts/EnergyETHFacet.sol",
       "solcConfig": {
         "settings": {
@@ -92,7 +92,6 @@
         }
       },
       "imports": [
-        "lib/forge-std/src/console.sol",
         "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
@@ -108,8 +107,8 @@
       }
     },
     "contracts/testing-files/EthFeed.sol": {
-      "lastModificationDate": 1679244287717,
-      "contentHash": "910e09785dbcaea17f2f5e4a224a2094",
+      "lastModificationDate": 1679244454986,
+      "contentHash": "1d5ad6ee25c510d6ffbaada37d650c3c",
       "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
@@ -139,9 +138,7 @@
           "libraries": {}
         }
       },
-      "imports": [
-        "lib/forge-std/src/console.sol"
-      ],
+      "imports": [],
       "versionRequirement": "=0.8.19",
       "artifacts": {
         "EthFeed": {
