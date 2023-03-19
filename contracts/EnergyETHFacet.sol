@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import 'solmate/src/utils/FixedPointMathLib.sol';
 
-// import 'hardhat/console.sol';
+import 'hardhat/console.sol';
 
 contract EnergyETHFacet is ERC20 {
 
@@ -118,6 +118,7 @@ contract EnergyETHFacet is ERC20 {
         AggregatorV3Interface feed_
     ) private view returns(int) {
         int currGold = goldPrice_.value;
+
         int netDiff = currGold - _getPrevFeed(goldPrice_.roundId, feed_);
         return ( (netDiff * 100 * EIGHT_DEC) / currGold ) * (volIndex_ / NINETN_DEC);
     }
