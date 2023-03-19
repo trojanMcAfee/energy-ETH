@@ -7,7 +7,6 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import 'solmate/src/utils/FixedPointMathLib.sol';
 
 // import 'hardhat/console.sol';
-// import "forge-std/console.sol";
 
 contract EnergyETHFacet is ERC20 {
 
