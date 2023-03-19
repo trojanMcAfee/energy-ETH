@@ -27,6 +27,8 @@ const {
 
 
 async function main() {
+
+  //Deploy oracle
   const blockDiff = [
     1300,
     5000, 
@@ -47,14 +49,16 @@ async function main() {
   const goldFeed = await deployContract('GoldFeed');
   const goldFeedAddr = goldFeed.address;
 
-  const energyETH = await deployContract(
-    'EnergyETHFacet',
+  const ozOracle = await deployContract(
+    'ozOracleFacet',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
   );
-  //------
+  
+  //Add oracle to ozDiamond
+  await addToDiamond(ozOracle);
 
   for (let i=0; i < blockDiff.length; i++) {
-    await getLastPrice(energyETH, blockDiff[i], i);
+    await getLastPrice(ozOracle, blockDiff[i], i);
   }
 }
 

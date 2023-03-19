@@ -5,15 +5,15 @@ pragma solidity 0.8.19;
 // import 'ds-test/test.sol';
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import '../../contracts/EnergyETHFacet.sol';
+import '../../contracts/ozOracleFacet.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
 
 
-contract EnergyETHFacetTest is Test {
+contract ozOracleFacetTest is Test {
 
-    EnergyETHFacet private energyETH;
+    ozOracleFacet private ozOracle;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
     GoldFeed private goldFeed;
@@ -25,7 +25,7 @@ contract EnergyETHFacetTest is Test {
         ethFeed = new EthFeed();
         goldFeed = new GoldFeed();
 
-        energyETH = new EnergyETHFacet(
+        ozOracle = new ozOracleFacet(
             address(wtiFeed),
             volAddress,
             address(ethFeed),
@@ -36,11 +36,11 @@ contract EnergyETHFacetTest is Test {
         vm.label(address(ethFeed), 'ethFeed');
         vm.label(address(goldFeed), 'goldFeed');
         vm.label(volAddress, 'volFeed');
-        vm.label(address(energyETH), 'eETH');
+        vm.label(address(ozOracle), 'eETH');
     }
 
     function testLastPrice() public {
-        uint price = energyETH.getLastPrice();
+        uint price = ozOracle.getLastPrice();
         assertTrue(price > 0);
     }
 
