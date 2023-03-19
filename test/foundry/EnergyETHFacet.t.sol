@@ -8,6 +8,7 @@ import "forge-std/console.sol";
 import '../../contracts/EnergyETHFacet.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
+import '../../contracts/testing-files/GoldFeed.sol';
 
 
 contract EnergyETHFacetTest is Test {
@@ -15,29 +16,28 @@ contract EnergyETHFacetTest is Test {
     EnergyETHFacet private energyETH;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
+    GoldFeed private goldFeed;
 
     address volAddress = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
 
     function setUp() public {
         wtiFeed = new WtiFeed();
         ethFeed = new EthFeed();
-        vm.label(address(wtiFeed), 'wtiFeed');
-        vm.label(address(ethFeed), 'ethFeed');
+        goldFeed = new GoldFeed();
 
         energyETH = new EnergyETHFacet(
             address(wtiFeed),
             volAddress,
-            address(ethFeed)
+            address(ethFeed),
+            address(goldFeed)
         );
-        vm.label(address(energyETH), 'eETH');
-        vm.label(volAddress, 'volFeed');
-    }
 
-    // function testExample(uint num_) public {
-    //     require(num_ != 0);
-    //     bool success = num_ > 2000 ? true : false;
-    //     assertTrue(success);
-    // }
+        vm.label(address(wtiFeed), 'wtiFeed');
+        vm.label(address(ethFeed), 'ethFeed');
+        vm.label(address(goldFeed), 'goldFeed');
+        vm.label(volAddress, 'volFeed');
+        vm.label(address(energyETH), 'eETH');
+    }
 
     function testLastPrice() public {
         uint price = energyETH.getLastPrice();

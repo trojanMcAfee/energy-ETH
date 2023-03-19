@@ -4,15 +4,15 @@ const { mine } = require("@nomicfoundation/hardhat-network-helpers");
 
 
 async function deployContract(contractName, constrArgs) {
-    let var1, var2, var3;
+    let var1, var2, var3, var4;
     let contract;
 
     const Contract = await hre.ethers.getContractFactory(contractName);
 
     switch(contractName) {
         case 'EnergyETHFacet':
-            ([ var1, var2, var3 ] = constrArgs);
-            contract = await Contract.deploy(var1, var2, var3);
+            ([ var1, var2, var3, var4 ] = constrArgs);
+            contract = await Contract.deploy(var1, var2, var3, var4);
             break;
         default:
             contract = await Contract.deploy();

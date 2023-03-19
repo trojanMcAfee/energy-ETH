@@ -11,14 +11,14 @@ contract EthFeed {
 
         assembly {
             switch blockNum 
-            case 69254394 { result := 154700260000 } 
-            case 69255694 { result := 158142799097 } 
-            case 69260694 { result := 158956580000 } 
-            case 69294694 { result := 161684899390 } 
-            case 69295694 { result := 161691000000 } 
-            case 69297694 { result := 161566898000 } 
-            case 69380694 { result := 160800635124 } 
-            case 69421694 { result := 158595420000 } 
+            case 69254395 { result := 154700260000 } 
+            case 69255695 { result := 158142799097 } 
+            case 69260695 { result := 158956580000 } 
+            case 69294695 { result := 161684899390 } 
+            case 69295695 { result := 161691000000 } 
+            case 69297695 { result := 161566898000 } 
+            case 69380695 { result := 160800635124 } 
+            case 69421695 { result := 158595420000 } 
         }
 
         return (1,result,0,0,0);
@@ -30,14 +30,14 @@ contract EthFeed {
 
         assembly {
             switch blockNum 
-            case 69254394 { result := 158142799097 }
-            case 69255694 { result := 158956580000 }
-            case 69260694 { result := 161684899390 }
-            case 69294694 { result := 161691000000 }
-            case 69295694 { result := 161566898000 }
-            case 69297694 { result := 160800635124 }
-            case 69380694 { result := 158595420000 }
-            case 69421694 { result := 154700260000 }
+            case 69254395 { result := 158142799097 }
+            case 69255695 { result := 158956580000 }
+            case 69260695 { result := 161684899390 }
+            case 69294695 { result := 161691000000 }
+            case 69295695 { result := 161566898000 }
+            case 69297695 { result := 160800635124 }
+            case 69380695 { result := 158595420000 }
+            case 69421695 { result := 154700260000 }
         }
 
         return (0,result,0,0,0);

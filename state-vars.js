@@ -3,14 +3,17 @@
 let wtiFeedAddr;
 let volatilityFeedAddr;
 let ethUsdFeed;
+let goldFeedAddr;
 let blocks;
 
 let network = 'arbitrum';
+
 switch(network) {
 case 'arbitrum':
     wtiFeedAddr = '0x594b919AD828e693B935705c3F816221729E7AE8';
     volatilityFeedAddr = '0xbcD8bEA7831f392bb019ef3a672CC15866004536';
     ethUsdFeed = '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612';
+    goldFeedAddr = '0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c';
     blocks = [
         69254391,
         69255691,
@@ -34,5 +37,6 @@ module.exports = {
     wtiFeedAddr,
     volatilityFeedAddr,
     ethUsdFeed,
-    blocks
+    blocks,
+    goldFeedAddr
 };

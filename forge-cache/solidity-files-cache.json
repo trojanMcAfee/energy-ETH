@@ -60,8 +60,8 @@
       }
     },
     "contracts/EnergyETHFacet.sol": {
-      "lastModificationDate": 1679244364516,
-      "contentHash": "3d6b87d1bde5843fd248d4dd65d041e8",
+      "lastModificationDate": 1679247866614,
+      "contentHash": "6f8e450368064edac4f2842033d32c95",
       "sourceName": "contracts/EnergyETHFacet.sol",
       "solcConfig": {
         "settings": {
@@ -107,8 +107,8 @@
       }
     },
     "contracts/testing-files/EthFeed.sol": {
-      "lastModificationDate": 1679244454986,
-      "contentHash": "1d5ad6ee25c510d6ffbaada37d650c3c",
+      "lastModificationDate": 1679247712945,
+      "contentHash": "ba09ce459c56f38fbf4066263f198aab",
       "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
@@ -146,9 +146,49 @@
         }
       }
     },
+    "contracts/testing-files/GoldFeed.sol": {
+      "lastModificationDate": 1679247755270,
+      "contentHash": "0e1e639079541a3cf1bad9daeffe4137",
+      "sourceName": "contracts/testing-files/GoldFeed.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.19",
+      "artifacts": {
+        "GoldFeed": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "GoldFeed.sol/GoldFeed.json"
+        }
+      }
+    },
     "contracts/testing-files/WtiFeed.sol": {
-      "lastModificationDate": 1679168598221,
-      "contentHash": "cc24eb3919a75f153ecbd91d98694e94",
+      "lastModificationDate": 1679247713285,
+      "contentHash": "41673d683544580314ac92ef62c3385a",
       "sourceName": "contracts/testing-files/WtiFeed.sol",
       "solcConfig": {
         "settings": {
@@ -1410,8 +1450,8 @@
       }
     },
     "test/foundry/EnergyETHFacet.t.sol": {
-      "lastModificationDate": 1679168563350,
-      "contentHash": "b97b52bcdcf562aa6e1e7d249d06c371",
+      "lastModificationDate": 1679247254856,
+      "contentHash": "b0f012f49f3b3a9e91d20fbe083f8982",
       "sourceName": "test/foundry/EnergyETHFacet.t.sol",
       "solcConfig": {
         "settings": {
@@ -1444,6 +1484,7 @@
       "imports": [
         "contracts/EnergyETHFacet.sol",
         "contracts/testing-files/EthFeed.sol",
+        "contracts/testing-files/GoldFeed.sol",
         "contracts/testing-files/WtiFeed.sol",
         "lib/forge-std/lib/ds-test/src/test.sol",
         "lib/forge-std/src/Base.sol",

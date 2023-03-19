@@ -14,7 +14,8 @@ const {
   wtiFeedAddr,
   volatilityFeedAddr,
   ethUsdFeed,
-  blocks
+  blocks,
+  goldFeedAddr
 } = require('../state-vars');
 
 const { 
@@ -26,7 +27,6 @@ const {
 
 
 async function main() {
-
   const blockDiff = [
     1300,
     5000, 
@@ -44,23 +44,21 @@ async function main() {
   const ethFeed = await deployContract('EthFeed');
   const ethUsdFeed = ethFeed.address;
 
+  const goldFeed = await deployContract('GoldFeed');
+  const goldFeedAddr = goldFeed.address;
+
   const energyETH = await deployContract(
     'EnergyETHFacet',
-    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
+    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
   );
   //------
-
-  // for (let i=0; i < blockDiff.length; i++) {
-  //   await callEeth(energyETH, blockDiff[i], i);
-  // }
 
   for (let i=0; i < blockDiff.length; i++) {
     await getLastPrice(energyETH, blockDiff[i], i);
   }
-
-
-
 }
+
+main();
 
 
 
@@ -80,21 +78,13 @@ async function main2() {
 
 
 
+async function testGold() {
+  const goldFeed = await hre.ethers.getContractAt('AggregatorV3Interface', goldFeedAddr);
+  
+  const [a,price,b,c,d] = await goldFeed.latestRoundData();
+  console.log('price: ', Number(price));
 
 
+}
 
-
-
-
-
-
-
-
-
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+// testGold();
