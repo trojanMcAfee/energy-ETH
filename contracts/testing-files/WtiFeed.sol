@@ -10,7 +10,7 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 69254395 { result := 7632500000 } 
+            case 69254396 { result := 7632500000 } 
             case 69255695 { result := 7672000000 } 
             case 69260695 { result := 7717200000 } 
             case 69294695 { result := 7677600000 } 
@@ -29,7 +29,7 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 69254395 { result := 7672000000 }
+            case 69254396 { result := 7672000000 }
             case 69255695 { result := 7717200000 }
             case 69260695 { result := 7677600000 }
             case 69294695 { result := 7704200000 }

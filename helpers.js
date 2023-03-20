@@ -1,8 +1,16 @@
 const { ethers } = require('ethers');
 const { formatUnits } = ethers.utils;
-const { mine } = require("@nomicfoundation/hardhat-network-helpers");
+const { 
+    mine, 
+    impersonateAccount,
+    stopImpersonatingAccount
+ } = require("@nomicfoundation/hardhat-network-helpers");
 
-const { diamondABI } = require('./state-vars');
+const { 
+    diamondABI, 
+    ozDiamondAddr,
+    deployer2
+} = require('./state-vars');
 
 
 async function deployContract(contractName, constrArgs) {
@@ -12,7 +20,7 @@ async function deployContract(contractName, constrArgs) {
     const Contract = await hre.ethers.getContractFactory(contractName);
 
     switch(contractName) {
-        case 'ozOracleFacet':
+        case null:
             ([ var1, var2, var3, var4 ] = constrArgs);
             contract = await Contract.deploy(var1, var2, var3, var4);
             break;
@@ -40,25 +48,32 @@ async function callEeth(energyETH_, blockDifference_, num_) {
 }
 
 
-async function getLastPrice(ozOracle, blockDifference_, num_) {
-    let price = await ozOracle.getLastPrice();
-    console.log(`eETH price ${num_}: `, formatUnits(price, 8));
+async function getLastPrice(blockDifference_, num_) {
+    const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
+    let price = await ozDiamond.getLastPrice();
+    console.log(`eETH price ${num_}: `, formatUnits(price, 18));
     if (blockDifference_ !== '') await mine(blockDifference_);
 }
 
-async function addToDiamond(ozOracle) {
-    const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
+async function addToDiamond(ozOracle, feeds) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
 
     const lastPriceSelector = ozOracle.interface.getSighash('getLastPrice');
     const facetCutArgs = [
         [ozOracle.address, 0, [lastPriceSelector] ]
     ];
-    const tx = await ozDiamond.diamondCut(facetCutArgs, nullAddr, '0x');
+
+    const init = await deployContract('InitUpgradeV2');
+    const calldata = init.interface.encodeFunctionData('init', [feeds]);
+
+    await impersonateAccount(deployer2);
+    const deployerSigner = await hre.ethers.provider.getSigner(deployer2);
+
+    const tx = await ozDiamond.connect(deployerSigner).diamondCut(facetCutArgs, init.address, calldata);
     const receipt = await tx.wait();
-    console.log('ozOracle added: ', receipt.transactionHash);
+    console.log('ozOracle added to ozDiamond: ', receipt.transactionHash);
 
-
+    await stopImpersonatingAccount(deployer2);
 }
 
 

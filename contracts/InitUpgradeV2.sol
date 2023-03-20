@@ -2,6 +2,7 @@
 pragma solidity 0.8.19;
 
 
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import './AppStorage.sol';
 
 
@@ -9,18 +10,12 @@ contract InitUpgradeV2 {
 
     AppStorage s;
 
-    struct InitVars {
-        address[] feeds;
-        int eETHprice;
-    }
+    function init(address[] calldata feeds_) external {
 
-    function init(InitVars calldata vars_) external {
-
-        s.wtiFeed = vars_.feeds[0];
-        s.volatilityFeed = vars_.feeds[1];
-        s.ethFeed = vars_.feeds[2];
-        s.goldFeed = vars_.feeds[3];
-
+        s.wtiFeed = AggregatorV3Interface(feeds_[0]);
+        s.volatilityFeed = AggregatorV3Interface(feeds_[1]);
+        s.ethFeed = AggregatorV3Interface(feeds_[2]);
+        s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
     }
 

@@ -5,6 +5,8 @@ let volatilityFeedAddr;
 let ethUsdFeed;
 let goldFeedAddr;
 let blocks;
+const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
+const deployer2 = '0xe738696676571D9b74C81716E4aE797c2440d306';
 
 const diamondABI = [
     'function setTESTVAR2(uint256 num_, bytes32 position_) public',
@@ -43,7 +45,8 @@ const diamondABI = [
     'function authorizeSelector(bytes4, bool) external',
     'function facetAddresses() external view returns (address[])',
     'function getTaskID(address,address) external view returns(bytes32)',
-    'function getTokenDatabase() external view returns(address[] memory)'
+    'function getTokenDatabase() external view returns(address[] memory)',
+    'function getLastPrice() external view returns(uint256)'
 ];
 
 let network = 'arbitrum';
@@ -79,5 +82,7 @@ module.exports = {
     ethUsdFeed,
     blocks,
     goldFeedAddr,
-    diamondABI
+    diamondABI,
+    ozDiamondAddr,
+    deployer2
 };

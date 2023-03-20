@@ -5,21 +5,24 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 // import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 // import 'solmate/src/utils/FixedPointMathLib.sol';
+import './AppStorage.sol';
 
 // import 'hardhat/console.sol';
 
 contract ozOracleFacet {
 
-    AggregatorV3Interface private wtiFeed;
-    AggregatorV3Interface private volatilityFeed;
-    AggregatorV3Interface private ethFeed;
-    AggregatorV3Interface private goldFeed;
+    AppStorage s;
+
+    // AggregatorV3Interface private wtiFeed;
+    // AggregatorV3Interface private volatilityFeed;
+    // AggregatorV3Interface private ethFeed;
+    // AggregatorV3Interface private goldFeed;
 
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
 
     // int eETHprice = 1000 * EIGHT_DEC;
-    int BASE = 1e7;
+    int constant BASE = 1e7;
 
 
     struct DataInfo {
@@ -36,17 +39,17 @@ contract ozOracleFacet {
 
 
     
-    constructor(
-        address wtiFeed_,
-        address volatilityFeed_,
-        address ethUsdFeed_,
-        address goldFeed_
-    ) {
-        wtiFeed = AggregatorV3Interface(wtiFeed_);
-        volatilityFeed = AggregatorV3Interface(volatilityFeed_);
-        ethFeed = AggregatorV3Interface(ethUsdFeed_);
-        goldFeed = AggregatorV3Interface(goldFeed_);
-    }
+    // constructor(
+    //     address wtiFeed_,
+    //     address volatilityFeed_,
+    //     address ethUsdFeed_,
+    //     address goldFeed_
+    // ) {
+    //     wtiFeed = AggregatorV3Interface(wtiFeed_);
+    //     volatilityFeed = AggregatorV3Interface(volatilityFeed_);
+    //     ethFeed = AggregatorV3Interface(ethUsdFeed_);
+    //     goldFeed = AggregatorV3Interface(goldFeed_);
+    // }
 
 
     //**** MAIN ******/
@@ -54,9 +57,9 @@ contract ozOracleFacet {
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 
-        int256 implWti = _setImplWti(data.wtiPrice, volIndex, wtiFeed); 
-        int256 implGold = _setImplGold(data.goldPrice, volIndex, goldFeed);
-        int256 implEth = _setImplEth(data.ethPrice, ethFeed);
+        int256 implWti = _setImplWti(data.wtiPrice, volIndex, s.wtiFeed); 
+        int256 implGold = _setImplGold(data.goldPrice, volIndex, s.goldFeed);
+        int256 implEth = _setImplEth(data.ethPrice, s.ethFeed);
 
         int256 netDiff = implWti + implEth + implGold;
 
@@ -65,10 +68,10 @@ contract ozOracleFacet {
 
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {
-        (,int256 volatility,,,) = volatilityFeed.latestRoundData();
-        (uint80 wtiId, int256 wtiPrice,,,) = wtiFeed.latestRoundData();
-        (uint80 ethId, int256 ethPrice,,,) = ethFeed.latestRoundData();
-        (uint80 goldId, int256 goldPrice,,,) = goldFeed.latestRoundData();
+        (,int256 volatility,,,) = s.volatilityFeed.latestRoundData();
+        (uint80 wtiId, int256 wtiPrice,,,) = s.wtiFeed.latestRoundData();
+        (uint80 ethId, int256 ethPrice,,,) = s.ethFeed.latestRoundData();
+        (uint80 goldId, int256 goldPrice,,,) = s.goldFeed.latestRoundData();
 
         basePrice = _calculateBasePrice(ethPrice);
 
@@ -132,7 +135,7 @@ contract ozOracleFacet {
         return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
     }
 
-    function _calculateBasePrice(int256 ethPrice_) private view returns(int256) {
+    function _calculateBasePrice(int256 ethPrice_) private pure returns(int256) {
         return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
     }
     

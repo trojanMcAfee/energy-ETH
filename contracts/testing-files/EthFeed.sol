@@ -11,7 +11,7 @@ contract EthFeed {
 
         assembly {
             switch blockNum 
-            case 69254395 { result := 154700260000 } 
+            case 69254396 { result := 154700260000 } 
             case 69255695 { result := 158142799097 } 
             case 69260695 { result := 158956580000 } 
             case 69294695 { result := 161684899390 } 
@@ -30,7 +30,7 @@ contract EthFeed {
 
         assembly {
             switch blockNum 
-            case 69254395 { result := 158142799097 }
+            case 69254396 { result := 158142799097 }
             case 69255695 { result := 158956580000 }
             case 69260695 { result := 161684899390 }
             case 69294695 { result := 161691000000 }

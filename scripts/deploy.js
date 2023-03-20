@@ -50,16 +50,26 @@ async function main() {
   const goldFeed = await deployContract('GoldFeed');
   const goldFeedAddr = goldFeed.address;
 
-  const ozOracle = await deployContract(
-    'ozOracleFacet',
-    [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
-  );
+  // const ozOracle = await deployContract(
+  //   'ozOracleFacet',
+  //   [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
+  // );
+
+  const ozOracle = await deployContract('ozOracleFacet');
   
   //Add oracle to ozDiamond
-  await addToDiamond(ozOracle);
+  const feeds = [
+    wtiFeedAddr,
+    volatilityFeedAddr,
+    ethUsdFeed,
+    goldFeedAddr
+  ];
 
+  await addToDiamond(ozOracle, feeds);
+
+  //Queries price
   for (let i=0; i < blockDiff.length; i++) {
-    await getLastPrice(ozOracle, blockDiff[i], i);
+    await getLastPrice(blockDiff[i], i);
   }
 }
 

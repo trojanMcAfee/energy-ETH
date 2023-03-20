@@ -13,6 +13,16 @@ import '../../contracts/testing-files/GoldFeed.sol';
 
 contract ozOracleFacetTest is Test {
 
+    function setUp() public {
+        ozOracle = new ozOracleFacet();
+        
+    }
+
+}
+
+
+contract ozOracleFacetTest is Test {
+
     ozOracleFacet private ozOracle;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
@@ -48,6 +58,5 @@ contract ozOracleFacetTest is Test {
     //     bool success = true;
     //     require(success);
     // }
-
 
 }
