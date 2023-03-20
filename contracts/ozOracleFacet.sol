@@ -7,7 +7,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 // import 'solmate/src/utils/FixedPointMathLib.sol';
 import './AppStorage.sol';
 
-// import 'hardhat/console.sol';
+import 'hardhat/console.sol';
 
 contract ozOracleFacet {
 

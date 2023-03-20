@@ -50,12 +50,12 @@ async function callEeth(energyETH_, blockDifference_, num_) {
 
 async function getLastPrice(blockDifference_, num_) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
-    console.log(2);
     let price = await ozDiamond.getLastPrice();
-    console.log(3);
     console.log(`eETH price ${num_}: `, formatUnits(price, 18));
     if (blockDifference_ !== '') await mine(blockDifference_);
 }
+
+
 
 async function addToDiamond(ozOracle, feeds) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
@@ -66,12 +66,15 @@ async function addToDiamond(ozOracle, feeds) {
     ];
 
     const init = await deployContract('InitUpgradeV2');
-    const calldata = init.interface.encodeFunctionData('init', [feeds]);
+    const initData = init.interface.encodeFunctionData('init', [
+        feeds,
+        ozOracle.address
+    ]);
 
     await impersonateAccount(deployer2);
     const deployerSigner = await hre.ethers.provider.getSigner(deployer2);
 
-    const tx = await ozDiamond.connect(deployerSigner).diamondCut(facetCutArgs, init.address, calldata);
+    const tx = await ozDiamond.connect(deployerSigner).diamondCut(facetCutArgs, init.address, initData);
     const receipt = await tx.wait();
     console.log('ozOracle added to ozDiamond: ', receipt.transactionHash);
 
