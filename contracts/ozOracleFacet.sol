@@ -63,12 +63,6 @@ contract ozOracleFacet {
         return uint256(basePrice + ( (netDiff * basePrice) / (100 * EIGHT_DEC) ));
     }
 
-    // eETHprice --- 100% 
-    //   x ---  netDiff
-
-    // ethPrice --- 10%
-//     x ------ 100%
-
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {
         (,int256 volatility,,,) = volatilityFeed.latestRoundData();
@@ -116,9 +110,6 @@ contract ozOracleFacet {
         int256 netDiff = currWti - _getPrevFeed(wtiPrice_.roundId, feed_);
         return ( (netDiff * 100 * EIGHT_DEC) / currWti ) * (volIndex_ / NINETN_DEC);
     }
-
-    // currWti --- 100%
-    // netDiff ---  x
 
 
     function _setImplGold(
