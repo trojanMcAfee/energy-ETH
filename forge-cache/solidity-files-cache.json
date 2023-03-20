@@ -12,57 +12,10 @@
     ]
   },
   "files": {
-    "contracts/CreateSet.sol": {
-      "lastModificationDate": 1678462849557,
-      "contentHash": "73c3732eab11218af00d34fe4a997aa6",
-      "sourceName": "contracts/CreateSet.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "interfaces/INAVIssuanceHook.sol",
-        "interfaces/INavModule.sol",
-        "interfaces/ISetToken.sol",
-        "interfaces/ISetTokenCreator.sol",
-        "interfaces/ISetValuer.sol",
-        "node_modules/hardhat/console.sol"
-      ],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "CreateSet": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "CreateSet.sol/CreateSet.json"
-        }
-      }
-    },
-    "contracts/ozOracleFacet.sol": {
-      "lastModificationDate": 1679249102660,
-      "contentHash": "5d84f214e85e972c4d755145ce8569c7",
-      "sourceName": "contracts/ozOracleFacet.sol",
+    "contracts/AppStorage.sol": {
+      "lastModificationDate": 1679272802068,
+      "contentHash": "ebf8f36d36126d7ad8c9e299eedac70c",
+      "sourceName": "contracts/AppStorage.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -96,14 +49,180 @@
       ],
       "versionRequirement": "=0.8.19",
       "artifacts": {
+        "AppStorage": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "AppStorage.sol/AppStorage.json"
+        }
+      }
+    },
+    "contracts/EnergyETHFacet.sol": {
+      "lastModificationDate": 1679272802071,
+      "contentHash": "f4f5640a13f93cf476a1c9f497c97c82",
+      "sourceName": "contracts/EnergyETHFacet.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {
+        "EnergyETHFacet": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EnergyETHFacet.sol/EnergyETHFacet.json"
+        }
+      }
+    },
+    "contracts/InitUpgradeV2.sol": {
+      "lastModificationDate": 1679346764747,
+      "contentHash": "e982d1e5091f58f10e540c081ddbf8da",
+      "sourceName": "contracts/InitUpgradeV2.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts/AppStorage.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
+      ],
+      "versionRequirement": "=0.8.19",
+      "artifacts": {
+        "InitUpgradeV2": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "InitUpgradeV2.sol/InitUpgradeV2.json"
+        }
+      }
+    },
+    "contracts/ozDiamond.sol": {
+      "lastModificationDate": 1679347899234,
+      "contentHash": "440a23ca0132940019b492a0fad8a22b",
+      "sourceName": "contracts/ozDiamond.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": null,
+      "artifacts": {
+        "ozDiamond": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozDiamond.sol/ozDiamond.json"
+        }
+      }
+    },
+    "contracts/ozOracleFacet.sol": {
+      "lastModificationDate": 1679324741272,
+      "contentHash": "4517b01806579cf863f58b4c2fb857d5",
+      "sourceName": "contracts/ozOracleFacet.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts/AppStorage.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
+      ],
+      "versionRequirement": "=0.8.19",
+      "artifacts": {
         "ozOracleFacet": {
           "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozOracleFacet.sol/ozOracleFacet.json"
         }
       }
     },
     "contracts/testing-files/EthFeed.sol": {
-      "lastModificationDate": 1679247712945,
-      "contentHash": "ba09ce459c56f38fbf4066263f198aab",
+      "lastModificationDate": 1679323127925,
+      "contentHash": "1b9f8afaba1b54ef187c13ec5fc2315b",
       "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
@@ -142,8 +261,8 @@
       }
     },
     "contracts/testing-files/GoldFeed.sol": {
-      "lastModificationDate": 1679248820752,
-      "contentHash": "26d3f00b144b316f2e86073407feaf2c",
+      "lastModificationDate": 1679323127496,
+      "contentHash": "de3159f0378a9e95c60902cfa4330988",
       "sourceName": "contracts/testing-files/GoldFeed.sol",
       "solcConfig": {
         "settings": {
@@ -182,8 +301,8 @@
       }
     },
     "contracts/testing-files/WtiFeed.sol": {
-      "lastModificationDate": 1679247713285,
-      "contentHash": "41673d683544580314ac92ef62c3385a",
+      "lastModificationDate": 1679323127905,
+      "contentHash": "3421ca0f6fa46945579bae0ce951c223",
       "sourceName": "contracts/testing-files/WtiFeed.sol",
       "solcConfig": {
         "settings": {
@@ -221,10 +340,10 @@
         }
       }
     },
-    "interfaces/INAVIssuanceHook.sol": {
-      "lastModificationDate": 1678412117851,
-      "contentHash": "4c99f0dc5864796be734f6ea5ef2fcc5",
-      "sourceName": "interfaces/INAVIssuanceHook.sol",
+    "interfaces/ozIDiamond.sol": {
+      "lastModificationDate": 1679347898809,
+      "contentHash": "0e3b0493f1d5e44971b42c3c8cd1b4b0",
+      "sourceName": "interfaces/ozIDiamond.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -256,173 +375,8 @@
       "imports": [],
       "versionRequirement": "=0.8.19",
       "artifacts": {
-        "INAVIssuanceHook": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "INAVIssuanceHook.sol/INAVIssuanceHook.json"
-        }
-      }
-    },
-    "interfaces/INavModule.sol": {
-      "lastModificationDate": 1678459764595,
-      "contentHash": "ab3579cc7d66008e5b0986735552e5f3",
-      "sourceName": "interfaces/INavModule.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "interfaces/INAVIssuanceHook.sol",
-        "interfaces/ISetToken.sol"
-      ],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "INavModule": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "INavModule.sol/INavModule.json"
-        }
-      }
-    },
-    "interfaces/ISetToken.sol": {
-      "lastModificationDate": 1678459740639,
-      "contentHash": "3c88506b99b9f837ae62849007fa6c47",
-      "sourceName": "interfaces/ISetToken.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "ISetToken": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ISetToken.sol/ISetToken.json"
-        }
-      }
-    },
-    "interfaces/ISetTokenCreator.sol": {
-      "lastModificationDate": 1678407572305,
-      "contentHash": "dcf22fee3b37a1043465fe656f5ecd98",
-      "sourceName": "interfaces/ISetTokenCreator.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "ISetTokenCreator": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ISetTokenCreator.sol/ISetTokenCreator.json"
-        }
-      }
-    },
-    "interfaces/ISetValuer.sol": {
-      "lastModificationDate": 1678462714004,
-      "contentHash": "7c5e727d75c9ca571816c110bc47206e",
-      "sourceName": "interfaces/ISetValuer.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "interfaces/ISetToken.sol"
-      ],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "ISetValuer": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ISetValuer.sol/ISetValuer.json"
+        "ozIDiamond": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozIDiamond.sol/ozIDiamond.json"
         }
       }
     },
@@ -1198,49 +1152,9 @@
         }
       }
     },
-    "node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1678404380372,
-      "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
-      "sourceName": "node_modules/hardhat/console.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": null,
-      "artifacts": {
-        "console": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "console.sol/console.json"
-        }
-      }
-    },
     "test/foundry/ozOracleFacet.t.sol": {
-      "lastModificationDate": 1679249161289,
-      "contentHash": "d4e6f3ce066af104160dff51c8aedeca",
+      "lastModificationDate": 1679347850818,
+      "contentHash": "bb2e86d84e06059df8e5e53a5ce11fd5",
       "sourceName": "test/foundry/ozOracleFacet.t.sol",
       "solcConfig": {
         "settings": {
@@ -1271,10 +1185,13 @@
         }
       },
       "imports": [
+        "contracts/AppStorage.sol",
+        "contracts/InitUpgradeV2.sol",
         "contracts/ozOracleFacet.sol",
         "contracts/testing-files/EthFeed.sol",
         "contracts/testing-files/GoldFeed.sol",
         "contracts/testing-files/WtiFeed.sol",
+        "interfaces/ozIDiamond.sol",
         "lib/forge-std/lib/ds-test/src/test.sol",
         "lib/forge-std/src/Base.sol",
         "lib/forge-std/src/StdAssertions.sol",

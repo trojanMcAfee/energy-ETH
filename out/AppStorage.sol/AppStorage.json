@@ -1,0 +1,241 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "linkReferences": {}
+  },
+  "ast": {
+    "absolutePath": "contracts/AppStorage.sol",
+    "id": 18,
+    "exportedSymbols": {
+      "AggregatorV3Interface": [
+        29090
+      ],
+      "AppStorage": [
+        17
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:295:0",
+    "nodes": [
+      {
+        "id": 1,
+        "nodeType": "PragmaDirective",
+        "src": "45:23:0",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "src": "71:76:0",
+        "nodes": [],
+        "absolutePath": "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
+        "file": "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 18,
+        "sourceUnit": 29091,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 17,
+        "nodeType": "StructDefinition",
+        "src": "150:190:0",
+        "nodes": [],
+        "canonicalName": "AppStorage",
+        "members": [
+          {
+            "constant": false,
+            "id": 5,
+            "mutability": "mutable",
+            "name": "wtiFeed",
+            "nameLocation": "197:7:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 17,
+            "src": "175:29:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+              "typeString": "contract AggregatorV3Interface"
+            },
+            "typeName": {
+              "id": 4,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 3,
+                "name": "AggregatorV3Interface",
+                "nameLocations": [
+                  "175:21:0"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 29090,
+                "src": "175:21:0"
+              },
+              "referencedDeclaration": 29090,
+              "src": "175:21:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+                "typeString": "contract AggregatorV3Interface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 8,
+            "mutability": "mutable",
+            "name": "volatilityFeed",
+            "nameLocation": "232:14:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 17,
+            "src": "210:36:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+              "typeString": "contract AggregatorV3Interface"
+            },
+            "typeName": {
+              "id": 7,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 6,
+                "name": "AggregatorV3Interface",
+                "nameLocations": [
+                  "210:21:0"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 29090,
+                "src": "210:21:0"
+              },
+              "referencedDeclaration": 29090,
+              "src": "210:21:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+                "typeString": "contract AggregatorV3Interface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "mutability": "mutable",
+            "name": "ethFeed",
+            "nameLocation": "274:7:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 17,
+            "src": "252:29:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+              "typeString": "contract AggregatorV3Interface"
+            },
+            "typeName": {
+              "id": 10,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 9,
+                "name": "AggregatorV3Interface",
+                "nameLocations": [
+                  "252:21:0"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 29090,
+                "src": "252:21:0"
+              },
+              "referencedDeclaration": 29090,
+              "src": "252:21:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+                "typeString": "contract AggregatorV3Interface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 14,
+            "mutability": "mutable",
+            "name": "goldFeed",
+            "nameLocation": "309:8:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 17,
+            "src": "287:30:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+              "typeString": "contract AggregatorV3Interface"
+            },
+            "typeName": {
+              "id": 13,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 12,
+                "name": "AggregatorV3Interface",
+                "nameLocations": [
+                  "287:21:0"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 29090,
+                "src": "287:21:0"
+              },
+              "referencedDeclaration": 29090,
+              "src": "287:21:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$29090",
+                "typeString": "contract AggregatorV3Interface"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 16,
+            "mutability": "mutable",
+            "name": "eETHprice",
+            "nameLocation": "328:9:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 17,
+            "src": "324:13:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_int256",
+              "typeString": "int256"
+            },
+            "typeName": {
+              "id": 15,
+              "name": "int",
+              "nodeType": "ElementaryTypeName",
+              "src": "324:3:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_int256",
+                "typeString": "int256"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "name": "AppStorage",
+        "nameLocation": "157:10:0",
+        "scope": 18,
+        "visibility": "public"
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 0
+}
