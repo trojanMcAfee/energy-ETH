@@ -13,15 +13,9 @@ contract ozOracleFacet {
 
     AppStorage s;
 
-    // AggregatorV3Interface private wtiFeed;
-    // AggregatorV3Interface private volatilityFeed;
-    // AggregatorV3Interface private ethFeed;
-    // AggregatorV3Interface private goldFeed;
-
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
 
-    // int eETHprice = 1000 * EIGHT_DEC;
     int constant BASE = 1e7;
 
 
@@ -36,20 +30,6 @@ contract ozOracleFacet {
         DataInfo ethPrice;
         DataInfo goldPrice;
     }
-
-
-    
-    // constructor(
-    //     address wtiFeed_,
-    //     address volatilityFeed_,
-    //     address ethUsdFeed_,
-    //     address goldFeed_
-    // ) {
-    //     wtiFeed = AggregatorV3Interface(wtiFeed_);
-    //     volatilityFeed = AggregatorV3Interface(volatilityFeed_);
-    //     ethFeed = AggregatorV3Interface(ethUsdFeed_);
-    //     goldFeed = AggregatorV3Interface(goldFeed_);
-    // }
 
 
     //**** MAIN ******/
