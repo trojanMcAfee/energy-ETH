@@ -48,7 +48,7 @@ async function main() {
   const goldFeedAddr = goldFeed.address;
 
   const energyETH = await deployContract(
-    'EnergyETHFacet',
+    'ozOracleFacet',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
   );
   //------

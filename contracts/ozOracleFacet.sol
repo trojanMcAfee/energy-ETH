@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 // import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 // import 'solmate/src/utils/FixedPointMathLib.sol';
 
-// import 'hardhat/console.sol';
+import 'hardhat/console.sol';
 
 contract ozOracleFacet {
 
@@ -18,8 +18,8 @@ contract ozOracleFacet {
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
 
-    int eETHprice = 1000 * EIGHT_DEC;
-    int BASE = 20;
+    // int eETHprice = 1000 * EIGHT_DEC;
+    int BASE = 1e7;
 
 
     struct DataInfo {
@@ -65,6 +65,9 @@ contract ozOracleFacet {
 
     // eETHprice --- 100% 
     //   x ---  netDiff
+
+    // ethPrice --- 10%
+//     x ------ 100%
 
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {

@@ -10,7 +10,7 @@ async function deployContract(contractName, constrArgs) {
     const Contract = await hre.ethers.getContractFactory(contractName);
 
     switch(contractName) {
-        case 'EnergyETHFacet':
+        case 'ozOracleFacet':
             ([ var1, var2, var3, var4 ] = constrArgs);
             contract = await Contract.deploy(var1, var2, var3, var4);
             break;
@@ -40,7 +40,7 @@ async function callEeth(energyETH_, blockDifference_, num_) {
 
 async function getLastPrice(energyETH_, blockDifference_, num_) {
     let price = await energyETH_.getLastPrice();
-    console.log(`eETH price ${num_}: `, formatUnits(price, 8));
+    console.log(`eETH price ${num_}: `, formatUnits(price, 18));
     if (blockDifference_ !== '') await mine(blockDifference_);
 }
 
