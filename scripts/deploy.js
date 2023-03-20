@@ -21,7 +21,8 @@ const {
 const { 
   deployContract, 
   callEeth,
-  getLastPrice 
+  getLastPrice ,
+  addToDiamond
 } = require('../helpers');
 
 

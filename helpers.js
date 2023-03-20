@@ -55,6 +55,8 @@ async function addToDiamond(ozOracle) {
         [ozOracle.address, 0, [lastPriceSelector] ]
     ];
     const tx = await ozDiamond.diamondCut(facetCutArgs, nullAddr, '0x');
+    const receipt = await tx.wait();
+    console.log('ozOracle added: ', receipt.transactionHash);
 
 
 }
@@ -66,5 +68,6 @@ async function addToDiamond(ozOracle) {
 module.exports = {
     deployContract,
     callEeth,
-    getLastPrice
+    getLastPrice,
+    addToDiamond
 };
