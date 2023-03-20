@@ -50,7 +50,9 @@ async function callEeth(energyETH_, blockDifference_, num_) {
 
 async function getLastPrice(blockDifference_, num_) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
+    console.log(2);
     let price = await ozDiamond.getLastPrice();
+    console.log(3);
     console.log(`eETH price ${num_}: `, formatUnits(price, 18));
     if (blockDifference_ !== '') await mine(blockDifference_);
 }
