@@ -28,23 +28,7 @@ contract ozOracleFacetTest is Test {
     address private volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
     address private diamond = 0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2;
 
-
-    // struct FacetCut {
-    //     address facetAddress;
-    //     FacetCutAction action;
-    //     bytes4[] functionSelectors;
-    // }
-
-    // enum FacetCutAction {Add, Replace, Remove}
-
-    // function diamondCut(
-    //     FacetCut[] calldata _diamondCut,
-    //     address _init,
-    //     bytes calldata _calldata
-    // ) external;
-
       
-
     function setUp() public {
 
         ethFeed = new EthFeed();
@@ -97,44 +81,3 @@ contract ozOracleFacetTest is Test {
     }
 
 }
-
-
-// contract ozOracleFacetTest is Test {
-
-//     ozOracleFacet private ozOracle;
-//     WtiFeed private wtiFeed;
-//     EthFeed private ethFeed;
-//     GoldFeed private goldFeed;
-
-//     address volAddress = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
-
-//     function setUp() public {
-//         wtiFeed = new WtiFeed();
-//         ethFeed = new EthFeed();
-//         goldFeed = new GoldFeed();
-
-//         ozOracle = new ozOracleFacet(
-//             address(wtiFeed),
-//             volAddress,
-//             address(ethFeed),
-//             address(goldFeed)
-//         );
-
-//         vm.label(address(wtiFeed), 'wtiFeed');
-//         vm.label(address(ethFeed), 'ethFeed');
-//         vm.label(address(goldFeed), 'goldFeed');
-//         vm.label(volAddress, 'volFeed');
-//         vm.label(address(ozOracle), 'eETH');
-//     }
-
-    // function testLastPrice() public {
-    //     uint price = ozOracle.getLastPrice();
-    //     assertTrue(price > 0);
-    // }
-
-//     // function invariant_neverFails() public pure {
-//     //     bool success = true;
-//     //     require(success);
-//     // }
-
-// }
