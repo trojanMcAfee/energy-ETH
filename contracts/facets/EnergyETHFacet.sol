@@ -14,6 +14,8 @@ contract EnergyETHFacet {
         bytes memory data = abi.encodeWithSignature('getLastPrice');
         data = Address.functionStaticCall(address(this), data);
         return abi.decode(data, (uint256));
+
+        // return 3;
     }
 
 

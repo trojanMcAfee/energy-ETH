@@ -13,9 +13,8 @@ interface ozIDiamond {
 
     enum FacetCutAction {Add, Replace, Remove}
 
-
     function diamondCut(FacetCut[] memory _diamondCut, address _init, bytes memory _calldata) external;
-
     function getLastPrice() external view returns(uint256);
+    function getEnergyPrice() external view returns(uint256);
 
 }
