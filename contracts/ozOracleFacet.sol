@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 // import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 // import 'solmate/src/utils/FixedPointMathLib.sol';
 import './AppStorage.sol';
-import "forge-std/console.sol";
+// import "forge-std/console.sol";
 
 // import 'hardhat/console.sol';
 
@@ -39,9 +39,13 @@ contract ozOracleFacet {
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 
-        int256 implWti = _setImplWti(data.wtiPrice, volIndex, s.wtiFeed); 
-        int256 implGold = _setImplGold(data.goldPrice, volIndex, s.goldFeed);
-        int256 implEth = _setImplEth(data.ethPrice, s.ethFeed);
+        // int256 implWti = _setImplWti(data.wtiPrice, volIndex, s.wtiFeed); 
+        // int256 implGold = _setImplGold(data.goldPrice, volIndex, s.goldFeed);
+        // int256 implEth = _setImplEth(data.ethPrice, s.ethFeed);
+
+        int256 implWti = _setPrice(data.wtiPrice, volIndex, s.wtiFeed); 
+        int256 implGold = _setPrice(data.goldPrice, volIndex, s.goldFeed);
+        int256 implEth = _setPrice(data.ethPrice, 0, s.ethFeed);
 
         int256 netDiff = implWti + implEth + implGold;
 
@@ -88,36 +92,52 @@ contract ozOracleFacet {
         return prevPrice;
     }
 
-    function _setImplWti(
-        DataInfo memory wtiPrice_,
-        int256 volIndex_,
+    function _setPrice(
+        DataInfo memory price_, 
+        int256 volIndex_, 
         AggregatorV3Interface feed_
     ) private view returns(int256) {
-        int256 currWti = wtiPrice_.value;
-        int256 netDiff = currWti - _getPrevFeed(wtiPrice_.roundId, feed_);
-        return ( (netDiff * 100 * EIGHT_DEC) / currWti ) * (volIndex_ / NINETN_DEC);
+        if (address(feed_) != address(s.ethFeed)) {
+            int256 currPrice = price_.value;
+            int256 netDiff = currPrice - _getPrevFeed(price_.roundId, feed_);
+            return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
+        } else {
+            int256 prevEthPrice = _getPrevFeed(price_.roundId, feed_);
+            int256 netDiff = price_.value - prevEthPrice;
+            return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
+        }
     }
 
+    // function _setImplWti(
+    //     DataInfo memory wtiPrice_,
+    //     int256 volIndex_,
+    //     AggregatorV3Interface feed_
+    // ) private view returns(int256) {
+    //     int256 currWti = wtiPrice_.value;
+    //     int256 netDiff = currWti - _getPrevFeed(wtiPrice_.roundId, feed_);
+    //     return ( (netDiff * 100 * EIGHT_DEC) / currWti ) * (volIndex_ / NINETN_DEC);
+    // }
 
-    function _setImplGold(
-        DataInfo memory goldPrice_,
-        int256 volIndex_,
-        AggregatorV3Interface feed_
-    ) private view returns(int256) {
-        int256 currGold = goldPrice_.value;
-        int256 netDiff = currGold - _getPrevFeed(goldPrice_.roundId, feed_);
-        return ( (netDiff * 100 * EIGHT_DEC) / currGold ) * (volIndex_ / NINETN_DEC);
-    }
+
+    // function _setImplGold(
+    //     DataInfo memory goldPrice_,
+    //     int256 volIndex_,
+    //     AggregatorV3Interface feed_
+    // ) private view returns(int256) {
+    //     int256 currGold = goldPrice_.value;
+    //     int256 netDiff = currGold - _getPrevFeed(goldPrice_.roundId, feed_);
+    //     return ( (netDiff * 100 * EIGHT_DEC) / currGold ) * (volIndex_ / NINETN_DEC);
+    // }
 
 
-    function _setImplEth(
-        DataInfo memory ethPrice_,
-        AggregatorV3Interface feed_
-    ) private view returns(int256) {
-        int256 prevEthPrice = _getPrevFeed(ethPrice_.roundId, feed_);
-        int256 netDiff = ethPrice_.value - prevEthPrice;
-        return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
-    }
+    // function _setImplEth(
+    //     DataInfo memory ethPrice_,
+    //     AggregatorV3Interface feed_
+    // ) private view returns(int256) {
+    //     int256 prevEthPrice = _getPrevFeed(ethPrice_.roundId, feed_);
+    //     int256 netDiff = ethPrice_.value - prevEthPrice;
+    //     return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
+    // }
 
     function _calculateBasePrice(int256 ethPrice_) private pure returns(int256) {
         return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
