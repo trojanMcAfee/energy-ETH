@@ -50,11 +50,6 @@ async function main() {
   const goldFeed = await deployContract('GoldFeed');
   const goldFeedAddr = goldFeed.address;
 
-  // const ozOracle = await deployContract(
-  //   'ozOracleFacet',
-  //   [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed, goldFeedAddr]
-  // );
-
   const ozOracle = await deployContract('ozOracleFacet');
   
   //Add oracle to ozDiamond

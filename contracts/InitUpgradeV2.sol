@@ -21,18 +21,9 @@ contract InitUpgradeV2 {
         s.ethFeed = AggregatorV3Interface(feeds_[2]);
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
-        // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
-        // ds.setNonRevenueFacets()
-
         address[] memory facets = new address[](1);
         facets[0] = ozOracle_;
 
         LibDiamond.setNonRevenueFacets(facets);
-
-
-
-
     }
-
-
 }

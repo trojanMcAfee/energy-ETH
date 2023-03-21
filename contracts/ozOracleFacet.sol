@@ -6,8 +6,9 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 // import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 // import 'solmate/src/utils/FixedPointMathLib.sol';
 import './AppStorage.sol';
+import "forge-std/console.sol";
 
-import 'hardhat/console.sol';
+// import 'hardhat/console.sol';
 
 contract ozOracleFacet {
 
@@ -33,6 +34,7 @@ contract ozOracleFacet {
 
 
     //**** MAIN ******/
+
     function getLastPrice() external view returns(uint256) {
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
@@ -45,6 +47,8 @@ contract ozOracleFacet {
 
         return uint256(basePrice + ( (netDiff * basePrice) / (100 * EIGHT_DEC) ));
     }
+
+    //------------------
 
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {
