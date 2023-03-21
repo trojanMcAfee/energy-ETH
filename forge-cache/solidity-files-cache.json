@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/AppStorage.sol": {
-      "lastModificationDate": 1679272802068,
-      "contentHash": "ebf8f36d36126d7ad8c9e299eedac70c",
+      "lastModificationDate": 1679386837922,
+      "contentHash": "da88bd604c296fcca58c9dffe5141b6b",
       "sourceName": "contracts/AppStorage.sol",
       "solcConfig": {
         "settings": {
@@ -181,8 +181,8 @@
       }
     },
     "contracts/ozOracleFacet.sol": {
-      "lastModificationDate": 1679386686900,
-      "contentHash": "6a58250009138ea170931f115c92771a",
+      "lastModificationDate": 1679386838278,
+      "contentHash": "7b88ee8f1e6bc47f9c35c6c4ae287cbf",
       "sourceName": "contracts/ozOracleFacet.sol",
       "solcConfig": {
         "settings": {
@@ -214,7 +214,6 @@
       },
       "imports": [
         "contracts/AppStorage.sol",
-        "lib/forge-std/src/console.sol",
         "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
       ],
       "versionRequirement": "=0.8.19",

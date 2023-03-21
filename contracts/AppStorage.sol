@@ -11,6 +11,17 @@ struct AppStorage {
     AggregatorV3Interface volatilityFeed;
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
+}
 
-    int eETHprice;
+
+struct DataInfo {
+    uint80 roundId;
+    int256 value;
+}
+
+struct Data {
+    DataInfo volIndex;
+    DataInfo wtiPrice;
+    DataInfo ethPrice;
+    DataInfo goldPrice;
 }
