@@ -11,14 +11,14 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 69254397 { result := 7632500000 } 
-            case 69255697 { result := 7672000000 } 
-            case 69260697 { result := 7717200000 } 
-            case 69294697 { result := 7677600000 } 
-            case 69295697 { result := 7704200000 } 
-            case 69297697 { result := 7639200000 } 
-            case 69380697 { result := 7674920000 } 
-            case 69421697 { result := 7592500000 } 
+            case 69254399 { result := 7632500000 } 
+            case 69255699 { result := 7672000000 } 
+            case 69260699 { result := 7717200000 } 
+            case 69294699 { result := 7677600000 } 
+            case 69295699 { result := 7704200000 } 
+            case 69297699 { result := 7639200000 } 
+            case 69380699 { result := 7674920000 } 
+            case 69421699 { result := 7592500000 } 
         }
 
         return (1,result,0,0,0);
@@ -30,14 +30,14 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 69254397 { result := 7672000000 }
-            case 69255697 { result := 7717200000 }
-            case 69260697 { result := 7677600000 }
-            case 69294697 { result := 7704200000 }
-            case 69295697 { result := 7639200000 }
-            case 69297697 { result := 7674920000 }
-            case 69380697 { result := 7592500000 }
-            case 69421697 { result := 7632500000 }
+            case 69254399 { result := 7672000000 }
+            case 69255699 { result := 7717200000 }
+            case 69260699 { result := 7677600000 }
+            case 69294699 { result := 7704200000 }
+            case 69295699 { result := 7639200000 }
+            case 69297699 { result := 7674920000 }
+            case 69380699 { result := 7592500000 }
+            case 69421699 { result := 7632500000 }
         }
 
         return (0,result,0,0,0);

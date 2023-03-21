@@ -13,7 +13,7 @@ contract InitUpgradeV2 {
 
     function init(
         address[] calldata feeds_,
-        address ozOracle_
+        address[] memory facets_
     ) external {
 
         s.wtiFeed = AggregatorV3Interface(feeds_[0]);
@@ -21,9 +21,10 @@ contract InitUpgradeV2 {
         s.ethFeed = AggregatorV3Interface(feeds_[2]);
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
-        address[] memory facets = new address[](1);
-        facets[0] = ozOracle_;
+        // address[] memory facets = new address[](2);
+        // facets[0] = facets_[0];
+        // facets[0] = facets_[1];
 
-        LibDiamond.setNonRevenueFacets(facets);
+        LibDiamond.setNonRevenueFacets(facets_);
     }
 }

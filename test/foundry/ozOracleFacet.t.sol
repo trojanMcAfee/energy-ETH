@@ -6,7 +6,8 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import '../../contracts/ozOracleFacet.sol';
+import '../../contracts/facets/ozOracleFacet.sol';
+import '../../contracts/facets/EnergyETHFacet.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
@@ -18,6 +19,7 @@ import '../../interfaces/ozIDiamond.sol';
 contract ozOracleFacetTest is Test {
     
     ozOracleFacet private ozOracle;
+    EnergyETHFacet private energyFacet;
     InitUpgradeV2 private init;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
@@ -46,20 +48,27 @@ contract ozOracleFacetTest is Test {
         feeds[3] = address(goldFeed);    
 
         ozOracle = new ozOracleFacet(); 
+        energyFacet = new EnergyETHFacet();
         init = new InitUpgradeV2();
+
         OZL = ozIDiamond(diamond);
 
         vm.label(address(ozOracle), 'oracle');
         vm.label(address(init), 'init');
         vm.label(address(OZL), 'ozDiamond');
+        vm.label(address(energyFacet), 'energyFacet');
 
         bytes4[] memory selectors = new bytes4[](1);
         selectors[0] = bytes4(ozOracle.getLastPrice.selector);
 
+        address[] memory facets = new address[](2);
+        facets[0] = address(ozOracle);
+        facets[1] = address(energyFacet);
+
         bytes memory data = abi.encodeWithSelector(
             init.init.selector,
             feeds,
-            address(ozOracle)
+            facets
         );
 
         ozIDiamond.FacetCut memory cut = ozIDiamond.FacetCut({

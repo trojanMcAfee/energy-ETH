@@ -1,5 +1,5 @@
 const { ethers } = require('ethers');
-const { formatUnits } = ethers.utils;
+const { formatUnits, parseEther } = ethers.utils;
 const { 
     mine, 
     impersonateAccount,
@@ -36,16 +36,16 @@ async function deployContract(contractName, constrArgs) {
 }
 
 
-async function callEeth(energyETH_, blockDifference_, num_) {
-    let price = await energyETH_.testFeed();
-    console.log(`price ${num_}: `, formatUnits(price, 8));
-
-    price = await energyETH_.testFeed2();
-    console.log(`eth price ${num_}: `, formatUnits(price, 8));
-    console.log('.');
-
-    if (blockDifference_ !== '') await mine(blockDifference_);
+async function sendETHOps(amount, receiver) {
+    const [signer] = await hre.ethers.getSigners();
+    
+    tx = await signer.sendTransaction({
+        value: parseEther(amount.toString()),
+        to: receiver
+    });
+    await tx.wait();
 }
+
 
 
 async function getLastPrice(blockDifference_, num_) {
@@ -57,19 +57,27 @@ async function getLastPrice(blockDifference_, num_) {
 
 
 
-async function addToDiamond(ozOracle, feeds) {
+async function addToDiamond(ozOracle, energyFacet, feeds) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
 
     const lastPriceSelector = ozOracle.interface.getSighash('getLastPrice');
+    const energyPriceSelector = energyFacet.interface.getSighash('getEnergyPrice');
     const facetCutArgs = [
-        [ozOracle.address, 0, [lastPriceSelector] ]
+        [ozOracle.address, 0, [lastPriceSelector] ],
+        [energyFacet.address, 0, [energyPriceSelector]]
+    ];
+    const facetAddresses = [
+        ozOracle.address,
+        energyFacet.address
     ];
 
     const init = await deployContract('InitUpgradeV2');
     const initData = init.interface.encodeFunctionData('init', [
         feeds,
-        ozOracle.address
+        facetAddresses
     ]);
+
+    await sendETHOps(1, deployer2);
 
     await impersonateAccount(deployer2);
     const deployerSigner = await hre.ethers.provider.getSigner(deployer2);
@@ -87,7 +95,6 @@ async function addToDiamond(ozOracle, feeds) {
 
 module.exports = {
     deployContract,
-    callEeth,
     getLastPrice,
     addToDiamond
 };

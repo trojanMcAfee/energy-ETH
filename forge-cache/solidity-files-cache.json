@@ -13,8 +13,8 @@
   },
   "files": {
     "contracts/AppStorage.sol": {
-      "lastModificationDate": 1679386837922,
-      "contentHash": "da88bd604c296fcca58c9dffe5141b6b",
+      "lastModificationDate": 1679388541787,
+      "contentHash": "84f8caf73b5f7784778fee5d1692ee5c",
       "sourceName": "contracts/AppStorage.sol",
       "solcConfig": {
         "settings": {
@@ -54,49 +54,9 @@
         }
       }
     },
-    "contracts/EnergyETHFacet.sol": {
-      "lastModificationDate": 1679272802071,
-      "contentHash": "f4f5640a13f93cf476a1c9f497c97c82",
-      "sourceName": "contracts/EnergyETHFacet.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [],
-      "versionRequirement": null,
-      "artifacts": {
-        "EnergyETHFacet": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EnergyETHFacet.sol/EnergyETHFacet.json"
-        }
-      }
-    },
     "contracts/InitUpgradeV2.sol": {
-      "lastModificationDate": 1679382506060,
-      "contentHash": "50a095812016f78d2b9e821a3ac64b52",
+      "lastModificationDate": 1679389309131,
+      "contentHash": "6cb96954012f7de522a62991b1214e27",
       "sourceName": "contracts/InitUpgradeV2.sol",
       "solcConfig": {
         "settings": {
@@ -140,6 +100,95 @@
         }
       }
     },
+    "contracts/facets/EnergyETHFacet.sol": {
+      "lastModificationDate": 1679388967925,
+      "contentHash": "8eaa839b16d8c558af1d16e8e637fced",
+      "sourceName": "contracts/facets/EnergyETHFacet.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "node_modules/@openzeppelin/contracts/utils/Address.sol",
+        "node_modules/@openzeppelin/contracts/utils/Context.sol"
+      ],
+      "versionRequirement": "=0.8.19",
+      "artifacts": {
+        "EnergyETHFacet": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EnergyETHFacet.sol/EnergyETHFacet.json"
+        }
+      }
+    },
+    "contracts/facets/ozOracleFacet.sol": {
+      "lastModificationDate": 1679388580543,
+      "contentHash": "4185b988453e1a2c4002a15cec762b4a",
+      "sourceName": "contracts/facets/ozOracleFacet.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "contracts/AppStorage.sol",
+        "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
+      ],
+      "versionRequirement": "=0.8.19",
+      "artifacts": {
+        "ozOracleFacet": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozOracleFacet.sol/ozOracleFacet.json"
+        }
+      }
+    },
     "contracts/ozDiamond.sol": {
       "lastModificationDate": 1679347899234,
       "contentHash": "440a23ca0132940019b492a0fad8a22b",
@@ -180,52 +229,9 @@
         }
       }
     },
-    "contracts/ozOracleFacet.sol": {
-      "lastModificationDate": 1679386838278,
-      "contentHash": "7b88ee8f1e6bc47f9c35c6c4ae287cbf",
-      "sourceName": "contracts/ozOracleFacet.sol",
-      "solcConfig": {
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "metadata": {
-            "bytecodeHash": "ipfs",
-            "appendCBOR": true
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "evmVersion": "london",
-          "libraries": {}
-        }
-      },
-      "imports": [
-        "contracts/AppStorage.sol",
-        "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
-      ],
-      "versionRequirement": "=0.8.19",
-      "artifacts": {
-        "ozOracleFacet": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozOracleFacet.sol/ozOracleFacet.json"
-        }
-      }
-    },
     "contracts/testing-files/EthFeed.sol": {
-      "lastModificationDate": 1679354940670,
-      "contentHash": "c6bbee06ea17a2b3d6f515687b07ecf3",
+      "lastModificationDate": 1679389871602,
+      "contentHash": "3faa28d6af140b77b2b897721942f04e",
       "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
@@ -264,8 +270,8 @@
       }
     },
     "contracts/testing-files/GoldFeed.sol": {
-      "lastModificationDate": 1679354941184,
-      "contentHash": "2293a9e4d19c0488185a077b431c23cc",
+      "lastModificationDate": 1679389871928,
+      "contentHash": "eeef8e11ceb9c1281403e8794027a697",
       "sourceName": "contracts/testing-files/GoldFeed.sol",
       "solcConfig": {
         "settings": {
@@ -304,8 +310,8 @@
       }
     },
     "contracts/testing-files/WtiFeed.sol": {
-      "lastModificationDate": 1679356194655,
-      "contentHash": "8eabcc103641e774c289059754560749",
+      "lastModificationDate": 1679389871928,
+      "contentHash": "df1c11b778cf6cd2f400ea24101822e0",
       "sourceName": "contracts/testing-files/WtiFeed.sol",
       "solcConfig": {
         "settings": {
@@ -1238,6 +1244,50 @@
         }
       }
     },
+    "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+      "lastModificationDate": 1678655608377,
+      "contentHash": "834a0dde221759af42b030253315b086",
+      "sourceName": "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "node_modules/@openzeppelin/contracts/utils/Context.sol"
+      ],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "ERC20": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ERC20.sol/ERC20.json"
+        }
+      }
+    },
     "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
       "lastModificationDate": 1678655608479,
       "contentHash": "ad7c2d0af148c8f9f097d65deeb4da6b",
@@ -1278,9 +1328,131 @@
         }
       }
     },
+    "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "lastModificationDate": 1678655608481,
+      "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
+      "sourceName": "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "IERC20Metadata": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IERC20Metadata.sol/IERC20Metadata.json"
+        }
+      }
+    },
+    "node_modules/@openzeppelin/contracts/utils/Address.sol": {
+      "lastModificationDate": 1678655608334,
+      "contentHash": "f31ad6fc4bbf9c06203987220156a6ba",
+      "sourceName": "node_modules/@openzeppelin/contracts/utils/Address.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.1",
+      "artifacts": {
+        "Address": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "Address.sol/Address.json"
+        }
+      }
+    },
+    "node_modules/@openzeppelin/contracts/utils/Context.sol": {
+      "lastModificationDate": 1678655608343,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "node_modules/@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "Context": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "Context.sol/Context.json"
+        }
+      }
+    },
     "test/foundry/ozOracleFacet.t.sol": {
-      "lastModificationDate": 1679383669415,
-      "contentHash": "62d95561ff3634b948dad432e0356e08",
+      "lastModificationDate": 1679389251088,
+      "contentHash": "899d042880e409998bf9007d96794a77",
       "sourceName": "test/foundry/ozOracleFacet.t.sol",
       "solcConfig": {
         "settings": {
@@ -1313,7 +1485,8 @@
       "imports": [
         "contracts/AppStorage.sol",
         "contracts/InitUpgradeV2.sol",
-        "contracts/ozOracleFacet.sol",
+        "contracts/facets/EnergyETHFacet.sol",
+        "contracts/facets/ozOracleFacet.sol",
         "contracts/testing-files/EthFeed.sol",
         "contracts/testing-files/GoldFeed.sol",
         "contracts/testing-files/WtiFeed.sol",
@@ -1338,7 +1511,11 @@
         "lib/forge-std/src/interfaces/IMulticall3.sol",
         "libraries/LibDiamond.sol",
         "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
-        "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol"
+        "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
+        "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "node_modules/@openzeppelin/contracts/utils/Address.sol",
+        "node_modules/@openzeppelin/contracts/utils/Context.sol"
       ],
       "versionRequirement": "=0.8.19",
       "artifacts": {

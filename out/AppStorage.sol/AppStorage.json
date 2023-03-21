@@ -13,7 +13,7 @@
     "id": 34,
     "exportedSymbols": {
       "AggregatorV3Interface": [
-        30065
+        30113
       ],
       "AppStorage": [
         15
@@ -26,7 +26,7 @@
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:468:0",
+    "src": "45:445:0",
     "nodes": [
       {
         "id": 1,
@@ -48,14 +48,14 @@
         "file": "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 34,
-        "sourceUnit": 30066,
+        "sourceUnit": 30114,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "id": 15,
         "nodeType": "StructDefinition",
-        "src": "150:193:0",
+        "src": "150:170:0",
         "nodes": [],
         "canonicalName": "AppStorage",
         "members": [
@@ -71,7 +71,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
               "typeString": "contract AggregatorV3Interface"
             },
             "typeName": {
@@ -84,13 +84,13 @@
                   "175:21:0"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 30065,
+                "referencedDeclaration": 30113,
                 "src": "175:21:0"
               },
-              "referencedDeclaration": 30065,
+              "referencedDeclaration": 30113,
               "src": "175:21:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
                 "typeString": "contract AggregatorV3Interface"
               }
             },
@@ -108,7 +108,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
               "typeString": "contract AggregatorV3Interface"
             },
             "typeName": {
@@ -121,13 +121,13 @@
                   "210:21:0"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 30065,
+                "referencedDeclaration": 30113,
                 "src": "210:21:0"
               },
-              "referencedDeclaration": 30065,
+              "referencedDeclaration": 30113,
               "src": "210:21:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
                 "typeString": "contract AggregatorV3Interface"
               }
             },
@@ -145,7 +145,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
               "typeString": "contract AggregatorV3Interface"
             },
             "typeName": {
@@ -158,13 +158,13 @@
                   "252:21:0"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 30065,
+                "referencedDeclaration": 30113,
                 "src": "252:21:0"
               },
-              "referencedDeclaration": 30065,
+              "referencedDeclaration": 30113,
               "src": "252:21:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
                 "typeString": "contract AggregatorV3Interface"
               }
             },
@@ -182,7 +182,7 @@
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+              "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
               "typeString": "contract AggregatorV3Interface"
             },
             "typeName": {
@@ -195,13 +195,13 @@
                   "287:21:0"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 30065,
+                "referencedDeclaration": 30113,
                 "src": "287:21:0"
               },
-              "referencedDeclaration": 30065,
+              "referencedDeclaration": 30113,
               "src": "287:21:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30065",
+                "typeIdentifier": "t_contract$_AggregatorV3Interface_$30113",
                 "typeString": "contract AggregatorV3Interface"
               }
             },
@@ -216,7 +216,7 @@
       {
         "id": 20,
         "nodeType": "StructDefinition",
-        "src": "346:57:0",
+        "src": "323:57:0",
         "nodes": [],
         "canonicalName": "DataInfo",
         "members": [
@@ -225,10 +225,10 @@
             "id": 17,
             "mutability": "mutable",
             "name": "roundId",
-            "nameLocation": "375:7:0",
+            "nameLocation": "352:7:0",
             "nodeType": "VariableDeclaration",
             "scope": 20,
-            "src": "368:14:0",
+            "src": "345:14:0",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -239,7 +239,7 @@
               "id": 16,
               "name": "uint80",
               "nodeType": "ElementaryTypeName",
-              "src": "368:6:0",
+              "src": "345:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint80",
                 "typeString": "uint80"
@@ -252,10 +252,10 @@
             "id": 19,
             "mutability": "mutable",
             "name": "value",
-            "nameLocation": "395:5:0",
+            "nameLocation": "372:5:0",
             "nodeType": "VariableDeclaration",
             "scope": 20,
-            "src": "388:12:0",
+            "src": "365:12:0",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -266,7 +266,7 @@
               "id": 18,
               "name": "int256",
               "nodeType": "ElementaryTypeName",
-              "src": "388:6:0",
+              "src": "365:6:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_int256",
                 "typeString": "int256"
@@ -276,14 +276,14 @@
           }
         ],
         "name": "DataInfo",
-        "nameLocation": "353:8:0",
+        "nameLocation": "330:8:0",
         "scope": 34,
         "visibility": "public"
       },
       {
         "id": 33,
         "nodeType": "StructDefinition",
-        "src": "405:108:0",
+        "src": "382:108:0",
         "nodes": [],
         "canonicalName": "Data",
         "members": [
@@ -292,10 +292,10 @@
             "id": 23,
             "mutability": "mutable",
             "name": "volIndex",
-            "nameLocation": "432:8:0",
+            "nameLocation": "409:8:0",
             "nodeType": "VariableDeclaration",
             "scope": 33,
-            "src": "423:17:0",
+            "src": "400:17:0",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -307,6 +307,43 @@
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
                 "id": 21,
+                "name": "DataInfo",
+                "nameLocations": [
+                  "400:8:0"
+                ],
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 20,
+                "src": "400:8:0"
+              },
+              "referencedDeclaration": 20,
+              "src": "400:8:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_DataInfo_$20_storage_ptr",
+                "typeString": "struct DataInfo"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 26,
+            "mutability": "mutable",
+            "name": "wtiPrice",
+            "nameLocation": "432:8:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 33,
+            "src": "423:17:0",
+            "stateVariable": false,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_DataInfo_$20_storage_ptr",
+              "typeString": "struct DataInfo"
+            },
+            "typeName": {
+              "id": 25,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 24,
                 "name": "DataInfo",
                 "nameLocations": [
                   "423:8:0"
@@ -326,9 +363,9 @@
           },
           {
             "constant": false,
-            "id": 26,
+            "id": 29,
             "mutability": "mutable",
-            "name": "wtiPrice",
+            "name": "ethPrice",
             "nameLocation": "455:8:0",
             "nodeType": "VariableDeclaration",
             "scope": 33,
@@ -340,10 +377,10 @@
               "typeString": "struct DataInfo"
             },
             "typeName": {
-              "id": 25,
+              "id": 28,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 24,
+                "id": 27,
                 "name": "DataInfo",
                 "nameLocations": [
                   "446:8:0"
@@ -363,13 +400,13 @@
           },
           {
             "constant": false,
-            "id": 29,
+            "id": 32,
             "mutability": "mutable",
-            "name": "ethPrice",
-            "nameLocation": "478:8:0",
+            "name": "goldPrice",
+            "nameLocation": "478:9:0",
             "nodeType": "VariableDeclaration",
             "scope": 33,
-            "src": "469:17:0",
+            "src": "469:18:0",
             "stateVariable": false,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -377,10 +414,10 @@
               "typeString": "struct DataInfo"
             },
             "typeName": {
-              "id": 28,
+              "id": 31,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 27,
+                "id": 30,
                 "name": "DataInfo",
                 "nameLocations": [
                   "469:8:0"
@@ -397,47 +434,10 @@
               }
             },
             "visibility": "internal"
-          },
-          {
-            "constant": false,
-            "id": 32,
-            "mutability": "mutable",
-            "name": "goldPrice",
-            "nameLocation": "501:9:0",
-            "nodeType": "VariableDeclaration",
-            "scope": 33,
-            "src": "492:18:0",
-            "stateVariable": false,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_struct$_DataInfo_$20_storage_ptr",
-              "typeString": "struct DataInfo"
-            },
-            "typeName": {
-              "id": 31,
-              "nodeType": "UserDefinedTypeName",
-              "pathNode": {
-                "id": 30,
-                "name": "DataInfo",
-                "nameLocations": [
-                  "492:8:0"
-                ],
-                "nodeType": "IdentifierPath",
-                "referencedDeclaration": 20,
-                "src": "492:8:0"
-              },
-              "referencedDeclaration": 20,
-              "src": "492:8:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_struct$_DataInfo_$20_storage_ptr",
-                "typeString": "struct DataInfo"
-              }
-            },
-            "visibility": "internal"
           }
         ],
         "name": "Data",
-        "nameLocation": "412:4:0",
+        "nameLocation": "389:4:0",
         "scope": 34,
         "visibility": "public"
       }

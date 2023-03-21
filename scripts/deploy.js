@@ -20,8 +20,7 @@ const {
 
 const { 
   deployContract, 
-  callEeth,
-  getLastPrice ,
+  getLastPrice,
   addToDiamond
 } = require('../helpers');
 
@@ -51,6 +50,7 @@ async function main() {
   const goldFeedAddr = goldFeed.address;
 
   const ozOracle = await deployContract('ozOracleFacet');
+  const energyFacet = await deployContract('EnergyETHFacet');
   
   //Add oracle to ozDiamond
   const feeds = [
@@ -60,7 +60,7 @@ async function main() {
     goldFeedAddr
   ];
 
-  await addToDiamond(ozOracle, feeds);
+  await addToDiamond(ozOracle, energyFacet, feeds);
 
   //Queries price
   for (let i=0; i < blockDiff.length; i++) {
