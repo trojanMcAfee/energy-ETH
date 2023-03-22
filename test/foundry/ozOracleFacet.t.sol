@@ -106,14 +106,14 @@ contract ozOracleFacetTest is Test {
     }
 
     function test_getEnergyPrice() public {
-        vm.startPrank(bob);
+        vm.prank(bob);
 
-        // uint price = OZL.getEnergyPrice();
+        uint price = OZL.getEnergyPrice();
 
-        bytes memory data = abi.encodeWithSignature('getEnergyPrice');
-        data = Address.functionCall(address(OZL), data);
-        uint256 price = abi.decode(data, (uint256));
-        vm.stopPrank();
+        // bytes memory data = abi.encodeWithSignature('getEnergyPrice');
+        // data = Address.functionCall(address(OZL), data);
+        // uint256 price = abi.decode(data, (uint256));
+        // vm.stopPrank();
 
         assertTrue(price > 0);
     }
