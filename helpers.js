@@ -42,7 +42,7 @@ async function deployContract(contractName, constrArgs) {
 async function sendETHOps(amount, receiver) {
     const [signer] = await hre.ethers.getSigners();
     let balance = await signer.getBalance();
-    console.log('bal: ', formatEther(balance));
+    console.log('addr: ', await signer.getAddress());
     
     tx = await signer.sendTransaction({
         value: parseEther(amount.toString()),
@@ -51,7 +51,6 @@ async function sendETHOps(amount, receiver) {
     await tx.wait();
 
     balance = await signer.getBalance();
-    console.log('bal post: ', formatEther(balance));
 }
 
 

@@ -15,10 +15,10 @@ module.exports = {
         url: process.env.ARBITRUM,
         blockNumber: 69254391 //69254391
       }
-    },
-    localhost: {
-      url: process.env.GANACHE,
-      accounts: [process.env.DEPLOYER2]
     }
+    // localhost: {
+    //   url: process.env.GANACHE,
+    //   accounts: [process.env.DEPLOYER2]
+    // }
   }
 };
