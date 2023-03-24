@@ -106,7 +106,7 @@ contract ozOracleFacetTest is Test {
     }
 
     function test_getEnergyPrice() public {
-        vm.prank(bob);
+        // vm.prank(bob);
 
         uint price = OZL.getEnergyPrice();
 

@@ -98,3 +98,17 @@ async function testGold() {
 }
 
 // testGold();
+
+
+async function checkAirdrop() {
+  const abi = ['function claimableTokens(address) external returns(uint256)'];
+  const arbAddr = '0x67a24CE4321aB3aF51c2D0a4801c3E111D88C9d9';
+  const arb = await hre.ethers.getContractAt(abi, arbAddr);
+  const addr = '0x938Dc5298D505B06B5Ba542e461c665923eD0519';
+
+  const bal = await arb.claimableTokens(addr);
+  console.log('bal: ', Number(bal));
+
+}
+
+// checkAirdrop();

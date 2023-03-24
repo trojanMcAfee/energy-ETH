@@ -82,6 +82,11 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
     await impersonateAccount(deployer2);
     const deployerSigner = await hre.ethers.provider.getSigner(deployer2);
 
+    // const dataA = ozDiamond.interface.encodeFunctionData('diamondCut', [
+    //     facetCutArgs, init.address, initData
+    // ]);
+    // console.log('data: ', dataA);
+
     const tx = await ozDiamond.connect(deployerSigner).diamondCut(facetCutArgs, init.address, initData);
     const receipt = await tx.wait();
     console.log('ozOracle added to ozDiamond: ', receipt.transactionHash);

@@ -3,13 +3,13 @@ pragma solidity 0.8.19;
 
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-// import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
-// import 'solmate/src/utils/FixedPointMathLib.sol';
 import '../AppStorage.sol';
 // import "forge-std/console.sol";
 
 // import 'hardhat/console.sol';
 
+//add modularity to add and remove chainlink feeds
+//add uniswap and trellors oracles as a fallbac
 contract ozOracleFacet {
 
     AppStorage s;
