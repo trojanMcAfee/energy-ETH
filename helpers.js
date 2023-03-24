@@ -1,5 +1,9 @@
 const { ethers } = require('ethers');
-const { formatUnits, parseEther } = ethers.utils;
+const { 
+    formatUnits, 
+    parseEther, 
+    formatEther 
+} = ethers.utils;
 const { 
     mine, 
     impersonateAccount,
@@ -28,7 +32,6 @@ async function deployContract(contractName, constrArgs) {
             contract = await Contract.deploy();
     }
 
-
     await contract.deployed();
     console.log(`${contractName} deployed to: `, contract.address);
 
@@ -38,12 +41,17 @@ async function deployContract(contractName, constrArgs) {
 
 async function sendETHOps(amount, receiver) {
     const [signer] = await hre.ethers.getSigners();
+    let balance = await signer.getBalance();
+    console.log('bal: ', formatEther(balance));
     
     tx = await signer.sendTransaction({
         value: parseEther(amount.toString()),
         to: receiver
     });
     await tx.wait();
+
+    balance = await signer.getBalance();
+    console.log('bal post: ', formatEther(balance));
 }
 
 
@@ -88,6 +96,8 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
     const cutData = ozDiamond.interface.encodeFunctionData('diamondCut', [
         facetCutArgs, init.address, initData
     ]);
+    // console.log('cutData: ', cutData); 
+
     const rawTx = {
         to: ozDiamond.address,
         data: cutData

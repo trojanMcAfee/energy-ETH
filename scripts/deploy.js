@@ -70,7 +70,7 @@ async function main() {
   // await getLastPrice(blockDiff[0], 0);c
 }
 
-// main();
+main();
 
 
 async function testGanacheFeed() {
@@ -86,7 +86,7 @@ async function testGanacheFeed() {
   console.log('price: ', price);
 }
 
-testGanacheFeed();
+// testGanacheFeed();
 
 
 
