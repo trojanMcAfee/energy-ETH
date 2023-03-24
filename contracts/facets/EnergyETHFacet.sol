@@ -10,12 +10,12 @@ import '@openzeppelin/contracts/utils/Address.sol';
 contract EnergyETHFacet {
 
 
-    function getEnergyPrice() external view returns(uint256) {
-        bytes memory data = abi.encodeWithSignature('getLastPrice');
-        data = Address.functionStaticCall(address(this), data);
-        return abi.decode(data, (uint256));
+    function getEnergyPrice() external pure returns(uint256) {
+        // bytes memory data = abi.encodeWithSignature('getLastPrice');
+        // data = Address.functionStaticCall(address(this), data);
+        // return abi.decode(data, (uint256));
 
-        // return 3;
+        return 3;
     }
 
 

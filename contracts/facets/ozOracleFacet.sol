@@ -38,6 +38,10 @@ contract ozOracleFacet {
 
     //------------------
 
+    function getNum() external pure returns(uint) {
+        return 3;
+    }
+
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {
         (,int256 volatility,,,) = s.volatilityFeed.latestRoundData();

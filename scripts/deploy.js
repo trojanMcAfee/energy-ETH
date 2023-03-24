@@ -63,12 +63,30 @@ async function main() {
   await addToDiamond(ozOracle, energyFacet, feeds);
 
   //Queries price
-  for (let i=0; i < blockDiff.length; i++) {
-    await getLastPrice(blockDiff[i], i);
-  }
+  // for (let i=0; i < blockDiff.length; i++) {
+  //   await getLastPrice(blockDiff[i], i);
+  // }
+
+  // await getLastPrice(blockDiff[0], 0);c
 }
 
-main();
+// main();
+
+
+async function testGanacheFeed() {
+  const wtiFeedAddr = '0x1dC4c1cEFEF38a777b15aA20260a54E584b16C48';
+  const abi = ['function latestRoundData() external view returns(int256, int256, int256, int256, int256)'];
+  const wtiFeed = await hre.ethers.getContractAt(abi, wtiFeedAddr);
+
+  // const privateKey = process.env.DEPLOYER2;
+  // const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
+  // const wallet = new ethers.Wallet(privateKey, provider);
+
+  const price = await wtiFeed.latestRoundData();
+  console.log('price: ', price);
+}
+
+testGanacheFeed();
 
 
 
