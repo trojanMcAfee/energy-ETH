@@ -13,7 +13,8 @@ const {
 const { 
     diamondABI, 
     ozDiamondAddr,
-    deployer2
+    deployer2,
+    opsL2_2
 } = require('./state-vars');
 
 
@@ -42,7 +43,7 @@ async function deployContract(contractName, constrArgs) {
 async function sendETHOps(amount, receiver) {
     const [signer] = await hre.ethers.getSigners();
     let balance = await signer.getBalance();
-    console.log('addr: ', await signer.getAddress());
+    // console.log('addr: ', await signer.getAddress());
     
     tx = await signer.sendTransaction({
         value: parseEther(amount.toString()),
@@ -92,19 +93,29 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
     const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
     const wallet = new ethers.Wallet(privateKey, provider);
 
-    const cutData = ozDiamond.interface.encodeFunctionData('diamondCut', [
-        facetCutArgs, init.address, initData
-    ]);
+    // const [signer] = await hre.ethers.getSigners();
+    // const signerAddr = await signer.getAddress();
+    // console.log('signer: ', signerAddr);
+    // console.log('wallet: ', await wallet.getAddress());
+
+    const tx = await ozDiamond.connect(wallet).diamondCut(facetCutArgs, init.address, initData, opsL2_2);
+
+    // const cutData = ozDiamond.interface.encodeFunctionData('diamondCut', [
+    //     facetCutArgs, init.address, initData
+    // ]);
     // console.log('cutData: ', cutData); 
 
-    const rawTx = {
-        to: ozDiamond.address,
-        data: cutData
-    };
+    // const rawTx = {
+    //     to: ozDiamond.address,
+    //     data: cutData
+    // };
 
-    const tx = await wallet.sendTransaction(rawTx);
+    // const tx = await wallet.sendTransaction(rawTx);
     const receipt = await tx.wait();
     console.log('ozOracle added to ozDiamond: ', receipt.transactionHash);
+
+    const price = ozDiamond.connect(wallet).getLastPrice();
+    console.log('price: ', formatEther(price));
 
 
 }

@@ -8,6 +8,11 @@ let blocks;
 const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
 const deployer2 = '0xe738696676571D9b74C81716E4aE797c2440d306';
 
+const opsL2_2 = {
+    gasLimit: ethers.BigNumber.from('5000000'),
+    gasPrice: ethers.BigNumber.from('5134698068')
+};
+
 const diamondABI = [
     'function setTESTVAR2(uint256 num_, bytes32 position_) public',
     'function diamondCut((address facetAddress, uint8 action, bytes4[] functionSelectors)[] _diamondCut, address _init, bytes _calldata) external',
@@ -84,5 +89,6 @@ module.exports = {
     goldFeedAddr,
     diamondABI,
     ozDiamondAddr,
-    deployer2
+    deployer2,
+    opsL2_2
 };
