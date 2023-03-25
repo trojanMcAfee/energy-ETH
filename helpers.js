@@ -130,5 +130,6 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
 module.exports = {
     deployContract,
     getLastPrice,
-    addToDiamond
+    addToDiamond,
+    sendETHOps
 };

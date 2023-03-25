@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '../AppStorage.sol';
 // import "forge-std/console.sol";
 
-// import 'hardhat/console.sol';
+import 'hardhat/console.sol';
 
 //add modularity to add and remove chainlink feeds
 //add uniswap and trellors oracles as a fallbac
@@ -24,6 +24,7 @@ contract ozOracleFacet {
     //**** MAIN ******/
 
     function getLastPrice() external view returns(uint256) {
+        console.log('hellooooo');
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 
