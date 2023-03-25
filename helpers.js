@@ -114,8 +114,11 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
     const receipt = await tx.wait();
     console.log('ozOracle added to ozDiamond: ', receipt.transactionHash);
 
-    const price = ozDiamond.connect(wallet).getLastPrice();
-    console.log('price: ', formatEther(price));
+    const index = await ozDiamond.getOzelIndex();
+    console.log('ozel index: ',formatEther(index) );
+
+    // const price = ozDiamond.connect(wallet).getLastPrice();
+    // console.log('price: ', Number(price));
 
 
 }

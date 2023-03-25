@@ -15,7 +15,9 @@ const {
   volatilityFeedAddr,
   ethUsdFeed,
   blocks,
-  goldFeedAddr
+  goldFeedAddr,
+  diamondABI,
+  opsL2_2
 } = require('../state-vars');
 
 const { 
@@ -70,7 +72,7 @@ async function main() {
   // await getLastPrice(blockDiff[0], 0);c
 }
 
-main();
+// main();
 
 
 async function testGanacheFeed() {
@@ -130,3 +132,42 @@ async function checkAirdrop() {
 }
 
 // checkAirdrop();
+
+
+async function callRpc() {
+  const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
+  const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
+
+  const privateKey = process.env.DEPLOYER2;
+  const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
+  const wallet = new ethers.Wallet(privateKey, provider);
+
+  // const tx = await ozDiamond.connect(wallet).diamondCut(facetCutArgs, init.address, initData, opsL2_2);
+  const owner = await ozDiamond.connect(wallet).owner();
+  console.log('owner: ', owner);
+
+}
+
+// callRpc();
+
+
+async function getAddr() {
+  const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
+  const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
+  const facet = '0x0B1ba0af832d7C05fD64161E0Db78E85978E8082';
+
+  // const prices = await ozDiamond.getLastPrice();
+
+  opsL2_2.to = ozDiamondAddr;
+  opsL2_2.data = '0xd8cf24fd'; //getLastPrice
+  const [signer] = await hre.ethers.getSigners();
+  const tx = await signer.sendTransaction(opsL2_2);
+  // const prices = await tx.wait();
+
+  console.log('price2: ', tx);
+}
+
+
+getAddr();
+
+// main();

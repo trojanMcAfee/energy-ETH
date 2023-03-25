@@ -12,7 +12,7 @@ const opsL2_2 = {
     gasLimit: ethers.BigNumber.from('5000000'),
     gasPrice: ethers.BigNumber.from('5134698068')
 };
-
+    
 const diamondABI = [
     'function setTESTVAR2(uint256 num_, bytes32 position_) public',
     'function diamondCut((address facetAddress, uint8 action, bytes4[] functionSelectors)[] _diamondCut, address _init, bytes _calldata) external',
@@ -51,7 +51,8 @@ const diamondABI = [
     'function facetAddresses() external view returns (address[])',
     'function getTaskID(address,address) external view returns(bytes32)',
     'function getTokenDatabase() external view returns(address[] memory)',
-    'function getLastPrice() external view returns(uint256)'
+    'function getLastPrice() external view returns(uint256)',
+    'function facetFunctionSelectors(address _facet) external view returns (bytes4[] facetFunctionSelectors_)'
 ];
 
 let network = 'arbitrum';
