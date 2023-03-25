@@ -24,7 +24,6 @@ contract ozOracleFacet {
     //**** MAIN ******/
 
     function getLastPrice() external view returns(uint256) {
-        console.log('hellooooo');
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 

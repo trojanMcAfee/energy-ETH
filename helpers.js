@@ -117,8 +117,8 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
     const index = await ozDiamond.getOzelIndex();
     console.log('ozel index: ',formatEther(index) );
 
-    // const price = ozDiamond.connect(wallet).getLastPrice();
-    // console.log('price: ', Number(price));
+    const price = ozDiamond.connect(wallet).getLastPrice();
+    console.log('price: ', Number(price));
 
 
 }

@@ -159,7 +159,7 @@ async function getAddr() {
   const facet = '0x0B1ba0af832d7C05fD64161E0Db78E85978E8082'; //ozOracle
   const getLastPriceSelector = '0xd8cf24fd';
 
-  // const prices = await ozDiamond.getLastPrice();
+  const prices = await ozDiamond.getLastPrice();
   // const selector = await ozDiamond.facetAddress(getLastPriceSelector);
 
   // opsL2_2.to = ozDiamondAddr;
@@ -168,66 +168,66 @@ async function getAddr() {
   // const tx = await signer.sendTransaction(opsL2_2);
   // // const prices = await tx.wait();
 
-  // console.log('price: ', prices);
+  console.log('price: ', prices);
 
   //-------------
 
-  await sendETHOps(1, deployer2);
+  // await sendETHOps(1, deployer2);
 
-  const privateKey = process.env.DEPLOYER2;
-  const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
-  const signer = new ethers.Wallet(privateKey, provider);
-  const signerAddr = await signer.getAddress();
-  console.log('signerAddr: ', signerAddr);
+  // const privateKey = process.env.DEPLOYER2;
+  // const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
+  // const signer = new ethers.Wallet(privateKey, provider);
+  // const signerAddr = await signer.getAddress();
+  // console.log('signerAddr: ', signerAddr);
 
-  const WtiFeed = await hre.ethers.getContractFactory('WtiFeed');
-  const wtiFeed = await WtiFeed.connect(signer).deploy();
-  await wtiFeed.deployed();
-  console.log('WtiFeed deployed to: ', wtiFeed.address);
+  // const WtiFeed = await hre.ethers.getContractFactory('WtiFeed');
+  // const wtiFeed = await WtiFeed.connect(signer).deploy();
+  // await wtiFeed.deployed();
+  // console.log('WtiFeed deployed to: ', wtiFeed.address);
 
-  const EthFeed = await hre.ethers.getContractFactory('EthFeed');
-  const ethFeed = await EthFeed.connect(signer).deploy();
-  await ethFeed.deployed();
-  console.log('ethFeed deployed to: ', ethFeed.address);
+  // const EthFeed = await hre.ethers.getContractFactory('EthFeed');
+  // const ethFeed = await EthFeed.connect(signer).deploy();
+  // await ethFeed.deployed();
+  // console.log('ethFeed deployed to: ', ethFeed.address);
 
-  const GoldFeed = await hre.ethers.getContractFactory('GoldFeed');
-  const goldFeed = await GoldFeed.connect(signer).deploy();
-  await goldFeed.deployed();
-  console.log('goldFeed deployed to: ', goldFeed.address);
+  // const GoldFeed = await hre.ethers.getContractFactory('GoldFeed');
+  // const goldFeed = await GoldFeed.connect(signer).deploy();
+  // await goldFeed.deployed();
+  // console.log('goldFeed deployed to: ', goldFeed.address);
 
-  const feeds = [
-    wtiFeed.address,
-    volatilityFeedAddr,
-    ethFeed.address,
-    goldFeed.address
-  ];
+  // const feeds = [
+  //   wtiFeed.address,
+  //   volatilityFeedAddr,
+  //   ethFeed.address,
+  //   goldFeed.address
+  // ];
 
-  const ozOracleFacet = await hre.ethers.getContractFactory('ozOracleFacet');
-  const ozOracle = await ozOracleFacet.connect(signer).deploy();
-  await ozOracle.deployed();
-  console.log('ozOracle deployed to: ', ozOracle.address);
+  // const ozOracleFacet = await hre.ethers.getContractFactory('ozOracleFacet');
+  // const ozOracle = await ozOracleFacet.connect(signer).deploy();
+  // await ozOracle.deployed();
+  // console.log('ozOracle deployed to: ', ozOracle.address);
 
-  const lastPriceSelector = ozOracle.interface.getSighash('getLastPrice');
-  console.log('lastPriceSelector: ', lastPriceSelector);
+  // const lastPriceSelector = ozOracle.interface.getSighash('getLastPrice');
+  // console.log('lastPriceSelector: ', lastPriceSelector);
 
-  const facetCutArgs = [
-    [ozOracle.address, 0, [lastPriceSelector] ]
-  ];
-  const facetAddresses = [ ozOracle.address ];
+  // const facetCutArgs = [
+  //   [ozOracle.address, 0, [lastPriceSelector] ]
+  // ];
+  // const facetAddresses = [ ozOracle.address ];
 
-  const Init = await hre.ethers.getContractFactory('InitUpgradeV2');
-  const init = await Init.connect(signer).deploy();
-  await init.deployed();
-  console.log('init deployed to: ', init.address);
+  // const Init = await hre.ethers.getContractFactory('InitUpgradeV2');
+  // const init = await Init.connect(signer).deploy();
+  // await init.deployed();
+  // console.log('init deployed to: ', init.address);
 
-  const initData = init.interface.encodeFunctionData('init', [
-      feeds,
-      facetAddresses
-  ]);
+  // const initData = init.interface.encodeFunctionData('init', [
+  //     feeds,
+  //     facetAddresses
+  // ]);
 
-  const tx = await ozDiamond.connect(signer).diamondCut(facetCutArgs, init.address, initData);
-  const receipt = await tx.wait();
-  console.log('ozOracle cut done: ', receipt.transactionHash);
+  // const tx = await ozDiamond.connect(signer).diamondCut(facetCutArgs, init.address, initData);
+  // const receipt = await tx.wait();
+  // console.log('ozOracle cut done: ', receipt.transactionHash);
 
 
   //------------------
