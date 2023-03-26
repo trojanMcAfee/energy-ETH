@@ -89,9 +89,9 @@ async function addToDiamond(ozOracle, energyFacet, feeds) {
 
     //-------
 
-    const privateKey = process.env.DEPLOYER2;
-    const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
-    const wallet = new ethers.Wallet(privateKey, provider);
+    // const privateKey = process.env.DEPLOYER2;
+    // const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8546');
+    // const wallet = new ethers.Wallet(privateKey, provider);
 
     // const [signer] = await hre.ethers.getSigners();
     // const signerAddr = await signer.getAddress();

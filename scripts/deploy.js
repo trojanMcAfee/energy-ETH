@@ -66,10 +66,10 @@ async function main() {
 
   await addToDiamond(ozOracle, energyFacet, feeds);
 
-  //Queries price
-  // for (let i=0; i < blockDiff.length; i++) {
-  //   await getLastPrice(blockDiff[i], i);
-  // }
+  // Queries price
+  for (let i=0; i < blockDiff.length; i++) {
+    await getLastPrice(blockDiff[i], i);
+  }
 
   // await getLastPrice(blockDiff[0], 0);c
 }
