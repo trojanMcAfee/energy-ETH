@@ -237,9 +237,9 @@ async function getAddr() {
 }
 
 
-getAddr();
+// getAddr();
 
-// main();
+main();
 
 
 

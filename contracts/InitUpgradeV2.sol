@@ -5,7 +5,7 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import './AppStorage.sol';
 import '../libraries/LibDiamond.sol';
-import 'hardhat/console.sol';
+// import 'hardhat/console.sol';
 
 contract InitUpgradeV2 {
 
@@ -28,12 +28,7 @@ contract InitUpgradeV2 {
         LibDiamond.setNonRevenueFacets(facets_); //test if anyone cann call setNonRevenueFacets
 
         //--------
-        LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
-        address[] memory nonRev = ds.nonRevenueFacets;
-        
-        for (uint i=0; i < nonRev.length; i++) {
-            console.log('nonRev: ', nonRev[i]);
-        }
+    
 
     }
 }
