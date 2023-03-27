@@ -33,6 +33,13 @@ contract ozOracleFacetTest is Test {
     address private volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
     address private diamond = 0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2;
 
+    address crvTricrypto = 0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2;
+    address yTricryptoPoolAddr = 0x239e14A19DFF93a17339DCC444f74406C17f8E67;
+    address chainlinkAggregatorAddr = 0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612;
+
+    address ozLoupe = 0xd986Ac35f3aD549794DBc70F33084F746b58b534;
+    address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
+
     address bob = makeAddr('bob');
 
 
@@ -92,9 +99,7 @@ contract ozOracleFacetTest is Test {
     }
 
     function test_getEnergyPrice() public {
-        console.log(1);
         uint price = OZL.getEnergyPrice();
-        console.log(2);
         assertTrue(price > 0);
     }
 
@@ -162,6 +167,11 @@ contract ozOracleFacetTest is Test {
         vm.label(address(OZL), 'OZL');
         vm.label(deployer, 'deployer2');
         vm.label(volIndex, 'volIndex');
+        vm.label(crvTricrypto, 'crvTricrypto');
+        vm.label(yTricryptoPoolAddr, 'yTricryptoPool');
+        vm.label(chainlinkAggregatorAddr, 'chainlinkAggregator');
+        vm.label(ozLoupe, 'ozLoupe');
+        vm.label(revenueFacet, 'revenueFacet');
     }
 
 }

@@ -52,7 +52,8 @@ const diamondABI = [
     'function getTaskID(address,address) external view returns(bytes32)',
     'function getTokenDatabase() external view returns(address[] memory)',
     'function getLastPrice() external view returns(uint256)',
-    'function facetFunctionSelectors(address _facet) external view returns (bytes4[] facetFunctionSelectors_)'
+    'function facetFunctionSelectors(address _facet) external view returns (bytes4[] facetFunctionSelectors_)',
+    'function getEnergyPrice() external view returns(uint256)'
 ];
 
 let network = 'arbitrum';

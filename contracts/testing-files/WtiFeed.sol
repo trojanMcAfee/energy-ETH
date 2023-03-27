@@ -10,8 +10,6 @@ contract WtiFeed {
         uint blockNum = block.number;
         int result;
 
-        console.log(blockNum);
-
         assembly {
             switch blockNum 
             case 69254399 { result := 7632500000 } 
