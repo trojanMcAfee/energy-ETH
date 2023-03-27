@@ -35,16 +35,11 @@ contract ozOracleFacetTest is Test {
 
     address bob = makeAddr('bob');
 
+
     // struct FuzzSelector {
     //     address addr;
     //     bytes4[] selectors;
     // }
-
-    function _createArrays() private returns(
-        address[] memory, 
-        address[] memory, 
-        bytes4[] memory 
-    ) {}
 
 
     function setUp() public {
@@ -62,8 +57,9 @@ contract ozOracleFacetTest is Test {
 
         OZL = ozIDiamond(diamond);
 
-        address[] memory facets = new address[](1);
+        address[] memory facets = new address[](2);
         facets[0] = address(ozOracle);
+        facets[1] = address(energyFacet);
 
         address[] memory feeds = new address[](4);
         feeds[0] = address(wtiFeed);
@@ -77,8 +73,9 @@ contract ozOracleFacetTest is Test {
             facets
         );
 
+        //FacetCut for ozOracle
         bytes4[] memory selecOracle = new bytes4[](1);
-        selecOracle[0] = bytes4(ozOracle.getLastPrice.selector);
+        selecOracle[0] = ozOracle.getLastPrice.selector;
 
         ozIDiamond.FacetCut memory cut = ozIDiamond.FacetCut({
             facetAddress: address(ozOracle),
@@ -86,8 +83,20 @@ contract ozOracleFacetTest is Test {
             functionSelectors: selecOracle
         });
 
-        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](1);
+        //FacetCut for EnergyFacet
+        bytes4[] memory selecEnergy = new bytes4[](1);
+        selecEnergy[0] = energyFacet.getEnergyPrice.selector;
+
+        ozIDiamond.FacetCut memory cut2 = ozIDiamond.FacetCut({
+            facetAddress: address(energyFacet),
+            action: ozIDiamond.FacetCutAction.Add,
+            functionSelectors: selecEnergy
+        });
+
+        //FacetCut array
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](2);
         cuts[0] = cut;
+        cuts[1] = cut2;
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
@@ -106,8 +115,14 @@ contract ozOracleFacetTest is Test {
     }
 
     //---------
+
     function test_getLastPrice() public {
         uint price = OZL.getLastPrice();
+        assertTrue(price > 0);
+    }
+
+    function test_getEnergyPrice() public {
+        uint price = OZL.getEnergyPrice();
         assertTrue(price > 0);
     }
 
