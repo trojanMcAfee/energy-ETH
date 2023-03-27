@@ -41,21 +41,16 @@ contract ozOracleFacetTest is Test {
     //     bytes4[] selectors;
     // }
 
-
-    function setUp() public {
-        string memory ARB_RPC = vm.envString('ARBITRUM');
-        vm.createSelectFork(ARB_RPC, 69254399);
-
-        //Deploys feeds
+    function _createContracts() private returns(
+        address[] memory,
+        address[] memory
+    ) {
         ethFeed = new EthFeed();
         goldFeed = new GoldFeed();
         wtiFeed = new WtiFeed();
 
         ozOracle = new ozOracleFacet(); 
         energyFacet = new EnergyETHFacet();
-        initUpgrade = new InitUpgradeV2();
-
-        OZL = ozIDiamond(diamond);
 
         address[] memory facets = new address[](2);
         facets[0] = address(ozOracle);
@@ -67,36 +62,50 @@ contract ozOracleFacetTest is Test {
         feeds[2] = address(ethFeed);
         feeds[3] = address(goldFeed); 
 
+        return (facets, feeds);
+    }
+
+
+    function setUp() public {
+        string memory ARB_RPC = vm.envString('ARBITRUM');
+        vm.createSelectFork(ARB_RPC, 69254399);
+
+        (
+            address[] memory facets,
+            address[] memory feeds
+        ) = _createContracts();
+
+        //Deploys feeds
+        // ethFeed = new EthFeed();
+        // goldFeed = new GoldFeed();
+        // wtiFeed = new WtiFeed();
+
+        // ozOracle = new ozOracleFacet(); 
+        // energyFacet = new EnergyETHFacet();
+        initUpgrade = new InitUpgradeV2();
+
+        OZL = ozIDiamond(diamond);
+
+        // address[] memory facets = new address[](2);
+        // facets[0] = address(ozOracle);
+        // facets[1] = address(energyFacet);
+
+        // address[] memory feeds = new address[](4);
+        // feeds[0] = address(wtiFeed);
+        // feeds[1] = volIndex;
+        // feeds[2] = address(ethFeed);
+        // feeds[3] = address(goldFeed); 
+
         bytes memory data = abi.encodeWithSelector(
             initUpgrade.init.selector,
             feeds,
             facets
         );
 
-        //FacetCut for ozOracle
-        bytes4[] memory selecOracle = new bytes4[](1);
-        selecOracle[0] = ozOracle.getLastPrice.selector;
-
-        ozIDiamond.FacetCut memory cut = ozIDiamond.FacetCut({
-            facetAddress: address(ozOracle),
-            action: ozIDiamond.FacetCutAction.Add,
-            functionSelectors: selecOracle
-        });
-
-        //FacetCut for EnergyFacet
-        bytes4[] memory selecEnergy = new bytes4[](1);
-        selecEnergy[0] = energyFacet.getEnergyPrice.selector;
-
-        ozIDiamond.FacetCut memory cut2 = ozIDiamond.FacetCut({
-            facetAddress: address(energyFacet),
-            action: ozIDiamond.FacetCutAction.Add,
-            functionSelectors: selecEnergy
-        });
-
-        //FacetCut array
+        //Creates FacetCut array
         ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](2);
-        cuts[0] = cut;
-        cuts[1] = cut2;
+        cuts[0] = _createCut(address(ozOracle), 0);
+        cuts[1] = _createCut(address(energyFacet), 1);
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
@@ -136,5 +145,22 @@ contract ozOracleFacetTest is Test {
     //     uint price = OZL.getLastPrice();
     //     assertTrue(price > 0);
     // }
+
+
+    //------ Helpers -----
+
+    function _createCut(
+        address contractAddr_, 
+        uint8 id_
+    ) private view returns(ozIDiamond.FacetCut memory cut) {
+        bytes4[] memory selectors = new bytes4[](1);
+        selectors[0] = id_ == 0 ? ozOracle.getLastPrice.selector : energyFacet.getEnergyPrice.selector;
+
+        cut = ozIDiamond.FacetCut({
+            facetAddress: contractAddr_,
+            action: ozIDiamond.FacetCutAction.Add,
+            functionSelectors: selectors
+        });
+    }
 
 }
