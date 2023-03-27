@@ -18,6 +18,8 @@ import '../../interfaces/ozIDiamond.sol';
 
 
 contract ozOracleFacetTest is Test {
+
+    uint256 arbFork;
     
     ozOracleFacet private ozOracle;
     EnergyETHFacet private energyFacet;
@@ -33,8 +35,21 @@ contract ozOracleFacetTest is Test {
 
     address bob = makeAddr('bob');
 
+    // struct FuzzSelector {
+    //     address addr;
+    //     bytes4[] selectors;
+    // }
+
+    function _createArrays() private returns(
+        address[] memory, 
+        address[] memory, 
+        bytes4[] memory 
+    ) {}
+
 
     function setUp() public {
+        string memory ARB_RPC = vm.envString('ARBITRUM');
+        vm.createSelectFork(ARB_RPC, 69254399);
 
         //Deploys feeds
         ethFeed = new EthFeed();
@@ -76,6 +91,18 @@ contract ozOracleFacetTest is Test {
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
+
+        //-----------------
+        // targetContract(address(ozOracle));
+        // bytes4[] memory selecs = new bytes4[](1);
+        // selecs[0] = ozOracle.getLastPrice.selector;
+
+        // FuzzSelector memory selectors = FuzzSelector({
+        //     addr: address(ozOracle),
+        //     selectors: selecs
+        // });
+
+        // targetSelector(selectors);
     }
 
     //---------
@@ -84,21 +111,15 @@ contract ozOracleFacetTest is Test {
         assertTrue(price > 0);
     }
 
-    function test_getEnergyPrice() public {
-        // vm.prank(bob);
+    // function test_getHello() public {
+    //     uint num = wtiFeed.getNum();
+    //     assertTrue(num == 3);
+    // }
 
-        uint price = OZL.getEnergyPrice();
 
-        // bytes memory data = abi.encodeWithSignature('getEnergyPrice');
-        // data = Address.functionCall(address(OZL), data);
-        // uint256 price = abi.decode(data, (uint256));
-        // vm.stopPrank();
-
-        assertTrue(price > 0);
-    }
-
-    function test_getHello() public {
-        assertTrue(true);
-    }
+    // function invariant_myTest() public {
+    //     uint price = OZL.getLastPrice();
+    //     assertTrue(price > 0);
+    // }
 
 }

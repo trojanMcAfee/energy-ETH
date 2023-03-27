@@ -1,4 +1,5 @@
 // require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-foundry");
 require("@nomiclabs/hardhat-ethers");
 require('dotenv').config();
 
