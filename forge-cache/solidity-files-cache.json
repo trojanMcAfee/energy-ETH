@@ -101,8 +101,8 @@
       }
     },
     "contracts/facets/EnergyETHFacet.sol": {
-      "lastModificationDate": 1679830221949,
-      "contentHash": "31617fbbec4b559b6864675178823109",
+      "lastModificationDate": 1679956785440,
+      "contentHash": "92043acb9bc5e47d72d619b617d21530",
       "sourceName": "contracts/facets/EnergyETHFacet.sol",
       "solcConfig": {
         "settings": {
@@ -133,6 +133,7 @@
         }
       },
       "imports": [
+        "lib/forge-std/src/console.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
@@ -147,8 +148,8 @@
       }
     },
     "contracts/facets/ozOracleFacet.sol": {
-      "lastModificationDate": 1679830221951,
-      "contentHash": "a4f962faec25fc410db8400bb6aaa165",
+      "lastModificationDate": 1679956673217,
+      "contentHash": "be7f601ede21ef2793e45c47ed46f642",
       "sourceName": "contracts/facets/ozOracleFacet.sol",
       "solcConfig": {
         "settings": {
@@ -180,6 +181,7 @@
       },
       "imports": [
         "contracts/AppStorage.sol",
+        "lib/forge-std/src/console.sol",
         "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"
       ],
       "versionRequirement": "=0.8.19",
@@ -310,8 +312,8 @@
       }
     },
     "contracts/testing-files/WtiFeed.sol": {
-      "lastModificationDate": 1679953254685,
-      "contentHash": "e815e115957e8a19c8beb0357b94ee88",
+      "lastModificationDate": 1679955908960,
+      "contentHash": "9e9fb39d08c880b8c2c5a1bbcb894e4a",
       "sourceName": "contracts/testing-files/WtiFeed.sol",
       "solcConfig": {
         "settings": {
@@ -341,7 +343,9 @@
           "libraries": {}
         }
       },
-      "imports": [],
+      "imports": [
+        "lib/forge-std/src/console.sol"
+      ],
       "versionRequirement": "=0.8.19",
       "artifacts": {
         "WtiFeed": {
@@ -1451,8 +1455,8 @@
       }
     },
     "test/foundry/ozOracleFacet.t.sol": {
-      "lastModificationDate": 1679955670733,
-      "contentHash": "dbe91366eec29802074f929ae3f46cb8",
+      "lastModificationDate": 1679956471361,
+      "contentHash": "056e299a3148c7fd5a577ba22ec9fccd",
       "sourceName": "test/foundry/ozOracleFacet.t.sol",
       "solcConfig": {
         "settings": {

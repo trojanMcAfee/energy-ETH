@@ -5,17 +5,19 @@ pragma solidity 0.8.19;
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 // import './ozOracleFacet.sol';
+import "forge-std/console.sol";
 
 
 contract EnergyETHFacet {
 
 
-    function getEnergyPrice() external pure returns(uint256) {
-        // bytes memory data = abi.encodeWithSignature('getLastPrice');
-        // data = Address.functionStaticCall(address(this), data);
-        // return abi.decode(data, (uint256));
+    function getEnergyPrice() external view returns(uint256) {
+        console.log(4);
+        bytes memory data = abi.encodeWithSignature('getLastPrice');
+        data = Address.functionStaticCall(address(this), data);
+        return abi.decode(data, (uint256));
 
-        return 3;
+        // return 3;
     }
 
 

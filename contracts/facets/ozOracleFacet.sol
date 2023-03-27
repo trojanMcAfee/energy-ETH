@@ -4,7 +4,7 @@ pragma solidity 0.8.19;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '../AppStorage.sol';
-// import "forge-std/console.sol";
+import "forge-std/console.sol";
 
 // import 'hardhat/console.sol';
 
@@ -24,6 +24,7 @@ contract ozOracleFacet {
     //**** MAIN ******/
 
     function getLastPrice() external view returns(uint256) {
+        console.log(3);
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 
@@ -37,10 +38,6 @@ contract ozOracleFacet {
     }
 
     //------------------
-
-    function getNum() external pure returns(uint) {
-        return 3;
-    }
 
 
     function _getDataFeeds() private view returns(Data memory data, int basePrice) {
