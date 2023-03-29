@@ -96,7 +96,7 @@
     "getLastPrice()": "d8cf24fd",
     "getOzelIndex()": "e419d2d8"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0x847a817baec06daf199a8cf8163a246bfcbe55b22780ced4fa99b7d1217e46a2\",\"urls\":[\"bzz-raw://c651b40bdebe06d09cada02603b3c3a5d2788cde1f1facca721e0c2756b63778\",\"dweb:/ipfs/QmadovfrjWTCASKFEDai9uPoru1UHsGFxiWuvZ2HQVFHvv\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0x5e03ef1db4bfbf6a79809f8f6f61d70f330579286a66f53c603ccee2833e6152\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://508e9a49a24be742788019749254845840e7909a542fb5694038e32cd54b786c\",\"dweb:/ipfs/QmUk8sUZeSvGFghU6UxK7592GaoP6siCLXtNqkAMYhirRd\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -199,6 +199,8 @@
         ":@chainlink/=node_modules/@chainlink/",
         ":@eth-optimism/=node_modules/@eth-optimism/",
         ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@uniswap/=node_modules/@uniswap/",
+        ":base64-sol/=node_modules/base64-sol/",
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":forge-std/=lib/forge-std/src/",
         ":hardhat/=node_modules/hardhat/",
@@ -218,31 +220,31 @@
     },
     "sources": {
       "interfaces/ozIDiamond.sol": {
-        "keccak256": "0x847a817baec06daf199a8cf8163a246bfcbe55b22780ced4fa99b7d1217e46a2",
+        "keccak256": "0x5e03ef1db4bfbf6a79809f8f6f61d70f330579286a66f53c603ccee2833e6152",
         "urls": [
-          "bzz-raw://c651b40bdebe06d09cada02603b3c3a5d2788cde1f1facca721e0c2756b63778",
-          "dweb:/ipfs/QmadovfrjWTCASKFEDai9uPoru1UHsGFxiWuvZ2HQVFHvv"
+          "bzz-raw://508e9a49a24be742788019749254845840e7909a542fb5694038e32cd54b786c",
+          "dweb:/ipfs/QmUk8sUZeSvGFghU6UxK7592GaoP6siCLXtNqkAMYhirRd"
         ],
-        "license": null
+        "license": "GPL-2.0-or-later"
       }
     },
     "version": 1
   },
   "ast": {
     "absolutePath": "interfaces/ozIDiamond.sol",
-    "id": 737,
+    "id": 835,
     "exportedSymbols": {
       "ozIDiamond": [
-        736
+        834
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "0:514:9",
+    "src": "45:511:8",
     "nodes": [
       {
-        "id": 696,
+        "id": 794,
         "nodeType": "PragmaDirective",
-        "src": "0:23:9",
+        "src": "45:23:8",
         "nodes": [],
         "literals": [
           "solidity",
@@ -251,26 +253,26 @@
         ]
       },
       {
-        "id": 736,
+        "id": 834,
         "nodeType": "ContractDefinition",
-        "src": "28:486:9",
+        "src": "71:485:8",
         "nodes": [
           {
-            "id": 705,
+            "id": 803,
             "nodeType": "StructDefinition",
-            "src": "56:120:9",
+            "src": "99:120:8",
             "nodes": [],
             "canonicalName": "ozIDiamond.FacetCut",
             "members": [
               {
                 "constant": false,
-                "id": 698,
+                "id": 796,
                 "mutability": "mutable",
                 "name": "facetAddress",
-                "nameLocation": "90:12:9",
+                "nameLocation": "133:12:8",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "82:20:9",
+                "scope": 803,
+                "src": "125:20:8",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -278,10 +280,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 697,
+                  "id": 795,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "82:7:9",
+                  "src": "125:7:8",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -292,36 +294,36 @@
               },
               {
                 "constant": false,
-                "id": 701,
+                "id": 799,
                 "mutability": "mutable",
                 "name": "action",
-                "nameLocation": "127:6:9",
+                "nameLocation": "170:6:8",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "112:21:9",
+                "scope": 803,
+                "src": "155:21:8",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_FacetCutAction_$709",
+                  "typeIdentifier": "t_enum$_FacetCutAction_$807",
                   "typeString": "enum ozIDiamond.FacetCutAction"
                 },
                 "typeName": {
-                  "id": 700,
+                  "id": 798,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 699,
+                    "id": 797,
                     "name": "FacetCutAction",
                     "nameLocations": [
-                      "112:14:9"
+                      "155:14:8"
                     ],
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 709,
-                    "src": "112:14:9"
+                    "referencedDeclaration": 807,
+                    "src": "155:14:8"
                   },
-                  "referencedDeclaration": 709,
-                  "src": "112:14:9",
+                  "referencedDeclaration": 807,
+                  "src": "155:14:8",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_FacetCutAction_$709",
+                    "typeIdentifier": "t_enum$_FacetCutAction_$807",
                     "typeString": "enum ozIDiamond.FacetCutAction"
                   }
                 },
@@ -329,13 +331,13 @@
               },
               {
                 "constant": false,
-                "id": 704,
+                "id": 802,
                 "mutability": "mutable",
                 "name": "functionSelectors",
-                "nameLocation": "152:17:9",
+                "nameLocation": "195:17:8",
                 "nodeType": "VariableDeclaration",
-                "scope": 705,
-                "src": "143:26:9",
+                "scope": 803,
+                "src": "186:26:8",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -344,18 +346,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 702,
+                    "id": 800,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "143:6:9",
+                    "src": "186:6:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
                     }
                   },
-                  "id": 703,
+                  "id": 801,
                   "nodeType": "ArrayTypeName",
-                  "src": "143:8:9",
+                  "src": "186:8:8",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_bytes4_$dyn_storage_ptr",
                     "typeString": "bytes4[]"
@@ -365,98 +367,98 @@
               }
             ],
             "name": "FacetCut",
-            "nameLocation": "63:8:9",
-            "scope": 736,
+            "nameLocation": "106:8:8",
+            "scope": 834,
             "visibility": "public"
           },
           {
-            "id": 709,
+            "id": 807,
             "nodeType": "EnumDefinition",
-            "src": "182:42:9",
+            "src": "225:42:8",
             "nodes": [],
             "canonicalName": "ozIDiamond.FacetCutAction",
             "members": [
               {
-                "id": 706,
+                "id": 804,
                 "name": "Add",
-                "nameLocation": "203:3:9",
+                "nameLocation": "246:3:8",
                 "nodeType": "EnumValue",
-                "src": "203:3:9"
+                "src": "246:3:8"
               },
               {
-                "id": 707,
+                "id": 805,
                 "name": "Replace",
-                "nameLocation": "208:7:9",
+                "nameLocation": "251:7:8",
                 "nodeType": "EnumValue",
-                "src": "208:7:9"
+                "src": "251:7:8"
               },
               {
-                "id": 708,
+                "id": 806,
                 "name": "Remove",
-                "nameLocation": "217:6:9",
+                "nameLocation": "260:6:8",
                 "nodeType": "EnumValue",
-                "src": "217:6:9"
+                "src": "260:6:8"
               }
             ],
             "name": "FacetCutAction",
-            "nameLocation": "187:14:9"
+            "nameLocation": "230:14:8"
           },
           {
-            "id": 720,
+            "id": 818,
             "nodeType": "FunctionDefinition",
-            "src": "230:99:9",
+            "src": "273:99:8",
             "nodes": [],
             "functionSelector": "1f931c1c",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "diamondCut",
-            "nameLocation": "239:10:9",
+            "nameLocation": "282:10:8",
             "parameters": {
-              "id": 718,
+              "id": 816,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 713,
+                  "id": 811,
                   "mutability": "mutable",
                   "name": "_diamondCut",
-                  "nameLocation": "268:11:9",
+                  "nameLocation": "311:11:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 720,
-                  "src": "250:29:9",
+                  "scope": 818,
+                  "src": "293:29:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$705_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$803_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ozIDiamond.FacetCut[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 711,
+                      "id": 809,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 710,
+                        "id": 808,
                         "name": "FacetCut",
                         "nameLocations": [
-                          "250:8:9"
+                          "293:8:8"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 705,
-                        "src": "250:8:9"
+                        "referencedDeclaration": 803,
+                        "src": "293:8:8"
                       },
-                      "referencedDeclaration": 705,
-                      "src": "250:8:9",
+                      "referencedDeclaration": 803,
+                      "src": "293:8:8",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_FacetCut_$705_storage_ptr",
+                        "typeIdentifier": "t_struct$_FacetCut_$803_storage_ptr",
                         "typeString": "struct ozIDiamond.FacetCut"
                       }
                     },
-                    "id": 712,
+                    "id": 810,
                     "nodeType": "ArrayTypeName",
-                    "src": "250:10:9",
+                    "src": "293:10:8",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$705_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$803_storage_$dyn_storage_ptr",
                       "typeString": "struct ozIDiamond.FacetCut[]"
                     }
                   },
@@ -464,13 +466,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 715,
+                  "id": 813,
                   "mutability": "mutable",
                   "name": "_init",
-                  "nameLocation": "289:5:9",
+                  "nameLocation": "332:5:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 720,
-                  "src": "281:13:9",
+                  "scope": 818,
+                  "src": "324:13:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -478,10 +480,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 714,
+                    "id": 812,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "281:7:9",
+                    "src": "324:7:8",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -492,13 +494,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 717,
+                  "id": 815,
                   "mutability": "mutable",
                   "name": "_calldata",
-                  "nameLocation": "309:9:9",
+                  "nameLocation": "352:9:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 720,
-                  "src": "296:22:9",
+                  "scope": 818,
+                  "src": "339:22:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -506,10 +508,10 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 716,
+                    "id": 814,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
-                    "src": "296:5:9",
+                    "src": "339:5:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes_storage_ptr",
                       "typeString": "bytes"
@@ -518,49 +520,49 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "249:70:9"
+              "src": "292:70:8"
             },
             "returnParameters": {
-              "id": 719,
+              "id": 817,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "328:0:9"
+              "src": "371:0:8"
             },
-            "scope": 736,
+            "scope": 834,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 725,
+            "id": 823,
             "nodeType": "FunctionDefinition",
-            "src": "334:55:9",
+            "src": "377:55:8",
             "nodes": [],
             "functionSelector": "d8cf24fd",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLastPrice",
-            "nameLocation": "343:12:9",
+            "nameLocation": "386:12:8",
             "parameters": {
-              "id": 721,
+              "id": 819,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "355:2:9"
+              "src": "398:2:8"
             },
             "returnParameters": {
-              "id": 724,
+              "id": 822,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 723,
+                  "id": 821,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 725,
-                  "src": "380:7:9",
+                  "scope": 823,
+                  "src": "423:7:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -568,10 +570,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 722,
+                    "id": 820,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "380:7:9",
+                    "src": "423:7:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -580,43 +582,43 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "379:9:9"
+              "src": "422:9:8"
             },
-            "scope": 736,
+            "scope": 834,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 730,
+            "id": 828,
             "nodeType": "FunctionDefinition",
-            "src": "394:57:9",
+            "src": "437:57:8",
             "nodes": [],
             "functionSelector": "cab0f335",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getEnergyPrice",
-            "nameLocation": "403:14:9",
+            "nameLocation": "446:14:8",
             "parameters": {
-              "id": 726,
+              "id": 824,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "417:2:9"
+              "src": "460:2:8"
             },
             "returnParameters": {
-              "id": 729,
+              "id": 827,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 728,
+                  "id": 826,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 730,
-                  "src": "442:7:9",
+                  "scope": 828,
+                  "src": "485:7:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -624,10 +626,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 727,
+                    "id": 825,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "442:7:9",
+                    "src": "485:7:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -636,43 +638,43 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "441:9:9"
+              "src": "484:9:8"
             },
-            "scope": 736,
+            "scope": 834,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 735,
+            "id": 833,
             "nodeType": "FunctionDefinition",
-            "src": "456:55:9",
+            "src": "499:55:8",
             "nodes": [],
             "functionSelector": "e419d2d8",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getOzelIndex",
-            "nameLocation": "465:12:9",
+            "nameLocation": "508:12:8",
             "parameters": {
-              "id": 731,
+              "id": 829,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "477:2:9"
+              "src": "520:2:8"
             },
             "returnParameters": {
-              "id": 734,
+              "id": 832,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 733,
+                  "id": 831,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 735,
-                  "src": "502:7:9",
+                  "scope": 833,
+                  "src": "545:7:8",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -680,10 +682,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 732,
+                    "id": 830,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "502:7:9",
+                    "src": "545:7:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -692,9 +694,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "501:9:9"
+              "src": "544:9:8"
             },
-            "scope": 736,
+            "scope": 834,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -707,14 +709,15 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          736
+          834
         ],
         "name": "ozIDiamond",
-        "nameLocation": "38:10:9",
-        "scope": 737,
+        "nameLocation": "81:10:8",
+        "scope": 835,
         "usedErrors": []
       }
-    ]
+    ],
+    "license": "GPL-2.0-or-later"
   },
-  "id": 9
+  "id": 8
 }

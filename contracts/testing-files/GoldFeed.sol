@@ -9,8 +9,10 @@ contract GoldFeed {
         int result;
 
         assembly {
-            switch blockNum 
+            switch blockNum
             case 69254399 { result := 188117000000 } 
+            case 69254400 { result := 188117000000 } 
+            case 69254401 { result := 188117000000 } 
             case 69255699 { result := 189157000000 } 
             case 69260699 { result := 189157000000 } 
             case 69294699 { result := 188161500000 } 
@@ -30,6 +32,8 @@ contract GoldFeed {
         assembly {
             switch blockNum 
             case 69254399 { result := 188917000000 }
+            case 69254400 { result := 188917000000 }
+            case 69254401 { result := 188917000000 }
             case 69255699 { result := 190157000000 }
             case 69260699 { result := 186757000000 }
             case 69294699 { result := 187261500000 }

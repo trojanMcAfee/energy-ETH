@@ -1,6 +1,5 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
-
-
 
 
 interface ozIDiamond {
@@ -17,5 +16,4 @@ interface ozIDiamond {
     function getLastPrice() external view returns(uint256);
     function getEnergyPrice() external view returns(uint256);
     function getOzelIndex() external view returns(uint256);
-
 }

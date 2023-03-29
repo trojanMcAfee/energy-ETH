@@ -4,6 +4,7 @@ pragma solidity 0.8.19;
 
 // import 'ds-test/test.sol';
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
@@ -17,7 +18,7 @@ import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
 
 
-contract ozOracleFacetTest is Test {
+contract EnergyETHFacetTest is Test {
 
     uint256 arbFork;
     
@@ -39,6 +40,8 @@ contract ozOracleFacetTest is Test {
 
     address ozLoupe = 0xd986Ac35f3aD549794DBc70F33084F746b58b534;
     address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
+
+    ERC20 USDC = ERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
 
     address bob = makeAddr('bob');
 
@@ -69,12 +72,16 @@ contract ozOracleFacetTest is Test {
         );
 
         //Creates FacetCut array
-        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](2);
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](1);
         cuts[0] = _createCut(address(ozOracle), 0);
-        cuts[1] = _createCut(address(energyFacet), 1);
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
+
+        //--------
+        energyFacet = new EnergyETHFacet();
+
+        deal(address(USDC), bob, 5000 * 10 ** 6);
 
         _setLabels();
 
@@ -93,32 +100,54 @@ contract ozOracleFacetTest is Test {
 
     //---------
 
-    function test_getLastPrice() public {
-        uint price = OZL.getLastPrice();
+    function test_getPrice() public {
+        uint price = energyFacet.getPrice();
         assertTrue(price > 0);
     }
 
-    function test_getEnergyPrice() public {
-        uint price = OZL.getEnergyPrice();
-        assertTrue(price > 0);
+    function testFuzz_issue(address user_, uint256 amount_) public {
+        vm.assume(user_ != address(0));
+        vm.assume(amount_ > 0);
+        vm.assume(amount_ < 3);
+        require((amount_ * energyFacet.getPrice()) < type(uint256).max);
+
+        uint256 quote = (amount_ * energyFacet.getPrice()) / 10 ** 12;
+        // require(quote <= USDC.balanceOf(bob), 'fff');
+        console.log('qqqq: ', quote);
+
+        vm.startPrank(bob);
+        USDC.approve(address(energyFacet), type(uint).max);
+
+        console.log(4);
+
+        console.log('is - true: ', amount_ <= USDC.balanceOf(bob));
+        console.log('bob: ', bob);
+
+        energyFacet.issue(user_, amount_);
+
+        vm.stopPrank();
+
+        uint bal = USDC.balanceOf(address(energyFacet));
+        assertTrue(bal > 0);
     }
 
 
-    function invariant_myTest() public {
-        // uint price = OZL.getLastPrice();
-        // assertTrue(price > 0);
-        assertTrue(true);
-    }
+
 
 
     //------ Helpers -----
+
+    function invariant_myTest() public {
+        assertTrue(true);
+    }
+
 
     function _createCut(
         address contractAddr_, 
         uint8 id_
     ) private view returns(ozIDiamond.FacetCut memory cut) {
         bytes4[] memory selectors = new bytes4[](1);
-        selectors[0] = id_ == 0 ? ozOracle.getLastPrice.selector : energyFacet.getEnergyPrice.selector;
+        if (id_ == 0) selectors[0] = ozOracle.getEnergyPrice.selector;
 
         cut = ozIDiamond.FacetCut({
             facetAddress: contractAddr_,
@@ -168,6 +197,8 @@ contract ozOracleFacetTest is Test {
         vm.label(chainlinkAggregatorAddr, 'chainlinkAggregator');
         vm.label(ozLoupe, 'ozLoupe');
         vm.label(revenueFacet, 'revenueFacet');
+        vm.label(address(energyFacet), 'energyFacet');
+        vm.label(address(USDC), 'USDC');
     }
 
 }

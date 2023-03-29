@@ -1,7 +1,12 @@
-const { reset, loadFixture, setCode, mine } = require("@nomicfoundation/hardhat-network-helpers");
 const hre = require("hardhat");
 const { ethers } = require('ethers');
 require('dotenv').config();
+
+const { 
+  mine, 
+  impersonateAccount,
+  stopImpersonatingAccount
+} = require("@nomicfoundation/hardhat-network-helpers");
 
 const { 
   parseEther, 
@@ -65,7 +70,7 @@ async function main() {
     goldFeedAddr
   ];
 
-  await addToDiamond(ozOracle, energyFacet, feeds);
+  await addToDiamond(ozOracle, feeds);
 
   // Queries price
   // for (let i=0; i < blockDiff.length; i++) {
@@ -75,8 +80,22 @@ async function main() {
   // await getLastPrice(blockDiff[0], 0);c
 
   const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
-  const ePrice = await ozDiamond.getPrice();
-  console.log('energy price: ', formatEther(ePrice));
+  const ePrice = await energyFacet.getPrice();
+  console.log('energy price2: ', formatEther(ePrice));
+
+  const holder = '0x62383739d68dd0f844103db8dfb05a7eded5bbe6';
+  const USDC = await hre.ethers.getContractAt('ERC20', '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8');
+  const bal = await USDC.balanceOf(holder);
+  console.log('usdc bal in js: ', bal);
+
+  await sendETHOps(10, holder);
+  await impersonateAccount(holder);
+  const holderSign = await hre.ethers.provider.getSigner(holder);
+
+  const tx = await energyFacet.connect(holderSign).issue(wtiFeedAddr, 2, opsL2_2);
+  receipt = await tx.wait();
+
+  await stopImpersonatingAccount(holder);
 }
 
 // main();

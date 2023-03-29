@@ -101,8 +101,8 @@
       }
     },
     "contracts/facets/EnergyETHFacet.sol": {
-      "lastModificationDate": 1680025990474,
-      "contentHash": "493928f421608bb8bbdf0792b6ea24b6",
+      "lastModificationDate": 1680115723119,
+      "contentHash": "df5fedce393a83c554b45aa34e28de7e",
       "sourceName": "contracts/facets/EnergyETHFacet.sol",
       "solcConfig": {
         "settings": {
@@ -133,12 +133,15 @@
         }
       },
       "imports": [
+        "interfaces/ozIDiamond.sol",
         "lib/forge-std/src/console.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "node_modules/@openzeppelin/contracts/utils/Address.sol",
-        "node_modules/@openzeppelin/contracts/utils/Context.sol"
+        "node_modules/@openzeppelin/contracts/utils/Context.sol",
+        "node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+        "node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol"
       ],
       "versionRequirement": "=0.8.19",
       "artifacts": {
@@ -148,8 +151,8 @@
       }
     },
     "contracts/facets/ozOracleFacet.sol": {
-      "lastModificationDate": 1680025990474,
-      "contentHash": "bea2f7e2b036b3dd346a6d2a6f24f05a",
+      "lastModificationDate": 1680111675026,
+      "contentHash": "7683c8778fbbcb1b585b993688bf31a3",
       "sourceName": "contracts/facets/ozOracleFacet.sol",
       "solcConfig": {
         "settings": {
@@ -232,8 +235,8 @@
       }
     },
     "contracts/testing-files/EthFeed.sol": {
-      "lastModificationDate": 1679389871602,
-      "contentHash": "3faa28d6af140b77b2b897721942f04e",
+      "lastModificationDate": 1680114387448,
+      "contentHash": "2286a468a41d221b59561784fb7de388",
       "sourceName": "contracts/testing-files/EthFeed.sol",
       "solcConfig": {
         "settings": {
@@ -272,8 +275,8 @@
       }
     },
     "contracts/testing-files/GoldFeed.sol": {
-      "lastModificationDate": 1679389871928,
-      "contentHash": "eeef8e11ceb9c1281403e8794027a697",
+      "lastModificationDate": 1680114414642,
+      "contentHash": "5e7cda93132693806b88eb5fbd705ab6",
       "sourceName": "contracts/testing-files/GoldFeed.sol",
       "solcConfig": {
         "settings": {
@@ -312,8 +315,8 @@
       }
     },
     "contracts/testing-files/WtiFeed.sol": {
-      "lastModificationDate": 1680091148724,
-      "contentHash": "7e0e98249e0bc6ea8384dd69d3933b4a",
+      "lastModificationDate": 1680114402195,
+      "contentHash": "17fd8cdf0bd7c54717132eba84326b93",
       "sourceName": "contracts/testing-files/WtiFeed.sol",
       "solcConfig": {
         "settings": {
@@ -394,8 +397,8 @@
       }
     },
     "interfaces/ozIDiamond.sol": {
-      "lastModificationDate": 1679830318687,
-      "contentHash": "0715864c177e945cc580b561623d59fe",
+      "lastModificationDate": 1680099730158,
+      "contentHash": "b182ffc28f1e00efd5280dea361e7cb3",
       "sourceName": "interfaces/ozIDiamond.sol",
       "solcConfig": {
         "settings": {
@@ -1249,8 +1252,8 @@
       }
     },
     "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
-      "lastModificationDate": 1678655608377,
-      "contentHash": "834a0dde221759af42b030253315b086",
+      "lastModificationDate": 1680115527760,
+      "contentHash": "12e6d2810a6bd369c1f59f25b9b1b2fe",
       "sourceName": "node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
         "settings": {
@@ -1281,6 +1284,7 @@
         }
       },
       "imports": [
+        "lib/forge-std/src/console.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "node_modules/@openzeppelin/contracts/utils/Context.sol"
@@ -1454,10 +1458,92 @@
         }
       }
     },
-    "test/foundry/ozOracleFacet.t.sol": {
-      "lastModificationDate": 1680091084184,
-      "contentHash": "d7f8a39415b58fda07b4bdae90613d5d",
-      "sourceName": "test/foundry/ozOracleFacet.t.sol",
+    "node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
+      "lastModificationDate": 1680096500392,
+      "contentHash": "a8ba2d37b0107911ae0e3b0e123cbd83",
+      "sourceName": "node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": ">=0.5.0",
+      "artifacts": {
+        "IUniswapV3SwapCallback": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "IUniswapV3SwapCallback.sol/IUniswapV3SwapCallback.json"
+        }
+      }
+    },
+    "node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol": {
+      "lastModificationDate": 1680097033143,
+      "contentHash": "ffd42687b3db01d30c24213d961fcf9f",
+      "sourceName": "node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+      ],
+      "versionRequirement": ">=0.7.5",
+      "artifacts": {
+        "ISwapRouter": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ISwapRouter.sol/ISwapRouter.json"
+        }
+      }
+    },
+    "test/foundry/EnergyETHFacet.t.sol": {
+      "lastModificationDate": 1680116320710,
+      "contentHash": "f6845cbd6e3592dc72025facd400ad56",
+      "sourceName": "test/foundry/EnergyETHFacet.t.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -1519,12 +1605,14 @@
         "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
         "node_modules/@openzeppelin/contracts/utils/Address.sol",
-        "node_modules/@openzeppelin/contracts/utils/Context.sol"
+        "node_modules/@openzeppelin/contracts/utils/Context.sol",
+        "node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+        "node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol"
       ],
       "versionRequirement": "=0.8.19",
       "artifacts": {
-        "ozOracleFacetTest": {
-          "0.8.19+commit.7dd6d404.Darwin.appleclang": "ozOracleFacet.t.sol/ozOracleFacetTest.json"
+        "EnergyETHFacetTest": {
+          "0.8.19+commit.7dd6d404.Darwin.appleclang": "EnergyETHFacet.t.sol/EnergyETHFacetTest.json"
         }
       }
     }

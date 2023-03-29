@@ -47,7 +47,9 @@ async function sendETHOps(amount, receiver) {
     
     tx = await signer.sendTransaction({
         value: parseEther(amount.toString()),
-        to: receiver
+        to: receiver,
+        gasLimit: ethers.BigNumber.from('5000000'),
+        gasPrice: ethers.BigNumber.from('5134698068')
     });
     await tx.wait();
 
@@ -65,18 +67,15 @@ async function getLastPrice(blockDifference_, num_) {
 
 
 
-async function addToDiamond(ozOracle, energyFacet, feeds) {
+async function addToDiamond(ozOracle, feeds) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
 
-    const lastPriceSelector = ozOracle.interface.getSighash('getLastPrice');
-    const energyPriceSelector = energyFacet.interface.getSighash('getEnergyPrice');
+    const lastPriceSelector = ozOracle.interface.getSighash('getEnergyPrice');
     const facetCutArgs = [
-        [ozOracle.address, 0, [lastPriceSelector] ],
-        [energyFacet.address, 0, [energyPriceSelector]]
+        [ozOracle.address, 0, [lastPriceSelector] ]
     ];
     const facetAddresses = [
         ozOracle.address,
-        energyFacet.address
     ];
 
     const init = await deployContract('InitUpgradeV2');
