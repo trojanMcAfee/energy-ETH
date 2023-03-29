@@ -75,7 +75,7 @@ async function main() {
   // await getLastPrice(blockDiff[0], 0);c
 
   const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
-  const ePrice = await ozDiamond.getEnergyPrice();
+  const ePrice = await ozDiamond.getPrice();
   console.log('energy price: ', formatEther(ePrice));
 }
 
