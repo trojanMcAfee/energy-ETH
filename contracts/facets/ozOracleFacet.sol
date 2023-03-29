@@ -9,7 +9,7 @@ import "forge-std/console.sol";
 // import 'hardhat/console.sol';
 
 //add modularity to add and remove chainlink feeds
-//add uniswap and trellors oracles as a fallbac
+//add uniswap and trellors oracles as a fallback
 contract ozOracleFacet {
 
     AppStorage s;

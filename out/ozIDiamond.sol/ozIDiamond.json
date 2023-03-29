@@ -230,17 +230,17 @@
   },
   "ast": {
     "absolutePath": "interfaces/ozIDiamond.sol",
-    "id": 726,
+    "id": 737,
     "exportedSymbols": {
       "ozIDiamond": [
-        725
+        736
       ]
     },
     "nodeType": "SourceUnit",
     "src": "0:514:9",
     "nodes": [
       {
-        "id": 685,
+        "id": 696,
         "nodeType": "PragmaDirective",
         "src": "0:23:9",
         "nodes": [],
@@ -251,12 +251,12 @@
         ]
       },
       {
-        "id": 725,
+        "id": 736,
         "nodeType": "ContractDefinition",
         "src": "28:486:9",
         "nodes": [
           {
-            "id": 694,
+            "id": 705,
             "nodeType": "StructDefinition",
             "src": "56:120:9",
             "nodes": [],
@@ -264,12 +264,12 @@
             "members": [
               {
                 "constant": false,
-                "id": 687,
+                "id": 698,
                 "mutability": "mutable",
                 "name": "facetAddress",
                 "nameLocation": "90:12:9",
                 "nodeType": "VariableDeclaration",
-                "scope": 694,
+                "scope": 705,
                 "src": "82:20:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -278,7 +278,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 686,
+                  "id": 697,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "82:7:9",
@@ -292,36 +292,36 @@
               },
               {
                 "constant": false,
-                "id": 690,
+                "id": 701,
                 "mutability": "mutable",
                 "name": "action",
                 "nameLocation": "127:6:9",
                 "nodeType": "VariableDeclaration",
-                "scope": 694,
+                "scope": 705,
                 "src": "112:21:9",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_FacetCutAction_$698",
+                  "typeIdentifier": "t_enum$_FacetCutAction_$709",
                   "typeString": "enum ozIDiamond.FacetCutAction"
                 },
                 "typeName": {
-                  "id": 689,
+                  "id": 700,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 688,
+                    "id": 699,
                     "name": "FacetCutAction",
                     "nameLocations": [
                       "112:14:9"
                     ],
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 698,
+                    "referencedDeclaration": 709,
                     "src": "112:14:9"
                   },
-                  "referencedDeclaration": 698,
+                  "referencedDeclaration": 709,
                   "src": "112:14:9",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_FacetCutAction_$698",
+                    "typeIdentifier": "t_enum$_FacetCutAction_$709",
                     "typeString": "enum ozIDiamond.FacetCutAction"
                   }
                 },
@@ -329,12 +329,12 @@
               },
               {
                 "constant": false,
-                "id": 693,
+                "id": 704,
                 "mutability": "mutable",
                 "name": "functionSelectors",
                 "nameLocation": "152:17:9",
                 "nodeType": "VariableDeclaration",
-                "scope": 694,
+                "scope": 705,
                 "src": "143:26:9",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -344,7 +344,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 691,
+                    "id": 702,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "143:6:9",
@@ -353,7 +353,7 @@
                       "typeString": "bytes4"
                     }
                   },
-                  "id": 692,
+                  "id": 703,
                   "nodeType": "ArrayTypeName",
                   "src": "143:8:9",
                   "typeDescriptions": {
@@ -366,32 +366,32 @@
             ],
             "name": "FacetCut",
             "nameLocation": "63:8:9",
-            "scope": 725,
+            "scope": 736,
             "visibility": "public"
           },
           {
-            "id": 698,
+            "id": 709,
             "nodeType": "EnumDefinition",
             "src": "182:42:9",
             "nodes": [],
             "canonicalName": "ozIDiamond.FacetCutAction",
             "members": [
               {
-                "id": 695,
+                "id": 706,
                 "name": "Add",
                 "nameLocation": "203:3:9",
                 "nodeType": "EnumValue",
                 "src": "203:3:9"
               },
               {
-                "id": 696,
+                "id": 707,
                 "name": "Replace",
                 "nameLocation": "208:7:9",
                 "nodeType": "EnumValue",
                 "src": "208:7:9"
               },
               {
-                "id": 697,
+                "id": 708,
                 "name": "Remove",
                 "nameLocation": "217:6:9",
                 "nodeType": "EnumValue",
@@ -402,7 +402,7 @@
             "nameLocation": "187:14:9"
           },
           {
-            "id": 709,
+            "id": 720,
             "nodeType": "FunctionDefinition",
             "src": "230:99:9",
             "nodes": [],
@@ -413,50 +413,50 @@
             "name": "diamondCut",
             "nameLocation": "239:10:9",
             "parameters": {
-              "id": 707,
+              "id": 718,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 702,
+                  "id": 713,
                   "mutability": "mutable",
                   "name": "_diamondCut",
                   "nameLocation": "268:11:9",
                   "nodeType": "VariableDeclaration",
-                  "scope": 709,
+                  "scope": 720,
                   "src": "250:29:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$694_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$705_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ozIDiamond.FacetCut[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 700,
+                      "id": 711,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 699,
+                        "id": 710,
                         "name": "FacetCut",
                         "nameLocations": [
                           "250:8:9"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 694,
+                        "referencedDeclaration": 705,
                         "src": "250:8:9"
                       },
-                      "referencedDeclaration": 694,
+                      "referencedDeclaration": 705,
                       "src": "250:8:9",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_FacetCut_$694_storage_ptr",
+                        "typeIdentifier": "t_struct$_FacetCut_$705_storage_ptr",
                         "typeString": "struct ozIDiamond.FacetCut"
                       }
                     },
-                    "id": 701,
+                    "id": 712,
                     "nodeType": "ArrayTypeName",
                     "src": "250:10:9",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$694_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$705_storage_$dyn_storage_ptr",
                       "typeString": "struct ozIDiamond.FacetCut[]"
                     }
                   },
@@ -464,12 +464,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 704,
+                  "id": 715,
                   "mutability": "mutable",
                   "name": "_init",
                   "nameLocation": "289:5:9",
                   "nodeType": "VariableDeclaration",
-                  "scope": 709,
+                  "scope": 720,
                   "src": "281:13:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -478,7 +478,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 703,
+                    "id": 714,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "281:7:9",
@@ -492,12 +492,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 706,
+                  "id": 717,
                   "mutability": "mutable",
                   "name": "_calldata",
                   "nameLocation": "309:9:9",
                   "nodeType": "VariableDeclaration",
-                  "scope": 709,
+                  "scope": 720,
                   "src": "296:22:9",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -506,7 +506,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 705,
+                    "id": 716,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "296:5:9",
@@ -521,18 +521,18 @@
               "src": "249:70:9"
             },
             "returnParameters": {
-              "id": 708,
+              "id": 719,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "328:0:9"
             },
-            "scope": 725,
+            "scope": 736,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 714,
+            "id": 725,
             "nodeType": "FunctionDefinition",
             "src": "334:55:9",
             "nodes": [],
@@ -543,23 +543,23 @@
             "name": "getLastPrice",
             "nameLocation": "343:12:9",
             "parameters": {
-              "id": 710,
+              "id": 721,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "355:2:9"
             },
             "returnParameters": {
-              "id": 713,
+              "id": 724,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 712,
+                  "id": 723,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 714,
+                  "scope": 725,
                   "src": "380:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -568,7 +568,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 711,
+                    "id": 722,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "380:7:9",
@@ -582,13 +582,13 @@
               ],
               "src": "379:9:9"
             },
-            "scope": 725,
+            "scope": 736,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 719,
+            "id": 730,
             "nodeType": "FunctionDefinition",
             "src": "394:57:9",
             "nodes": [],
@@ -599,23 +599,23 @@
             "name": "getEnergyPrice",
             "nameLocation": "403:14:9",
             "parameters": {
-              "id": 715,
+              "id": 726,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "417:2:9"
             },
             "returnParameters": {
-              "id": 718,
+              "id": 729,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 717,
+                  "id": 728,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 719,
+                  "scope": 730,
                   "src": "442:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -624,7 +624,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 716,
+                    "id": 727,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "442:7:9",
@@ -638,13 +638,13 @@
               ],
               "src": "441:9:9"
             },
-            "scope": 725,
+            "scope": 736,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 724,
+            "id": 735,
             "nodeType": "FunctionDefinition",
             "src": "456:55:9",
             "nodes": [],
@@ -655,23 +655,23 @@
             "name": "getOzelIndex",
             "nameLocation": "465:12:9",
             "parameters": {
-              "id": 720,
+              "id": 731,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "477:2:9"
             },
             "returnParameters": {
-              "id": 723,
+              "id": 734,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 722,
+                  "id": 733,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 724,
+                  "scope": 735,
                   "src": "502:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -680,7 +680,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 721,
+                    "id": 732,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "502:7:9",
@@ -694,7 +694,7 @@
               ],
               "src": "501:9:9"
             },
-            "scope": 725,
+            "scope": 736,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -707,11 +707,11 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          725
+          736
         ],
         "name": "ozIDiamond",
         "nameLocation": "38:10:9",
-        "scope": 726,
+        "scope": 737,
         "usedErrors": []
       }
     ]

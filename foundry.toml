@@ -5,5 +5,11 @@ libs = ['node_modules', 'lib']
 test = 'test/foundry'
 cache_path = 'forge-cache'
 
+[rpc_endpoints]
+arbitrum = "${ARBITRUM}"
+
+# [fuzz]
+# seed = 10
+
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

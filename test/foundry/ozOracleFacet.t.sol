@@ -50,8 +50,8 @@ contract ozOracleFacetTest is Test {
 
 
     function setUp() public {
-        string memory ARB_RPC = vm.envString('ARBITRUM');
-        vm.createSelectFork(ARB_RPC, 69254399);
+        // string memory ARB_RPC = vm.envString('ARBITRUM');
+        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
 
         (
             address[] memory facets,
@@ -103,16 +103,12 @@ contract ozOracleFacetTest is Test {
         assertTrue(price > 0);
     }
 
-    // function test_getHello() public {
-    //     uint num = wtiFeed.getNum();
-    //     assertTrue(num == 3);
-    // }
 
-
-    // function invariant_myTest() public {
-    //     uint price = OZL.getLastPrice();
-    //     assertTrue(price > 0);
-    // }
+    function invariant_myTest() public {
+        // uint price = OZL.getLastPrice();
+        // assertTrue(price > 0);
+        assertTrue(true);
+    }
 
 
     //------ Helpers -----

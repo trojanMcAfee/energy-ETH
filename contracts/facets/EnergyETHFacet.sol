@@ -12,6 +12,9 @@ import "forge-std/console.sol";
 contract EnergyETHFacet {
 
 
+    // constructor() ERC20('Energy ETH', 'eETH') {}
+
+
     function getEnergyPrice() external view returns(uint256) {
         bytes memory data = abi.encodeWithSignature('getLastPrice()');
         data = Address.functionStaticCall(address(this), data);
