@@ -21,6 +21,7 @@ import '../../interfaces/ozIDiamond.sol';
 contract EnergyETHFacetTest is Test {
 
     uint256 arbFork;
+    uint ethFork;
     
     ozOracleFacet private ozOracle;
     EnergyETHFacet private energyFacet;
@@ -54,7 +55,7 @@ contract EnergyETHFacetTest is Test {
 
     function setUp() public {
         // string memory ARB_RPC = vm.envString('ARBITRUM');
-        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
+        arbFork = vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
 
         (
             address[] memory facets,
@@ -96,6 +97,7 @@ contract EnergyETHFacetTest is Test {
         // });
 
         // targetSelector(selectors);
+
     }
 
     //---------
@@ -138,6 +140,7 @@ contract EnergyETHFacetTest is Test {
     //------ Helpers -----
 
     function invariant_myTest() public {
+        vm.selectFork(arbFork);
         assertTrue(true);
     }
 
