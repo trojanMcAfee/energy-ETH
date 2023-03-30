@@ -45,6 +45,8 @@ contract EnergyETHFacetTest is Test {
     ERC20 USDC = ERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
 
     address bob = makeAddr('bob');
+    address alice = makeAddr('alice');
+    address ray = makeAddr('ray');
 
 
     // struct FuzzSelector {
@@ -84,7 +86,11 @@ contract EnergyETHFacetTest is Test {
 
         deal(address(USDC), bob, 5000 * 10 ** 6);
 
-        _setLabels();
+        // targetSender(alice);
+        // targetSender(ray);
+        // targetSender(address(2));
+        // targetContract(address(energyFacet));
+
 
         //-----------------
         // targetContract(address(ozOracle));
@@ -97,6 +103,8 @@ contract EnergyETHFacetTest is Test {
         // });
 
         // targetSelector(selectors);
+
+        _setLabels();
 
     }
 
@@ -111,19 +119,10 @@ contract EnergyETHFacetTest is Test {
         vm.assume(user_ != address(0));
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
-        require((amount_ * energyFacet.getPrice()) < type(uint256).max);
-
-        uint256 quote = (amount_ * energyFacet.getPrice()) / 10 ** 12;
-        // require(quote <= USDC.balanceOf(bob), 'fff');
-        console.log('qqqq: ', quote);
+        // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
 
         vm.startPrank(bob);
         USDC.approve(address(energyFacet), type(uint).max);
-
-        console.log(4);
-
-        console.log('is - true: ', amount_ <= USDC.balanceOf(bob));
-        console.log('bob: ', bob);
 
         energyFacet.issue(user_, amount_);
 
