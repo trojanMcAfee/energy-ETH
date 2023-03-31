@@ -142,13 +142,15 @@ contract EnergyETHFacetTest is Test {
         vm.assume(amount_ < 3);
         // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
 
+        uint256 quote = (amount_ * OZL.getEnergyPrice()) / 10 ** 12;
+
         vm.startPrank(bob);
         USDC.approve(address(permit2), type(uint).max);
 
         IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
             permitted: IPermit2.TokenPermissions({
                 token: USDC,
-                amount: amount_
+                amount: quote
             }),
             nonce: _randomUint256(),
             deadline: block.timestamp
