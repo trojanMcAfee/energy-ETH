@@ -32,7 +32,7 @@ interface IPermit2 {
         uint256 requestedAmount;
     }
 
-    struct Permit2Buy {
+    struct Permit2Buy { //<--- my struct
         address buyer; //user_
         uint256 amount; //eETH to buy
         uint256 nonce;

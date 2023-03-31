@@ -84,7 +84,6 @@ contract ozOracleFacet {
         if (address(feed_) != address(s.ethFeed)) {
             int256 currPrice = price_.value;
             int256 netDiff = currPrice - _getPrevFeed(price_.roundId, feed_);
-            console.logInt(currPrice);
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
         } else {
             int256 prevEthPrice = _getPrevFeed(price_.roundId, feed_);

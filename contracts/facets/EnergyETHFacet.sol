@@ -57,9 +57,11 @@ contract EnergyETHFacet is ERC20 {
                 to: address(this),
                 requestedAmount: amount
             }),
-            msg.sender,
+            buyOp_.buyer,
             buyOp_.signature
         );
+
+
     }
 
     // struct Permit2Buy {

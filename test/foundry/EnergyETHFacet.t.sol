@@ -5,6 +5,7 @@ pragma solidity 0.8.19;
 // import 'ds-test/test.sol';
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
@@ -51,11 +52,11 @@ contract EnergyETHFacetTest is Test {
     address ozLoupe = 0xd986Ac35f3aD549794DBc70F33084F746b58b534;
     address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
 
-    ERC20 USDC = ERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
+    IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
-    address bob = makeAddr('bob');
+    address bob;
     address alice = makeAddr('alice');
     address ray = makeAddr('ray');
 
@@ -92,9 +93,13 @@ contract EnergyETHFacetTest is Test {
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
 
-        //--------
         energyFacet = new EnergyETHFacet();
 
+        //--------
+
+        ownerKey = _randomUint256();
+        bob = vm.addr(ownerKey);
+        
         deal(address(USDC), bob, 5000 * 10 ** 6);
 
         //-----------------
@@ -112,7 +117,6 @@ contract EnergyETHFacetTest is Test {
         _setLabels();
 
         //---------
-        ownerKey = _randomUint256();
 
     }
 
@@ -136,18 +140,17 @@ contract EnergyETHFacetTest is Test {
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
         // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
+        console.log('amount_: ', amount_);
 
         vm.startPrank(bob);
-        // USDC.approve(address(energyFacet), type(uint).max);
-
-        uint256 nonce = _randomUint256();
+        USDC.approve(address(permit2), type(uint).max);
 
         IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
             permitted: IPermit2.TokenPermissions({
                 token: USDC,
                 amount: amount_
             }),
-            nonce: nonce,
+            nonce: _randomUint256(),
             deadline: block.timestamp
         });
 
@@ -156,8 +159,8 @@ contract EnergyETHFacetTest is Test {
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             buyer: msg.sender,
             amount: amount_,
-            nonce: nonce,
-            deadline: block.timestamp,
+            nonce: permit.nonce,
+            deadline: permit.deadline,
             signature: sig
         });
 
