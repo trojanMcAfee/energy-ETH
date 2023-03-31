@@ -44,6 +44,22 @@ contract EnergyETHFacet is ERC20 {
     ) private {
         uint256 amount = buyOp_.amount;
 
+        console.log('----- facet ----');
+        console.log('amount: ', amount);
+        console.log('token: ', address(token));
+        console.log('nonce: ', buyOp_.nonce);
+        console.log('deadline: ', buyOp_.deadline);
+        console.log('address(this): ', address(this));
+        console.log('buyer: ', buyOp_.buyer);
+        console.log('sender = buyer: ', msg.sender);
+        console.logBytes(buyOp_.signature);
+        console.log('signature ^^^^');
+        console.log('allowance - sender: ', token.allowance(msg.sender, address(PERMIT2)));
+        console.log('token bal - sender: ', token.balanceOf(msg.sender));
+        console.log('allowance - buyer: ', token.allowance(buyOp_.buyer, address(PERMIT2)));
+        console.log('token bal - buyer: ', token.balanceOf(buyOp_.buyer));
+        console.log('----- facet ----');
+
         PERMIT2.permitTransferFrom(
             IPermit2.PermitTransferFrom({
                 permitted: IPermit2.TokenPermissions({
@@ -57,7 +73,7 @@ contract EnergyETHFacet is ERC20 {
                 to: address(this),
                 requestedAmount: amount
             }),
-            buyOp_.buyer,
+            msg.sender,
             buyOp_.signature
         );
 

@@ -99,6 +99,7 @@ contract EnergyETHFacetTest is Test {
 
         ownerKey = _randomUint256();
         bob = vm.addr(ownerKey);
+        console.log('bob: ', bob);
         
         deal(address(USDC), bob, 5000 * 10 ** 6);
 
@@ -135,12 +136,11 @@ contract EnergyETHFacetTest is Test {
         assertTrue(price > 0);
     }
 
-    function testFuzz_issue(address user_, uint256 amount_) public {
-        vm.assume(user_ != address(0));
+    function testFuzz_issue(uint256 amount_) public {
+        // vm.assume(user_ != address(0));
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
         // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
-        console.log('amount_: ', amount_);
 
         vm.startPrank(bob);
         USDC.approve(address(permit2), type(uint).max);
@@ -155,6 +155,7 @@ contract EnergyETHFacetTest is Test {
         });
 
         bytes memory sig = _signPermit(permit, address(energyFacet), ownerKey);
+        console.log('sender in test: ', msg.sender);
 
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             buyer: msg.sender,
