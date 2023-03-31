@@ -9,7 +9,7 @@ import '@openzeppelin/contracts/utils/Address.sol';
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import '../../contracts/facets/ozOracleFacet.sol';
-import '../../contracts/facets/EnergyETHFacet.sol';
+import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
@@ -20,7 +20,7 @@ import '../../libraries/PermitHash.sol';
 import '../../interfaces/IPermit2.sol';
 
 
-contract EnergyETHFacetTest is Test {
+contract EnergyETHTest is Test {
 
     bytes32 constant TOKEN_PERMISSIONS_TYPEHASH =
         keccak256("TokenPermissions(address token,uint256 amount)");
@@ -31,7 +31,7 @@ contract EnergyETHFacetTest is Test {
     uint256 bobKey;
     
     ozOracleFacet private ozOracle;
-    EnergyETHFacet private energyFacet;
+    EnergyETH private energyFacet;
     InitUpgradeV2 private initUpgrade;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
@@ -89,7 +89,7 @@ contract EnergyETHFacetTest is Test {
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
 
-        energyFacet = new EnergyETHFacet();
+        energyFacet = new EnergyETH();
 
         //--------
 
@@ -204,7 +204,7 @@ contract EnergyETHFacetTest is Test {
         wtiFeed = new WtiFeed();
 
         ozOracle = new ozOracleFacet(); 
-        energyFacet = new EnergyETHFacet();
+        energyFacet = new EnergyETH();
 
         address[] memory facets = new address[](2);
         facets[0] = address(ozOracle);

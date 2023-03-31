@@ -60,7 +60,7 @@ async function main() {
   const goldFeedAddr = goldFeed.address;
 
   const ozOracle = await deployContract('ozOracleFacet');
-  const energyFacet = await deployContract('EnergyETHFacet');
+  const energyFacet = await deployContract('EnergyETH');
   
   //Add oracle to ozDiamond
   const feeds = [
@@ -121,7 +121,7 @@ async function testGanacheFeed() {
 async function main2() {
 
   const energyETH = await deployContract(
-    'EnergyETHFacet',
+    'EnergyETH',
     [wtiFeedAddr, volatilityFeedAddr, ethUsdFeed]
   );
 

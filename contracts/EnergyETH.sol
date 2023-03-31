@@ -6,8 +6,8 @@ import '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
-import '../../interfaces/ozIDiamond.sol';
-import '../../interfaces/IPermit2.sol';
+import '../interfaces/ozIDiamond.sol';
+import '../interfaces/IPermit2.sol';
 // import './ozOracleFacet.sol';
 import "forge-std/console.sol";
 // import 'hardhat/console.sol';
@@ -19,7 +19,7 @@ error Cant_approve(uint256 amount);
 error Cant_transfer(uint256 amount);
 
 
-contract EnergyETHFacet is ERC20 {
+contract EnergyETH is ERC20 {
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     address immutable wethAdrr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
