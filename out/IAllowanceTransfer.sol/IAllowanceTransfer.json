@@ -1,0 +1,3563 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        }
+      ],
+      "name": "AllowanceExpired",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ExcessiveInvalidation",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "InsufficientAllowance",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint160",
+          "name": "amount",
+          "type": "uint160"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint48",
+          "name": "expiration",
+          "type": "uint48"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "Lockdown",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint48",
+          "name": "newNonce",
+          "type": "uint48"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint48",
+          "name": "oldNonce",
+          "type": "uint48"
+        }
+      ],
+      "name": "NonceInvalidation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint160",
+          "name": "amount",
+          "type": "uint160"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint48",
+          "name": "expiration",
+          "type": "uint48"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint48",
+          "name": "nonce",
+          "type": "uint48"
+        }
+      ],
+      "name": "Permit",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint160",
+          "name": "",
+          "type": "uint160"
+        },
+        {
+          "internalType": "uint48",
+          "name": "",
+          "type": "uint48"
+        },
+        {
+          "internalType": "uint48",
+          "name": "",
+          "type": "uint48"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint160",
+          "name": "amount",
+          "type": "uint160"
+        },
+        {
+          "internalType": "uint48",
+          "name": "expiration",
+          "type": "uint48"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint48",
+          "name": "newNonce",
+          "type": "uint48"
+        }
+      ],
+      "name": "invalidateNonces",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IAllowanceTransfer.TokenSpenderPair[]",
+          "name": "approvals",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "lockdown",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint160",
+                  "name": "amount",
+                  "type": "uint160"
+                },
+                {
+                  "internalType": "uint48",
+                  "name": "expiration",
+                  "type": "uint48"
+                },
+                {
+                  "internalType": "uint48",
+                  "name": "nonce",
+                  "type": "uint48"
+                }
+              ],
+              "internalType": "struct IAllowanceTransfer.PermitDetails[]",
+              "name": "details",
+              "type": "tuple[]"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "sigDeadline",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IAllowanceTransfer.PermitBatch",
+          "name": "permitBatch",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "permit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint160",
+                  "name": "amount",
+                  "type": "uint160"
+                },
+                {
+                  "internalType": "uint48",
+                  "name": "expiration",
+                  "type": "uint48"
+                },
+                {
+                  "internalType": "uint48",
+                  "name": "nonce",
+                  "type": "uint48"
+                }
+              ],
+              "internalType": "struct IAllowanceTransfer.PermitDetails",
+              "name": "details",
+              "type": "tuple"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "sigDeadline",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct IAllowanceTransfer.PermitSingle",
+          "name": "permitSingle",
+          "type": "tuple"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "permit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "amount",
+              "type": "uint160"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IAllowanceTransfer.AllowanceTransferDetails[]",
+          "name": "transferDetails",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint160",
+          "name": "amount",
+          "type": "uint160"
+        },
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "allowance(address,address,address)": "927da105",
+    "approve(address,address,uint160,uint48)": "87517c45",
+    "invalidateNonces(address,address,uint48)": "65d9723c",
+    "lockdown((address,address)[])": "cc53287f",
+    "permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)": "2b67b570",
+    "permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)": "2a2d80d1",
+    "transferFrom((address,address,uint160,address)[])": "0d58b1db",
+    "transferFrom(address,address,uint160,address)": "36c78516"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"}],\"name\":\"AllowanceExpired\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExcessiveInvalidation\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"InsufficientAllowance\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"indexed\":false,\"internalType\":\"uint48\",\"name\":\"expiration\",\"type\":\"uint48\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"Lockdown\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint48\",\"name\":\"newNonce\",\"type\":\"uint48\"},{\"indexed\":false,\"internalType\":\"uint48\",\"name\":\"oldNonce\",\"type\":\"uint48\"}],\"name\":\"NonceInvalidation\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"indexed\":false,\"internalType\":\"uint48\",\"name\":\"expiration\",\"type\":\"uint48\"},{\"indexed\":false,\"internalType\":\"uint48\",\"name\":\"nonce\",\"type\":\"uint48\"}],\"name\":\"Permit\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint160\",\"name\":\"\",\"type\":\"uint160\"},{\"internalType\":\"uint48\",\"name\":\"\",\"type\":\"uint48\"},{\"internalType\":\"uint48\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"internalType\":\"uint48\",\"name\":\"expiration\",\"type\":\"uint48\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint48\",\"name\":\"newNonce\",\"type\":\"uint48\"}],\"name\":\"invalidateNonces\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"internalType\":\"struct IAllowanceTransfer.TokenSpenderPair[]\",\"name\":\"approvals\",\"type\":\"tuple[]\"}],\"name\":\"lockdown\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"internalType\":\"uint48\",\"name\":\"expiration\",\"type\":\"uint48\"},{\"internalType\":\"uint48\",\"name\":\"nonce\",\"type\":\"uint48\"}],\"internalType\":\"struct IAllowanceTransfer.PermitDetails[]\",\"name\":\"details\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sigDeadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IAllowanceTransfer.PermitBatch\",\"name\":\"permitBatch\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"internalType\":\"uint48\",\"name\":\"expiration\",\"type\":\"uint48\"},{\"internalType\":\"uint48\",\"name\":\"nonce\",\"type\":\"uint48\"}],\"internalType\":\"struct IAllowanceTransfer.PermitDetails\",\"name\":\"details\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sigDeadline\",\"type\":\"uint256\"}],\"internalType\":\"struct IAllowanceTransfer.PermitSingle\",\"name\":\"permitSingle\",\"type\":\"tuple\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"permit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"internalType\":\"struct IAllowanceTransfer.AllowanceTransferDetails[]\",\"name\":\"transferDetails\",\"type\":\"tuple[]\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"amount\",\"type\":\"uint160\"},{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Requires user's token approval on the Permit2 contract\",\"errors\":{\"AllowanceExpired(uint256)\":[{\"params\":{\"deadline\":\"The timestamp at which the allowed amount is no longer valid\"}}],\"InsufficientAllowance(uint256)\":[{\"params\":{\"amount\":\"The maximum amount allowed\"}}]},\"kind\":\"dev\",\"methods\":{\"allowance(address,address,address)\":{\"details\":\"The packed slot holds the allowed amount, expiration at which the allowed amount is no longer valid, and current nonce thats updated on any signature based approvals.\"},\"approve(address,address,uint160,uint48)\":{\"details\":\"The packed allowance also holds a nonce, which will stay unchanged in approveSetting amount to type(uint160).max sets an unlimited approval\",\"params\":{\"amount\":\"The approved amount of the token\",\"expiration\":\"The timestamp at which the approval is no longer valid\",\"spender\":\"The spender address to approve\",\"token\":\"The token to approve\"}},\"invalidateNonces(address,address,uint48)\":{\"details\":\"Can't invalidate more than 2**16 nonces per transaction.\",\"params\":{\"newNonce\":\"The new nonce to set. Invalidates all nonces less than it.\",\"spender\":\"The spender to invalidate nonces for\",\"token\":\"The token to invalidate nonces for\"}},\"lockdown((address,address)[])\":{\"params\":{\"approvals\":\"Array of approvals to revoke.\"}},\"permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)\":{\"details\":\"May fail if the owner's nonce was invalidated in-flight by invalidateNonce\",\"params\":{\"owner\":\"The owner of the tokens being approved\",\"permitSingle\":\"Data signed over by the owner specifying the terms of approval\",\"signature\":\"The owner's signature over the permit data\"}},\"permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)\":{\"details\":\"May fail if the owner's nonce was invalidated in-flight by invalidateNonce\",\"params\":{\"owner\":\"The owner of the tokens being approved\",\"permitBatch\":\"Data signed over by the owner specifying the terms of approval\",\"signature\":\"The owner's signature over the permit data\"}},\"transferFrom((address,address,uint160,address)[])\":{\"details\":\"Requires the from addresses to have approved at least the desired amount of tokens to msg.sender.\",\"params\":{\"transferDetails\":\"Array of owners, recipients, amounts, and tokens for the transfers\"}},\"transferFrom(address,address,uint160,address)\":{\"details\":\"Requires the from address to have approved at least the desired amount of tokens to msg.sender.\",\"params\":{\"amount\":\"The amount of the token to transfer\",\"from\":\"The address to transfer from\",\"to\":\"The address of the recipient\",\"token\":\"The token address to transfer\"}}},\"title\":\"AllowanceTransfer\",\"version\":1},\"userdoc\":{\"errors\":{\"AllowanceExpired(uint256)\":[{\"notice\":\"Thrown when an allowance on a token has expired.\"}],\"ExcessiveInvalidation()\":[{\"notice\":\"Thrown when too many nonces are invalidated.\"}],\"InsufficientAllowance(uint256)\":[{\"notice\":\"Thrown when an allowance on a token has been depleted.\"}]},\"events\":{\"Approval(address,address,address,uint160,uint48)\":{\"notice\":\"Emits an event when the owner successfully sets permissions on a token for the spender.\"},\"Lockdown(address,address,address)\":{\"notice\":\"Emits an event when the owner sets the allowance back to 0 with the lockdown function.\"},\"NonceInvalidation(address,address,address,uint48,uint48)\":{\"notice\":\"Emits an event when the owner successfully invalidates an ordered nonce.\"},\"Permit(address,address,address,uint160,uint48,uint48)\":{\"notice\":\"Emits an event when the owner successfully sets permissions using a permit signature on a token for the spender.\"}},\"kind\":\"user\",\"methods\":{\"allowance(address,address,address)\":{\"notice\":\"A mapping from owner address to token address to spender address to PackedAllowance struct, which contains details and conditions of the approval.The mapping is indexed in the above order see: allowance[ownerAddress][tokenAddress][spenderAddress]\"},\"approve(address,address,uint160,uint48)\":{\"notice\":\"Approves the spender to use up to amount of the specified token up until the expiration\"},\"invalidateNonces(address,address,uint48)\":{\"notice\":\"Invalidate nonces for a given (token, spender) pair\"},\"lockdown((address,address)[])\":{\"notice\":\"Enables performing a \\\"lockdown\\\" of the sender's Permit2 identity by batch revoking approvals\"},\"permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)\":{\"notice\":\"Permit a spender to a given amount of the owners token via the owner's EIP-712 signature\"},\"permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)\":{\"notice\":\"Permit a spender to the signed amounts of the owners tokens via the owner's EIP-712 signature\"},\"transferFrom((address,address,uint160,address)[])\":{\"notice\":\"Transfer approved tokens in a batch\"},\"transferFrom(address,address,uint160,address)\":{\"notice\":\"Transfer approved tokens from one address to another\"}},\"notice\":\"Handles ERC20 token permissions through signature based allowance setting and ERC20 token transfers by checking allowed amounts\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/IAllowanceTransfer.sol\":\"IAllowanceTransfer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/IAllowanceTransfer.sol\":{\"keccak256\":\"0x10284e9330f77d7cdd46817fdd07fe7c6396a69d89c1b8ab6606842a876e2730\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5d83ea85e0f5f28bb1555fe6f39b191563717597a27d2348fd2e9a2a40152565\",\"dweb:/ipfs/Qme6dRSsmjungFj5pi5K1p6F7y3NyUKXZr2F5RhiMcutQG\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "deadline",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "AllowanceExpired"
+        },
+        {
+          "inputs": [],
+          "type": "error",
+          "name": "ExcessiveInvalidation"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "type": "error",
+          "name": "InsufficientAllowance"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint160",
+              "name": "amount",
+              "type": "uint160",
+              "indexed": false
+            },
+            {
+              "internalType": "uint48",
+              "name": "expiration",
+              "type": "uint48",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "Approval",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address",
+              "indexed": false
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "Lockdown",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint48",
+              "name": "newNonce",
+              "type": "uint48",
+              "indexed": false
+            },
+            {
+              "internalType": "uint48",
+              "name": "oldNonce",
+              "type": "uint48",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "NonceInvalidation",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "uint160",
+              "name": "amount",
+              "type": "uint160",
+              "indexed": false
+            },
+            {
+              "internalType": "uint48",
+              "name": "expiration",
+              "type": "uint48",
+              "indexed": false
+            },
+            {
+              "internalType": "uint48",
+              "name": "nonce",
+              "type": "uint48",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "Permit",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "allowance",
+          "outputs": [
+            {
+              "internalType": "uint160",
+              "name": "",
+              "type": "uint160"
+            },
+            {
+              "internalType": "uint48",
+              "name": "",
+              "type": "uint48"
+            },
+            {
+              "internalType": "uint48",
+              "name": "",
+              "type": "uint48"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "amount",
+              "type": "uint160"
+            },
+            {
+              "internalType": "uint48",
+              "name": "expiration",
+              "type": "uint48"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "approve"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint48",
+              "name": "newNonce",
+              "type": "uint48"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "invalidateNonces"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "struct IAllowanceTransfer.TokenSpenderPair[]",
+              "name": "approvals",
+              "type": "tuple[]",
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "spender",
+                  "type": "address"
+                }
+              ]
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "lockdown"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "struct IAllowanceTransfer.PermitBatch",
+              "name": "permitBatch",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "struct IAllowanceTransfer.PermitDetails[]",
+                  "name": "details",
+                  "type": "tuple[]",
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "token",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint160",
+                      "name": "amount",
+                      "type": "uint160"
+                    },
+                    {
+                      "internalType": "uint48",
+                      "name": "expiration",
+                      "type": "uint48"
+                    },
+                    {
+                      "internalType": "uint48",
+                      "name": "nonce",
+                      "type": "uint48"
+                    }
+                  ]
+                },
+                {
+                  "internalType": "address",
+                  "name": "spender",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "sigDeadline",
+                  "type": "uint256"
+                }
+              ]
+            },
+            {
+              "internalType": "bytes",
+              "name": "signature",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "permit"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "struct IAllowanceTransfer.PermitSingle",
+              "name": "permitSingle",
+              "type": "tuple",
+              "components": [
+                {
+                  "internalType": "struct IAllowanceTransfer.PermitDetails",
+                  "name": "details",
+                  "type": "tuple",
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "token",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint160",
+                      "name": "amount",
+                      "type": "uint160"
+                    },
+                    {
+                      "internalType": "uint48",
+                      "name": "expiration",
+                      "type": "uint48"
+                    },
+                    {
+                      "internalType": "uint48",
+                      "name": "nonce",
+                      "type": "uint48"
+                    }
+                  ]
+                },
+                {
+                  "internalType": "address",
+                  "name": "spender",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "sigDeadline",
+                  "type": "uint256"
+                }
+              ]
+            },
+            {
+              "internalType": "bytes",
+              "name": "signature",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "permit"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "struct IAllowanceTransfer.AllowanceTransferDetails[]",
+              "name": "transferDetails",
+              "type": "tuple[]",
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "from",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint160",
+                  "name": "amount",
+                  "type": "uint160"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                }
+              ]
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "transferFrom"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint160",
+              "name": "amount",
+              "type": "uint160"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "transferFrom"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "allowance(address,address,address)": {
+            "details": "The packed slot holds the allowed amount, expiration at which the allowed amount is no longer valid, and current nonce thats updated on any signature based approvals."
+          },
+          "approve(address,address,uint160,uint48)": {
+            "details": "The packed allowance also holds a nonce, which will stay unchanged in approveSetting amount to type(uint160).max sets an unlimited approval",
+            "params": {
+              "amount": "The approved amount of the token",
+              "expiration": "The timestamp at which the approval is no longer valid",
+              "spender": "The spender address to approve",
+              "token": "The token to approve"
+            }
+          },
+          "invalidateNonces(address,address,uint48)": {
+            "details": "Can't invalidate more than 2**16 nonces per transaction.",
+            "params": {
+              "newNonce": "The new nonce to set. Invalidates all nonces less than it.",
+              "spender": "The spender to invalidate nonces for",
+              "token": "The token to invalidate nonces for"
+            }
+          },
+          "lockdown((address,address)[])": {
+            "params": {
+              "approvals": "Array of approvals to revoke."
+            }
+          },
+          "permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)": {
+            "details": "May fail if the owner's nonce was invalidated in-flight by invalidateNonce",
+            "params": {
+              "owner": "The owner of the tokens being approved",
+              "permitSingle": "Data signed over by the owner specifying the terms of approval",
+              "signature": "The owner's signature over the permit data"
+            }
+          },
+          "permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)": {
+            "details": "May fail if the owner's nonce was invalidated in-flight by invalidateNonce",
+            "params": {
+              "owner": "The owner of the tokens being approved",
+              "permitBatch": "Data signed over by the owner specifying the terms of approval",
+              "signature": "The owner's signature over the permit data"
+            }
+          },
+          "transferFrom((address,address,uint160,address)[])": {
+            "details": "Requires the from addresses to have approved at least the desired amount of tokens to msg.sender.",
+            "params": {
+              "transferDetails": "Array of owners, recipients, amounts, and tokens for the transfers"
+            }
+          },
+          "transferFrom(address,address,uint160,address)": {
+            "details": "Requires the from address to have approved at least the desired amount of tokens to msg.sender.",
+            "params": {
+              "amount": "The amount of the token to transfer",
+              "from": "The address to transfer from",
+              "to": "The address of the recipient",
+              "token": "The token address to transfer"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "allowance(address,address,address)": {
+            "notice": "A mapping from owner address to token address to spender address to PackedAllowance struct, which contains details and conditions of the approval.The mapping is indexed in the above order see: allowance[ownerAddress][tokenAddress][spenderAddress]"
+          },
+          "approve(address,address,uint160,uint48)": {
+            "notice": "Approves the spender to use up to amount of the specified token up until the expiration"
+          },
+          "invalidateNonces(address,address,uint48)": {
+            "notice": "Invalidate nonces for a given (token, spender) pair"
+          },
+          "lockdown((address,address)[])": {
+            "notice": "Enables performing a \"lockdown\" of the sender's Permit2 identity by batch revoking approvals"
+          },
+          "permit(address,((address,uint160,uint48,uint48),address,uint256),bytes)": {
+            "notice": "Permit a spender to a given amount of the owners token via the owner's EIP-712 signature"
+          },
+          "permit(address,((address,uint160,uint48,uint48)[],address,uint256),bytes)": {
+            "notice": "Permit a spender to the signed amounts of the owners tokens via the owner's EIP-712 signature"
+          },
+          "transferFrom((address,address,uint160,address)[])": {
+            "notice": "Transfer approved tokens in a batch"
+          },
+          "transferFrom(address,address,uint160,address)": {
+            "notice": "Transfer approved tokens from one address to another"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":@eth-optimism/=node_modules/@eth-optimism/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@uniswap/=node_modules/@uniswap/",
+        ":base64-sol/=node_modules/base64-sol/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=node_modules/hardhat/",
+        ":solmate/=node_modules/solmate/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "interfaces/IAllowanceTransfer.sol": "IAllowanceTransfer"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "interfaces/IAllowanceTransfer.sol": {
+        "keccak256": "0x10284e9330f77d7cdd46817fdd07fe7c6396a69d89c1b8ab6606842a876e2730",
+        "urls": [
+          "bzz-raw://5d83ea85e0f5f28bb1555fe6f39b191563717597a27d2348fd2e9a2a40152565",
+          "dweb:/ipfs/Qme6dRSsmjungFj5pi5K1p6F7y3NyUKXZr2F5RhiMcutQG"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "interfaces/IAllowanceTransfer.sol",
+    "id": 997,
+    "exportedSymbols": {
+      "IAllowanceTransfer": [
+        996
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "32:7552:7",
+    "nodes": [
+      {
+        "id": 796,
+        "nodeType": "PragmaDirective",
+        "src": "32:24:7",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".17"
+        ]
+      },
+      {
+        "id": 996,
+        "nodeType": "ContractDefinition",
+        "src": "291:7293:7",
+        "nodes": [
+          {
+            "id": 802,
+            "nodeType": "ErrorDefinition",
+            "src": "476:41:7",
+            "nodes": [],
+            "documentation": {
+              "id": 798,
+              "nodeType": "StructuredDocumentation",
+              "src": "326:145:7",
+              "text": "@notice Thrown when an allowance on a token has expired.\n @param deadline The timestamp at which the allowed amount is no longer valid"
+            },
+            "errorSelector": "d81b2f2e",
+            "name": "AllowanceExpired",
+            "nameLocation": "482:16:7",
+            "parameters": {
+              "id": 801,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 800,
+                  "mutability": "mutable",
+                  "name": "deadline",
+                  "nameLocation": "507:8:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 802,
+                  "src": "499:16:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 799,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "499:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "498:18:7"
+            }
+          },
+          {
+            "id": 807,
+            "nodeType": "ErrorDefinition",
+            "src": "643:44:7",
+            "nodes": [],
+            "documentation": {
+              "id": 803,
+              "nodeType": "StructuredDocumentation",
+              "src": "523:115:7",
+              "text": "@notice Thrown when an allowance on a token has been depleted.\n @param amount The maximum amount allowed"
+            },
+            "errorSelector": "f96fb071",
+            "name": "InsufficientAllowance",
+            "nameLocation": "649:21:7",
+            "parameters": {
+              "id": 806,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 805,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "679:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 807,
+                  "src": "671:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 804,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "671:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "670:16:7"
+            }
+          },
+          {
+            "id": 810,
+            "nodeType": "ErrorDefinition",
+            "src": "754:30:7",
+            "nodes": [],
+            "documentation": {
+              "id": 808,
+              "nodeType": "StructuredDocumentation",
+              "src": "693:56:7",
+              "text": "@notice Thrown when too many nonces are invalidated."
+            },
+            "errorSelector": "24d35a26",
+            "name": "ExcessiveInvalidation",
+            "nameLocation": "760:21:7",
+            "parameters": {
+              "id": 809,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "781:2:7"
+            }
+          },
+          {
+            "id": 823,
+            "nodeType": "EventDefinition",
+            "src": "879:143:7",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 811,
+              "nodeType": "StructuredDocumentation",
+              "src": "790:84:7",
+              "text": "@notice Emits an event when the owner successfully invalidates an ordered nonce."
+            },
+            "eventSelector": "55eb90d810e1700b35a8e7e25395ff7f2b2259abd7415ca2284dfb1c246418f3",
+            "name": "NonceInvalidation",
+            "nameLocation": "885:17:7",
+            "parameters": {
+              "id": 822,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 813,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "928:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 823,
+                  "src": "912:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 812,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "912:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 815,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "951:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 823,
+                  "src": "935:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 814,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "935:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 817,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "974:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 823,
+                  "src": "958:23:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 816,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "958:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 819,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "newNonce",
+                  "nameLocation": "990:8:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 823,
+                  "src": "983:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 818,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "983:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 821,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "oldNonce",
+                  "nameLocation": "1007:8:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 823,
+                  "src": "1000:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 820,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1000:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "902:119:7"
+            }
+          },
+          {
+            "id": 836,
+            "nodeType": "EventDefinition",
+            "src": "1132:135:7",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 824,
+              "nodeType": "StructuredDocumentation",
+              "src": "1028:99:7",
+              "text": "@notice Emits an event when the owner successfully sets permissions on a token for the spender."
+            },
+            "eventSelector": "da9fa7c1b00402c17d0161b249b1ab8bbec047c5a52207b9c112deffd817036b",
+            "name": "Approval",
+            "nameLocation": "1138:8:7",
+            "parameters": {
+              "id": 835,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 826,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1172:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "1156:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 825,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1156:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 828,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "1195:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "1179:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 827,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1179:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 830,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "1218:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "1202:23:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 829,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1202:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 832,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1235:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "1227:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 831,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1227:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 834,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "1250:10:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 836,
+                  "src": "1243:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 833,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1243:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1146:120:7"
+            }
+          },
+          {
+            "id": 851,
+            "nodeType": "EventDefinition",
+            "src": "1402:187:7",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 837,
+              "nodeType": "StructuredDocumentation",
+              "src": "1273:124:7",
+              "text": "@notice Emits an event when the owner successfully sets permissions using a permit signature on a token for the spender."
+            },
+            "eventSelector": "c6a377bfc4eb120024a8ac08eef205be16b817020812c73223e81d1bdb9708ec",
+            "name": "Permit",
+            "nameLocation": "1408:6:7",
+            "parameters": {
+              "id": 850,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 839,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1440:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1424:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 838,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1424:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 841,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "1471:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1455:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 840,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1455:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 843,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "1502:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1486:23:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 842,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1486:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 845,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1527:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1519:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 844,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1519:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 847,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "1550:10:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1543:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 846,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1543:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 849,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "nonce",
+                  "nameLocation": "1577:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 851,
+                  "src": "1570:12:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 848,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1570:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1414:174:7"
+            }
+          },
+          {
+            "id": 860,
+            "nodeType": "EventDefinition",
+            "src": "1698:70:7",
+            "nodes": [],
+            "anonymous": false,
+            "documentation": {
+              "id": 852,
+              "nodeType": "StructuredDocumentation",
+              "src": "1595:98:7",
+              "text": "@notice Emits an event when the owner sets the allowance back to 0 with the lockdown function."
+            },
+            "eventSelector": "89b1add15eff56b3dfe299ad94e01f2b52fbcb80ae1a3baea6ae8c04cb2b98a4",
+            "name": "Lockdown",
+            "nameLocation": "1704:8:7",
+            "parameters": {
+              "id": 859,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 854,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "1729:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 860,
+                  "src": "1713:21:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 853,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1713:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 856,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "1744:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 860,
+                  "src": "1736:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 855,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1736:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 858,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "1759:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 860,
+                  "src": "1751:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 857,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1751:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1712:55:7"
+            }
+          },
+          {
+            "id": 869,
+            "nodeType": "StructDefinition",
+            "src": "1818:364:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.PermitDetails",
+            "members": [
+              {
+                "constant": false,
+                "id": 862,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "1888:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 869,
+                "src": "1880:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 861,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1880:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 864,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "1958:6:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 869,
+                "src": "1950:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint160",
+                  "typeString": "uint160"
+                },
+                "typeName": {
+                  "id": 863,
+                  "name": "uint160",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1950:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 866,
+                "mutability": "mutable",
+                "name": "expiration",
+                "nameLocation": "2055:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 869,
+                "src": "2048:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint48",
+                  "typeString": "uint48"
+                },
+                "typeName": {
+                  "id": 865,
+                  "name": "uint48",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2048:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 868,
+                "mutability": "mutable",
+                "name": "nonce",
+                "nameLocation": "2170:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 869,
+                "src": "2163:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint48",
+                  "typeString": "uint48"
+                },
+                "typeName": {
+                  "id": 867,
+                  "name": "uint48",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2163:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PermitDetails",
+            "nameLocation": "1825:13:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 877,
+            "nodeType": "StructDefinition",
+            "src": "2258:264:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.PermitSingle",
+            "members": [
+              {
+                "constant": false,
+                "id": 872,
+                "mutability": "mutable",
+                "name": "details",
+                "nameLocation": "2356:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 877,
+                "src": "2342:21:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PermitDetails_$869_storage_ptr",
+                  "typeString": "struct IAllowanceTransfer.PermitDetails"
+                },
+                "typeName": {
+                  "id": 871,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 870,
+                    "name": "PermitDetails",
+                    "nameLocations": [
+                      "2342:13:7"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 869,
+                    "src": "2342:13:7"
+                  },
+                  "referencedDeclaration": 869,
+                  "src": "2342:13:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PermitDetails_$869_storage_ptr",
+                    "typeString": "struct IAllowanceTransfer.PermitDetails"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 874,
+                "mutability": "mutable",
+                "name": "spender",
+                "nameLocation": "2435:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 877,
+                "src": "2427:15:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 873,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2427:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 876,
+                "mutability": "mutable",
+                "name": "sigDeadline",
+                "nameLocation": "2504:11:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 877,
+                "src": "2496:19:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 875,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2496:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PermitSingle",
+            "nameLocation": "2265:12:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 886,
+            "nodeType": "StructDefinition",
+            "src": "2600:268:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.PermitBatch",
+            "members": [
+              {
+                "constant": false,
+                "id": 881,
+                "mutability": "mutable",
+                "name": "details",
+                "nameLocation": "2702:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 886,
+                "src": "2686:23:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_PermitDetails_$869_storage_$dyn_storage_ptr",
+                  "typeString": "struct IAllowanceTransfer.PermitDetails[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 879,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 878,
+                      "name": "PermitDetails",
+                      "nameLocations": [
+                        "2686:13:7"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 869,
+                      "src": "2686:13:7"
+                    },
+                    "referencedDeclaration": 869,
+                    "src": "2686:13:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PermitDetails_$869_storage_ptr",
+                      "typeString": "struct IAllowanceTransfer.PermitDetails"
+                    }
+                  },
+                  "id": 880,
+                  "nodeType": "ArrayTypeName",
+                  "src": "2686:15:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_PermitDetails_$869_storage_$dyn_storage_ptr",
+                    "typeString": "struct IAllowanceTransfer.PermitDetails[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 883,
+                "mutability": "mutable",
+                "name": "spender",
+                "nameLocation": "2781:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 886,
+                "src": "2773:15:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 882,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2773:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 885,
+                "mutability": "mutable",
+                "name": "sigDeadline",
+                "nameLocation": "2850:11:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 886,
+                "src": "2842:19:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 884,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "2842:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PermitBatch",
+            "nameLocation": "2607:11:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 893,
+            "nodeType": "StructDefinition",
+            "src": "3096:246:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.PackedAllowance",
+            "members": [
+              {
+                "constant": false,
+                "id": 888,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "3163:6:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 893,
+                "src": "3155:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint160",
+                  "typeString": "uint160"
+                },
+                "typeName": {
+                  "id": 887,
+                  "name": "uint160",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3155:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 890,
+                "mutability": "mutable",
+                "name": "expiration",
+                "nameLocation": "3215:10:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 893,
+                "src": "3208:17:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint48",
+                  "typeString": "uint48"
+                },
+                "typeName": {
+                  "id": 889,
+                  "name": "uint48",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3208:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 892,
+                "mutability": "mutable",
+                "name": "nonce",
+                "nameLocation": "3330:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 893,
+                "src": "3323:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint48",
+                  "typeString": "uint48"
+                },
+                "typeName": {
+                  "id": 891,
+                  "name": "uint48",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3323:6:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PackedAllowance",
+            "nameLocation": "3103:15:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 898,
+            "nodeType": "StructDefinition",
+            "src": "3386:155:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.TokenSpenderPair",
+            "members": [
+              {
+                "constant": false,
+                "id": 895,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "3473:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 898,
+                "src": "3465:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 894,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3465:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 897,
+                "mutability": "mutable",
+                "name": "spender",
+                "nameLocation": "3527:7:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 898,
+                "src": "3519:15:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 896,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3519:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "TokenSpenderPair",
+            "nameLocation": "3393:16:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 907,
+            "nodeType": "StructDefinition",
+            "src": "3593:274:7",
+            "nodes": [],
+            "canonicalName": "IAllowanceTransfer.AllowanceTransferDetails",
+            "members": [
+              {
+                "constant": false,
+                "id": 900,
+                "mutability": "mutable",
+                "name": "from",
+                "nameLocation": "3677:4:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 907,
+                "src": "3669:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 899,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3669:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 902,
+                "mutability": "mutable",
+                "name": "to",
+                "nameLocation": "3737:2:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 907,
+                "src": "3729:10:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 901,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3729:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 904,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "3792:6:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 907,
+                "src": "3784:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint160",
+                  "typeString": "uint160"
+                },
+                "typeName": {
+                  "id": 903,
+                  "name": "uint160",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3784:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 906,
+                "mutability": "mutable",
+                "name": "token",
+                "nameLocation": "3855:5:7",
+                "nodeType": "VariableDeclaration",
+                "scope": 907,
+                "src": "3847:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 905,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "3847:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "AllowanceTransferDetails",
+            "nameLocation": "3600:24:7",
+            "scope": 996,
+            "visibility": "public"
+          },
+          {
+            "id": 923,
+            "nodeType": "FunctionDefinition",
+            "src": "4333:94:7",
+            "nodes": [],
+            "documentation": {
+              "id": 908,
+              "nodeType": "StructuredDocumentation",
+              "src": "3873:455:7",
+              "text": "@notice A mapping from owner address to token address to spender address to PackedAllowance struct, which contains details and conditions of the approval.\n @notice The mapping is indexed in the above order see: allowance[ownerAddress][tokenAddress][spenderAddress]\n @dev The packed slot holds the allowed amount, expiration at which the allowed amount is no longer valid, and current nonce thats updated on any signature based approvals."
+            },
+            "functionSelector": "927da105",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "allowance",
+            "nameLocation": "4342:9:7",
+            "parameters": {
+              "id": 915,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 910,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4352:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 909,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4352:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 912,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4361:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 911,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4361:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 914,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4370:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 913,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4370:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4351:27:7"
+            },
+            "returnParameters": {
+              "id": 922,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 917,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4402:7:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 916,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4402:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 919,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4411:6:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 918,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4411:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 921,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 923,
+                  "src": "4419:6:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 920,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4419:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4401:25:7"
+            },
+            "scope": 996,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 935,
+            "nodeType": "FunctionDefinition",
+            "src": "4936:93:7",
+            "nodes": [],
+            "documentation": {
+              "id": 924,
+              "nodeType": "StructuredDocumentation",
+              "src": "4433:498:7",
+              "text": "@notice Approves the spender to use up to amount of the specified token up until the expiration\n @param token The token to approve\n @param spender The spender address to approve\n @param amount The approved amount of the token\n @param expiration The timestamp at which the approval is no longer valid\n @dev The packed allowance also holds a nonce, which will stay unchanged in approve\n @dev Setting amount to type(uint160).max sets an unlimited approval"
+            },
+            "functionSelector": "87517c45",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approve",
+            "nameLocation": "4945:7:7",
+            "parameters": {
+              "id": 933,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 926,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "4961:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 935,
+                  "src": "4953:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 925,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4953:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 928,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "4976:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 935,
+                  "src": "4968:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 927,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4968:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 930,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "4993:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 935,
+                  "src": "4985:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 929,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4985:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 932,
+                  "mutability": "mutable",
+                  "name": "expiration",
+                  "nameLocation": "5008:10:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 935,
+                  "src": "5001:17:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 931,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5001:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4952:67:7"
+            },
+            "returnParameters": {
+              "id": 934,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5028:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 946,
+            "nodeType": "FunctionDefinition",
+            "src": "5447:100:7",
+            "nodes": [],
+            "documentation": {
+              "id": 936,
+              "nodeType": "StructuredDocumentation",
+              "src": "5035:407:7",
+              "text": "@notice Permit a spender to a given amount of the owners token via the owner's EIP-712 signature\n @dev May fail if the owner's nonce was invalidated in-flight by invalidateNonce\n @param owner The owner of the tokens being approved\n @param permitSingle Data signed over by the owner specifying the terms of approval\n @param signature The owner's signature over the permit data"
+            },
+            "functionSelector": "2b67b570",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "permit",
+            "nameLocation": "5456:6:7",
+            "parameters": {
+              "id": 944,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 938,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "5471:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 946,
+                  "src": "5463:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 937,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5463:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 941,
+                  "mutability": "mutable",
+                  "name": "permitSingle",
+                  "nameLocation": "5498:12:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 946,
+                  "src": "5478:32:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PermitSingle_$877_memory_ptr",
+                    "typeString": "struct IAllowanceTransfer.PermitSingle"
+                  },
+                  "typeName": {
+                    "id": 940,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 939,
+                      "name": "PermitSingle",
+                      "nameLocations": [
+                        "5478:12:7"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 877,
+                      "src": "5478:12:7"
+                    },
+                    "referencedDeclaration": 877,
+                    "src": "5478:12:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PermitSingle_$877_storage_ptr",
+                      "typeString": "struct IAllowanceTransfer.PermitSingle"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 943,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "5527:9:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 946,
+                  "src": "5512:24:7",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 942,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5512:5:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5462:75:7"
+            },
+            "returnParameters": {
+              "id": 945,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5546:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 957,
+            "nodeType": "FunctionDefinition",
+            "src": "5969:98:7",
+            "nodes": [],
+            "documentation": {
+              "id": 947,
+              "nodeType": "StructuredDocumentation",
+              "src": "5553:411:7",
+              "text": "@notice Permit a spender to the signed amounts of the owners tokens via the owner's EIP-712 signature\n @dev May fail if the owner's nonce was invalidated in-flight by invalidateNonce\n @param owner The owner of the tokens being approved\n @param permitBatch Data signed over by the owner specifying the terms of approval\n @param signature The owner's signature over the permit data"
+            },
+            "functionSelector": "2a2d80d1",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "permit",
+            "nameLocation": "5978:6:7",
+            "parameters": {
+              "id": 955,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 949,
+                  "mutability": "mutable",
+                  "name": "owner",
+                  "nameLocation": "5993:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "5985:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 948,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5985:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 952,
+                  "mutability": "mutable",
+                  "name": "permitBatch",
+                  "nameLocation": "6019:11:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "6000:30:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PermitBatch_$886_memory_ptr",
+                    "typeString": "struct IAllowanceTransfer.PermitBatch"
+                  },
+                  "typeName": {
+                    "id": 951,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 950,
+                      "name": "PermitBatch",
+                      "nameLocations": [
+                        "6000:11:7"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 886,
+                      "src": "6000:11:7"
+                    },
+                    "referencedDeclaration": 886,
+                    "src": "6000:11:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_PermitBatch_$886_storage_ptr",
+                      "typeString": "struct IAllowanceTransfer.PermitBatch"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 954,
+                  "mutability": "mutable",
+                  "name": "signature",
+                  "nameLocation": "6047:9:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 957,
+                  "src": "6032:24:7",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 953,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6032:5:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5984:73:7"
+            },
+            "returnParameters": {
+              "id": 956,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6066:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 969,
+            "nodeType": "FunctionDefinition",
+            "src": "6464:88:7",
+            "nodes": [],
+            "documentation": {
+              "id": 958,
+              "nodeType": "StructuredDocumentation",
+              "src": "6073:386:7",
+              "text": "@notice Transfer approved tokens from one address to another\n @param from The address to transfer from\n @param to The address of the recipient\n @param amount The amount of the token to transfer\n @param token The token address to transfer\n @dev Requires the from address to have approved at least the desired amount\n of tokens to msg.sender."
+            },
+            "functionSelector": "36c78516",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nameLocation": "6473:12:7",
+            "parameters": {
+              "id": 967,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 960,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "6494:4:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 969,
+                  "src": "6486:12:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 959,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6486:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 962,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "6508:2:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 969,
+                  "src": "6500:10:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 961,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6500:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 964,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "6520:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 969,
+                  "src": "6512:14:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint160",
+                    "typeString": "uint160"
+                  },
+                  "typeName": {
+                    "id": 963,
+                    "name": "uint160",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6512:7:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 966,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "6536:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 969,
+                  "src": "6528:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 965,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6528:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6485:57:7"
+            },
+            "returnParameters": {
+              "id": 968,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6551:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 977,
+            "nodeType": "FunctionDefinition",
+            "src": "6827:84:7",
+            "nodes": [],
+            "documentation": {
+              "id": 970,
+              "nodeType": "StructuredDocumentation",
+              "src": "6558:264:7",
+              "text": "@notice Transfer approved tokens in a batch\n @param transferDetails Array of owners, recipients, amounts, and tokens for the transfers\n @dev Requires the from addresses to have approved at least the desired amount\n of tokens to msg.sender."
+            },
+            "functionSelector": "0d58b1db",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nameLocation": "6836:12:7",
+            "parameters": {
+              "id": 975,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 974,
+                  "mutability": "mutable",
+                  "name": "transferDetails",
+                  "nameLocation": "6885:15:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 977,
+                  "src": "6849:51:7",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_AllowanceTransferDetails_$907_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "struct IAllowanceTransfer.AllowanceTransferDetails[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 972,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 971,
+                        "name": "AllowanceTransferDetails",
+                        "nameLocations": [
+                          "6849:24:7"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 907,
+                        "src": "6849:24:7"
+                      },
+                      "referencedDeclaration": 907,
+                      "src": "6849:24:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_AllowanceTransferDetails_$907_storage_ptr",
+                        "typeString": "struct IAllowanceTransfer.AllowanceTransferDetails"
+                      }
+                    },
+                    "id": 973,
+                    "nodeType": "ArrayTypeName",
+                    "src": "6849:26:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_AllowanceTransferDetails_$907_storage_$dyn_storage_ptr",
+                      "typeString": "struct IAllowanceTransfer.AllowanceTransferDetails[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6848:53:7"
+            },
+            "returnParameters": {
+              "id": 976,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6910:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 985,
+            "nodeType": "FunctionDefinition",
+            "src": "7089:66:7",
+            "nodes": [],
+            "documentation": {
+              "id": 978,
+              "nodeType": "StructuredDocumentation",
+              "src": "6917:167:7",
+              "text": "@notice Enables performing a \"lockdown\" of the sender's Permit2 identity\n by batch revoking approvals\n @param approvals Array of approvals to revoke."
+            },
+            "functionSelector": "cc53287f",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lockdown",
+            "nameLocation": "7098:8:7",
+            "parameters": {
+              "id": 983,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 982,
+                  "mutability": "mutable",
+                  "name": "approvals",
+                  "nameLocation": "7135:9:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 985,
+                  "src": "7107:37:7",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TokenSpenderPair_$898_calldata_ptr_$dyn_calldata_ptr",
+                    "typeString": "struct IAllowanceTransfer.TokenSpenderPair[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 980,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 979,
+                        "name": "TokenSpenderPair",
+                        "nameLocations": [
+                          "7107:16:7"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 898,
+                        "src": "7107:16:7"
+                      },
+                      "referencedDeclaration": 898,
+                      "src": "7107:16:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_TokenSpenderPair_$898_storage_ptr",
+                        "typeString": "struct IAllowanceTransfer.TokenSpenderPair"
+                      }
+                    },
+                    "id": 981,
+                    "nodeType": "ArrayTypeName",
+                    "src": "7107:18:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_TokenSpenderPair_$898_storage_$dyn_storage_ptr",
+                      "typeString": "struct IAllowanceTransfer.TokenSpenderPair[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7106:39:7"
+            },
+            "returnParameters": {
+              "id": 984,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "7154:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 995,
+            "nodeType": "FunctionDefinition",
+            "src": "7498:84:7",
+            "nodes": [],
+            "documentation": {
+              "id": 986,
+              "nodeType": "StructuredDocumentation",
+              "src": "7161:332:7",
+              "text": "@notice Invalidate nonces for a given (token, spender) pair\n @param token The token to invalidate nonces for\n @param spender The spender to invalidate nonces for\n @param newNonce The new nonce to set. Invalidates all nonces less than it.\n @dev Can't invalidate more than 2**16 nonces per transaction."
+            },
+            "functionSelector": "65d9723c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "invalidateNonces",
+            "nameLocation": "7507:16:7",
+            "parameters": {
+              "id": 993,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 988,
+                  "mutability": "mutable",
+                  "name": "token",
+                  "nameLocation": "7532:5:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "7524:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 987,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7524:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 990,
+                  "mutability": "mutable",
+                  "name": "spender",
+                  "nameLocation": "7547:7:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "7539:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 989,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7539:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 992,
+                  "mutability": "mutable",
+                  "name": "newNonce",
+                  "nameLocation": "7563:8:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 995,
+                  "src": "7556:15:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint48",
+                    "typeString": "uint48"
+                  },
+                  "typeName": {
+                    "id": 991,
+                    "name": "uint48",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7556:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint48",
+                      "typeString": "uint48"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7523:49:7"
+            },
+            "returnParameters": {
+              "id": 994,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "7581:0:7"
+            },
+            "scope": 996,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IAllowanceTransfer",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 797,
+          "nodeType": "StructuredDocumentation",
+          "src": "58:233:7",
+          "text": "@title AllowanceTransfer\n @notice Handles ERC20 token permissions through signature based allowance setting and ERC20 token transfers by checking allowed amounts\n @dev Requires user's token approval on the Permit2 contract"
+        },
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          996
+        ],
+        "name": "IAllowanceTransfer",
+        "nameLocation": "301:18:7",
+        "scope": 997,
+        "usedErrors": [
+          802,
+          807,
+          810
+        ]
+      }
+    ],
+    "license": "MIT"
+  },
+  "id": 7
+}

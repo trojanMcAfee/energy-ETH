@@ -16,12 +16,21 @@ import '../../contracts/testing-files/GoldFeed.sol';
 // import '../../contracts/ozDiamond.sol';
 import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
+import '../../libraries/PermitHash.sol';
+import '../../interfaces/IPermit2.sol';
 
 
 contract EnergyETHFacetTest is Test {
 
+    bytes32 constant TOKEN_PERMISSIONS_TYPEHASH =
+        keccak256("TokenPermissions(address token,uint256 amount)");
+    bytes32 constant PERMIT_TRANSFER_FROM_TYPEHASH = keccak256(
+        "PermitTransferFrom(TokenPermissions permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
+    );
+
     uint256 arbFork;
     uint ethFork;
+    uint256 ownerKey;
     
     ozOracleFacet private ozOracle;
     EnergyETHFacet private energyFacet;
@@ -43,6 +52,8 @@ contract EnergyETHFacetTest is Test {
     address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
 
     ERC20 USDC = ERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
+
+    IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
     address bob = makeAddr('bob');
     address alice = makeAddr('alice');
@@ -86,12 +97,6 @@ contract EnergyETHFacetTest is Test {
 
         deal(address(USDC), bob, 5000 * 10 ** 6);
 
-        // targetSender(alice);
-        // targetSender(ray);
-        // targetSender(address(2));
-        // targetContract(address(energyFacet));
-
-
         //-----------------
         // targetContract(address(ozOracle));
         // bytes4[] memory selecs = new bytes4[](1);
@@ -106,7 +111,18 @@ contract EnergyETHFacetTest is Test {
 
         _setLabels();
 
+        //---------
+        ownerKey = _randomUint256();
+
     }
+
+    // struct Permit2Buy {
+    //     address buyer; //user_
+    //     uint256 amount; //eETH to buy
+    //     uint256 nonce;
+    //     uint256 deadline;
+    //     bytes signature;
+    // }
 
     //---------
 
@@ -122,9 +138,30 @@ contract EnergyETHFacetTest is Test {
         // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
 
         vm.startPrank(bob);
-        USDC.approve(address(energyFacet), type(uint).max);
+        // USDC.approve(address(energyFacet), type(uint).max);
 
-        energyFacet.issue(user_, amount_);
+        uint256 nonce = _randomUint256();
+
+        IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
+            permitted: IPermit2.TokenPermissions({
+                token: USDC,
+                amount: amount_
+            }),
+            nonce: nonce,
+            deadline: block.timestamp
+        });
+
+        bytes memory sig = _signPermit(permit, address(energyFacet), ownerKey);
+
+        IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
+            buyer: msg.sender,
+            amount: amount_,
+            nonce: nonce,
+            deadline: block.timestamp,
+            signature: sig
+        });
+
+        energyFacet.issue(buyOp);
 
         vm.stopPrank();
 
@@ -201,6 +238,62 @@ contract EnergyETHFacetTest is Test {
         vm.label(revenueFacet, 'revenueFacet');
         vm.label(address(energyFacet), 'energyFacet');
         vm.label(address(USDC), 'USDC');
+        vm.label(address(permit2), 'permit2');
+    }
+
+
+    //---------
+    function _randomBytes32() internal view returns (bytes32) {
+        return keccak256(abi.encode(
+            tx.origin,
+            block.number,
+            block.timestamp,
+            block.coinbase,
+            address(this).codehash,
+            gasleft()
+        ));
+    }
+
+    function _randomUint256() internal view returns (uint256) {
+        return uint256(_randomBytes32());
+    }
+
+    //-----------
+
+    // Generate a signature for a permit message.
+    function _signPermit(
+        IPermit2.PermitTransferFrom memory permit,
+        address spender,
+        uint256 signerKey
+    ) internal view returns (bytes memory sig)
+    {
+        (uint8 v, bytes32 r, bytes32 s) =
+            vm.sign(signerKey, _getEIP712Hash(permit, spender));
+        return abi.encodePacked(r, s, v);
+    }
+
+    // Compute the EIP712 hash of the permit object.
+    // Normally this would be implemented off-chain.
+    function _getEIP712Hash(IPermit2.PermitTransferFrom memory permit, address spender)
+        internal
+        view
+        returns (bytes32 h)
+    {
+        return keccak256(abi.encodePacked(
+            "\x19\x01",
+            permit2.DOMAIN_SEPARATOR(),
+            keccak256(abi.encode(
+                PERMIT_TRANSFER_FROM_TYPEHASH,
+                keccak256(abi.encode(
+                    TOKEN_PERMISSIONS_TYPEHASH,
+                    permit.permitted.token,
+                    permit.permitted.amount
+                )),
+                spender,
+                permit.nonce,
+                permit.deadline
+            ))
+        ));
     }
 
 }

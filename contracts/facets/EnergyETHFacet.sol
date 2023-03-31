@@ -7,6 +7,7 @@ import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import '../../interfaces/ozIDiamond.sol';
+import '../../interfaces/IPermit2.sol';
 // import './ozOracleFacet.sol';
 import "forge-std/console.sol";
 // import 'hardhat/console.sol';
@@ -23,6 +24,7 @@ contract EnergyETHFacet is ERC20 {
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     address immutable wethAdrr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
     ozIDiamond OZL = ozIDiamond(0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2);
+    IPermit2 immutable PERMIT2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
     constructor() ERC20('Energy ETH', 'eETH') {}
 
@@ -31,17 +33,62 @@ contract EnergyETHFacet is ERC20 {
         return OZL.getEnergyPrice();
     }
 
-    
-    function issue(address user_, uint256 amount_) external {
-        if (amount_ == 0) revert Cant_be_zero();
 
-        uint256 quote = (amount_ * getPrice()) / 10 ** 12;
+    function _issue(
+        IERC20 token,
+        // uint256 amount,
+        // uint256 nonce,
+        // uint256 deadline,
+        // bytes calldata signature,
+        IPermit2.Permit2Buy memory buyOp_
+    ) private {
+        uint256 amount = buyOp_.amount;
+
+        PERMIT2.permitTransferFrom(
+            IPermit2.PermitTransferFrom({
+                permitted: IPermit2.TokenPermissions({
+                    token: token,
+                    amount: amount
+                }),
+                nonce: buyOp_.nonce,
+                deadline: buyOp_.deadline
+            }),
+            IPermit2.SignatureTransferDetails({
+                to: address(this),
+                requestedAmount: amount
+            }),
+            msg.sender,
+            buyOp_.signature
+        );
+    }
+
+    // struct Permit2Buy {
+    //     address buyer; //user_
+    //     uint256 amount; //eETH to buy
+    //     uint256 nonce;
+    //     uint256 deadline;
+    //     bytes signature;
+    // }
+
+
+    
+    function issue(IPermit2.Permit2Buy memory buyOp_) external {
+        uint256 toBuy = buyOp_.amount;
+
+        if (toBuy == 0) revert Cant_be_zero();
+
+        uint256 quote = (toBuy * getPrice()) / 10 ** 12;
         uint256 buyerBalance = USDC.balanceOf(msg.sender);
 
         if (buyerBalance < quote) revert Not_enough_funds(buyerBalance);
 
-        bool success = USDC.transferFrom(msg.sender, address(this), quote);
-        if (!success) revert Cant_transfer(quote);
+        buyOp_.amount = quote;
+
+        _issue(USDC, buyOp_);
+
+        //---------
+        // bool success = USDC.transferFrom(msg.sender, address(this), quote);
+        // if (!success) revert Cant_transfer(quote);
         //--------
 
         // ISwapRouter.ExactInputSingleParams memory params =
