@@ -34,61 +34,6 @@ contract EnergyETHFacet is ERC20 {
     }
 
 
-    function _issue(
-        IERC20 token,
-        // uint256 amount,
-        // uint256 nonce,
-        // uint256 deadline,
-        // bytes calldata signature,
-        IPermit2.Permit2Buy memory buyOp_
-    ) private {
-        uint256 amount = buyOp_.amount;
-
-        console.log('----- facet ----');
-        console.log('amount: ', amount);
-        console.log('token: ', address(token));
-        console.log('nonce: ', buyOp_.nonce);
-        console.log('deadline: ', buyOp_.deadline);
-        console.log('address(this): ', address(this));
-        console.log('buyer: ', buyOp_.buyer);
-        console.log('sender = buyer: ', msg.sender);
-        console.logBytes(buyOp_.signature);
-        console.log('signature ^^^^');
-        console.log('allowance - sender: ', token.allowance(msg.sender, address(PERMIT2)));
-        console.log('token bal - sender: ', token.balanceOf(msg.sender));
-        console.log('allowance - buyer: ', token.allowance(buyOp_.buyer, address(PERMIT2)));
-        console.log('token bal - buyer: ', token.balanceOf(buyOp_.buyer));
-        console.log('----- facet ----');
-
-        PERMIT2.permitTransferFrom(
-            IPermit2.PermitTransferFrom({
-                permitted: IPermit2.TokenPermissions({
-                    token: token,
-                    amount: amount
-                }),
-                nonce: buyOp_.nonce,
-                deadline: buyOp_.deadline
-            }),
-            IPermit2.SignatureTransferDetails({
-                to: address(this),
-                requestedAmount: amount
-            }),
-            msg.sender,
-            buyOp_.signature
-        );
-
-
-    }
-
-    // struct Permit2Buy {
-    //     address buyer; //user_
-    //     uint256 amount; //eETH to buy
-    //     uint256 nonce;
-    //     uint256 deadline;
-    //     bytes signature;
-    // }
-
-
     
     function issue(IPermit2.Permit2Buy memory buyOp_) external {
         uint256 toBuy = buyOp_.amount;
@@ -96,13 +41,13 @@ contract EnergyETHFacet is ERC20 {
         if (toBuy == 0) revert Cant_be_zero();
 
         uint256 quote = (toBuy * getPrice()) / 10 ** 12;
-        uint256 buyerBalance = USDC.balanceOf(msg.sender);
+        uint256 buyerBalance = buyOp_.token.balanceOf(msg.sender);
 
         if (buyerBalance < quote) revert Not_enough_funds(buyerBalance);
 
         buyOp_.amount = quote;
 
-        _issue(USDC, buyOp_);
+        _issue(buyOp_);
 
         //---------
         // bool success = USDC.transferFrom(msg.sender, address(this), quote);
@@ -121,8 +66,30 @@ contract EnergyETHFacet is ERC20 {
         //         sqrtPriceLimitX96: 0
         //     });
         
-
     }
+
+
+    function _issue(IPermit2.Permit2Buy memory buyOp_) private {
+        uint256 amount = buyOp_.amount;
+
+        PERMIT2.permitTransferFrom(
+            IPermit2.PermitTransferFrom({
+                permitted: IPermit2.TokenPermissions({
+                    token: buyOp_.token,
+                    amount: amount
+                }),
+                nonce: buyOp_.nonce,
+                deadline: buyOp_.deadline
+            }),
+            IPermit2.SignatureTransferDetails({
+                to: address(this),
+                requestedAmount: amount
+            }),
+            msg.sender,
+            buyOp_.signature
+        );
+    }
+
 
 
     function _depositInDeFi() private {

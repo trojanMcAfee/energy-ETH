@@ -33,7 +33,7 @@ interface IPermit2 {
     }
 
     struct Permit2Buy { //<--- my struct
-        address buyer; //user_
+        IERC20 token; //user_
         uint256 amount; //eETH to buy
         uint256 nonce;
         uint256 deadline;

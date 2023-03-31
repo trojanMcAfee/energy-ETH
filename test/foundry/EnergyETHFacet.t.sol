@@ -2,7 +2,6 @@
 pragma solidity 0.8.19;
 
 
-// import 'ds-test/test.sol';
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
@@ -29,9 +28,7 @@ contract EnergyETHFacetTest is Test {
         "PermitTransferFrom(TokenPermissions permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
     );
 
-    uint256 arbFork;
-    uint ethFork;
-    uint256 ownerKey;
+    uint256 bobKey;
     
     ozOracleFacet private ozOracle;
     EnergyETHFacet private energyFacet;
@@ -68,8 +65,7 @@ contract EnergyETHFacetTest is Test {
 
 
     function setUp() public {
-        // string memory ARB_RPC = vm.envString('ARBITRUM');
-        arbFork = vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
+        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
 
         (
             address[] memory facets,
@@ -97,9 +93,8 @@ contract EnergyETHFacetTest is Test {
 
         //--------
 
-        ownerKey = _randomUint256();
-        bob = vm.addr(ownerKey);
-        console.log('bob: ', bob);
+        bobKey = _randomUint256();
+        bob = vm.addr(bobKey);
         
         deal(address(USDC), bob, 5000 * 10 ** 6);
 
@@ -153,14 +148,13 @@ contract EnergyETHFacetTest is Test {
                 amount: quote
             }),
             nonce: _randomUint256(),
-            deadline: block.timestamp
+            deadline: block.timestamp + 90 days
         });
 
-        bytes memory sig = _signPermit(permit, address(energyFacet), ownerKey);
-        console.log('sender in test: ', msg.sender);
-
+        bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
+  
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
-            buyer: msg.sender,
+            token: USDC,
             amount: amount_,
             nonce: permit.nonce,
             deadline: permit.deadline,
@@ -182,7 +176,6 @@ contract EnergyETHFacetTest is Test {
     //------ Helpers -----
 
     function invariant_myTest() public {
-        vm.selectFork(arbFork);
         assertTrue(true);
     }
 
