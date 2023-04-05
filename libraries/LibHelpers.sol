@@ -7,6 +7,8 @@ import '@rari-capital/solmate/src/utils/FixedPointMathLib.sol';
 
 library LibHelpers {
 
+    using FixedPointMathLib for uint256;
+
 
     function calculateSlippage(
         uint256 amount_, 

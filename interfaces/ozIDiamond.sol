@@ -16,4 +16,5 @@ interface ozIDiamond {
     function getLastPrice() external view returns(uint256);
     function getEnergyPrice() external view returns(uint256);
     function getOzelIndex() external view returns(uint256);
+    function getProtocolFee() external view returns(uint256);
 }

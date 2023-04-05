@@ -11,6 +11,16 @@ struct AppStorage {
     AggregatorV3Interface volatilityFeed;
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
+
+    address tricrypto;
+    address USDT;
+    address executor;
+    address yTriPool;
+    address crvTricrypto;
+
+    uint256 defaultSlippage;
+    uint256 failedFees;
+    uint256 feesVault;
 }
 
 

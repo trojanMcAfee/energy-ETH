@@ -26,7 +26,7 @@ contract InitUpgradeV2 {
         // facets[0] = facets_[1];
 
         LibDiamond.setNonRevenueFacets(facets_); //test if anyone cann call setNonRevenueFacets
-
+        //not all contracts are facets --> fix this
         //--------
     
 

@@ -9,6 +9,7 @@ import '@openzeppelin/contracts/utils/Address.sol';
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import '../../contracts/facets/ozOracleFacet.sol';
+import '../../contracts/facets/ozExecutor2Facet.sol';
 import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
@@ -31,6 +32,7 @@ contract EnergyETHTest is Test {
     uint256 bobKey;
     
     ozOracleFacet private ozOracle;
+    ozExecutor2Facet private ozExecutor2;
     EnergyETH private energyFacet;
     InitUpgradeV2 private initUpgrade;
     WtiFeed private wtiFeed;
@@ -49,7 +51,7 @@ contract EnergyETHTest is Test {
     address ozLoupe = 0xd986Ac35f3aD549794DBc70F33084F746b58b534;
     address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
 
-    IERC20 USDT = IERC20(0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9);
+    IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
@@ -68,8 +70,10 @@ contract EnergyETHTest is Test {
     function setUp() public {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
 
+        //----------
+
         (
-            address[] memory facets,
+            address[] memory facets, //not all contracts are facets
             address[] memory feeds
         ) = _createContracts();
 
@@ -84,13 +88,14 @@ contract EnergyETHTest is Test {
         );
 
         //Creates FacetCut array
-        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](1);
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](2);
         cuts[0] = _createCut(address(ozOracle), 0);
+        cuts[1] = _createCut(address(ozExecutor2), 1);
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
 
-        energyFacet = new EnergyETH();
+        // energyFacet = new EnergyETH();
 
         //--------
 
@@ -186,6 +191,7 @@ contract EnergyETHTest is Test {
     ) private view returns(ozIDiamond.FacetCut memory cut) {
         bytes4[] memory selectors = new bytes4[](1);
         if (id_ == 0) selectors[0] = ozOracle.getEnergyPrice.selector;
+        if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
 
         cut = ozIDiamond.FacetCut({
             facetAddress: contractAddr_,
@@ -205,10 +211,12 @@ contract EnergyETHTest is Test {
 
         ozOracle = new ozOracleFacet(); 
         energyFacet = new EnergyETH();
+        ozExecutor2 = new ozExecutor2Facet();
 
-        address[] memory facets = new address[](2);
+        address[] memory facets = new address[](3);
         facets[0] = address(ozOracle);
         facets[1] = address(energyFacet);
+        facets[2] = address(ozExecutor2);
 
         address[] memory feeds = new address[](4);
         feeds[0] = address(wtiFeed);
@@ -241,6 +249,7 @@ contract EnergyETHTest is Test {
         vm.label(bob, 'bob');
         vm.label(alice, 'alice');
         vm.label(ray, 'ray');
+        vm.label(address(ozExecutor2), 'ozExecutor2');
     }
 
 

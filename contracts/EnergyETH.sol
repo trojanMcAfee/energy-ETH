@@ -26,7 +26,7 @@ error Cant_transfer(uint256 amount);
 contract EnergyETH is ERC20 {
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
-    IERC20 USDT = IERC20(0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9);
+    IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
     IERC20 crvTricrypto = IERC20(0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2);
 
     address immutable wethAdrr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
@@ -53,19 +53,20 @@ contract EnergyETH is ERC20 {
 
         if (buyerBalance < quote) revert Not_enough_funds(buyerBalance);
 
-        (uint256 netAmount, uint256 fee) = LibHelpers.getFee(quote, OZL.getProtocolFee());
+        (, uint256 fee) = LibHelpers.getFee(quote, OZL.getProtocolFee());
         
-        // _depositFeesInDeFi(fee, false);
-
-        buyOp_.amount = netAmount;
+        buyOp_.amount = quote + fee; //check decimals
 
         _issue(buyOp_);
+
         // _mint(msg.sender, toBuy);
+
+        // OZL.depositFeesInDeFi(fee, false);
 
         //---------
 
 
-       
+       //check why it failed
         
     }
 
@@ -92,51 +93,40 @@ contract EnergyETH is ERC20 {
 
 
 
-    function _depositFeesInDeFi(uint fee_, bool isRetry_) private { 
-        /// @dev Into Curve's Tricrypto
-        (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
+    // function _depositFeesInDeFi(uint fee_, bool isRetry_) private { 
+    //     /// @dev Into Curve's Tricrypto
+    //     (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
 
-        USDT.approve(address(tricrypto), tokenAmountIn);
+    //     USDT.approve(address(tricrypto), tokenAmountIn);
 
-        for (uint i=1; i <= 2; i++) {
-            uint minAmount = LibHelpers.calculateSlippage(tokenAmountIn, OZL.getDefaultSlippage() * i);
+    //     for (uint i=1; i <= 2; i++) {
+    //         uint minAmount = LibHelpers.calculateSlippage(tokenAmountIn, OZL.getDefaultSlippage() * i);
 
-            try tricrypto.add_liquidity(amounts, minAmount) {
-                /// @dev Into Yearn's crvTricrypto
-                crvTricrypto.approve(
-                    address(yTriPool), crvTricrypto.balanceOf(address(this))
-                );
+    //         try tricrypto.add_liquidity(amounts, minAmount) {
+    //             /// @dev Into Yearn's crvTricrypto
+    //             crvTricrypto.approve(
+    //                 address(yTriPool), crvTricrypto.balanceOf(address(this))
+    //             );
 
-                yTriPool.deposit(crvTricrypto.balanceOf(address(this)));
+    //             yTriPool.deposit(crvTricrypto.balanceOf(address(this)));
 
-                /// @dev Internal fees accounting
-                if (s.failedFees > 0) s.failedFees = 0;
-                s.feesVault += fee_;
+    //             /// @dev Internal fees accounting
+    //             if (s.failedFees > 0) s.failedFees = 0;
+    //             s.feesVault += fee_;
                 
-                break;
-            } catch {
-                if (i == 1) {
-                    continue;
-                } else {
-                    if (!isRetry_) s.failedFees += fee_; 
-                }
-            }
-        }
-    }
-
-    //In ozel v1.3, add a function that allows to add to s.feesVault from eETH
-    //
+    //             break;
+    //         } catch {
+    //             if (i == 1) {
+    //                 continue;
+    //             } else {
+    //                 if (!isRetry_) s.failedFees += fee_; 
+    //             }
+    //         }
+    //     }
+    // }
 
 
 
-    function _calculateTokenAmountCurve(uint amountIn_) private view returns(uint, uint[3] memory) {
-        uint[3] memory amounts;
-        amounts[0] = amountIn_;
-        amounts[1] = 0;
-        amounts[2] = 0;
-        uint tokenAmount = tricrypto.calc_token_amount(amounts, true);
-        return (tokenAmount, amounts);
-    }
 
 
 
