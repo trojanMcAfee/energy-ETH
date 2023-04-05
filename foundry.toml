@@ -9,15 +9,15 @@ test = 'test/foundry'
 arbitrum = "${ARBITRUM}"
 mainnet = "${MAINNET}"
 
-# [fuzz]
-# seed = 10
+[fuzz]
+seed = 10
 
-[profile.default.fuzz]
-seed = 100
+# [profile.default.fuzz]
+# seed = 100
 
-[profile.default.invariant]
-runs = 100
-depth = 100
+# [profile.default.invariant]
+# runs = 100
+# depth = 100
 
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

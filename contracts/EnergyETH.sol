@@ -8,7 +8,11 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import '../interfaces/ozIDiamond.sol';
 import '../interfaces/IPermit2.sol';
+import '../interfaces/ITri.sol';
+import '../interfaces/IYtri.sol';
+import '../libraries/LibHelpers.sol';
 // import './ozOracleFacet.sol';
+
 import "forge-std/console.sol";
 // import 'hardhat/console.sol';
 
@@ -22,7 +26,13 @@ error Cant_transfer(uint256 amount);
 contract EnergyETH is ERC20 {
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
+    IERC20 USDT = IERC20(0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9);
+    IERC20 crvTricrypto = IERC20(0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2);
+
     address immutable wethAdrr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
+    
+    IYtri yTriPool = IYtri(0x239e14A19DFF93a17339DCC444f74406C17f8E67);
+    ITri tricrypto = ITri(0x960ea3e3C7FB317332d990873d354E18d7645590);
     ozIDiamond OZL = ozIDiamond(0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2);
     IPermit2 immutable PERMIT2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
@@ -34,10 +44,8 @@ contract EnergyETH is ERC20 {
     }
 
 
-    
-    function issue(IPermit2.Permit2Buy memory buyOp_) external {
+    function issue(IPermit2.Permit2Buy memory buyOp_) external payable {
         uint256 toBuy = buyOp_.amount;
-
         if (toBuy == 0) revert Cant_be_zero();
 
         uint256 quote = (toBuy * getPrice()) / 10 ** 12;
@@ -45,29 +53,21 @@ contract EnergyETH is ERC20 {
 
         if (buyerBalance < quote) revert Not_enough_funds(buyerBalance);
 
-        buyOp_.amount = quote;
+        (uint256 netAmount, uint256 fee) = LibHelpers.getFee(quote, OZL.getProtocolFee());
+        
+        // _depositFeesInDeFi(fee, false);
+
+        buyOp_.amount = netAmount;
 
         _issue(buyOp_);
+        // _mint(msg.sender, toBuy);
 
         //---------
-        // bool success = USDC.transferFrom(msg.sender, address(this), quote);
-        // if (!success) revert Cant_transfer(quote);
-        //--------
 
-        // ISwapRouter.ExactInputSingleParams memory params =
-        //     ISwapRouter.ExactInputSingleParams({
-        //         tokenIn: address(USDC),
-        //         tokenOut: wethAdrr, 
-        //         fee: eMode.poolFee,
-        //         recipient: address(this),
-        //         deadline: block.timestamp,
-        //         amountIn: USDC.balanceOf(address(this)),
-        //         amountOutMinimum: _calculateMinOut(eMode, i, balanceWETH, slippage_), 
-        //         sqrtPriceLimitX96: 0
-        //     });
+
+       
         
     }
-
 
     function _issue(IPermit2.Permit2Buy memory buyOp_) private {
         uint256 amount = buyOp_.amount;
@@ -92,11 +92,52 @@ contract EnergyETH is ERC20 {
 
 
 
-    function _depositInDeFi() private {
+    function _depositFeesInDeFi(uint fee_, bool isRetry_) private { 
+        /// @dev Into Curve's Tricrypto
+        (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
 
+        USDT.approve(address(tricrypto), tokenAmountIn);
 
+        for (uint i=1; i <= 2; i++) {
+            uint minAmount = LibHelpers.calculateSlippage(tokenAmountIn, OZL.getDefaultSlippage() * i);
 
+            try tricrypto.add_liquidity(amounts, minAmount) {
+                /// @dev Into Yearn's crvTricrypto
+                crvTricrypto.approve(
+                    address(yTriPool), crvTricrypto.balanceOf(address(this))
+                );
+
+                yTriPool.deposit(crvTricrypto.balanceOf(address(this)));
+
+                /// @dev Internal fees accounting
+                if (s.failedFees > 0) s.failedFees = 0;
+                s.feesVault += fee_;
+                
+                break;
+            } catch {
+                if (i == 1) {
+                    continue;
+                } else {
+                    if (!isRetry_) s.failedFees += fee_; 
+                }
+            }
+        }
     }
+
+    //In ozel v1.3, add a function that allows to add to s.feesVault from eETH
+    //
+
+
+
+    function _calculateTokenAmountCurve(uint amountIn_) private view returns(uint, uint[3] memory) {
+        uint[3] memory amounts;
+        amounts[0] = amountIn_;
+        amounts[1] = 0;
+        amounts[2] = 0;
+        uint tokenAmount = tricrypto.calc_token_amount(amounts, true);
+        return (tokenAmount, amounts);
+    }
+
 
 
 }

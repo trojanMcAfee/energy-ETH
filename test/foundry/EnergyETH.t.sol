@@ -49,6 +49,7 @@ contract EnergyETHTest is Test {
     address ozLoupe = 0xd986Ac35f3aD549794DBc70F33084F746b58b534;
     address revenueFacet = 0xD552211891bdBe3eA006343eF80d5aB283De601C;
 
+    IERC20 USDT = IERC20(0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9);
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
@@ -96,7 +97,7 @@ contract EnergyETHTest is Test {
         bobKey = _randomUint256();
         bob = vm.addr(bobKey);
         
-        deal(address(USDC), bob, 5000 * 10 ** 6);
+        deal(address(USDT), bob, 5000 * 10 ** 6);
 
         //-----------------
         // targetContract(address(ozOracle));
@@ -135,26 +136,25 @@ contract EnergyETHTest is Test {
         // vm.assume(user_ != address(0));
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
-        // require((amount_ * energyFacet.getPrice()) < type(uint256).max);
 
         uint256 quote = (amount_ * OZL.getEnergyPrice()) / 10 ** 12;
 
         vm.startPrank(bob);
-        USDC.approve(address(permit2), type(uint).max);
+        USDT.approve(address(permit2), type(uint).max);
 
         IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
             permitted: IPermit2.TokenPermissions({
-                token: USDC,
+                token: USDT,
                 amount: quote
             }),
             nonce: _randomUint256(),
-            deadline: block.timestamp + 90 days
+            deadline: block.timestamp
         });
 
         bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
   
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
-            token: USDC,
+            token: USDT,
             amount: amount_,
             nonce: permit.nonce,
             deadline: permit.deadline,
@@ -165,7 +165,7 @@ contract EnergyETHTest is Test {
 
         vm.stopPrank();
 
-        uint bal = USDC.balanceOf(address(energyFacet));
+        uint bal = USDT.balanceOf(address(energyFacet));
         assertTrue(bal > 0);
     }
 
@@ -236,8 +236,11 @@ contract EnergyETHTest is Test {
         vm.label(ozLoupe, 'ozLoupe');
         vm.label(revenueFacet, 'revenueFacet');
         vm.label(address(energyFacet), 'energyFacet');
-        vm.label(address(USDC), 'USDC');
+        vm.label(address(USDT), 'USDT');
         vm.label(address(permit2), 'permit2');
+        vm.label(bob, 'bob');
+        vm.label(alice, 'alice');
+        vm.label(ray, 'ray');
     }
 
 
