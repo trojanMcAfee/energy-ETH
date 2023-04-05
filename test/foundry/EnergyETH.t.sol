@@ -18,6 +18,7 @@ import '../../contracts/testing-files/GoldFeed.sol';
 import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
 import '../../libraries/PermitHash.sol';
+import '../../libraries/LibHelpers.sol';
 import '../../interfaces/IPermit2.sol';
 
 
@@ -122,15 +123,7 @@ contract EnergyETHTest is Test {
 
     }
 
-    // struct Permit2Buy {
-    //     address buyer; //user_
-    //     uint256 amount; //eETH to buy
-    //     uint256 nonce;
-    //     uint256 deadline;
-    //     bytes signature;
-    // }
 
-    //---------
 
     function test_getPrice() public {
         uint price = energyFacet.getPrice();
@@ -138,11 +131,11 @@ contract EnergyETHTest is Test {
     }
 
     function testFuzz_issue(uint256 amount_) public {
-        // vm.assume(user_ != address(0));
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
 
         uint256 quote = (amount_ * OZL.getEnergyPrice()) / 10 ** 12;
+        (, uint256 fee) = LibHelpers.getFee(quote, OZL.getProtocolFee());
 
         vm.startPrank(bob);
         USDT.approve(address(permit2), type(uint).max);
@@ -150,7 +143,7 @@ contract EnergyETHTest is Test {
         IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
             permitted: IPermit2.TokenPermissions({
                 token: USDT,
-                amount: quote
+                amount: quote + fee
             }),
             nonce: _randomUint256(),
             deadline: block.timestamp

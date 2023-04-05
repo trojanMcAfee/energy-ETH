@@ -55,7 +55,7 @@ contract EnergyETH is ERC20 {
 
         (, uint256 fee) = LibHelpers.getFee(quote, OZL.getProtocolFee());
         
-        buyOp_.amount = quote + fee; //check decimals
+        buyOp_.amount = quote + fee; 
 
         _issue(buyOp_);
 

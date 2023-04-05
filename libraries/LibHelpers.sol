@@ -18,7 +18,7 @@ library LibHelpers {
     }
 
 
-    function getFee(uint256 amount_, uint256 protocolFee_) internal view returns(uint, uint) {
+    function getFee(uint256 amount_, uint256 protocolFee_) internal pure returns(uint, uint) {
         uint256 fee = amount_ - calculateSlippage(amount_, protocolFee_);
         uint256 netAmount = amount_ - fee;
         return (netAmount, fee);
