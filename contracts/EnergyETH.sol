@@ -80,63 +80,63 @@ contract EnergyETH is ERC20 {
         IPermit2.PermitBatchTransferFrom memory permit;
         IPermit2.SignatureTransferDetails[] memory details;
 
-        {
-        IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
-            token: token,
-            amount: fee_
-        });
+        // {
+        // IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
+        //     token: token,
+        //     amount: fee_
+        // });
 
-        IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
-            token: token,
-            amount: quote_
-        });
+        // IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
+        //     token: token,
+        //     amount: quote_
+        // });
 
-        IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
-        amounts[0] = feeStruct;
-        amounts[1] = quoteStruct;
+        // IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
+        // amounts[0] = feeStruct;
+        // amounts[1] = quoteStruct;
 
-        permit = IPermit2.PermitBatchTransferFrom({
-            permitted: amounts,
-            nonce: buyOp_.nonce,
-            deadline: buyOp_.deadline
-        });
-        }
-        {
-        IPermit2.SignatureTransferDetails memory feeDetails = IPermit2.SignatureTransferDetails({
-            to: address(OZL),
-            requestedAmount: fee_
-        });
+        // permit = IPermit2.PermitBatchTransferFrom({
+        //     permitted: amounts,
+        //     nonce: buyOp_.nonce,
+        //     deadline: buyOp_.deadline
+        // });
+        // }
+        // {
+        // IPermit2.SignatureTransferDetails memory feeDetails = IPermit2.SignatureTransferDetails({
+        //     to: address(OZL),
+        //     requestedAmount: fee_
+        // });
 
-        IPermit2.SignatureTransferDetails memory quoteDetails = IPermit2.SignatureTransferDetails({
-            to: address(this),
-            requestedAmount: quote_
-        });
+        // IPermit2.SignatureTransferDetails memory quoteDetails = IPermit2.SignatureTransferDetails({
+        //     to: address(this),
+        //     requestedAmount: quote_
+        // });
 
-        details = new IPermit2.SignatureTransferDetails[](2);
-        details[0] = feeDetails;
-        details[1] = quoteDetails;
-        }
+        // details = new IPermit2.SignatureTransferDetails[](2);
+        // details[0] = feeDetails;
+        // details[1] = quoteDetails;
+        // }
 
-        PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
+        // PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
 
 
         //-------
-        // PERMIT2.permitTransferFrom(
-        //     IPermit2.PermitTransferFrom({
-        //         permitted: IPermit2.TokenPermissions({
-        //             token: buyOp_.token,
-        //             amount: amount
-        //         }),
-        //         nonce: buyOp_.nonce,
-        //         deadline: buyOp_.deadline
-        //     }),
-        //     IPermit2.SignatureTransferDetails({
-        //         to: address(this),
-        //         requestedAmount: amount
-        //     }),
-        //     msg.sender,
-        //     buyOp_.signature
-        // );
+        PERMIT2.permitTransferFrom(
+            IPermit2.PermitTransferFrom({
+                permitted: IPermit2.TokenPermissions({
+                    token: buyOp_.token,
+                    amount: amount
+                }),
+                nonce: buyOp_.nonce,
+                deadline: buyOp_.deadline
+            }),
+            IPermit2.SignatureTransferDetails({
+                to: address(this),
+                requestedAmount: amount
+            }),
+            msg.sender,
+            buyOp_.signature
+        );
     }
 
 

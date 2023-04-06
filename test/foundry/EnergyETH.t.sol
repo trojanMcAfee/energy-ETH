@@ -144,39 +144,38 @@ contract EnergyETHTest is Test {
 
         
         //--------------
-        // IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
-        //     permitted: IPermit2.TokenPermissions({
-        //         token: USDT,
-        //         amount: quote + fee
-        //     }),
-        //     nonce: _randomUint256(),
-        //     deadline: block.timestamp
-        // });
-        //-------------
-        IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
-            token: USDT,
-            amount: fee
-        });
-
-        IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
-            token: USDT,
-            amount: quote
-        });
-
-        IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
-        amounts[0] = feeStruct;
-        amounts[1] = quoteStruct;
-
-        IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
-            permitted: amounts,
+        IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
+            permitted: IPermit2.TokenPermissions({
+                token: USDT,
+                amount: quote + fee
+            }),
             nonce: _randomUint256(),
             deadline: block.timestamp
         });
+        //-------------
+        // IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
+        //     token: USDT,
+        //     amount: fee
+        // });
 
-        // bytes32 opHash = PermitHash.hash(permit);
+        // IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
+        //     token: USDT,
+        //     amount: quote
+        // });
+
+        // IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
+        // amounts[0] = feeStruct;
+        // amounts[1] = quoteStruct;
+
+        // IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
+        //     permitted: amounts,
+        //     nonce: _randomUint256(),
+        //     deadline: block.timestamp
+        // });
+
         //---------------
 
-        bytes memory sig = _signPermit2(permit, address(energyFacet), bobKey);
+        bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
   
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             token: USDT,
