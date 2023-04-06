@@ -24,6 +24,15 @@ interface IPermit2 {
         uint256 deadline;
     }
 
+    struct PermitBatchTransferFrom {
+        // the tokens and corresponding amounts permitted for a transfer
+        TokenPermissions[] permitted;
+        // a unique value for every token owner's signature to prevent signature replays
+        uint256 nonce;
+        // deadline on the permit signature
+        uint256 deadline;
+    }
+
     // Transfer details for permitTransferFrom().
     struct SignatureTransferDetails {
         // Recipient of tokens.
@@ -44,6 +53,13 @@ interface IPermit2 {
     function permitTransferFrom(
         PermitTransferFrom calldata permit,
         SignatureTransferDetails calldata transferDetails,
+        address owner,
+        bytes calldata signature
+    ) external;
+
+    function permitTransferFrom(
+        PermitBatchTransferFrom memory permit,
+        SignatureTransferDetails[] calldata transferDetails,
         address owner,
         bytes calldata signature
     ) external;

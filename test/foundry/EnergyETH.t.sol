@@ -24,6 +24,8 @@ import '../../interfaces/IPermit2.sol';
 
 contract EnergyETHTest is Test {
 
+    using PermitHash for ISignatureTransfer.PermitBatchTransferFrom;
+
     bytes32 constant TOKEN_PERMISSIONS_TYPEHASH =
         keccak256("TokenPermissions(address token,uint256 amount)");
     bytes32 constant PERMIT_TRANSFER_FROM_TYPEHASH = keccak256(
@@ -140,16 +142,41 @@ contract EnergyETHTest is Test {
         vm.startPrank(bob);
         USDT.approve(address(permit2), type(uint).max);
 
-        IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
-            permitted: IPermit2.TokenPermissions({
-                token: USDT,
-                amount: quote + fee
-            }),
+        
+        //--------------
+        // IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
+        //     permitted: IPermit2.TokenPermissions({
+        //         token: USDT,
+        //         amount: quote + fee
+        //     }),
+        //     nonce: _randomUint256(),
+        //     deadline: block.timestamp
+        // });
+        //-------------
+        IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
+            token: USDT,
+            amount: fee
+        });
+
+        IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
+            token: USDT,
+            amount: quote
+        });
+
+        IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
+        amounts[0] = feeStruct;
+        amounts[1] = quoteStruct;
+
+        IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
+            permitted: amounts,
             nonce: _randomUint256(),
             deadline: block.timestamp
         });
 
-        bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
+        // bytes32 opHash = PermitHash.hash(permit);
+        //---------------
+
+        bytes memory sig = _signPermit2(permit, address(energyFacet), bobKey);
   
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             token: USDT,
@@ -263,6 +290,17 @@ contract EnergyETHTest is Test {
     }
 
     //-----------
+
+    function _signPermit2(
+        IPermit2.PermitBatchTransferFrom memory permit,
+        address spender,
+        uint256 signerKey
+    ) internal view returns (bytes memory sig)
+    {
+        (uint8 v, bytes32 r, bytes32 s) =
+            vm.sign(signerKey, PermitHash.hashMe(permit));
+        return abi.encodePacked(r, s, v);
+    }
 
     // Generate a signature for a permit message.
     function _signPermit(
