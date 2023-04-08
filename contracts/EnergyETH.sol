@@ -80,7 +80,7 @@ contract EnergyETH is ERC20 {
         });
     }
 
-    function _getTransferDetails(
+    function _getDetails(
         address receiver_, 
         uint256 amount_
     ) private pure returns(IPermit2.SignatureTransferDetails memory details) 
@@ -91,7 +91,27 @@ contract EnergyETH is ERC20 {
         });
     }
 
-    // function _getTokenAmounts()
+    function _getTokenAmounts(
+        IERC20 token_, 
+        uint256 fee_, 
+        uint256 quote_
+    ) private pure returns(IPermit2.TokenPermissions[] memory amounts) 
+    {
+        amounts = new IPermit2.TokenPermissions[](2);
+        amounts[0] = _getTokenPermission(token_, fee_);
+        amounts[1] = _getTokenPermission(token_, quote_);
+    }
+
+
+    function _getTransferDetails(
+        uint256 fee_, 
+        uint256 quote_
+    ) private view returns(IPermit2.SignatureTransferDetails[] memory details) 
+    {
+        details = new IPermit2.SignatureTransferDetails[](2);
+        details[0] = _getDetails(address(OZL), fee_);
+        details[1] = _getDetails(address(this), quote_);
+    }
 
 
     function _issue(
@@ -100,14 +120,8 @@ contract EnergyETH is ERC20 {
         uint256 fee_
     ) private {
         uint256 amount = buyOp_.amount;
-        IERC20 token = buyOp_.token;
 
-        IPermit2.TokenPermissions memory feeStruct = _getTokenPermission(token, fee_);
-        IPermit2.TokenPermissions memory quoteStruct = _getTokenPermission(token, quote_);
-
-        IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
-        amounts[0] = feeStruct;
-        amounts[1] = quoteStruct;
+        IPermit2.TokenPermissions[] memory amounts = _getTokenAmounts(buyOp_.token, fee_, quote_);
 
         IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
             permitted: amounts,
@@ -115,15 +129,9 @@ contract EnergyETH is ERC20 {
             deadline: buyOp_.deadline
         });
 
-        IPermit2.SignatureTransferDetails memory feeDetails = _getTransferDetails(address(OZL), fee_);
-        IPermit2.SignatureTransferDetails memory quoteDetails = _getTransferDetails(address(this), quote_);
-
-        IPermit2.SignatureTransferDetails[] memory details = new IPermit2.SignatureTransferDetails[](2);
-        details[0] = feeDetails;
-        details[1] = quoteDetails;
+        IPermit2.SignatureTransferDetails[] memory details = _getTransferDetails(fee_, quote_);
 
         PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
-
     }
 
 
