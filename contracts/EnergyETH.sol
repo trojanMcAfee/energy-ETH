@@ -11,6 +11,7 @@ import '../interfaces/IPermit2.sol';
 import '../interfaces/ITri.sol';
 import '../interfaces/IYtri.sol';
 import '../libraries/LibHelpers.sol';
+import '../libraries/LibPermit2.sol';
 // import './ozOracleFacet.sol';
 
 import "forge-std/console.sol";
@@ -24,6 +25,9 @@ error Cant_transfer(uint256 amount);
 
 
 contract EnergyETH is ERC20 {
+
+    using LibPermit2 for IERC20;
+    using LibPermit2 for address;
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
@@ -68,52 +72,6 @@ contract EnergyETH is ERC20 {
     }
 
 
-
-    function _getTokenPermission(
-        IERC20 token_, 
-        uint256 amount_
-    ) private pure returns(IPermit2.TokenPermissions memory permission) 
-    {
-        permission = IPermit2.TokenPermissions({
-            token: token_,
-            amount: amount_
-        });
-    }
-
-    function _getDetails(
-        address receiver_, 
-        uint256 amount_
-    ) private pure returns(IPermit2.SignatureTransferDetails memory details) 
-    {
-        details = IPermit2.SignatureTransferDetails({
-            to: receiver_,
-            requestedAmount: amount_
-        });
-    }
-
-    function _getTokenAmounts(
-        IERC20 token_, 
-        uint256 fee_, 
-        uint256 quote_
-    ) private pure returns(IPermit2.TokenPermissions[] memory amounts) 
-    {
-        amounts = new IPermit2.TokenPermissions[](2);
-        amounts[0] = _getTokenPermission(token_, fee_);
-        amounts[1] = _getTokenPermission(token_, quote_);
-    }
-
-
-    function _getTransferDetails(
-        uint256 fee_, 
-        uint256 quote_
-    ) private view returns(IPermit2.SignatureTransferDetails[] memory details) 
-    {
-        details = new IPermit2.SignatureTransferDetails[](2);
-        details[0] = _getDetails(address(OZL), fee_);
-        details[1] = _getDetails(address(this), quote_);
-    }
-
-
     function _issue(
         IPermit2.Permit2Buy memory buyOp_,
         uint256 quote_,
@@ -121,7 +79,7 @@ contract EnergyETH is ERC20 {
     ) private {
         uint256 amount = buyOp_.amount;
 
-        IPermit2.TokenPermissions[] memory amounts = _getTokenAmounts(buyOp_.token, fee_, quote_);
+        IPermit2.TokenPermissions[] memory amounts = buyOp_.token.getTokenAmounts(fee_, quote_);
 
         IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
             permitted: amounts,
@@ -129,7 +87,8 @@ contract EnergyETH is ERC20 {
             deadline: buyOp_.deadline
         });
 
-        IPermit2.SignatureTransferDetails[] memory details = _getTransferDetails(fee_, quote_);
+        IPermit2.SignatureTransferDetails[] memory details = 
+            address(OZL).getTransferDetails(address(this), fee_, quote_);
 
         PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
     }
