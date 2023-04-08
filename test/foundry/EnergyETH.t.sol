@@ -20,30 +20,12 @@ import '../../interfaces/ozIDiamond.sol';
 import '../../libraries/PermitHash.sol';
 import '../../libraries/LibHelpers.sol';
 import '../../interfaces/IPermit2.sol';
-
 import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 
+
 contract EnergyETHTest is Test {
-
-    using PermitHash for ISignatureTransfer.PermitBatchTransferFrom;
-
-    bytes32 constant TOKEN_PERMISSIONS_TYPEHASH =
-        keccak256("TokenPermissions(address token,uint256 amount)");
-    bytes32 constant PERMIT_TRANSFER_FROM_TYPEHASH = keccak256(
-        "PermitTransferFrom(TokenPermissions permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
-    );
-    bytes32 public constant _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH = keccak256(
-        "PermitBatchTransferFrom(TokenPermissions[] permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
-    );
-    bytes32 public constant _PERMIT_BATCH_TYPEHASH = keccak256(
-        "PermitBatch(PermitDetails[] details,address spender,uint256 sigDeadline)PermitDetails(address token,uint160 amount,uint48 expiration,uint48 nonce)"
-    );
-
-    bytes32 public constant _PERMIT_TRANSFER_FROM_TYPEHASH = keccak256(
-        "PermitTransferFrom(TokenPermissions permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
-    );
 
     uint256 bobKey;
     
@@ -285,7 +267,7 @@ contract EnergyETHTest is Test {
         for (UC i = uc(0); i < uc(length); i = i + uc(1)) {
             uint256 ii = i.unwrap();
             tokenPermissions[ii] = keccak256(
-                abi.encode(TOKEN_PERMISSIONS_TYPEHASH, permit.permitted[ii])
+                abi.encode(PermitHash._TOKEN_PERMISSIONS_TYPEHASH, permit.permitted[ii])
             );
         }
 
@@ -295,7 +277,7 @@ contract EnergyETHTest is Test {
                 permit2.DOMAIN_SEPARATOR(),
                 keccak256(
                     abi.encode(
-                        _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH,
+                        PermitHash._PERMIT_BATCH_TRANSFER_FROM_TYPEHASH,
                         keccak256(abi.encodePacked(tokenPermissions)),
                         spender,
                         permit.nonce,
