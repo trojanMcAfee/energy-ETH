@@ -31,6 +31,12 @@ contract EnergyETHTest is Test {
     bytes32 constant PERMIT_TRANSFER_FROM_TYPEHASH = keccak256(
         "PermitTransferFrom(TokenPermissions permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
     );
+    bytes32 public constant _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH = keccak256(
+        "PermitBatchTransferFrom(TokenPermissions[] permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
+    );
+    bytes32 public constant _PERMIT_BATCH_TYPEHASH = keccak256(
+        "PermitBatch(PermitDetails[] details,address spender,uint256 sigDeadline)PermitDetails(address token,uint160 amount,uint48 expiration,uint48 nonce)"
+    );
 
     bytes32 public constant _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH = keccak256(
         "PermitBatchTransferFrom(TokenPermissions[] permitted,address spender,uint256 nonce,uint256 deadline)TokenPermissions(address token,uint256 amount)"
@@ -172,6 +178,9 @@ contract EnergyETHTest is Test {
             amount: quote
         });
 
+        console.log('fee in test: ', fee);
+        console.log('quote in test: ', quote);
+
         IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
         amounts[0] = feeStruct;
         amounts[1] = quoteStruct;
@@ -182,10 +191,9 @@ contract EnergyETHTest is Test {
             deadline: block.timestamp
         });
 
-        // bytes32 opHash = PermitHash.hash(permit);
         //---------------
 
-        bytes memory sig = _signPermit3(permit, address(energyFacet), bobKey);
+        bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
   
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             token: USDT,
@@ -300,31 +308,23 @@ contract EnergyETHTest is Test {
 
     //-----------
 
-    function _signPermit2(
-        IPermit2.PermitBatchTransferFrom memory permit,
-        address spender,
-        uint256 signerKey
-    ) internal view returns (bytes memory sig)
-    {
-        (uint8 v, bytes32 r, bytes32 s) =
-            vm.sign(signerKey, PermitHash.hashMe(permit));
-        return abi.encodePacked(r, s, v);
-    }
 
-    function _signPermit3(
-        IPermit2.PermitBatchTransferFrom memory permit,
-        address spender,
-        uint256 signerKey
-    ) internal view returns (bytes memory sig)
-    {
-        (uint8 v, bytes32 r, bytes32 s) =
-            vm.sign(signerKey, _getEIP712Hash2(permit, spender));
-        return abi.encodePacked(r, s, v);
-    }
 
     // Generate a signature for a permit message.
     function _signPermit(
         IPermit2.PermitTransferFrom memory permit,
+        address spender,
+        uint256 signerKey
+    ) internal view returns (bytes memory sig)
+    {
+        (uint8 v, bytes32 r, bytes32 s) =
+            vm.sign(signerKey, _getEIP712Hash(permit, spender));
+        return abi.encodePacked(r, s, v);
+    }
+
+
+    function _signPermit(
+        IPermit2.PermitBatchTransferFrom memory permit,
         address spender,
         uint256 signerKey
     ) internal view returns (bytes memory sig)
@@ -341,20 +341,25 @@ contract EnergyETHTest is Test {
         view
         returns (bytes32 h)
     {
+        bytes32 structHash = keccak256(abi.encode(
+            TOKEN_PERMISSIONS_TYPEHASH,
+            permit.permitted.token,
+            permit.permitted.amount
+        ));
+
+        bytes32 transferHash = keccak256(abi.encode(
+            PERMIT_TRANSFER_FROM_TYPEHASH,
+            structHash,
+            spender,
+            permit.nonce,
+            permit.deadline
+        ));
+
+
         return keccak256(abi.encodePacked(
             "\x19\x01",
             permit2.DOMAIN_SEPARATOR(),
-            keccak256(abi.encode(
-                PERMIT_TRANSFER_FROM_TYPEHASH,
-                keccak256(abi.encode(
-                    TOKEN_PERMISSIONS_TYPEHASH,
-                    permit.permitted.token,
-                    permit.permitted.amount
-                )),
-                spender,
-                permit.nonce,
-                permit.deadline
-            ))
+            transferHash
         ));
     }
 
@@ -364,21 +369,88 @@ contract EnergyETHTest is Test {
         view
         returns (bytes32 h)
     {
+        bytes32 structHash = keccak256(abi.encode(
+            TOKEN_PERMISSIONS_TYPEHASH,
+            permit.permitted[0].token,
+            permit.permitted[0].amount
+        ));
+
+        bytes32 structHash2 = keccak256(abi.encode(
+            TOKEN_PERMISSIONS_TYPEHASH,
+            permit.permitted[1].token,
+            permit.permitted[1].amount
+        ));
+
+        //---------
+        bytes32 structHash3 = keccak256(abi.encode(
+            _PERMIT_BATCH_TYPEHASH,
+            permit.permitted[1].token,
+            permit.permitted[1].amount
+        ));
+        //---------
+
+        bytes32[] memory hashArr = new bytes32[](2);
+        hashArr[0] = structHash;
+        hashArr[1] = structHash2;
+
+        bytes32 transferHash = keccak256(abi.encode(
+            _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH,
+            hashArr, //abi.encode(structHash, structHash2),
+            spender,
+            permit.nonce,
+            permit.deadline
+        ));
+
+
         return keccak256(abi.encodePacked(
             "\x19\x01",
             permit2.DOMAIN_SEPARATOR(),
-            keccak256(abi.encode(
-                _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH,
-                keccak256(abi.encode(
-                    _PERMIT_TRANSFER_FROM_TYPEHASH,
-                    permit.permitted[0].token,
-                    permit.permitted[0].amount + permit.permitted[1].amount
-                )),
-                spender,
-                permit.nonce,
-                permit.deadline
-            ))
+            transferHash
         ));
     }
+
+
+    function _getEIP712Hash(IPermit2.PermitBatchTransferFrom memory permit, address spender) internal view returns (bytes32) 
+    {
+        bytes32[] memory tokenPermissions = new bytes32[](permit.permitted.length);
+        
+        for (uint256 i = 0; i < permit.permitted.length; ++i) {
+            tokenPermissions[i] = keccak256(abi.encode(TOKEN_PERMISSIONS_TYPEHASH, permit.permitted[i]));
+        }
+        bytes32 msgHash = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                permit2.DOMAIN_SEPARATOR(),
+                keccak256(
+                    abi.encode(
+                        _PERMIT_BATCH_TRANSFER_FROM_TYPEHASH,
+                        keccak256(abi.encodePacked(tokenPermissions)),
+                        spender,
+                        permit.nonce,
+                        permit.deadline
+                    )
+                )
+            )
+        );
+
+        return msgHash;
+
+    }
+
+
+
+
+    function _hashTokenPermissions(IPermit2.TokenPermissions memory permit)
+        private
+        pure
+        returns (bytes32)
+    {
+        return keccak256(abi.encode(
+            TOKEN_PERMISSIONS_TYPEHASH,
+            permit.token,
+            permit.amount
+        ));
+    }
+    
 
 }
