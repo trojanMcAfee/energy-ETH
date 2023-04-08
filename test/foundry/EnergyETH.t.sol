@@ -299,16 +299,7 @@ contract EnergyETHTest is Test {
 
     //-----------
 
-    // function _signPermit2(
-    //     IPermit2.PermitBatchTransferFrom memory permit,
-    //     address spender,
-    //     uint256 signerKey
-    // ) internal view returns (bytes memory sig)
-    // {
-    //     (uint8 v, bytes32 r, bytes32 s) =
-    //         vm.sign(signerKey, PermitHash.hashMe(permit));
-    //     return abi.encodePacked(r, s, v);
-    // }
+
 
     // Generate a signature for a permit message.
     function _signPermit(
