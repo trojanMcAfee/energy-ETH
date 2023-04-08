@@ -77,14 +77,10 @@ contract EnergyETHTest is Test {
     address ray = makeAddr('ray');
 
 
-    // struct FuzzSelector {
-    //     address addr;
-    //     bytes4[] selectors;
-    // }
 
 
     function setUp() public {
-        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); //69254399
+        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
 
         //----------
 
@@ -111,32 +107,13 @@ contract EnergyETHTest is Test {
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
 
-        // energyFacet = new EnergyETH();
-
-        //--------
 
         bobKey = _randomUint256();
         bob = vm.addr(bobKey);
-        console.log('bob: ', bob);
         
         deal(address(USDT), bob, 5000 * 10 ** 6);
 
-        //-----------------
-        // targetContract(address(ozOracle));
-        // bytes4[] memory selecs = new bytes4[](1);
-        // selecs[0] = ozOracle.getLastPrice.selector;
-
-        // FuzzSelector memory selectors = FuzzSelector({
-        //     addr: address(ozOracle),
-        //     selectors: selecs
-        // });
-
-        // targetSelector(selectors);
-
         _setLabels();
-
-        //---------
-
     }
 
 
@@ -158,15 +135,7 @@ contract EnergyETHTest is Test {
 
         
         //--------------
-        // IPermit2.PermitTransferFrom memory permit = IPermit2.PermitTransferFrom({
-        //     permitted: IPermit2.TokenPermissions({
-        //         token: USDT,
-        //         amount: quote + fee
-        //     }),
-        //     nonce: _randomUint256(),
-        //     deadline: block.timestamp
-        // });
-        //-------------
+  
         IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
             token: USDT,
             amount: fee
@@ -176,9 +145,6 @@ contract EnergyETHTest is Test {
             token: USDT,
             amount: quote
         });
-
-        console.log('fee in test: ', fee);
-        console.log('quote in test: ', quote);
 
         IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
         amounts[0] = feeStruct;
@@ -288,25 +254,10 @@ contract EnergyETHTest is Test {
         vm.label(address(ozExecutor2), 'ozExecutor2');
     }
 
-
-    //---------
-    function _randomBytes32() internal view returns (bytes32) {
-        return keccak256(abi.encode(
-            tx.origin,
-            block.number,
-            block.timestamp,
-            block.coinbase,
-            address(this).codehash,
-            gasleft()
-        ));
-    }
-
+   
     function _randomUint256() internal view returns (uint256) {
-        return uint256(_randomBytes32());
+        return block.difficulty;
     }
-
-    //-----------
-
 
 
     // Generate a signature for a permit message of batch txs
@@ -321,7 +272,8 @@ contract EnergyETHTest is Test {
         return abi.encodePacked(r, s, v);
     }
 
-    // Compute the EIP712 hash of the permit object.
+
+    // Compute the EIP712 hash of the permit batch object.
     function _getEIP712Hash(
         IPermit2.PermitBatchTransferFrom memory permit,
         address spender
@@ -332,10 +284,12 @@ contract EnergyETHTest is Test {
         
         for (UC i = uc(0); i < uc(length); i = i + uc(1)) {
             uint256 ii = i.unwrap();
-            tokenPermissions[ii] = keccak256(abi.encode(TOKEN_PERMISSIONS_TYPEHASH, permit.permitted[ii]));
+            tokenPermissions[ii] = keccak256(
+                abi.encode(TOKEN_PERMISSIONS_TYPEHASH, permit.permitted[ii])
+            );
         }
 
-        bytes32 msgHash = keccak256(
+        return keccak256(
             abi.encodePacked(
                 "\x19\x01",
                 permit2.DOMAIN_SEPARATOR(),
@@ -350,9 +304,5 @@ contract EnergyETHTest is Test {
                 )
             )
         );
-        return msgHash;
     }
-
-    
-
 }

@@ -103,7 +103,7 @@ contract EnergyETH is ERC20 {
         }
         {
         IPermit2.SignatureTransferDetails memory feeDetails = IPermit2.SignatureTransferDetails({
-            to: address(this),
+            to: address(OZL),
             requestedAmount: fee_
         });
 
@@ -117,29 +117,8 @@ contract EnergyETH is ERC20 {
         details[1] = quoteDetails;
         }
 
-        console.log('fee in eETH: ', fee_);
-        console.log('quote in eETH: ', quote_);
-
         PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
 
-
-        //-------
-        // PERMIT2.permitTransferFrom(
-        //     IPermit2.PermitTransferFrom({
-        //         permitted: IPermit2.TokenPermissions({
-        //             token: buyOp_.token,
-        //             amount: amount
-        //         }),
-        //         nonce: buyOp_.nonce,
-        //         deadline: buyOp_.deadline
-        //     }),
-        //     IPermit2.SignatureTransferDetails({
-        //         to: address(this),
-        //         requestedAmount: amount
-        //     }),
-        //     msg.sender,
-        //     buyOp_.signature
-        // );
     }
 
 
