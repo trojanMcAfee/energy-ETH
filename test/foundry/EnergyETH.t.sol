@@ -19,6 +19,7 @@ import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
 import '../../libraries/PermitHash.sol';
 import '../../libraries/LibHelpers.sol';
+import '../../libraries/LibPermit2.sol';
 import '../../interfaces/IPermit2.sol';
 import { UC, uc } from "unchecked-counter/UC.sol";
 
@@ -26,6 +27,8 @@ import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 contract EnergyETHTest is Test {
+
+    using LibPermit2 for IERC20;
 
     uint256 bobKey;
     
@@ -117,28 +120,14 @@ contract EnergyETHTest is Test {
 
         
         //--------------
-  
-        IPermit2.TokenPermissions memory feeStruct = IPermit2.TokenPermissions({
-            token: USDT,
-            amount: fee
-        });
 
-        IPermit2.TokenPermissions memory quoteStruct = IPermit2.TokenPermissions({
-            token: USDT,
-            amount: quote
-        });
-
-        IPermit2.TokenPermissions[] memory amounts = new IPermit2.TokenPermissions[](2);
-        amounts[0] = feeStruct;
-        amounts[1] = quoteStruct;
+        IPermit2.TokenPermissions[] memory amounts = USDT.getTokenAmounts(fee, quote);
 
         IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
             permitted: amounts,
             nonce: _randomUint256(),
             deadline: block.timestamp
         });
-
-        //---------------
 
         bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
   

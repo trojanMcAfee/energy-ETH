@@ -26,8 +26,8 @@ error Cant_transfer(uint256 amount);
 
 contract EnergyETH is ERC20 {
 
-    using LibPermit2 for IERC20;
-    using LibPermit2 for address;
+    using LibPermit2 for *;
+    
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);

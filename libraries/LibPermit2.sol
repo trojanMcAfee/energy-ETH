@@ -19,17 +19,6 @@ library LibPermit2 {
         });
     }
 
-    function getDetails(
-        address receiver_, 
-        uint256 amount_
-    ) internal pure returns(IPermit2.SignatureTransferDetails memory details) 
-    {
-        details = IPermit2.SignatureTransferDetails({
-            to: receiver_,
-            requestedAmount: amount_
-        });
-    }
-
     function getTokenAmounts(
         IERC20 token_, 
         uint256 fee_, 
@@ -39,6 +28,17 @@ library LibPermit2 {
         amounts = new IPermit2.TokenPermissions[](2);
         amounts[0] = getTokenPermission(token_, fee_);
         amounts[1] = getTokenPermission(token_, quote_);
+    }
+
+    function getDetails(
+        address receiver_, 
+        uint256 amount_
+    ) internal pure returns(IPermit2.SignatureTransferDetails memory details) 
+    {
+        details = IPermit2.SignatureTransferDetails({
+            to: receiver_,
+            requestedAmount: amount_
+        });
     }
 
 
