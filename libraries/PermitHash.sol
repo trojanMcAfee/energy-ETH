@@ -4,8 +4,6 @@ pragma solidity ^0.8.17;
 import {IAllowanceTransfer} from "../interfaces/IAllowanceTransfer.sol";
 import {ISignatureTransfer} from "../interfaces/ISignatureTransfer.sol";
 
-import '../interfaces/IPermit2.sol';
-
 library PermitHash {
     bytes32 public constant _PERMIT_DETAILS_TYPEHASH =
         keccak256("PermitDetails(address token,uint160 amount,uint48 expiration,uint48 nonce)");
@@ -65,7 +63,7 @@ library PermitHash {
         );
     }
 
-    function hashMe(IPermit2.PermitBatchTransferFrom memory permit) internal view returns (bytes32) {
+    function hash(ISignatureTransfer.PermitBatchTransferFrom memory permit) internal view returns (bytes32) {
         uint256 numPermitted = permit.permitted.length;
         bytes32[] memory tokenPermissionHashes = new bytes32[](numPermitted);
 
@@ -127,14 +125,6 @@ library PermitHash {
     }
 
     function _hashTokenPermissions(ISignatureTransfer.TokenPermissions memory permitted)
-        private
-        pure
-        returns (bytes32)
-    {
-        return keccak256(abi.encode(_TOKEN_PERMISSIONS_TYPEHASH, permitted));
-    }
-
-    function _hashTokenPermissions(IPermit2.TokenPermissions memory permitted)
         private
         pure
         returns (bytes32)

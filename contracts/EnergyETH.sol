@@ -117,6 +117,9 @@ contract EnergyETH is ERC20 {
         details[1] = quoteDetails;
         }
 
+        console.log('fee in eETH: ', fee_);
+        console.log('quote in eETH: ', quote_);
+
         PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
 
 
