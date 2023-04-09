@@ -67,8 +67,6 @@ contract EnergyETHTest is Test {
     function setUp() public {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
 
-        //----------
-
         (
             address[] memory facets, //not all contracts are facets
             address[] memory feeds
@@ -91,7 +89,6 @@ contract EnergyETHTest is Test {
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
-
 
         bobKey = _randomUint256();
         bob = vm.addr(bobKey);
@@ -118,9 +115,6 @@ contract EnergyETHTest is Test {
         vm.startPrank(bob);
         USDT.approve(address(permit2), type(uint).max);
 
-        
-        //--------------
-
         IPermit2.TokenPermissions[] memory amounts = USDT.getTokenAmounts(fee, quote);
 
         IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
@@ -139,12 +133,23 @@ contract EnergyETHTest is Test {
             signature: sig
         });
 
-        energyFacet.issue(buyOp);
+        //Pre-conditions
+        uint256 balEnergyContr = USDT.balanceOf(address(energyFacet));
+        assertTrue(balEnergyContr == 0);
 
+        uint256 ozlFeeBal = USDT.balanceOf(address(OZL));
+        assertTrue(ozlFeeBal == 0);
+
+        //Action
+        energyFacet.issue(buyOp);
         vm.stopPrank();
 
-        uint bal = USDT.balanceOf(address(energyFacet));
-        assertTrue(bal > 0);
+        //Post-conditions
+        balEnergyContr = USDT.balanceOf(address(energyFacet));
+        assertTrue(balEnergyContr > 0);
+
+        ozlFeeBal = USDT.balanceOf(address(OZL));
+        assertTrue(ozlFeeBal > 0);
     }
 
 

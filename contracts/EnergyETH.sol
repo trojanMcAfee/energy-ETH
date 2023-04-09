@@ -27,7 +27,7 @@ error Cant_transfer(uint256 amount);
 contract EnergyETH is ERC20 {
 
     using LibPermit2 for *;
-    
+
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
@@ -94,38 +94,6 @@ contract EnergyETH is ERC20 {
     }
 
 
-
-    // function _depositFeesInDeFi(uint fee_, bool isRetry_) private { 
-    //     /// @dev Into Curve's Tricrypto
-    //     (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
-
-    //     USDT.approve(address(tricrypto), tokenAmountIn);
-
-    //     for (uint i=1; i <= 2; i++) {
-    //         uint minAmount = LibHelpers.calculateSlippage(tokenAmountIn, OZL.getDefaultSlippage() * i);
-
-    //         try tricrypto.add_liquidity(amounts, minAmount) {
-    //             /// @dev Into Yearn's crvTricrypto
-    //             crvTricrypto.approve(
-    //                 address(yTriPool), crvTricrypto.balanceOf(address(this))
-    //             );
-
-    //             yTriPool.deposit(crvTricrypto.balanceOf(address(this)));
-
-    //             /// @dev Internal fees accounting
-    //             if (s.failedFees > 0) s.failedFees = 0;
-    //             s.feesVault += fee_;
-                
-    //             break;
-    //         } catch {
-    //             if (i == 1) {
-    //                 continue;
-    //             } else {
-    //                 if (!isRetry_) s.failedFees += fee_; 
-    //             }
-    //         }
-    //     }
-    // }
 
 
 
