@@ -66,7 +66,6 @@ contract EnergyETH is ERC20 {
         _mint(msg.sender, toBuy);
 
         OZL.depositFeesInDeFi(fee, false);
-
     }
 
 
@@ -75,8 +74,6 @@ contract EnergyETH is ERC20 {
         uint256 quote_,
         uint256 fee_
     ) private {
-        // uint256 amount = buyOp_.amount;
-
         IPermit2.TokenPermissions[] memory amounts = buyOp_.token.getTokenAmounts(fee_, quote_);
 
         IPermit2.PermitBatchTransferFrom memory permit = IPermit2.PermitBatchTransferFrom({
