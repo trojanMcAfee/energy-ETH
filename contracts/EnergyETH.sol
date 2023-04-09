@@ -65,12 +65,6 @@ contract EnergyETH is ERC20 {
 
         _mint(msg.sender, toBuy);
 
-        uint bal = USDT.balanceOf(address(this));
-        console.log('bal eETH: ', bal);
-
-        bal = USDT.balanceOf(address(OZL));
-        console.log('bal OZL: ', bal);
-
         OZL.depositFeesInDeFi(fee, false);
 
     }
