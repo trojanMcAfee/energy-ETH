@@ -13,7 +13,7 @@ contract InitUpgradeV2 {
 
     function init(
         address[] calldata feeds_,
-        address[] memory facets_
+        address[] memory nonRevFacets_
     ) external {
 
         s.wtiFeed = AggregatorV3Interface(feeds_[0]);
@@ -21,14 +21,7 @@ contract InitUpgradeV2 {
         s.ethFeed = AggregatorV3Interface(feeds_[2]);
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
-        // address[] memory facets = new address[](2);
-        // facets[0] = facets_[0];
-        // facets[0] = facets_[1];
-
-        LibDiamond.setNonRevenueFacets(facets_); //test if anyone cann call setNonRevenueFacets
-        //not all contracts are facets --> fix this
-        //--------
+        LibDiamond.setNonRevenueFacets(nonRevFacets_); //test if anyone cann call setNonRevenueFacets
     
-
     }
 }

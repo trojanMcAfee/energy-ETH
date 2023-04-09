@@ -17,5 +17,7 @@ interface ozIDiamond {
     function getEnergyPrice() external view returns(uint256);
     function getOzelIndex() external view returns(uint256);
     function getProtocolFee() external view returns(uint256);
-    function depositFeesInDeFi(uint fee_, bool isRetry_) external;
+    function depositFeesInDeFi(uint256 fee_, bool isRetry_) external;
+    function getFeesVault() external view returns(uint256);
+    function getAUM() external view returns(uint256 wethUM, uint256 valueUM);
 }

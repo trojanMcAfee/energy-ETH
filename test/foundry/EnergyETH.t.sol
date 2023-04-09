@@ -10,6 +10,7 @@ import "forge-std/Test.sol";
 import "forge-std/console.sol";
 import '../../contracts/facets/ozOracleFacet.sol';
 import '../../contracts/facets/ozExecutor2Facet.sol';
+import '../../contracts/facets/ozLoupeV2Facet.sol';
 import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
@@ -34,12 +35,16 @@ contract EnergyETHTest is Test {
     
     ozOracleFacet private ozOracle;
     ozExecutor2Facet private ozExecutor2;
+    ozLoupeV2Facet private ozLoupeV2;
+
     EnergyETH private eETH;
-    InitUpgradeV2 private initUpgrade;
+
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
     GoldFeed private goldFeed;
+
     ozIDiamond private OZL;
+    InitUpgradeV2 private initUpgrade;
 
     address private deployer = 0xe738696676571D9b74C81716E4aE797c2440d306;
     address private volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
@@ -68,7 +73,7 @@ contract EnergyETHTest is Test {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
 
         (
-            address[] memory facets, //not all contracts are facets
+            address[] memory nonRevFacets,
             address[] memory feeds
         ) = _createContracts();
 
@@ -79,13 +84,14 @@ contract EnergyETHTest is Test {
         bytes memory data = abi.encodeWithSelector(
             initUpgrade.init.selector,
             feeds,
-            facets
+            nonRevFacets
         );
 
         //Creates FacetCut array
-        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](2);
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](3);
         cuts[0] = _createCut(address(ozOracle), 0);
-        cuts[1] = _createCut(address(ozExecutor2), 1);
+        cuts[1] = _createCut(address(ozExecutor2), 1); 
+        cuts[2] = _createCut(address(ozLoupeV2), 2);
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
@@ -137,8 +143,8 @@ contract EnergyETHTest is Test {
         uint256 balEnergyContr = USDT.balanceOf(address(eETH));
         assertTrue(balEnergyContr == 0);
 
-        // uint256 ozlFeeBal = USDT.balanceOf(address(OZL));
-        // assertTrue(ozlFeeBal == 0);
+        uint256 oldFees = OZL.getFeesVault();
+        (, uint256 oldAUM) = OZL.getAUM();
 
         uint256 eETHbal = eETH.balanceOf(bob);
         assertTrue(eETHbal == 0);
@@ -151,8 +157,11 @@ contract EnergyETHTest is Test {
         balEnergyContr = USDT.balanceOf(address(eETH));
         assertTrue(balEnergyContr > 0);
 
-        // ozlFeeBal = USDT.balanceOf(address(OZL));
-        // assertTrue(ozlFeeBal > 0);
+        uint256 newFees = OZL.getFeesVault();
+        assertTrue(newFees > oldFees);
+
+        (, uint256 newAUM) = OZL.getAUM();
+        assertTrue(newAUM > oldAUM);
 
         eETHbal = eETH.balanceOf(bob);
         assertTrue(eETHbal > 0);
@@ -176,6 +185,7 @@ contract EnergyETHTest is Test {
         bytes4[] memory selectors = new bytes4[](1);
         if (id_ == 0) selectors[0] = ozOracle.getEnergyPrice.selector;
         if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
+        if (id_ == 2) selectors[0] = ozLoupeV2.getFeesVault.selector;
 
         cut = ozIDiamond.FacetCut({
             facetAddress: contractAddr_,
@@ -196,10 +206,11 @@ contract EnergyETHTest is Test {
         ozOracle = new ozOracleFacet(); 
         eETH = new EnergyETH();
         ozExecutor2 = new ozExecutor2Facet();
+        ozLoupeV2 = new ozLoupeV2Facet();
 
-        address[] memory facets = new address[](2);
-        facets[0] = address(ozOracle);
-        facets[1] = address(ozExecutor2);
+        address[] memory nonRevFacets = new address[](2);
+        nonRevFacets[0] = address(ozOracle);
+        nonRevFacets[1] = address(ozLoupeV2);
 
         address[] memory feeds = new address[](4);
         feeds[0] = address(wtiFeed);
@@ -207,7 +218,7 @@ contract EnergyETHTest is Test {
         feeds[2] = address(ethFeed);
         feeds[3] = address(goldFeed); 
 
-        return (facets, feeds);
+        return (nonRevFacets, feeds);
     }
 
 
@@ -232,6 +243,7 @@ contract EnergyETHTest is Test {
         vm.label(alice, 'alice');
         vm.label(ray, 'ray');
         vm.label(address(ozExecutor2), 'ozExecutor2');
+        vm.label(address(ozLoupeV2), 'ozLoupeV2');
     }
 
    
