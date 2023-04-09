@@ -34,7 +34,7 @@ contract EnergyETHTest is Test {
     
     ozOracleFacet private ozOracle;
     ozExecutor2Facet private ozExecutor2;
-    EnergyETH private energyFacet;
+    EnergyETH private eETH;
     InitUpgradeV2 private initUpgrade;
     WtiFeed private wtiFeed;
     EthFeed private ethFeed;
@@ -101,7 +101,7 @@ contract EnergyETHTest is Test {
 
 
     function test_getPrice() public {
-        uint price = energyFacet.getPrice();
+        uint price = eETH.getPrice();
         assertTrue(price > 0);
     }
 
@@ -123,7 +123,7 @@ contract EnergyETHTest is Test {
             deadline: block.timestamp
         });
 
-        bytes memory sig = _signPermit(permit, address(energyFacet), bobKey);
+        bytes memory sig = _signPermit(permit, address(eETH), bobKey);
   
         IPermit2.Permit2Buy memory buyOp = IPermit2.Permit2Buy({
             token: USDT,
@@ -134,18 +134,18 @@ contract EnergyETHTest is Test {
         });
 
         //Pre-conditions
-        uint256 balEnergyContr = USDT.balanceOf(address(energyFacet));
+        uint256 balEnergyContr = USDT.balanceOf(address(eETH));
         assertTrue(balEnergyContr == 0);
 
         uint256 ozlFeeBal = USDT.balanceOf(address(OZL));
         assertTrue(ozlFeeBal == 0);
 
         //Action
-        energyFacet.issue(buyOp);
+        eETH.issue(buyOp);
         vm.stopPrank();
 
         //Post-conditions
-        balEnergyContr = USDT.balanceOf(address(energyFacet));
+        balEnergyContr = USDT.balanceOf(address(eETH));
         assertTrue(balEnergyContr > 0);
 
         ozlFeeBal = USDT.balanceOf(address(OZL));
@@ -188,13 +188,12 @@ contract EnergyETHTest is Test {
         wtiFeed = new WtiFeed();
 
         ozOracle = new ozOracleFacet(); 
-        energyFacet = new EnergyETH();
+        eETH = new EnergyETH();
         ozExecutor2 = new ozExecutor2Facet();
 
-        address[] memory facets = new address[](3);
+        address[] memory facets = new address[](2);
         facets[0] = address(ozOracle);
-        facets[1] = address(energyFacet);
-        facets[2] = address(ozExecutor2);
+        facets[1] = address(ozExecutor2);
 
         address[] memory feeds = new address[](4);
         feeds[0] = address(wtiFeed);
@@ -208,7 +207,6 @@ contract EnergyETHTest is Test {
 
     function _setLabels() private {
         vm.label(address(ozOracle), 'ozOracle');
-        vm.label(address(energyFacet), 'energyFacet');
         vm.label(address(initUpgrade), 'initUpgrade');
         vm.label(address(wtiFeed), 'wtiFeed');
         vm.label(address(ethFeed), 'ethFeed');
@@ -221,7 +219,7 @@ contract EnergyETHTest is Test {
         vm.label(chainlinkAggregatorAddr, 'chainlinkAggregator');
         vm.label(ozLoupe, 'ozLoupe');
         vm.label(revenueFacet, 'revenueFacet');
-        vm.label(address(energyFacet), 'energyFacet');
+        vm.label(address(eETH), 'eETH');
         vm.label(address(USDT), 'USDT');
         vm.label(address(permit2), 'permit2');
         vm.label(bob, 'bob');
