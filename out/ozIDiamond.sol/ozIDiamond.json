@@ -3,6 +3,24 @@
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "fee_",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isRetry_",
+          "type": "bool"
+        }
+      ],
+      "name": "depositFeesInDeFi",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "components": [
             {
               "internalType": "address",
@@ -104,13 +122,14 @@
     "linkReferences": {}
   },
   "methodIdentifiers": {
+    "depositFeesInDeFi(uint256,bool)": "120da16d",
     "diamondCut((address,uint8,bytes4[])[],address,bytes)": "1f931c1c",
     "getEnergyPrice()": "cab0f335",
     "getLastPrice()": "d8cf24fd",
     "getOzelIndex()": "e419d2d8",
     "getProtocolFee()": "a5a41031"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProtocolFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0x36e884d041bf6f305499ebe8238ccab10ad3aadc8679879d0f8aeb514dc8eba2\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d036fcbccbdeb5a4af098219100103a58ffb7eb87dcd2d3d4893cd9bc66b370\",\"dweb:/ipfs/QmX6Ur1vSsJncvYCSeCNjRbvBx8MQLGGWXGXtGQKrbd1kV\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee_\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isRetry_\",\"type\":\"bool\"}],\"name\":\"depositFeesInDeFi\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProtocolFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0xedffe2d88e64879d37e136c5810a74dca63e8e6307af881188c1da849e2e6b2f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://316bedf15d1041a61f17da62841ce85c6d6eec1b9db19f51e6aa6bfb91399770\",\"dweb:/ipfs/QmUpcKSkyGTjUvEStojvjQfgCAdnRTjmZMdiW6bQLNBqZi\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -118,6 +137,23 @@
     "language": "Solidity",
     "output": {
       "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "fee_",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isRetry_",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "depositFeesInDeFi"
+        },
         {
           "inputs": [
             {
@@ -226,13 +262,17 @@
         ":@chainlink/=node_modules/@chainlink/",
         ":@eth-optimism/=node_modules/@eth-optimism/",
         ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
         ":@rari-capital/=node_modules/@rari-capital/",
         ":@uniswap/=node_modules/@uniswap/",
         ":base64-sol/=node_modules/base64-sol/",
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":forge-std/=lib/forge-std/src/",
         ":hardhat/=node_modules/hardhat/",
-        ":solmate/=node_modules/solmate/"
+        ":prb-test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":solmate/=node_modules/solmate/",
+        ":src/=lib/unchecked-counter/src/",
+        ":unchecked-counter/=lib/unchecked-counter/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -248,10 +288,10 @@
     },
     "sources": {
       "interfaces/ozIDiamond.sol": {
-        "keccak256": "0x36e884d041bf6f305499ebe8238ccab10ad3aadc8679879d0f8aeb514dc8eba2",
+        "keccak256": "0xedffe2d88e64879d37e136c5810a74dca63e8e6307af881188c1da849e2e6b2f",
         "urls": [
-          "bzz-raw://3d036fcbccbdeb5a4af098219100103a58ffb7eb87dcd2d3d4893cd9bc66b370",
-          "dweb:/ipfs/QmX6Ur1vSsJncvYCSeCNjRbvBx8MQLGGWXGXtGQKrbd1kV"
+          "bzz-raw://316bedf15d1041a61f17da62841ce85c6d6eec1b9db19f51e6aa6bfb91399770",
+          "dweb:/ipfs/QmUpcKSkyGTjUvEStojvjQfgCAdnRTjmZMdiW6bQLNBqZi"
         ],
         "license": "GPL-2.0-or-later"
       }
@@ -260,17 +300,17 @@
   },
   "ast": {
     "absolutePath": "interfaces/ozIDiamond.sol",
-    "id": 1612,
+    "id": 1695,
     "exportedSymbols": {
       "ozIDiamond": [
-        1611
+        1694
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:573:14",
+    "src": "45:640:14",
     "nodes": [
       {
-        "id": 1566,
+        "id": 1642,
         "nodeType": "PragmaDirective",
         "src": "45:23:14",
         "nodes": [],
@@ -281,12 +321,12 @@
         ]
       },
       {
-        "id": 1611,
+        "id": 1694,
         "nodeType": "ContractDefinition",
-        "src": "71:547:14",
+        "src": "71:614:14",
         "nodes": [
           {
-            "id": 1575,
+            "id": 1651,
             "nodeType": "StructDefinition",
             "src": "99:120:14",
             "nodes": [],
@@ -294,12 +334,12 @@
             "members": [
               {
                 "constant": false,
-                "id": 1568,
+                "id": 1644,
                 "mutability": "mutable",
                 "name": "facetAddress",
                 "nameLocation": "133:12:14",
                 "nodeType": "VariableDeclaration",
-                "scope": 1575,
+                "scope": 1651,
                 "src": "125:20:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -308,7 +348,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 1567,
+                  "id": 1643,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "125:7:14",
@@ -322,36 +362,36 @@
               },
               {
                 "constant": false,
-                "id": 1571,
+                "id": 1647,
                 "mutability": "mutable",
                 "name": "action",
                 "nameLocation": "170:6:14",
                 "nodeType": "VariableDeclaration",
-                "scope": 1575,
+                "scope": 1651,
                 "src": "155:21:14",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_FacetCutAction_$1579",
+                  "typeIdentifier": "t_enum$_FacetCutAction_$1655",
                   "typeString": "enum ozIDiamond.FacetCutAction"
                 },
                 "typeName": {
-                  "id": 1570,
+                  "id": 1646,
                   "nodeType": "UserDefinedTypeName",
                   "pathNode": {
-                    "id": 1569,
+                    "id": 1645,
                     "name": "FacetCutAction",
                     "nameLocations": [
                       "155:14:14"
                     ],
                     "nodeType": "IdentifierPath",
-                    "referencedDeclaration": 1579,
+                    "referencedDeclaration": 1655,
                     "src": "155:14:14"
                   },
-                  "referencedDeclaration": 1579,
+                  "referencedDeclaration": 1655,
                   "src": "155:14:14",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_FacetCutAction_$1579",
+                    "typeIdentifier": "t_enum$_FacetCutAction_$1655",
                     "typeString": "enum ozIDiamond.FacetCutAction"
                   }
                 },
@@ -359,12 +399,12 @@
               },
               {
                 "constant": false,
-                "id": 1574,
+                "id": 1650,
                 "mutability": "mutable",
                 "name": "functionSelectors",
                 "nameLocation": "195:17:14",
                 "nodeType": "VariableDeclaration",
-                "scope": 1575,
+                "scope": 1651,
                 "src": "186:26:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -374,7 +414,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 1572,
+                    "id": 1648,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "186:6:14",
@@ -383,7 +423,7 @@
                       "typeString": "bytes4"
                     }
                   },
-                  "id": 1573,
+                  "id": 1649,
                   "nodeType": "ArrayTypeName",
                   "src": "186:8:14",
                   "typeDescriptions": {
@@ -396,32 +436,32 @@
             ],
             "name": "FacetCut",
             "nameLocation": "106:8:14",
-            "scope": 1611,
+            "scope": 1694,
             "visibility": "public"
           },
           {
-            "id": 1579,
+            "id": 1655,
             "nodeType": "EnumDefinition",
             "src": "225:42:14",
             "nodes": [],
             "canonicalName": "ozIDiamond.FacetCutAction",
             "members": [
               {
-                "id": 1576,
+                "id": 1652,
                 "name": "Add",
                 "nameLocation": "246:3:14",
                 "nodeType": "EnumValue",
                 "src": "246:3:14"
               },
               {
-                "id": 1577,
+                "id": 1653,
                 "name": "Replace",
                 "nameLocation": "251:7:14",
                 "nodeType": "EnumValue",
                 "src": "251:7:14"
               },
               {
-                "id": 1578,
+                "id": 1654,
                 "name": "Remove",
                 "nameLocation": "260:6:14",
                 "nodeType": "EnumValue",
@@ -432,7 +472,7 @@
             "nameLocation": "230:14:14"
           },
           {
-            "id": 1590,
+            "id": 1666,
             "nodeType": "FunctionDefinition",
             "src": "273:99:14",
             "nodes": [],
@@ -443,50 +483,50 @@
             "name": "diamondCut",
             "nameLocation": "282:10:14",
             "parameters": {
-              "id": 1588,
+              "id": 1664,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1583,
+                  "id": 1659,
                   "mutability": "mutable",
                   "name": "_diamondCut",
                   "nameLocation": "311:11:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1590,
+                  "scope": 1666,
                   "src": "293:29:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$1575_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_FacetCut_$1651_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ozIDiamond.FacetCut[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1581,
+                      "id": 1657,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 1580,
+                        "id": 1656,
                         "name": "FacetCut",
                         "nameLocations": [
                           "293:8:14"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1575,
+                        "referencedDeclaration": 1651,
                         "src": "293:8:14"
                       },
-                      "referencedDeclaration": 1575,
+                      "referencedDeclaration": 1651,
                       "src": "293:8:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_FacetCut_$1575_storage_ptr",
+                        "typeIdentifier": "t_struct$_FacetCut_$1651_storage_ptr",
                         "typeString": "struct ozIDiamond.FacetCut"
                       }
                     },
-                    "id": 1582,
+                    "id": 1658,
                     "nodeType": "ArrayTypeName",
                     "src": "293:10:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$1575_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_FacetCut_$1651_storage_$dyn_storage_ptr",
                       "typeString": "struct ozIDiamond.FacetCut[]"
                     }
                   },
@@ -494,12 +534,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1585,
+                  "id": 1661,
                   "mutability": "mutable",
                   "name": "_init",
                   "nameLocation": "332:5:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1590,
+                  "scope": 1666,
                   "src": "324:13:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -508,7 +548,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1584,
+                    "id": 1660,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "324:7:14",
@@ -522,12 +562,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1587,
+                  "id": 1663,
                   "mutability": "mutable",
                   "name": "_calldata",
                   "nameLocation": "352:9:14",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1590,
+                  "scope": 1666,
                   "src": "339:22:14",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -536,7 +576,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 1586,
+                    "id": 1662,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "339:5:14",
@@ -551,18 +591,18 @@
               "src": "292:70:14"
             },
             "returnParameters": {
-              "id": 1589,
+              "id": 1665,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "371:0:14"
             },
-            "scope": 1611,
+            "scope": 1694,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 1595,
+            "id": 1671,
             "nodeType": "FunctionDefinition",
             "src": "377:55:14",
             "nodes": [],
@@ -573,23 +613,23 @@
             "name": "getLastPrice",
             "nameLocation": "386:12:14",
             "parameters": {
-              "id": 1591,
+              "id": 1667,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "398:2:14"
             },
             "returnParameters": {
-              "id": 1594,
+              "id": 1670,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1593,
+                  "id": 1669,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1595,
+                  "scope": 1671,
                   "src": "423:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -598,7 +638,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1592,
+                    "id": 1668,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "423:7:14",
@@ -612,13 +652,13 @@
               ],
               "src": "422:9:14"
             },
-            "scope": 1611,
+            "scope": 1694,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 1600,
+            "id": 1676,
             "nodeType": "FunctionDefinition",
             "src": "437:57:14",
             "nodes": [],
@@ -629,23 +669,23 @@
             "name": "getEnergyPrice",
             "nameLocation": "446:14:14",
             "parameters": {
-              "id": 1596,
+              "id": 1672,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "460:2:14"
             },
             "returnParameters": {
-              "id": 1599,
+              "id": 1675,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1598,
+                  "id": 1674,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1600,
+                  "scope": 1676,
                   "src": "485:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -654,7 +694,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1597,
+                    "id": 1673,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "485:7:14",
@@ -668,13 +708,13 @@
               ],
               "src": "484:9:14"
             },
-            "scope": 1611,
+            "scope": 1694,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 1605,
+            "id": 1681,
             "nodeType": "FunctionDefinition",
             "src": "499:55:14",
             "nodes": [],
@@ -685,23 +725,23 @@
             "name": "getOzelIndex",
             "nameLocation": "508:12:14",
             "parameters": {
-              "id": 1601,
+              "id": 1677,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "520:2:14"
             },
             "returnParameters": {
-              "id": 1604,
+              "id": 1680,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1603,
+                  "id": 1679,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1605,
+                  "scope": 1681,
                   "src": "545:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -710,7 +750,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1602,
+                    "id": 1678,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "545:7:14",
@@ -724,13 +764,13 @@
               ],
               "src": "544:9:14"
             },
-            "scope": 1611,
+            "scope": 1694,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
-            "id": 1610,
+            "id": 1686,
             "nodeType": "FunctionDefinition",
             "src": "559:57:14",
             "nodes": [],
@@ -741,23 +781,23 @@
             "name": "getProtocolFee",
             "nameLocation": "568:14:14",
             "parameters": {
-              "id": 1606,
+              "id": 1682,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "582:2:14"
             },
             "returnParameters": {
-              "id": 1609,
+              "id": 1685,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1608,
+                  "id": 1684,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1610,
+                  "scope": 1686,
                   "src": "607:7:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -766,7 +806,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1607,
+                    "id": 1683,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "607:7:14",
@@ -780,8 +820,91 @@
               ],
               "src": "606:9:14"
             },
-            "scope": 1611,
+            "scope": 1694,
             "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 1693,
+            "nodeType": "FunctionDefinition",
+            "src": "621:62:14",
+            "nodes": [],
+            "functionSelector": "120da16d",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositFeesInDeFi",
+            "nameLocation": "630:17:14",
+            "parameters": {
+              "id": 1691,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1688,
+                  "mutability": "mutable",
+                  "name": "fee_",
+                  "nameLocation": "653:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1693,
+                  "src": "648:9:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1687,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "648:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1690,
+                  "mutability": "mutable",
+                  "name": "isRetry_",
+                  "nameLocation": "664:8:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1693,
+                  "src": "659:13:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1689,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "647:26:14"
+            },
+            "returnParameters": {
+              "id": 1692,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "682:0:14"
+            },
+            "scope": 1694,
+            "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
@@ -793,11 +916,11 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          1611
+          1694
         ],
         "name": "ozIDiamond",
         "nameLocation": "81:10:14",
-        "scope": 1612,
+        "scope": 1695,
         "usedErrors": []
       }
     ],

@@ -140,6 +140,9 @@ contract EnergyETHTest is Test {
         uint256 ozlFeeBal = USDT.balanceOf(address(OZL));
         assertTrue(ozlFeeBal == 0);
 
+        uint256 eETHbal = eETH.balanceOf(bob);
+        assertTrue(eETHbal == 0);
+
         //Action
         eETH.issue(buyOp);
         vm.stopPrank();
@@ -148,8 +151,11 @@ contract EnergyETHTest is Test {
         balEnergyContr = USDT.balanceOf(address(eETH));
         assertTrue(balEnergyContr > 0);
 
-        ozlFeeBal = USDT.balanceOf(address(OZL));
-        assertTrue(ozlFeeBal > 0);
+        // ozlFeeBal = USDT.balanceOf(address(OZL));
+        // assertTrue(ozlFeeBal > 0);
+
+        eETHbal = eETH.balanceOf(bob);
+        assertTrue(eETHbal > 0);
     }
 
 

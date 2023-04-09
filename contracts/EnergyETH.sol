@@ -63,11 +63,15 @@ contract EnergyETH is ERC20 {
 
         _issue(buyOp_, quote, fee);
 
-        // _mint(msg.sender, toBuy);
+        _mint(msg.sender, toBuy);
 
-        // OZL.depositFeesInDeFi(fee, false);
+        uint bal = USDT.balanceOf(address(this));
+        console.log('bal eETH: ', bal);
 
-        //---------
+        bal = USDT.balanceOf(address(OZL));
+        console.log('bal OZL: ', bal);
+
+        OZL.depositFeesInDeFi(fee, false);
 
     }
 
@@ -77,7 +81,7 @@ contract EnergyETH is ERC20 {
         uint256 quote_,
         uint256 fee_
     ) private {
-        uint256 amount = buyOp_.amount;
+        // uint256 amount = buyOp_.amount;
 
         IPermit2.TokenPermissions[] memory amounts = buyOp_.token.getTokenAmounts(fee_, quote_);
 

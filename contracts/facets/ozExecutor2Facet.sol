@@ -8,15 +8,22 @@ import '../../interfaces/IYtri.sol';
 import '../../interfaces/ozIExecutorFacet.sol';
 import '../AppStorage.sol';
 
+import "forge-std/console.sol";
+
 
 contract ozExecutor2Facet {
 
     AppStorage s;
 
     //put a modifier here that only eETH can call this function
+    //msg.sender is eETH (checked)
 
 
     function depositFeesInDeFi(uint fee_, bool isRetry_) external { 
+        uint bal = IERC20(s.USDT).balanceOf(0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2);
+        console.log('s.USDT: ', s.USDT);
+        console.log('bal2 OZL: ', bal);
+
         /// @dev Into Curve's Tricrypto
         (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
 
@@ -54,7 +61,16 @@ contract ozExecutor2Facet {
         amounts[0] = amountIn_;
         amounts[1] = 0;
         amounts[2] = 0;
+
+        console.log(1);
+        console.log('s.tricrypto: ', s.tricrypto);
+        console.log('address(this): ', address(this));
+        console.log('msg.sender: ', msg.sender);
+        // console.log('USDT bal: ', IERC20(s.USDT).balanceOf(address(this)));
+
         uint tokenAmount = ITri(s.tricrypto).calc_token_amount(amounts, true);
+        console.log(2);
+
         return (tokenAmount, amounts);
     }
 
