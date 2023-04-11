@@ -17,6 +17,7 @@ contract ozOracleFacet {
 
     // using LibHelpers for int256;
     // using LibHelpers for uint80;
+    // using LibHelpers for uint80;
 
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
@@ -89,35 +90,6 @@ contract ozOracleFacet {
         }
     }
 
-
-    //  function _getPrevFeed(
-    //     uint80 roundId_, 
-    //     AggregatorV3Interface feed_
-    // ) private view returns(int256) {
-    //     (,int256 prevPrice,,,) = feed_.getRoundData(roundId_ - 1);
-    //     return prevPrice;
-    // }
-
-    // function _setPrice(
-    //     DataInfo memory price_, 
-    //     int256 volIndex_, 
-    //     AggregatorV3Interface feed_
-    // ) private view returns(int256) {
-    //     if (address(feed_) != address(s.ethFeed)) {
-    //         int256 currPrice = price_.value;
-    //         int256 netDiff = currPrice - _getPrevFeed(price_.roundId, feed_);
-    //         return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
-    //     } else {
-    //         int256 prevEthPrice = _getPrevFeed(price_.roundId, feed_);
-    //         int256 netDiff = price_.value - prevEthPrice;
-    //         return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
-    //     }
-    // }
-
-    // function _calculateBasePrice(int256 ethPrice_) private pure returns(int256) {
-    //     return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
-    // }
-    
 
 }
 

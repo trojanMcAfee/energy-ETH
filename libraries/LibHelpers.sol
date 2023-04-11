@@ -5,6 +5,7 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import '@rari-capital/solmate/src/utils/FixedPointMathLib.sol';
 import { DataInfo } from '../contracts/AppStorage.sol';
+import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 library LibHelpers {
@@ -16,7 +17,7 @@ library LibHelpers {
 
     int constant BASE = 1e7;
 
-
+    //ozExecutor2 helpers
     function calculateSlippage(
         uint256 amount_, 
         uint256 basisPoint_
@@ -33,6 +34,7 @@ library LibHelpers {
 
     //--------
 
+    //ozOracle Helpers
     function getPrevFeed(
         uint80 roundId_, 
         AggregatorV3Interface feed_
@@ -41,24 +43,26 @@ library LibHelpers {
         return prevPrice;
     }
 
-    // function _setPrice(
-    //     DataInfo memory price_, 
-    //     int256 volIndex_, 
-    //     AggregatorV3Interface feed_
-    // ) private view returns(int256) {
-    //     if (address(feed_) != address(s.ethFeed)) {
-    //         int256 currPrice = price_.value;
-    //         int256 netDiff = currPrice - _getPrevFeed(price_.roundId, feed_);
-    //         return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
-    //     } else {
-    //         int256 prevEthPrice = _getPrevFeed(price_.roundId, feed_);
-    //         int256 netDiff = price_.value - prevEthPrice;
-    //         return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
-    //     }
-    // }
-
     function calculateBasePrice(int256 ethPrice_) internal pure returns(int256) {
         return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
+    }
+
+    //--------
+    //ozCutFaceV2 helpers
+
+
+    function indexOf(
+        address[] calldata array_, 
+        address value_
+    ) internal pure returns(uint256) 
+    {
+        int256 length = array_.length;
+        for (int256 i=uc(0); i < uc(length); i = i + uc(1)) {
+            if (array_[i] == value_) {
+                return uint256(i);
+            }
+        }
+        return -1;
     }
 
 }

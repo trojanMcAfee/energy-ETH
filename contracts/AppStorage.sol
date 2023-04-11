@@ -100,6 +100,9 @@ struct AppStorage {
     AggregatorV3Interface volatilityFeed;
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
+
+    mapping(bytes32 id => address oracle) IdToOracle;
+    bytes[] oraclesToIds;
 }
 
 /// @dev Reference for oz20Facet storage
