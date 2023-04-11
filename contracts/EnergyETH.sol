@@ -40,6 +40,7 @@ contract EnergyETH is ERC20 {
         return OZL.getEnergyPrice();
     }
 
+    //calculating the % to charge as premium against frontrunning
 
     function issue(IPermit2.Permit2Buy memory buyOp_) external payable {
         uint256 toBuy = buyOp_.amount;
