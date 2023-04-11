@@ -15,7 +15,6 @@ import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
-// import '../../contracts/ozDiamond.sol';
 import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
 import '../../libraries/PermitHash.sol';

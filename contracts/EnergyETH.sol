@@ -8,11 +8,8 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import '../interfaces/ozIDiamond.sol';
 import '../interfaces/IPermit2.sol';
-import '../interfaces/ITri.sol';
-import '../interfaces/IYtri.sol';
 import '../libraries/LibHelpers.sol';
 import '../libraries/LibPermit2.sol';
-// import './ozOracleFacet.sol';
 
 import "forge-std/console.sol";
 // import 'hardhat/console.sol';
@@ -23,6 +20,7 @@ error Not_enough_funds(uint256 buyerBalance);
 error Cant_approve(uint256 amount);
 error Cant_transfer(uint256 amount);
 
+//add buy with eth and usdc
 
 contract EnergyETH is ERC20 {
 
@@ -31,12 +29,7 @@ contract EnergyETH is ERC20 {
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
-    IERC20 crvTricrypto = IERC20(0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2);
-
-    address immutable wethAdrr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
     
-    IYtri yTriPool = IYtri(0x239e14A19DFF93a17339DCC444f74406C17f8E67);
-    ITri tricrypto = ITri(0x960ea3e3C7FB317332d990873d354E18d7645590);
     ozIDiamond OZL = ozIDiamond(0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2);
     IPermit2 immutable PERMIT2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
