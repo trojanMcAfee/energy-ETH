@@ -18,8 +18,11 @@ contract ozCutFacetV2 {
 
     function addOracle(address newOracle_, bytes32 id_) external {
         LibDiamond.enforceIsContractOwner();
+
+        bytes memory oracleDetails = abi.encode(bytes20(newOracle_), id_); 
         s.oracleIDs[id_] = newOracle_;
-        s.oracles.push(newOracle_);
+        s.oraclesToIds.push(oracleDetails);
+
         emit OracleAdded(newOracle_, id_);
     }
 
@@ -31,11 +34,22 @@ contract ozCutFacetV2 {
         idToOracle[oracleID] = address(0);
         
         s.oracleIDs[toRemove_] = new bytes32(0);
-        LibCommon.remove(s.oracles, toRemove_);
-        emit OracleRemoved(toRemove_);
+        // LibCommon.remove(s.oracles, toRemove_);
 
-        //do a function to remove from oraclesToIds and IdToOracle
-        //same as to addOracle
+        for (uint i=0; i < s.oraclesToIds.length; i++) {
+            bytes memory oracleDetails  = s.oraclesToIds[i];
+            bytes memory possId;
+
+            assembly {
+                possId := mload(add(oracleDetails, 64))
+            }
+
+            if (possId == oracleID) {
+                LibCommon.remove(s.oraclesToIds, oracleDetails);
+                emit OracleRemoved(toRemove_);
+            }
+
+        }
         //use them as access control in diff functions
 
         
@@ -47,7 +61,15 @@ contract ozCutFacetV2 {
         address[] memory oracles = new address[](length);
  
         for (uint256 i=uc(0); i < uc(length); i = i + uc(1)) {
-            oracles[i] = oraclesToIds[i][0];
+            uint256 ii = i.unwrap();
+            oracles[ii] = s.oraclesToIds[ii][0];
+            bytes32 oracle;
+
+            assembly {
+                oracle := mload(add(oracleDetails, 32))
+            }
+
+            oracles[ii] = address(oracle);
         }
         return oracles;
     }

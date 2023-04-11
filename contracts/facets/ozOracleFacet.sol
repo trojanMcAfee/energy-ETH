@@ -29,6 +29,8 @@ contract ozOracleFacet {
     //**** MAIN ******/
 
     function getEnergyPrice() external view returns(uint256) {
+        //add isOpen modifier
+
         (Data memory data, int basePrice) = _getDataFeeds();
         int256 volIndex = data.volIndex.value;
 

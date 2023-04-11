@@ -33,25 +33,25 @@ library LibCommon {
     }
 
 
-    // function remove(bytes[] memory array_, address toRemove_) internal {
-    //     bytes32 oracleBytes = bytes32(bytes20(toRemove_));
+    function remove(bytes[] memory array_, address toRemove_) internal {
+        bytes32 oracleBytes = bytes32(bytes20(toRemove_));
         
-    //     uint index;
-    //     for (uint i=0; i < array_.length;) {
-    //         bytes memory oracleDetails = array_[i];
+        uint index;
+        for (uint i=0; i < array_.length;) {
+            bytes memory oracleDetails = array_[i];
 
-    //         if (array_[i] == toRemove_)  {
-    //             index = i;
-    //             break;
-    //         }
-    //         unchecked { ++i; }
-    //     }
-    //     for (uint i=index; i < array_.length - 1;){
-    //         array_[i] = array_[i+1];
-    //         unchecked { ++i; }
-    //     }
-    //     delete array_[array_.length-1];
-    //     array_.pop();
-    // }
+            if (array_[i] == toRemove_)  {
+                index = i;
+                break;
+            }
+            unchecked { ++i; }
+        }
+        for (uint i=index; i < array_.length - 1;){
+            array_[i] = array_[i+1];
+            unchecked { ++i; }
+        }
+        delete array_[array_.length-1];
+        array_.pop();
+    }
 
 }
