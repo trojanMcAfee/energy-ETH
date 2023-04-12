@@ -15,15 +15,10 @@ contract ozOracleFacet {
 
     AppStorage s;
 
-    // using LibHelpers for int256;
-    // using LibHelpers for uint80;
-    // using LibHelpers for uint80;
+    using LibHelpers for *;
 
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
-
-    // int constant BASE = 1e7;
-
 
 
     //**** MAIN ******/
@@ -52,7 +47,7 @@ contract ozOracleFacet {
         (uint80 ethId, int256 ethPrice,,,) = s.ethFeed.latestRoundData();
         (uint80 goldId, int256 goldPrice,,,) = s.goldFeed.latestRoundData();
 
-        basePrice = LibHelpers.calculateBasePrice(ethPrice);
+        basePrice = ethPrice.calculateBasePrice();
 
         data = Data({
             volIndex: DataInfo({
@@ -83,10 +78,10 @@ contract ozOracleFacet {
     ) private view returns(int256) {
         if (address(feed_) != address(s.ethFeed)) {
             int256 currPrice = price_.value;
-            int256 netDiff = currPrice - LibHelpers.getPrevFeed(price_.roundId, feed_);
+            int256 netDiff = currPrice - price_.roundId.getPrevFeed(feed_);
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
         } else {
-            int256 prevEthPrice = LibHelpers.getPrevFeed(price_.roundId, feed_);
+            int256 prevEthPrice = price_.roundId.getPrevFeed(feed_);
             int256 netDiff = price_.value - prevEthPrice;
             return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
         }
