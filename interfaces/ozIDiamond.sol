@@ -23,4 +23,6 @@ interface ozIDiamond {
     function getOracles() external view returns(address[] memory);
     function getOracleIdByAddress(address oracle_) external view returns(bytes32);
     function getOracleAddressById(bytes32 id_) external view returns(address);
+    function addOracle(address newOracle_, bytes32 id_) external;
+    function removeOracle(address toRemove_) external;
 }

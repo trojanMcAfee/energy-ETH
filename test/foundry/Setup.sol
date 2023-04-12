@@ -40,6 +40,7 @@ contract Setup is Test {
     address internal deployer = 0xe738696676571D9b74C81716E4aE797c2440d306;
     address internal volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
     address internal diamond = 0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2;
+    address internal deadAddr = deadAddr = 0x000000000000000000000000000000000000dEaD;
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
 
