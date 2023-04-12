@@ -21,6 +21,13 @@ contract InitUpgradeV2 {
         s.ethFeed = AggregatorV3Interface(feeds_[2]);
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
+        address ozOracle = nonRevFacets_[0];
+        bytes32 oracleID = keccak256(abi.encodePacked(ozOracle));
+
+        s.idToOracle[oracleID] = ozOracle;
+        bytes memory oracleDetails = abi.encode(ozOracle, oracleID);
+        s.oraclesToIds.push(oracleDetails);
+
         LibDiamond.setNonRevenueFacets(nonRevFacets_); //test if anyone cann call setNonRevenueFacets
     
     }

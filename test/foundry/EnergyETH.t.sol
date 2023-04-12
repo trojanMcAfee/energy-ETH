@@ -11,6 +11,7 @@ import "forge-std/console.sol";
 import '../../contracts/facets/ozOracleFacet.sol';
 import '../../contracts/facets/ozExecutor2Facet.sol';
 import '../../contracts/facets/ozLoupeV2Facet.sol';
+import '../../contracts/facets/ozCutFacetV2.sol';
 import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
@@ -35,6 +36,7 @@ contract EnergyETHTest is Test {
     ozOracleFacet private ozOracle;
     ozExecutor2Facet private ozExecutor2;
     ozLoupeV2Facet private ozLoupeV2;
+    ozCutFacetV2 private ozCutV2;
 
     EnergyETH private eETH;
 
@@ -87,10 +89,11 @@ contract EnergyETHTest is Test {
         );
 
         //Creates FacetCut array
-        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](3);
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](4);
         cuts[0] = _createCut(address(ozOracle), 0);
         cuts[1] = _createCut(address(ozExecutor2), 1); 
         cuts[2] = _createCut(address(ozLoupeV2), 2);
+        cuts[3] = _createCut(address(ozCutV2), 3);
 
         vm.prank(deployer);
         OZL.diamondCut(cuts, address(initUpgrade), data);
@@ -103,6 +106,7 @@ contract EnergyETHTest is Test {
         _setLabels();
     }
 
+    //------------------------
 
 
     function test_getPrice() public {
@@ -166,6 +170,11 @@ contract EnergyETHTest is Test {
         assertTrue(eETHbal > 0);
     }
 
+    function test_getOracles() public {
+        address[] memory oracles = OZL.getOracles();
+        assertTrue(address(ozOracle) == oracles[0]);
+    }
+
 
 
 
@@ -180,11 +189,31 @@ contract EnergyETHTest is Test {
     function _createCut(
         address contractAddr_, 
         uint8 id_
-    ) private view returns(ozIDiamond.FacetCut memory cut) {
-        bytes4[] memory selectors = new bytes4[](1);
+    ) private view returns(ozIDiamond.FacetCut memory cut) { 
+        uint256 length;
+        if (id_ == 2) {
+            length = 4;
+        } else if (id_ == 3) {
+            length = 2;
+        } else {
+            length = 1;
+        }
+        
+
+        bytes4[] memory selectors = new bytes4[](length);
+
         if (id_ == 0) selectors[0] = ozOracle.getEnergyPrice.selector;
         if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
-        if (id_ == 2) selectors[0] = ozLoupeV2.getFeesVault.selector;
+        if (id_ == 2) {
+            selectors[0] = ozLoupeV2.getFeesVault.selector;
+            selectors[1] = ozLoupeV2.getOracles.selector;
+            selectors[2] = ozLoupeV2.getOracleIdByAddress.selector;
+            selectors[3] = ozLoupeV2.getOracleAddressById.selector;
+        }
+        if (id_ == 3) {
+            selectors[0] = ozCutV2.addOracle.selector;
+            selectors[1] = ozCutV2.removeOracle.selector;
+        }
 
         cut = ozIDiamond.FacetCut({
             facetAddress: contractAddr_,
@@ -206,6 +235,7 @@ contract EnergyETHTest is Test {
         eETH = new EnergyETH();
         ozExecutor2 = new ozExecutor2Facet();
         ozLoupeV2 = new ozLoupeV2Facet();
+        ozCutV2 = new ozCutFacetV2();
 
         address[] memory nonRevFacets = new address[](2);
         nonRevFacets[0] = address(ozOracle);

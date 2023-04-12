@@ -20,4 +20,7 @@ interface ozIDiamond {
     function depositFeesInDeFi(uint256 fee_, bool isRetry_) external;
     function getFeesVault() external view returns(uint256);
     function getAUM() external view returns(uint256 wethUM, uint256 valueUM);
+    function getOracles() external view returns(address[] memory);
+    function getOracleIdByAddress(address oracle_) external view returns(bytes32);
+    function getOracleAddressById(bytes32 id_) external view returns(address);
 }
