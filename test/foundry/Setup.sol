@@ -165,17 +165,10 @@ contract Setup is Test {
         vm.label(address(OZL), 'OZL');
         vm.label(deployer, 'deployer2');
         vm.label(volIndex, 'volIndex');
-        // vm.label(crvTricrypto, 'crvTricrypto');
-        // vm.label(yTricryptoPoolAddr, 'yTricryptoPool');
-        // vm.label(chainlinkAggregatorAddr, 'chainlinkAggregator');
-        // vm.label(ozLoupe, 'ozLoupe');
-        // vm.label(revenueFacet, 'revenueFacet');
         vm.label(address(eETH), 'eETH');
         vm.label(address(USDT), 'USDT');
         vm.label(address(permit2), 'permit2');
         vm.label(bob, 'bob');
-        // vm.label(alice, 'alice');
-        // vm.label(ray, 'ray');
         vm.label(address(ozExecutor2), 'ozExecutor2');
         vm.label(address(ozLoupeV2), 'ozLoupeV2');
         vm.label(address(ozCutV2), 'ozCutFacetV2');
