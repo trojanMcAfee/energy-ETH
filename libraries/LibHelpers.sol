@@ -54,12 +54,14 @@ library LibHelpers {
     function indexOf(
         address[] calldata array_, 
         address value_
-    ) internal pure returns(uint256) 
+    ) internal pure returns(int256) 
     {
-        int256 length = array_.length;
-        for (int256 i=uc(0); i < uc(length); i = i + uc(1)) {
-            if (array_[i] == value_) {
-                return uint256(i);
+        uint256 length = array_.length;
+        for (UC i=uc(0); i < uc(length); i = i + uc(1)) {
+            uint256 ii = i.unwrap();
+            
+            if (array_[ii] == value_) {
+                return int256(ii);
             }
         }
         return -1;

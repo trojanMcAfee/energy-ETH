@@ -2,6 +2,7 @@
 pragma solidity 0.8.19;
 
 
+import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 /**
@@ -33,14 +34,16 @@ library LibCommon {
     }
 
 
-    function remove(bytes[] memory array_, address toRemove_) internal {
-        bytes32 oracleBytes = bytes32(bytes20(toRemove_));
+    function remove(bytes[] storage array_, bytes memory toRemove_) internal {
+        // bytes32 oracleBytes = bytes32(bytes20(toRemove_));
         
         uint index;
         for (uint i=0; i < array_.length;) {
-            bytes memory oracleDetails = array_[i];
+            // bytes memory oracleDetails = array_[i];
+            bytes32 arrayEl = keccak256(abi.encodePacked(array_[i]));
+            bytes32 toRemove = keccak256(abi.encodePacked(toRemove_));
 
-            if (array_[i] == toRemove_)  {
+            if (arrayEl == toRemove)  {
                 index = i;
                 break;
             }

@@ -15,19 +15,19 @@
     }
   ],
   "bytecode": {
-    "object": "0x6080604052348015600f57600080fd5b50607880601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063d99c5c5714602d575b600080fd5b60185460405190815260200160405180910390f3fea26469706673582212203f0c45833a65ad8e66d39a618e960a47add2979c263aa5509ccb61aa14b5278b64736f6c63430008130033",
-    "sourceMap": "101:144:4:-:0;;;;;;;;;;;;;;;;;;;",
+    "object": "0x6080604052348015600f57600080fd5b50607880601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063d99c5c5714602d575b600080fd5b60185460405190815260200160405180910390f3fea2646970667358221220cd10b312c05fd29f01ee081e772054e2dff39cbc889a2f5edfb27dd89464e88464736f6c63430008130033",
+    "sourceMap": "101:144:5:-:0;;;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
-    "object": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063d99c5c5714602d575b600080fd5b60185460405190815260200160405180910390f3fea26469706673582212203f0c45833a65ad8e66d39a618e960a47add2979c263aa5509ccb61aa14b5278b64736f6c63430008130033",
-    "sourceMap": "101:144:4:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;152:90;224:11;;152:90;;160:25:49;;;148:2;133:18;152:90:4;;;;;;",
+    "object": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063d99c5c5714602d575b600080fd5b60185460405190815260200160405180910390f3fea2646970667358221220cd10b312c05fd29f01ee081e772054e2dff39cbc889a2f5edfb27dd89464e88464736f6c63430008130033",
+    "sourceMap": "101:144:5:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;152:90;224:11;;152:90;;160:25:51;;;148:2;133:18;152:90:5;;;;;;",
     "linkReferences": {}
   },
   "methodIdentifiers": {
     "getFeesVault()": "d99c5c57"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getFeesVault\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/facets/ozLoupeV2Facet.sol\":\"ozLoupeV2Facet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"contracts/AppStorage.sol\":{\"keccak256\":\"0xfd2ca62bafe7802dbe92caea53e36d5c78717921f21685b4893b2e2f756049cd\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a2816bde153097b1b9cc2d124591bd370f0c9fae5c61c88a8e30d12f39018219\",\"dweb:/ipfs/QmUJkGQ9hBRXLa8jio8snhSVFKXLNA72fg4ZCXb9K6peoP\"]},\"contracts/facets/ozLoupeV2Facet.sol\":{\"keccak256\":\"0xf1b9798436c872a80f8de3033acea2c99a159a61c641a55cb507c971c0b0ce8c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c673e29202e91a3211b6447c44a06a3746329fca64cceedb18f29fe231ec8c2d\",\"dweb:/ipfs/QmXNDcwEtZXCpaQDW7636TbYCbfFZKmJWrgwE4oMuf9VXW\"]},\"node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"keccak256\":\"0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7\",\"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c\"]},\"node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol\":{\"keccak256\":\"0x3f485fb1a44e8fbeadefb5da07d66edab3cfe809f0ac4074b1e54e3eb3c4cf69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://095ce0626b41318c772b3ebf19d548282607f6a8f3d6c41c13edfbd5370c8652\",\"dweb:/ipfs/QmVDZfJJ89UUCE1hMyzqpkZAtQ8jUsBgZNE5AMRG7RzRFS\"]},\"node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol\":{\"keccak256\":\"0x9bfaf1feb32814623e627ab70f2409760b15d95f1f9b058e2b3399a8bb732975\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a8a2c3e55965b61bcd91993d8e1d5d34b8b8a63e0fdfce87a85f6af92526fd53\",\"dweb:/ipfs/QmQj2CSCSwqDSU4KMNWxGsN2336Cy64WgpV1X1EHXNZWxM\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getFeesVault\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/facets/ozLoupeV2Facet.sol\":\"ozLoupeV2Facet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"contracts/AppStorage.sol\":{\"keccak256\":\"0x1a592dff3d7b5aeb7c978db61a8c3bf94b7c73558aa7d956287fd928a0798d84\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://4eb6233137cc306b11f094988380a1f39e9c46337f739ae2304c2f63d9987bc0\",\"dweb:/ipfs/QmZdMfVoNSuLV36hgfYKG9Na2qN7ZBjXH6XjBHvtsPF7jj\"]},\"contracts/facets/ozLoupeV2Facet.sol\":{\"keccak256\":\"0xf1b9798436c872a80f8de3033acea2c99a159a61c641a55cb507c971c0b0ce8c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c673e29202e91a3211b6447c44a06a3746329fca64cceedb18f29fe231ec8c2d\",\"dweb:/ipfs/QmXNDcwEtZXCpaQDW7636TbYCbfFZKmJWrgwE4oMuf9VXW\"]},\"node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"keccak256\":\"0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7\",\"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c\"]},\"node_modules/@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol\":{\"keccak256\":\"0x3f485fb1a44e8fbeadefb5da07d66edab3cfe809f0ac4074b1e54e3eb3c4cf69\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://095ce0626b41318c772b3ebf19d548282607f6a8f3d6c41c13edfbd5370c8652\",\"dweb:/ipfs/QmVDZfJJ89UUCE1hMyzqpkZAtQ8jUsBgZNE5AMRG7RzRFS\"]},\"node_modules/@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol\":{\"keccak256\":\"0x9bfaf1feb32814623e627ab70f2409760b15d95f1f9b058e2b3399a8bb732975\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a8a2c3e55965b61bcd91993d8e1d5d34b8b8a63e0fdfce87a85f6af92526fd53\",\"dweb:/ipfs/QmQj2CSCSwqDSU4KMNWxGsN2336Cy64WgpV1X1EHXNZWxM\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -91,10 +91,10 @@
     },
     "sources": {
       "contracts/AppStorage.sol": {
-        "keccak256": "0xfd2ca62bafe7802dbe92caea53e36d5c78717921f21685b4893b2e2f756049cd",
+        "keccak256": "0x1a592dff3d7b5aeb7c978db61a8c3bf94b7c73558aa7d956287fd928a0798d84",
         "urls": [
-          "bzz-raw://a2816bde153097b1b9cc2d124591bd370f0c9fae5c61c88a8e30d12f39018219",
-          "dweb:/ipfs/QmUJkGQ9hBRXLa8jio8snhSVFKXLNA72fg4ZCXb9K6peoP"
+          "bzz-raw://4eb6233137cc306b11f094988380a1f39e9c46337f739ae2304c2f63d9987bc0",
+          "dweb:/ipfs/QmZdMfVoNSuLV36hgfYKG9Na2qN7ZBjXH6XjBHvtsPF7jj"
         ],
         "license": "GPL-2.0-or-later"
       },
@@ -135,49 +135,49 @@
   },
   "ast": {
     "absolutePath": "contracts/facets/ozLoupeV2Facet.sol",
-    "id": 739,
+    "id": 1026,
     "exportedSymbols": {
       "AccData": [
-        190
+        197
       ],
       "AccountConfig": [
-        182
+        189
       ],
       "AggregatorV3Interface": [
-        31995
+        32549
       ],
       "AppStorage": [
-        151
+        158
       ],
       "Data": [
-        208
+        215
       ],
       "DataInfo": [
-        195
+        202
       ],
       "ISwapRouter": [
-        33270
+        33824
       ],
       "IUniswapV3SwapCallback": [
-        33170
+        33724
       ],
       "OZLERC20": [
-        162
+        169
       ],
       "TradeOps": [
-        173
+        180
       ],
       "ozLoupeV2Facet": [
-        738
+        1025
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:200:4",
+    "src": "45:200:5",
     "nodes": [
       {
-        "id": 724,
+        "id": 1011,
         "nodeType": "PragmaDirective",
-        "src": "45:23:4",
+        "src": "45:23:5",
         "nodes": [],
         "literals": [
           "solidity",
@@ -186,105 +186,105 @@
         ]
       },
       {
-        "id": 725,
+        "id": 1012,
         "nodeType": "ImportDirective",
-        "src": "71:27:4",
+        "src": "71:27:5",
         "nodes": [],
         "absolutePath": "contracts/AppStorage.sol",
         "file": "../AppStorage.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 739,
-        "sourceUnit": 209,
+        "scope": 1026,
+        "sourceUnit": 216,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 738,
+        "id": 1025,
         "nodeType": "ContractDefinition",
-        "src": "101:144:4",
+        "src": "101:144:5",
         "nodes": [
           {
-            "id": 728,
+            "id": 1015,
             "nodeType": "VariableDeclaration",
-            "src": "132:12:4",
+            "src": "132:12:5",
             "nodes": [],
             "constant": false,
             "mutability": "mutable",
             "name": "s",
-            "nameLocation": "143:1:4",
-            "scope": 738,
+            "nameLocation": "143:1:5",
+            "scope": 1025,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_AppStorage_$151_storage",
+              "typeIdentifier": "t_struct$_AppStorage_$158_storage",
               "typeString": "struct AppStorage"
             },
             "typeName": {
-              "id": 727,
+              "id": 1014,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 726,
+                "id": 1013,
                 "name": "AppStorage",
                 "nameLocations": [
-                  "132:10:4"
+                  "132:10:5"
                 ],
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 151,
-                "src": "132:10:4"
+                "referencedDeclaration": 158,
+                "src": "132:10:5"
               },
-              "referencedDeclaration": 151,
-              "src": "132:10:4",
+              "referencedDeclaration": 158,
+              "src": "132:10:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_AppStorage_$151_storage_ptr",
+                "typeIdentifier": "t_struct$_AppStorage_$158_storage_ptr",
                 "typeString": "struct AppStorage"
               }
             },
             "visibility": "internal"
           },
           {
-            "id": 737,
+            "id": 1024,
             "nodeType": "FunctionDefinition",
-            "src": "152:90:4",
+            "src": "152:90:5",
             "nodes": [],
             "body": {
-              "id": 736,
+              "id": 1023,
               "nodeType": "Block",
-              "src": "207:35:4",
+              "src": "207:35:5",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
                     "expression": {
-                      "id": 733,
+                      "id": 1020,
                       "name": "s",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 728,
-                      "src": "224:1:4",
+                      "referencedDeclaration": 1015,
+                      "src": "224:1:5",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_AppStorage_$151_storage",
+                        "typeIdentifier": "t_struct$_AppStorage_$158_storage",
                         "typeString": "struct AppStorage storage ref"
                       }
                     },
-                    "id": 734,
+                    "id": 1021,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
                     "lValueRequested": false,
-                    "memberLocation": "226:9:4",
+                    "memberLocation": "226:9:5",
                     "memberName": "feesVault",
                     "nodeType": "MemberAccess",
                     "referencedDeclaration": 54,
-                    "src": "224:11:4",
+                    "src": "224:11:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 732,
-                  "id": 735,
+                  "functionReturnParameters": 1019,
+                  "id": 1022,
                   "nodeType": "Return",
-                  "src": "217:18:4"
+                  "src": "217:18:5"
                 }
               ]
             },
@@ -293,26 +293,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "getFeesVault",
-            "nameLocation": "161:12:4",
+            "nameLocation": "161:12:5",
             "parameters": {
-              "id": 729,
+              "id": 1016,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "173:2:4"
+              "src": "173:2:5"
             },
             "returnParameters": {
-              "id": 732,
+              "id": 1019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 731,
+                  "id": 1018,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 737,
-                  "src": "198:7:4",
+                  "scope": 1024,
+                  "src": "198:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -320,10 +320,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 730,
+                    "id": 1017,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "198:7:4",
+                    "src": "198:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -332,9 +332,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "197:9:4"
+              "src": "197:9:5"
             },
-            "scope": 738,
+            "scope": 1025,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -347,15 +347,15 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          738
+          1025
         ],
         "name": "ozLoupeV2Facet",
-        "nameLocation": "110:14:4",
-        "scope": 739,
+        "nameLocation": "110:14:5",
+        "scope": 1026,
         "usedErrors": []
       }
     ],
     "license": "GPL-2.0-or-later"
   },
-  "id": 4
+  "id": 5
 }

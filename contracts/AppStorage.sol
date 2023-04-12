@@ -101,7 +101,7 @@ struct AppStorage {
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
 
-    mapping(bytes32 id => address oracle) IdToOracle;
+    mapping(bytes32 id => address oracle) idToOracle;
     bytes[] oraclesToIds;
 }
 

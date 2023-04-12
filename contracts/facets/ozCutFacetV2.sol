@@ -2,10 +2,11 @@
 pragma solidity 0.8.19;
 
 
-import { UC, uc } from "unchecked-counter/UC.sol";
-import '../../libraries/LibDiamnond.sol';
+import { UC, uc, ONE, ZERO } from "unchecked-counter/UC.sol";
+import '../../libraries/LibDiamond.sol';
 import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibCommon.sol';
+import '../AppStorage.sol';
 
 
 contract ozCutFacetV2 {
@@ -20,7 +21,7 @@ contract ozCutFacetV2 {
         LibDiamond.enforceIsContractOwner();
 
         bytes memory oracleDetails = abi.encode(bytes20(newOracle_), id_); 
-        s.oracleIDs[id_] = newOracle_;
+        s.idToOracle[id_] = newOracle_;
         s.oraclesToIds.push(oracleDetails);
 
         emit OracleAdded(newOracle_, id_);
@@ -31,14 +32,14 @@ contract ozCutFacetV2 {
         LibDiamond.enforceIsContractOwner();
 
         bytes32 oracleID = getOracleIdByAddress(toRemove_);
-        idToOracle[oracleID] = address(0);
+        s.idToOracle[oracleID] = address(0);
         
-        s.oracleIDs[toRemove_] = new bytes32(0);
+        s.idToOracle[oracleID] = address(0);
         // LibCommon.remove(s.oracles, toRemove_);
 
         for (uint i=0; i < s.oraclesToIds.length; i++) {
             bytes memory oracleDetails  = s.oraclesToIds[i];
-            bytes memory possId;
+            bytes32 possId;
 
             assembly {
                 possId := mload(add(oracleDetails, 64))
@@ -60,16 +61,26 @@ contract ozCutFacetV2 {
         uint256 length = s.oraclesToIds.length;
         address[] memory oracles = new address[](length);
  
-        for (uint256 i=uc(0); i < uc(length); i = i + uc(1)) {
-            uint256 ii = i.unwrap();
-            oracles[ii] = s.oraclesToIds[ii][0];
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            uint256 j = i.unwrap();
+            bytes memory oracleDetails = s.oraclesToIds[j];
             bytes32 oracle;
 
             assembly {
                 oracle := mload(add(oracleDetails, 32))
             }
 
-            oracles[ii] = address(oracle);
+            oracles[j] = address(bytes20(oracle));
+
+            //------
+            // oracles[j] = s.oraclesToIds[j][0];
+            // bytes32 oracle;
+
+            // assembly {
+            //     oracle := mload(add(oracleDetails, 32))
+            // }
+
+            // oracles[j] = address(oracle);
         }
         return oracles;
     }
@@ -78,10 +89,10 @@ contract ozCutFacetV2 {
     function getOracleIdByAddress(address oracle_) public view returns(bytes32) {
         // uint256 i = LibHelpers.indexOf(oracles, oracle_);
 
-        bytes32 oracleBytes = bytes20(oracle);
+        bytes32 oracleBytes = bytes32(bytes20(oracle_));
 
         uint256 length = s.oraclesToIds.length;
-        for (uint256 i=uc(0); i < uc(length); i = i + uc(1)) {
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
             bytes memory oracleDetails = s.oraclesToIds[i.unwrap()];
             bytes32 possOracle;
 
@@ -90,18 +101,19 @@ contract ozCutFacetV2 {
             }
 
             if (oracleBytes == possOracle) {
-                bytes32 oracle;
+                bytes32 oracleID;
                 assembly {
-                    oracle := mload(add(oracleDetails, 64))
+                    oracleID := mload(add(oracleDetails, 64))
                 }
-                return address(bytes20(oracle));
+                return oracleID;
             }
         }
+        return bytes32(0);
     }
 
 
     function getOracleAddressById(bytes32 id_) external view returns(address) {
-        return IdToOracle[id];
+        return s.idToOracle[id_];
     }
 
 
