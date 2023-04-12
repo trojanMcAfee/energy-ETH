@@ -7,6 +7,8 @@ import './AppStorage.sol';
 import '../libraries/LibDiamond.sol';
 // import 'hardhat/console.sol';
 
+import "forge-std/console.sol";
+
 contract InitUpgradeV2 {
 
     AppStorage s;

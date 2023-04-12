@@ -32,7 +32,7 @@ contract ozLoupeV2Facet {
                 oracleBytes32 := mload(add(oracleDetails, 32))
                 oracle := shl(96, oracleBytes32)
             }
-            
+
             oracles[j] = address(oracle);
         }
         return oracles;
@@ -40,9 +40,8 @@ contract ozLoupeV2Facet {
 
 
     function getOracleIdByAddress(address oracle_) public view returns(bytes32) {
-        // uint256 i = LibHelpers.indexOf(oracles, oracle_);
-
-        bytes32 oracleBytes = bytes32(bytes20(oracle_));
+        bytes32 oracleBytes = bytes32(abi.encode(oracle_));
+        bytes32 oracleID;
 
         uint256 length = s.oraclesToIds.length;
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
@@ -54,14 +53,12 @@ contract ozLoupeV2Facet {
             }
 
             if (oracleBytes == possOracle) {
-                bytes32 oracleID;
                 assembly {
                     oracleID := mload(add(oracleDetails, 64))
                 }
-                return oracleID;
             }
         }
-        return bytes32(0);
+        return oracleID;
     }
 
 

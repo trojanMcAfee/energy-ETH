@@ -175,6 +175,12 @@ contract EnergyETHTest is Test {
         assertTrue(address(ozOracle) == oracles[0]);
     }
 
+    function test_getOracleIdByAddress() public {
+        bytes32 oracleID = OZL.getOracleIdByAddress(address(ozOracle));
+        bytes32 calcID = keccak256(abi.encodePacked(address(ozOracle)));
+        assertTrue(oracleID == calcID);
+    }
+
 
 
 
