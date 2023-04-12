@@ -34,14 +34,8 @@ contract ozCutFacetV2 {
     function removeOracle(address toRemove_) external {
         LibDiamond.enforceIsContractOwner();
 
-        // bytes32 oracleID = getOracleIdByAddress(toRemove_);
-
-        bytes memory data = abi.encodeWithSignature('getOracleIdByAddress(address)', toRemove_);
-        data = address(this).functionCall(data);
-        bytes32 oracleID = abi.decode(data, (bytes32));
-        
+        bytes32 oracleID = _getOracleId(toRemove_);
         s.idToOracle[oracleID] = address(0);
-        // LibCommon.remove(s.oracles, toRemove_);
 
         for (uint i=0; i < s.oraclesToIds.length; i++) {
             bytes memory oracleDetails  = s.oraclesToIds[i];
@@ -59,7 +53,13 @@ contract ozCutFacetV2 {
         }
         //use them as access control in diff functions
 
-        
+    }
+
+
+    function _getOracleId(address oracle_) private returns(bytes32) {
+        bytes memory data = abi.encodeWithSignature('getOracleIdByAddress(address)', oracle_);
+        data = address(this).functionCall(data);
+        return abi.decode(data, (bytes32));
     }
 
 
