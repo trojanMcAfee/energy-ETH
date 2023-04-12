@@ -103,6 +103,9 @@ struct AppStorage {
 
     mapping(bytes32 id => address oracle) idToOracle;
     bytes[] oraclesToIds;
+
+    // DataInfo[] dataFeeds;
+    AggregatorV3Interface[] feeds;
 }
 
 /// @dev Reference for oz20Facet storage
@@ -138,6 +141,7 @@ struct AccData {
 struct DataInfo {
     uint80 roundId;
     int256 value;
+    AggregatorV3Interface feed;
 }
 
 struct Data {
@@ -146,6 +150,9 @@ struct Data {
     DataInfo ethPrice;
     DataInfo goldPrice;
 }
+
+
+
 
 
 

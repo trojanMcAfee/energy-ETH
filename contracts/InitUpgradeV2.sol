@@ -23,6 +23,11 @@ contract InitUpgradeV2 {
         s.ethFeed = AggregatorV3Interface(feeds_[2]);
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
+        s.feeds.push(AggregatorV3Interface(feeds_[0]));
+        // s.feeds.push(AggregatorV3Interface(feeds_[1]));
+        s.feeds.push(AggregatorV3Interface(feeds_[2]));
+        s.feeds.push(AggregatorV3Interface(feeds_[3]));
+
         address ozOracle = nonRevFacets_[0];
         bytes32 oracleID = keccak256(abi.encodePacked(ozOracle));
 
