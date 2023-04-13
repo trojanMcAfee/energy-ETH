@@ -119,7 +119,9 @@ contract Setup is Test {
         uint8 id_
     ) private view returns(ozIDiamond.FacetCut memory cut) { 
         uint256 length;
-        if (id_ == 2) {
+        if (id_ == 0) {
+            length = 5;
+        } else if (id_ == 2) {
             length = 4;
         } else if (id_ == 3) {
             length = 2;
@@ -130,7 +132,13 @@ contract Setup is Test {
 
         bytes4[] memory selectors = new bytes4[](length);
 
-        if (id_ == 0) selectors[0] = ozOracle.getEnergyPrice.selector;
+        if (id_ == 0) {
+            selectors[0] = ozOracle.getEnergyPrice.selector;
+            selectors[1] = ozOracle.getVolatilityIndex.selector;
+            selectors[2] = ozOracle.changeVolatilityIndex.selector;
+            selectors[3] = ozOracle.addFeed.selector;
+            selectors[4] = ozOracle.removeFeed.selector;
+        }
         if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
         if (id_ == 2) {
             selectors[0] = ozLoupeV2.getFeesVault.selector;

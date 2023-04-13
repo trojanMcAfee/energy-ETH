@@ -24,7 +24,6 @@ contract InitUpgradeV2 {
         s.goldFeed = AggregatorV3Interface(feeds_[3]);
 
         s.feeds.push(AggregatorV3Interface(feeds_[0]));
-        // s.feeds.push(AggregatorV3Interface(feeds_[1]));
         s.feeds.push(AggregatorV3Interface(feeds_[2]));
         s.feeds.push(AggregatorV3Interface(feeds_[3]));
 
