@@ -46,7 +46,6 @@ contract Setup is Test {
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
-
     function setUp() public {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
 

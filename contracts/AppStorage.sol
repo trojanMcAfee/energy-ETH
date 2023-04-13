@@ -16,7 +16,7 @@ struct AppStorage {
     address crv2Pool;
     address yTriPool;
     address fraxPool;
-    address executor;
+    address executor; //6
 
     //ERC20s
     address USDT;
@@ -25,7 +25,7 @@ struct AppStorage {
     address MIM;
     address WETH;
     address FRAX;
-    address ETH;
+    address ETH; //13
 
     //Token infrastructure
     address oz20;
@@ -33,12 +33,12 @@ struct AppStorage {
 
     //System config
     uint protocolFee;
-    uint defaultSlippage;
+    uint defaultSlippage; //17
     mapping(address => bool) tokenDatabase;
     mapping(address => address) tokenL1ToTokenL2;
 
     //Internal accounting vars
-    uint totalVolume;
+    uint totalVolume; //20 
     uint ozelIndex;
     uint feesVault;
     uint failedFees;

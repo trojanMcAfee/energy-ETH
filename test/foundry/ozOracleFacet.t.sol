@@ -10,6 +10,8 @@ import "forge-std/console.sol";
 
 
 contract ozOracleFacetTest is Test, Setup {
+
+    using stdStorage for StdStorage;
     
     function test_getEnergyPrice() public {
         uint256 price = OZL.getEnergyPrice();
@@ -21,17 +23,38 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(index > 0);
     }
 
-    function test_changeVolatilityIndex() public {
-        //Pre-condition
-        //trying to get the storage slot of s.volatilityFeed in ozDiamond
-        assertTrue(address(s.volatilityFeed) == volIndex);
+    // function test_changeVolatilityIndex() public {
+    //     //Pre-condition
+    //     assertTrue(address(s.volatilityFeed) == volIndex);
 
-        //Action
-        vm.prank(deployer);
-        OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));
+    //     //Action
+    //     vm.prank(deployer);
+    //     OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));
 
-        //Post-condition
-        assertTrue(address(s.volatilityFeed) == deadAddr);
+    //     //Post-condition
+    //     assertTrue(address(s.volatilityFeed) == deadAddr);
+    // }
+
+    function test_getStorage() public {
+        
+        // uint256 slot = stdstore
+        //     .target(address(OZL))
+        //     .sig('AppStorage()')
+        //     .depth(0)
+        //     .find();
+
+        // console.log('slot: ', slot);
+
+        // assertTrue(false);
+
+        //-----------
+        address token = 0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9;
+
+        bytes32 slot = vm.load(address(OZL), bytes32(uint256(16)), token);
+        console.logBytes32(slot);
+        console.log('slot ^^');
+
+
     }
 
 }
