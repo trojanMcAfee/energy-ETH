@@ -104,7 +104,6 @@ struct AppStorage {
     mapping(bytes32 id => address oracle) idToOracle;
     bytes[] oraclesToIds;
 
-    // DataInfo[] dataFeeds;
     AggregatorV3Interface[] feeds;
 }
 
