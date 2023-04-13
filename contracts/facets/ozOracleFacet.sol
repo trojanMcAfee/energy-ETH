@@ -7,6 +7,7 @@ import '../AppStorage.sol';
 import "forge-std/console.sol";
 import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibDiamond.sol';
+import '../../libraries/LibCommon.sol';
 
 // import 'hardhat/console.sol';
 
@@ -17,7 +18,6 @@ contract ozOracleFacet {
     AppStorage s;
 
     using LibHelpers for *;
-    // using Address for address;
 
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
@@ -44,16 +44,6 @@ contract ozOracleFacet {
     }
 
 
-    function getVolatilityIndex() public view returns(int256) {
-        (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
-        return volatility;
-    }
-
-    function changeVolatilityIndex(AggregatorV3Interface newFeed_) external {
-        LibDiamond.enforceIsContractOwner();
-        s.volatilityFeed = newFeed_;
-    }
-
 
     function _getDataFeeds() private view returns(DataInfo[] memory, int256) {
 
@@ -76,12 +66,14 @@ contract ozOracleFacet {
         return (infoFeeds, basePrice); 
     }
 
+
     //------------------
 
     function _setPrice(
         DataInfo memory feedInfo_, 
         int256 volIndex_
-    ) private view returns(int256) {
+    ) private view returns(int256) 
+    {
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
             int256 currPrice = feedInfo_.value;
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
@@ -91,6 +83,28 @@ contract ozOracleFacet {
             int256 netDiff = feedInfo_.value - prevEthPrice;
             return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
         }
+    }
+
+    //--------------
+
+    function getVolatilityIndex() public view returns(int256) {
+        (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
+        return volatility;
+    }
+
+    function changeVolatilityIndex(AggregatorV3Interface newFeed_) external {
+        LibDiamond.enforceIsContractOwner();
+        s.volatilityFeed = newFeed_;
+    }
+
+    function addFeed(AggregatorV3Interface newFeed_) external {
+        LibDiamond.enforceIsContractOwner();
+        s.feeds.push(newFeed_);
+    }
+
+    function removeFeed(AggregatorV3Interface toRemove_) external {
+        LibDiamond.enforceIsContractOwner();
+        LibCommon.remove(s.feeds, toRemove_);
     }
 
 
