@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 interface ozIDiamond {
 
@@ -25,4 +26,8 @@ interface ozIDiamond {
     function getOracleAddressById(bytes32 id_) external view returns(address);
     function addOracle(address newOracle_, bytes32 id_) external;
     function removeOracle(address toRemove_) external;
+    function getVolatilityIndex() external view returns(int256);
+    function changeVolatilityIndex(AggregatorV3Interface newFeed_) external;
+    function addFeed(AggregatorV3Interface newFeed_) external;
+    function removeFeed(AggregatorV3Interface toRemove_) external;
 }

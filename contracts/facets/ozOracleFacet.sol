@@ -88,7 +88,7 @@ contract ozOracleFacet {
         }
     }
 
-    //--------------
+    //-------------- modify the bytes[] var's name from mapping type to val_val type
 
     function getVolatilityIndex() public view returns(int256) {
         (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
