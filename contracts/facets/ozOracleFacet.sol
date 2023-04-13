@@ -3,6 +3,7 @@ pragma solidity 0.8.19;
 
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import { UC, ONE, ZERO } from "unchecked-counter/UC.sol";
 import '../AppStorage.sol';
 import "forge-std/console.sol";
 import '../../libraries/LibHelpers.sol';
@@ -32,8 +33,9 @@ contract ozOracleFacet {
         int256 volIndex = getVolatilityIndex();
         int256 netDiff;
 
-        for (uint i=0; i < infoFeeds.length; i++) {
-            DataInfo memory info = infoFeeds[i];
+        uint256 length = infoFeeds.length;
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            DataInfo memory info = infoFeeds[i.unwrap()];
 
             netDiff += _setPrice(
                 info, address(info.feed) == address(s.ethFeed) ? int256(0) : volIndex
@@ -46,18 +48,19 @@ contract ozOracleFacet {
 
 
     function _getDataFeeds() private view returns(DataInfo[] memory, int256) {
+        uint256 length = s.feeds.length;
+        DataInfo[] memory infoFeeds = new DataInfo[](length);
 
-        DataInfo[] memory infoFeeds = new DataInfo[](s.feeds.length);
-
-        for (uint i=0; i < s.feeds.length; i++) {
-            (uint80 id, int256 value,,,) = s.feeds[i].latestRoundData();
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            uint256 j = i.unwrap();
+            (uint80 id, int256 value,,,) = s.feeds[j].latestRoundData();
 
             DataInfo memory info = DataInfo({
                 roundId: id,
                 value: value,
-                feed: s.feeds[i]
+                feed: s.feeds[j]
             });
-            infoFeeds[i] = info;
+            infoFeeds[j] = info;
         }
 
         //ethPrice feed

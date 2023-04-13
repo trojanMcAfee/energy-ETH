@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-import { UC, uc } from "unchecked-counter/UC.sol";
+// import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 /**
@@ -18,15 +18,15 @@ library LibCommon {
      * @param toRemove_ Token to remove
      */
     function remove(address[] storage array_, address toRemove_) internal {
-        uint index;
-        for (uint i=0; i < array_.length;) {
+        uint256 index;
+        for (uint256 i=0; i < array_.length;) {
             if (array_[i] == toRemove_)  {
                 index = i;
                 break;
             }
             unchecked { ++i; }
         }
-        for (uint i=index; i < array_.length - 1;){
+        for (uint256 i=index; i < array_.length - 1;){
             array_[i] = array_[i+1];
             unchecked { ++i; }
         }
@@ -36,8 +36,8 @@ library LibCommon {
 
 
     function remove(bytes[] storage array_, bytes memory toRemove_) internal {
-        uint index;
-        for (uint i=0; i < array_.length;) {
+        uint256 index;
+        for (uint256 i=0; i < array_.length;) {
             
             bytes32 arrayEl = keccak256(abi.encodePacked(array_[i]));
             bytes32 toRemove = keccak256(abi.encodePacked(toRemove_));
@@ -48,7 +48,7 @@ library LibCommon {
             }
             unchecked { ++i; }
         }
-        for (uint i=index; i < array_.length - 1;){
+        for (uint256 i=index; i < array_.length - 1;){
             array_[i] = array_[i+1];
             unchecked { ++i; }
         }
@@ -62,15 +62,15 @@ library LibCommon {
         AggregatorV3Interface toRemove_
     ) internal 
     {
-        uint index;
-        for (uint i=0; i < array_.length;) {
+        uint256 index;
+        for (uint256 i=0; i < array_.length;) {
             if (address(array_[i]) == address(toRemove_))  {
                 index = i;
                 break;
             }
             unchecked { ++i; }
         }
-        for (uint i=index; i < array_.length - 1;){
+        for (uint256 i=index; i < array_.length - 1;){
             array_[i] = array_[i+1];
             unchecked { ++i; }
         }
