@@ -25,8 +25,7 @@ contract ozOracleFacetTest is Test, Setup {
 
     function test_changeVolatilityIndex() public {
         //Pre-condition
-        bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
-        address volAddr = address(bytes20(volSlot << 96));
+        address volAddr = _getVolAddress();
         assertTrue(volAddr == volIndex);
 
         //Action
@@ -34,9 +33,15 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));
 
         //Post-condition
-        volSlot = vm.load(address(OZL), bytes32(uint256(63)));
-        volAddr = address(bytes20(volSlot << 96));
+        volAddr = _getVolAddress();
         assertTrue(volAddr == deadAddr);
+    }
+
+    //-------- Helpers
+
+    function _getVolAddress() private returns(address volAddr) {
+        bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
+        volAddr = address(bytes20(volSlot << 96));
     }
 
   
