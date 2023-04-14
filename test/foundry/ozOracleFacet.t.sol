@@ -23,53 +23,23 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(index > 0);
     }
 
-    // function test_changeVolatilityIndex() public {
-    //     //Pre-condition
-    //     assertTrue(address(s.volatilityFeed) == volIndex);
+    function test_changeVolatilityIndex() public {
+        //Pre-condition
+        bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
+        address volAddr = address(bytes20(volSlot << 96));
+        assertTrue(volAddr == volIndex);
 
-    //     //Action
-    //     vm.prank(deployer);
-    //     OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));
+        //Action
+        vm.prank(deployer);
+        OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));
 
-    //     //Post-condition
-    //     assertTrue(address(s.volatilityFeed) == deadAddr);
-    // }
-
-    function test_getStorage() public view {
-        
-        // uint256 slot = stdstore
-        //     .target(address(OZL))
-        //     .sig('AppStorage()')
-        //     .depth(0)
-        //     .find();
-
-        // console.log('slot: ', slot);
-
-        // assertTrue(false);
-
-        //-----------
-        address token = 0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9;
-
-        bytes32 slot = vm.load(address(OZL), bytes32(uint256(58)));
-        // console.logBytes32(slot);
-        console.log(uint(slot));
-        console.log('slot ^^');
-
-        //--------
-        // bytes32 slot = keccak256(abi.encodePacked(address(OZL), 'volatilityFeed'));
-        // console.logBytes32(slot);
-        // AggregatorV3Interface vol;
-
-        // assembly {
-        //     vol := sload(slot)
-        // }
-        // console.log('addr: ', address(vol));
-
-        //---------
-        // AggregatorV3Interface[] memory feeds = getFeeds();
-        // console.log('feed: ', feeds.length);
-
+        //Post-condition
+        volSlot = vm.load(address(OZL), bytes32(uint256(63)));
+        volAddr = address(bytes20(volSlot << 96));
+        assertTrue(volAddr == deadAddr);
     }
+
+  
 
 
    
