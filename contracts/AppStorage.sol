@@ -28,56 +28,56 @@ struct AppStorage {
     address ETH; //13
 
     //Token infrastructure
-    address oz20;
+    address oz20; //14
     OZLERC20 oz;
 
     //System config
-    uint protocolFee;
-    uint defaultSlippage; //17
+    uint protocolFee; //18
+    uint defaultSlippage; //19
     mapping(address => bool) tokenDatabase;
     mapping(address => address) tokenL1ToTokenL2;
 
     //Internal accounting vars
-    uint totalVolume; //20 
+    uint totalVolume; //22
     uint ozelIndex;
     uint feesVault;
-    uint failedFees;
+    uint failedFees; //25
     mapping(address => uint) usersPayments;
     mapping(address => uint) accountPayments;
     mapping(address => address) accountToUser;
-    mapping(address => bool) isAuthorized;
+    mapping(address => bool) isAuthorized; //29
 
     //Curve swaps config
-    TradeOps mimSwap;
-    TradeOps usdcSwap;
-    TradeOps fraxSwap;
-    TradeOps[] swaps;
+    TradeOps mimSwap; 
+    TradeOps usdcSwap; 
+    TradeOps fraxSwap; 
+    TradeOps[] swaps; //42
 
     //Mutex locks
     mapping(uint => uint) bitLocks;
 
     //Stabilizing mechanism (for ozelIndex)
-    uint invariant;
+    uint invariant; //44
     uint invariant2;
     uint indexRegulator;
-    uint invariantRegulator;
+    uint invariantRegulator; //47
     bool indexFlag;
     uint stabilizer;
     uint invariantRegulatorLimit;
-    uint regulatorCounter;
+    uint regulatorCounter; //51
 
     //Revenue vars
-    ISwapRouter swapRouter;
+    ISwapRouter swapRouter; //52
     AggregatorV3Interface priceFeed;
     address revenueToken;
     uint24 poolFee;
-    uint[] revenueAmounts;
+    uint[] revenueAmounts; //55
 
     //Misc vars
     bool isEnabled;
     bool l1Check;
     bytes checkForRevenueSelec;
-    address nullAddress;
+    address nullAddress; //58
 
     /*///////////////////////////////////////////////////////////////
                             v1.1 Upgrade
@@ -97,12 +97,12 @@ struct AppStorage {
     //////////////////////////////////////////////////////////////*/
 
     AggregatorV3Interface wtiFeed;
-    AggregatorV3Interface volatilityFeed;
+    AggregatorV3Interface volatilityFeed; //63
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
 
     mapping(bytes32 id => address oracle) idToOracle;
-    bytes[] oraclesToIds;
+    bytes[] oraclesToIds; //change this to oracles_ids
 
     AggregatorV3Interface[] feeds;
 }

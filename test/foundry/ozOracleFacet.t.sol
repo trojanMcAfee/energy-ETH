@@ -35,7 +35,7 @@ contract ozOracleFacetTest is Test, Setup {
     //     assertTrue(address(s.volatilityFeed) == deadAddr);
     // }
 
-    function test_getStorage() public {
+    function test_getStorage() public view {
         
         // uint256 slot = stdstore
         //     .target(address(OZL))
@@ -50,11 +50,28 @@ contract ozOracleFacetTest is Test, Setup {
         //-----------
         address token = 0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9;
 
-        bytes32 slot = vm.load(address(OZL), bytes32(uint256(16)), token);
-        console.logBytes32(slot);
+        bytes32 slot = vm.load(address(OZL), bytes32(uint256(58)));
+        // console.logBytes32(slot);
+        console.log(uint(slot));
         console.log('slot ^^');
 
+        //--------
+        // bytes32 slot = keccak256(abi.encodePacked(address(OZL), 'volatilityFeed'));
+        // console.logBytes32(slot);
+        // AggregatorV3Interface vol;
+
+        // assembly {
+        //     vol := sload(slot)
+        // }
+        // console.log('addr: ', address(vol));
+
+        //---------
+        // AggregatorV3Interface[] memory feeds = getFeeds();
+        // console.log('feed: ', feeds.length);
 
     }
+
+
+   
 
 }
