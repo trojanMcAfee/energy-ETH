@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "forge-std/Test.sol";
 import './Setup.sol';
 import '../../interfaces/ozIDiamond.sol';
-// import './dummy-files/NewOracle.sol';
+import { UC, ONE, ZERO } from "unchecked-counter/UC.sol";
 
 import "forge-std/console.sol";
 
@@ -91,6 +91,27 @@ contract ozOracleFacetTest is Test, Setup {
         //Action
         vm.expectRevert(notOwner);
         OZL.addFeed(AggregatorV3Interface(deadAddr));
+    }
+
+    function test_removeFeed() public {
+        //Pre-condition
+        address[] memory feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 3);
+
+        //Action
+        vm.prank(deployer);
+        OZL.removeFeed(AggregatorV3Interface(address(wtiFeed)));
+
+        //Post-condtion
+        feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 2);
+
+        uint256 length = feeds.length;
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            address feed = feeds[i.unwrap()];
+            if (feed == address(wtiFeed)) revert();
+        }
+        assertTrue(true);
     }
 
     //-------- Helpers
