@@ -9,6 +9,7 @@ import "forge-std/console.sol";
 import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibDiamond.sol';
 import '../../libraries/LibCommon.sol';
+import '../../Errors.sol';
 
 // import 'hardhat/console.sol';
 
@@ -23,6 +24,7 @@ contract ozOracleFacet {
     int256 private constant EIGHT_DEC = 1e8;
     int256 private constant NINETN_DEC = 1e19;
 
+    // error NotFeed(address feed);
 
     //**** MAIN ******/
 
@@ -106,6 +108,10 @@ contract ozOracleFacet {
 
     function removeFeed(AggregatorV3Interface toRemove_) external {
         LibDiamond.enforceIsContractOwner();
+
+        int256 index = s.priceFeeds.indexOf(address(toRemove_));
+        if (index == -1) revert NotFeed(address(toRemove_));
+
         LibCommon.remove(s.priceFeeds, toRemove_);
     }
 

@@ -51,18 +51,31 @@ library LibHelpers {
     //ozCutFaceV2 helpers
 
 
+    // function indexOf(
+    //     address[] calldata array_, 
+    //     address value_
+    // ) internal pure returns(int256) 
+    // {
+    //     uint256 length = array_.length;
+    //     for (UC i=uc(0); i < uc(length); i = i + uc(1)) {
+    //         uint256 ii = i.unwrap();
+            
+    //         if (array_[ii] == value_) {
+    //             return int256(ii);
+    //         }
+    //     }
+    //     return -1;
+    // }
+
     function indexOf(
-        address[] calldata array_, 
+        AggregatorV3Interface[] memory array_, 
         address value_
     ) internal pure returns(int256) 
     {
         uint256 length = array_.length;
         for (UC i=uc(0); i < uc(length); i = i + uc(1)) {
-            uint256 ii = i.unwrap();
-            
-            if (array_[ii] == value_) {
-                return int256(ii);
-            }
+            uint256 j = i.unwrap();
+            if (address(array_[j]) == value_) return int256(j);
         }
         return -1;
     }

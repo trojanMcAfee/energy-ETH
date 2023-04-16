@@ -7,6 +7,7 @@ import "forge-std/Test.sol";
 import './Setup.sol';
 import '../../interfaces/ozIDiamond.sol';
 import { UC, ONE, ZERO } from "unchecked-counter/UC.sol";
+import '../../Errors.sol';
 
 import "forge-std/console.sol";
 
@@ -122,6 +123,15 @@ contract ozOracleFacetTest is Test, Setup {
         //Action
         vm.expectRevert(notOwner);   
         OZL.removeFeed(AggregatorV3Interface(address(wtiFeed)));
+    }
+
+    function test_fail_removeFeed_notFeed() public {
+        vm.prank(deployer);
+        vm.expectRevert(
+            abi.encodeWithSelector(NotFeed.selector, deadAddr)
+        );
+        OZL.removeFeed(AggregatorV3Interface(deadAddr));
+        
     }
 
     //-------- Helpers
