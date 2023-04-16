@@ -103,6 +103,10 @@ contract ozOracleFacet {
 
     function addFeed(AggregatorV3Interface newFeed_) external {
         LibDiamond.enforceIsContractOwner();
+
+        int256 index = s.priceFeeds.indexOf(address(newFeed_));
+        if (index != -1) revert AlreadyFeed(address(newFeed_));
+
         s.priceFeeds.push(newFeed_);
     }
 

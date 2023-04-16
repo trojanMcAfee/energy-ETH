@@ -10,14 +10,17 @@
   },
   "ast": {
     "absolutePath": "Errors.sol",
-    "id": 6,
+    "id": 10,
     "exportedSymbols": {
+      "AlreadyFeed": [
+        9
+      ],
       "NotFeed": [
         5
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:56:0",
+    "src": "45:89:0",
     "nodes": [
       {
         "id": 1,
@@ -72,6 +75,50 @@
             }
           ],
           "src": "84:14:0"
+        }
+      },
+      {
+        "id": 9,
+        "nodeType": "ErrorDefinition",
+        "src": "100:32:0",
+        "nodes": [],
+        "errorSelector": "41497abd",
+        "name": "AlreadyFeed",
+        "nameLocation": "106:11:0",
+        "parameters": {
+          "id": 8,
+          "nodeType": "ParameterList",
+          "parameters": [
+            {
+              "constant": false,
+              "id": 7,
+              "mutability": "mutable",
+              "name": "feed",
+              "nameLocation": "126:4:0",
+              "nodeType": "VariableDeclaration",
+              "scope": 9,
+              "src": "118:12:0",
+              "stateVariable": false,
+              "storageLocation": "default",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              },
+              "typeName": {
+                "id": 6,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "118:7:0",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "visibility": "internal"
+            }
+          ],
+          "src": "117:14:0"
         }
       }
     ],

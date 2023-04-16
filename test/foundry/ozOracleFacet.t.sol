@@ -84,7 +84,7 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(feeds.length == 4);
     }
 
-    function test_fail_addAddress_notOwner() public {
+    function test_fail_addFeed_notOwner() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
         assertTrue(feeds.length == 3);
@@ -92,6 +92,15 @@ contract ozOracleFacetTest is Test, Setup {
         //Action
         vm.expectRevert(notOwner);
         OZL.addFeed(AggregatorV3Interface(deadAddr));
+    }
+
+    function test_fail_addFeed_alreadyFeed() public {
+        //Action
+        vm.prank(deployer);
+        vm.expectRevert(
+            abi.encodeWithSelector(AlreadyFeed.selector, address(wtiFeed))
+        );
+        OZL.addFeed(AggregatorV3Interface(address(wtiFeed)));
     }
 
     function test_removeFeed() public {
@@ -126,6 +135,7 @@ contract ozOracleFacetTest is Test, Setup {
     }
 
     function test_fail_removeFeed_notFeed() public {
+        //Action
         vm.prank(deployer);
         vm.expectRevert(
             abi.encodeWithSelector(NotFeed.selector, deadAddr)

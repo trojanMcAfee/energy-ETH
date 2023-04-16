@@ -3,4 +3,5 @@ pragma solidity 0.8.19;
 
 
 error NotFeed(address feed);
+error AlreadyFeed(address feed);
 
