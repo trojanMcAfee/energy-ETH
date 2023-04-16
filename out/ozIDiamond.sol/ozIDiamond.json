@@ -103,6 +103,25 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "bytes4",
+          "name": "_functionSelector",
+          "type": "bytes4"
+        }
+      ],
+      "name": "facetAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "facetAddress_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "getAUM",
       "outputs": [
@@ -305,6 +324,7 @@
     "changeVolatilityIndex(address)": "bc7c4023",
     "depositFeesInDeFi(uint256,bool)": "120da16d",
     "diamondCut((address,uint8,bytes4[])[],address,bytes)": "1f931c1c",
+    "facetAddress(bytes4)": "cdffacc6",
     "getAUM()": "6dc7b0a1",
     "getEnergyPrice()": "cab0f335",
     "getFeesVault()": "d99c5c57",
@@ -319,7 +339,7 @@
     "removeFeed(address)": "4b90fd69",
     "removeOracle(address)": "fdc85fc4"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"newFeed_\",\"type\":\"address\"}],\"name\":\"addFeed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOracle_\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"id_\",\"type\":\"bytes32\"}],\"name\":\"addOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"newFeed_\",\"type\":\"address\"}],\"name\":\"changeVolatilityIndex\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee_\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isRetry_\",\"type\":\"bool\"}],\"name\":\"depositFeesInDeFi\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAUM\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"wethUM\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"valueUM\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFeesVault\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id_\",\"type\":\"bytes32\"}],\"name\":\"getOracleAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oracle_\",\"type\":\"address\"}],\"name\":\"getOracleIdByAddress\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOracles\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPriceFeeds\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"feeds\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProtocolFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getVolatilityIndex\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"toRemove_\",\"type\":\"address\"}],\"name\":\"removeFeed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"toRemove_\",\"type\":\"address\"}],\"name\":\"removeOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0xd5d48003b4a596dee4274f8c7319aa1723a6d21f548d945d63a9a0561255f364\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://5de35cc39df19bd5b4fcdb6ba65b2d7884898e0ebe30cdfeae4a4424288e6a54\",\"dweb:/ipfs/QmdKPERXVCuoEwgxyu5k4Rc88ZgTgQPtqWd5M96875m9Dz\"]},\"node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"keccak256\":\"0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7\",\"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"newFeed_\",\"type\":\"address\"}],\"name\":\"addFeed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOracle_\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"id_\",\"type\":\"bytes32\"}],\"name\":\"addOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"newFeed_\",\"type\":\"address\"}],\"name\":\"changeVolatilityIndex\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"fee_\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isRetry_\",\"type\":\"bool\"}],\"name\":\"depositFeesInDeFi\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"facetAddress\",\"type\":\"address\"},{\"internalType\":\"enum ozIDiamond.FacetCutAction\",\"name\":\"action\",\"type\":\"uint8\"},{\"internalType\":\"bytes4[]\",\"name\":\"functionSelectors\",\"type\":\"bytes4[]\"}],\"internalType\":\"struct ozIDiamond.FacetCut[]\",\"name\":\"_diamondCut\",\"type\":\"tuple[]\"},{\"internalType\":\"address\",\"name\":\"_init\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"_calldata\",\"type\":\"bytes\"}],\"name\":\"diamondCut\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"_functionSelector\",\"type\":\"bytes4\"}],\"name\":\"facetAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"facetAddress_\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAUM\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"wethUM\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"valueUM\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEnergyPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFeesVault\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLastPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id_\",\"type\":\"bytes32\"}],\"name\":\"getOracleAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oracle_\",\"type\":\"address\"}],\"name\":\"getOracleIdByAddress\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOracles\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOzelIndex\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPriceFeeds\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"feeds\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getProtocolFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getVolatilityIndex\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract AggregatorV3Interface\",\"name\":\"toRemove_\",\"type\":\"address\"}],\"name\":\"removeFeed\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"toRemove_\",\"type\":\"address\"}],\"name\":\"removeOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIDiamond.sol\":\"ozIDiamond\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"interfaces/ozIDiamond.sol\":{\"keccak256\":\"0x4e5f411b2eaf7612b1e7d298233c863f8d47742a0170c11e2968ec5f133471ef\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://ea6253a294e0a11a50d3abe9ba732b8782e8a8ee86aebb3bd5f94f9e22c8112f\",\"dweb:/ipfs/QmbDavUWwQoiv5v81gLESV51rpiMYAqfhE7g5c1j5Ser9D\"]},\"node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol\":{\"keccak256\":\"0x6e6e4b0835904509406b070ee173b5bc8f677c19421b76be38aea3b1b3d30846\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3beaa37ee61e4ab615e250fbf01601ae481de843fd0ef55e6b44fd9d5fff8a7\",\"dweb:/ipfs/QmeZUVwd26LzK4Mfp8Zba5JbQNkZFfTzFu1A6FVMMZDg9c\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -423,6 +443,25 @@
           "stateMutability": "nonpayable",
           "type": "function",
           "name": "diamondCut"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes4",
+              "name": "_functionSelector",
+              "type": "bytes4"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "facetAddress",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "facetAddress_",
+              "type": "address"
+            }
+          ]
         },
         {
           "inputs": [],
@@ -651,10 +690,10 @@
     },
     "sources": {
       "interfaces/ozIDiamond.sol": {
-        "keccak256": "0xd5d48003b4a596dee4274f8c7319aa1723a6d21f548d945d63a9a0561255f364",
+        "keccak256": "0x4e5f411b2eaf7612b1e7d298233c863f8d47742a0170c11e2968ec5f133471ef",
         "urls": [
-          "bzz-raw://5de35cc39df19bd5b4fcdb6ba65b2d7884898e0ebe30cdfeae4a4424288e6a54",
-          "dweb:/ipfs/QmdKPERXVCuoEwgxyu5k4Rc88ZgTgQPtqWd5M96875m9Dz"
+          "bzz-raw://ea6253a294e0a11a50d3abe9ba732b8782e8a8ee86aebb3bd5f94f9e22c8112f",
+          "dweb:/ipfs/QmbDavUWwQoiv5v81gLESV51rpiMYAqfhE7g5c1j5Ser9D"
         ],
         "license": "GPL-2.0-or-later"
       },
@@ -671,17 +710,17 @@
   },
   "ast": {
     "absolutePath": "interfaces/ozIDiamond.sol",
-    "id": 2475,
+    "id": 2482,
     "exportedSymbols": {
       "AggregatorV3Interface": [
-        32989
+        32996
       ],
       "ozIDiamond": [
-        2474
+        2481
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:1592:16",
+    "src": "45:1691:16",
     "nodes": [
       {
         "id": 2348,
@@ -702,15 +741,15 @@
         "absolutePath": "node_modules/@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
         "file": "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 2475,
-        "sourceUnit": 32990,
+        "scope": 2482,
+        "sourceUnit": 32997,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 2474,
+        "id": 2481,
         "nodeType": "ContractDefinition",
-        "src": "189:1448:16",
+        "src": "189:1547:16",
         "nodes": [
           {
             "id": 2358,
@@ -823,7 +862,7 @@
             ],
             "name": "FacetCut",
             "nameLocation": "224:8:16",
-            "scope": 2474,
+            "scope": 2481,
             "visibility": "public"
           },
           {
@@ -983,7 +1022,7 @@
               "parameters": [],
               "src": "489:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1039,7 +1078,7 @@
               ],
               "src": "540:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1095,7 +1134,7 @@
               ],
               "src": "602:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1151,7 +1190,7 @@
               ],
               "src": "662:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1207,7 +1246,7 @@
               ],
               "src": "724:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1290,7 +1329,7 @@
               "parameters": [],
               "src": "803:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1346,7 +1385,7 @@
               ],
               "src": "854:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1429,7 +1468,7 @@
               ],
               "src": "908:33:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1495,7 +1534,7 @@
               ],
               "src": "990:18:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1580,7 +1619,7 @@
               ],
               "src": "1082:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1665,7 +1704,7 @@
               ],
               "src": "1161:9:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1749,7 +1788,7 @@
               "parameters": [],
               "src": "1236:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1806,7 +1845,7 @@
               "parameters": [],
               "src": "1291:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1862,7 +1901,7 @@
               ],
               "src": "1348:8:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -1894,7 +1933,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                     "typeString": "contract AggregatorV3Interface"
                   },
                   "typeName": {
@@ -1907,13 +1946,13 @@
                         "1393:21:16"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 32989,
+                      "referencedDeclaration": 32996,
                       "src": "1393:21:16"
                     },
-                    "referencedDeclaration": 32989,
+                    "referencedDeclaration": 32996,
                     "src": "1393:21:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                       "typeString": "contract AggregatorV3Interface"
                     }
                   },
@@ -1928,7 +1967,7 @@
               "parameters": [],
               "src": "1433:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1960,7 +1999,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                     "typeString": "contract AggregatorV3Interface"
                   },
                   "typeName": {
@@ -1973,13 +2012,13 @@
                         "1456:21:16"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 32989,
+                      "referencedDeclaration": 32996,
                       "src": "1456:21:16"
                     },
-                    "referencedDeclaration": 32989,
+                    "referencedDeclaration": 32996,
                     "src": "1456:21:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                       "typeString": "contract AggregatorV3Interface"
                     }
                   },
@@ -1994,7 +2033,7 @@
               "parameters": [],
               "src": "1496:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -2026,7 +2065,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                    "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                     "typeString": "contract AggregatorV3Interface"
                   },
                   "typeName": {
@@ -2039,13 +2078,13 @@
                         "1522:21:16"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 32989,
+                      "referencedDeclaration": 32996,
                       "src": "1522:21:16"
                     },
-                    "referencedDeclaration": 32989,
+                    "referencedDeclaration": 32996,
                     "src": "1522:21:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32989",
+                      "typeIdentifier": "t_contract$_AggregatorV3Interface_$32996",
                       "typeString": "contract AggregatorV3Interface"
                     }
                   },
@@ -2060,7 +2099,7 @@
               "parameters": [],
               "src": "1563:0:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -2126,8 +2165,93 @@
               ],
               "src": "1610:24:16"
             },
-            "scope": 2474,
+            "scope": 2481,
             "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "id": 2480,
+            "nodeType": "FunctionDefinition",
+            "src": "1640:94:16",
+            "nodes": [],
+            "functionSelector": "cdffacc6",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "facetAddress",
+            "nameLocation": "1649:12:16",
+            "parameters": {
+              "id": 2476,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2475,
+                  "mutability": "mutable",
+                  "name": "_functionSelector",
+                  "nameLocation": "1669:17:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2480,
+                  "src": "1662:24:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 2474,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1662:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1661:26:16"
+            },
+            "returnParameters": {
+              "id": 2479,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2478,
+                  "mutability": "mutable",
+                  "name": "facetAddress_",
+                  "nameLocation": "1719:13:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2480,
+                  "src": "1711:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2477,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1711:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1710:23:16"
+            },
+            "scope": 2481,
+            "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
@@ -2139,11 +2263,11 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          2474
+          2481
         ],
         "name": "ozIDiamond",
         "nameLocation": "199:10:16",
-        "scope": 2475,
+        "scope": 2482,
         "usedErrors": []
       }
     ],

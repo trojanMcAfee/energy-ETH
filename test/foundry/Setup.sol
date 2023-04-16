@@ -12,7 +12,7 @@ import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
-
+import './dummy-files/NewOracle.sol';
 
 import "forge-std/Test.sol";
 
@@ -36,6 +36,8 @@ contract Setup is Test {
     WtiFeed internal wtiFeed;
     EthFeed internal ethFeed;
     GoldFeed internal goldFeed;
+
+    NewOracle internal newOracle;
 
     address internal deployer = 0xe738696676571D9b74C81716E4aE797c2440d306;
     address internal volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
@@ -90,15 +92,20 @@ contract Setup is Test {
         address[] memory,
         address[] memory
     ) {
+        //Price feeds
         ethFeed = new EthFeed();
         goldFeed = new GoldFeed();
         wtiFeed = new WtiFeed();
 
+        //Facets and contracts
         ozOracle = new ozOracleFacet(); 
         eETH = new EnergyETH();
         ozExecutor2 = new ozExecutor2Facet();
         ozLoupeV2 = new ozLoupeV2Facet();
         ozCutV2 = new ozCutFacetV2();
+
+        //Test contracts
+        newOracle = new NewOracle();
 
         address[] memory nonRevFacets = new address[](2);
         nonRevFacets[0] = address(ozOracle);
@@ -118,7 +125,7 @@ contract Setup is Test {
     function _createCut(
         address contractAddr_, 
         uint8 id_
-    ) private view returns(ozIDiamond.FacetCut memory cut) { 
+    ) internal view returns(ozIDiamond.FacetCut memory cut) { 
         uint256 length;
         if (id_ == 0) {
             length = 6;
@@ -152,10 +159,11 @@ contract Setup is Test {
             selectors[0] = ozCutV2.addOracle.selector;
             selectors[1] = ozCutV2.removeOracle.selector;
         }
+        if (id_ == 4) selectors[0] = newOracle.getVolatilityIndex.selector;
 
         cut = ozIDiamond.FacetCut({
             facetAddress: contractAddr_,
-            action: ozIDiamond.FacetCutAction.Add,
+            action: id_ != 4 ? ozIDiamond.FacetCutAction.Add : ozIDiamond.FacetCutAction.Replace,
             functionSelectors: selectors
         });
     }
@@ -183,6 +191,7 @@ contract Setup is Test {
         vm.label(address(ozExecutor2), 'ozExecutor2');
         vm.label(address(ozLoupeV2), 'ozLoupeV2');
         vm.label(address(ozCutV2), 'ozCutFacetV2');
+        vm.label(address(newOracle), 'newOracle');
     }
 
 

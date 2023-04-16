@@ -5,6 +5,8 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "forge-std/Test.sol";
 import './Setup.sol';
+import '../../interfaces/ozIDiamond.sol';
+// import './dummy-files/NewOracle.sol';
 
 import "forge-std/console.sol";
 
@@ -12,6 +14,8 @@ import "forge-std/console.sol";
 contract ozOracleFacetTest is Test, Setup {
 
     using stdStorage for StdStorage;
+
+    // NewOracle private newOracle;
     
     function test_getEnergyPrice() public {
         uint256 price = OZL.getEnergyPrice();
@@ -47,6 +51,24 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));   
     }
 
+    function test_change_getVolatilityIndex() public {
+        //Pre-condition
+        bytes4 selector = ozOracle.getVolatilityIndex.selector;
+        address facet = OZL.facetAddress(selector);
+        assertTrue(facet == address(ozOracle));
+
+        //Action
+        ozIDiamond.FacetCut[] memory cuts = new ozIDiamond.FacetCut[](1);
+        cuts[0] = _createCut(address(newOracle), 4);
+
+        vm.prank(deployer);
+        OZL.diamondCut(cuts, address(0), '');
+
+        //Post-action
+        facet = OZL.facetAddress(selector);
+        assertTrue(facet == address(newOracle));
+    }
+
     function test_addFeed() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
@@ -59,6 +81,16 @@ contract ozOracleFacetTest is Test, Setup {
         //Post-condition
         feeds = OZL.getPriceFeeds();
         assertTrue(feeds.length == 4);
+    }
+
+    function test_fail_addAddress_notOwner() public {
+        //Pre-condition
+        address[] memory feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 3);
+
+        //Action
+        vm.expectRevert(notOwner);
+        OZL.addFeed(AggregatorV3Interface(deadAddr));
     }
 
     //-------- Helpers

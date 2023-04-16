@@ -32,4 +32,5 @@ interface ozIDiamond {
     function addFeed(AggregatorV3Interface newFeed_) external;
     function removeFeed(AggregatorV3Interface toRemove_) external;
     function getPriceFeeds() external returns(address[] memory feeds);
+    function facetAddress(bytes4 _functionSelector) external view returns (address facetAddress_);
 }

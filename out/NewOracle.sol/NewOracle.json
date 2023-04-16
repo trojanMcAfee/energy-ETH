@@ -1,0 +1,281 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getVolatilityIndex",
+      "outputs": [
+        {
+          "internalType": "int256",
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50607780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea2646970667358221220fc911f1aaba5b860de76b18be095a7368d931bf9a9736bd0a05df423527d11c164736f6c63430008130033",
+    "sourceMap": "72:118:52:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea2646970667358221220fc911f1aaba5b860de76b18be095a7368d931bf9a9736bd0a05df423527d11c164736f6c63430008130033",
+    "sourceMap": "72:118:52:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:91;178:2;97:91;;158:25:56;;;146:2;131:18;97:91:52;;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "getVolatilityIndex()": "83cf65d4"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getVolatilityIndex\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"test/foundry/dummy-files/NewOracle.sol\":\"NewOracle\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"test/foundry/dummy-files/NewOracle.sol\":{\"keccak256\":\"0x6dddc9eddd9301100ec019441466beefb0c8b3a4612009bf8bf2c7a210774b5b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f99d5fb485854eded751827c10d3064c66f58c9c253d163d4b1d5ce55c7a3f99\",\"dweb:/ipfs/QmWAELWQ74wfQ9qngdtmXE4w8DMRCLnnYp5FHeRz2tTN3C\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "pure",
+          "type": "function",
+          "name": "getVolatilityIndex",
+          "outputs": [
+            {
+              "internalType": "int256",
+              "name": "",
+              "type": "int256"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":@eth-optimism/=node_modules/@eth-optimism/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":@rari-capital/=node_modules/@rari-capital/",
+        ":@uniswap/=node_modules/@uniswap/",
+        ":base64-sol/=node_modules/base64-sol/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=node_modules/hardhat/",
+        ":prb-test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":solmate/=node_modules/solmate/",
+        ":src/=lib/unchecked-counter/src/",
+        ":unchecked-counter/=lib/unchecked-counter/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "test/foundry/dummy-files/NewOracle.sol": "NewOracle"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "test/foundry/dummy-files/NewOracle.sol": {
+        "keccak256": "0x6dddc9eddd9301100ec019441466beefb0c8b3a4612009bf8bf2c7a210774b5b",
+        "urls": [
+          "bzz-raw://f99d5fb485854eded751827c10d3064c66f58c9c253d163d4b1d5ce55c7a3f99",
+          "dweb:/ipfs/QmWAELWQ74wfQ9qngdtmXE4w8DMRCLnnYp5FHeRz2tTN3C"
+        ],
+        "license": "GPL-2.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "test/foundry/dummy-files/NewOracle.sol",
+    "id": 35459,
+    "exportedSymbols": {
+      "NewOracle": [
+        35458
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:145:52",
+    "nodes": [
+      {
+        "id": 35446,
+        "nodeType": "PragmaDirective",
+        "src": "45:23:52",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 35458,
+        "nodeType": "ContractDefinition",
+        "src": "72:118:52",
+        "nodes": [
+          {
+            "id": 35457,
+            "nodeType": "FunctionDefinition",
+            "src": "97:91:52",
+            "nodes": [],
+            "body": {
+              "id": 35456,
+              "nodeType": "Block",
+              "src": "154:34:52",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "hexValue": "3530",
+                        "id": 35453,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "178:2:52",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_50_by_1",
+                          "typeString": "int_const 50"
+                        },
+                        "value": "50"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_rational_50_by_1",
+                          "typeString": "int_const 50"
+                        }
+                      ],
+                      "id": 35452,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "171:6:52",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_int256_$",
+                        "typeString": "type(int256)"
+                      },
+                      "typeName": {
+                        "id": 35451,
+                        "name": "int256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "171:6:52",
+                        "typeDescriptions": {}
+                      }
+                    },
+                    "id": 35454,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "171:10:52",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "functionReturnParameters": 35450,
+                  "id": 35455,
+                  "nodeType": "Return",
+                  "src": "164:17:52"
+                }
+              ]
+            },
+            "functionSelector": "83cf65d4",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getVolatilityIndex",
+            "nameLocation": "106:18:52",
+            "parameters": {
+              "id": 35447,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "124:2:52"
+            },
+            "returnParameters": {
+              "id": 35450,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35449,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 35457,
+                  "src": "147:6:52",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 35448,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:6:52",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "146:8:52"
+            },
+            "scope": 35458,
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "NewOracle",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          35458
+        ],
+        "name": "NewOracle",
+        "nameLocation": "81:9:52",
+        "scope": 35459,
+        "usedErrors": []
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 52
+}
