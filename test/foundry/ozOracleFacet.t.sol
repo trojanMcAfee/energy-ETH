@@ -114,6 +114,16 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(true);
     }
 
+    function test_fail_removeFeed_notOwner() public {
+        //Pre-condition
+        address[] memory feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 3);
+
+        //Action
+        vm.expectRevert(notOwner);   
+        OZL.removeFeed(AggregatorV3Interface(address(wtiFeed)));
+    }
+
     //-------- Helpers
 
     function _getVolAddress() private view returns(address volAddr) {
