@@ -19,12 +19,12 @@ contract ozLoupeV2Facet {
     //-------
 
     function getOracles() external view returns(address[] memory) {
-        uint256 length = s.oraclesToIds.length;
+        uint256 length = s.oracles_ids.length;
         address[] memory oracles = new address[](length);
  
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
             uint256 j = i.unwrap();
-            bytes memory oracleDetails = s.oraclesToIds[j];
+            bytes memory oracleDetails = s.oracles_ids[j];
             bytes32 oracleBytes32;
             bytes20 oracle;
 
@@ -43,9 +43,9 @@ contract ozLoupeV2Facet {
         bytes32 oracleBytes = bytes32(abi.encode(oracle_));
         bytes32 oracleID;
 
-        uint256 length = s.oraclesToIds.length;
+        uint256 length = s.oracles_ids.length;
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
-            bytes memory oracleDetails = s.oraclesToIds[i.unwrap()];
+            bytes memory oracleDetails = s.oracles_ids[i.unwrap()];
             bytes32 possOracle;
 
             assembly {

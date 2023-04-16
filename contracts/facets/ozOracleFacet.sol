@@ -48,17 +48,17 @@ contract ozOracleFacet {
 
 
     function _getDataFeeds() private view returns(DataInfo[] memory, int256) {
-        uint256 length = s.feeds.length;
+        uint256 length = s.priceFeeds.length;
         DataInfo[] memory infoFeeds = new DataInfo[](length);
 
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
             uint256 j = i.unwrap();
-            (uint80 id, int256 value,,,) = s.feeds[j].latestRoundData();
+            (uint80 id, int256 value,,,) = s.priceFeeds[j].latestRoundData();
 
             DataInfo memory info = DataInfo({
                 roundId: id,
                 value: value,
-                feed: s.feeds[j]
+                feed: s.priceFeeds[j]
             });
             infoFeeds[j] = info;
         }
@@ -101,21 +101,21 @@ contract ozOracleFacet {
 
     function addFeed(AggregatorV3Interface newFeed_) external {
         LibDiamond.enforceIsContractOwner();
-        s.feeds.push(newFeed_);
+        s.priceFeeds.push(newFeed_);
     }
 
     function removeFeed(AggregatorV3Interface toRemove_) external {
         LibDiamond.enforceIsContractOwner();
-        LibCommon.remove(s.feeds, toRemove_);
+        LibCommon.remove(s.priceFeeds, toRemove_);
     }
 
     function getPriceFeeds() external view returns(address[] memory feeds) {
-        uint256 length = s.feeds.length;
+        uint256 length = s.priceFeeds.length;
         feeds = new address[](length);
 
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
             uint256 j = i.unwrap();
-            feeds[j] = address(s.feeds[j]);
+            feeds[j] = address(s.priceFeeds[j]);
         }
     }
 

@@ -25,7 +25,7 @@ contract ozCutFacetV2 {
 
         bytes memory oracleDetails = abi.encode(bytes20(newOracle_), id_); 
         s.idToOracle[id_] = newOracle_;
-        s.oraclesToIds.push(oracleDetails);
+        s.oracles_ids.push(oracleDetails);
 
         emit OracleAdded(newOracle_, id_);
     }
@@ -37,8 +37,8 @@ contract ozCutFacetV2 {
         bytes32 oracleID = _getOracleId(toRemove_);
         s.idToOracle[oracleID] = address(0);
 
-        for (uint i=0; i < s.oraclesToIds.length; i++) {
-            bytes memory oracleDetails  = s.oraclesToIds[i];
+        for (uint i=0; i < s.oracles_ids.length; i++) {
+            bytes memory oracleDetails  = s.oracles_ids[i];
             bytes32 possId;
 
             assembly {
@@ -46,7 +46,7 @@ contract ozCutFacetV2 {
             }
 
             if (possId == oracleID) {
-                LibCommon.remove(s.oraclesToIds, oracleDetails);
+                LibCommon.remove(s.oracles_ids, oracleDetails);
                 emit OracleRemoved(toRemove_);
             }
 
