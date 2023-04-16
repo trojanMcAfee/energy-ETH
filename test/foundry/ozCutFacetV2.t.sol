@@ -10,8 +10,6 @@ import "forge-std/console.sol";
 
 contract ozCutFacetV2Test is Test, Setup {
 
-    bytes notOwner = bytes('LibDiamond: Must be contract owner');
-
 
     function test_addOracle() public {
         //Pre-condition

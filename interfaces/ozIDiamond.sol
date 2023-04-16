@@ -31,4 +31,5 @@ interface ozIDiamond {
     function changeVolatilityIndex(AggregatorV3Interface newFeed_) external;
     function addFeed(AggregatorV3Interface newFeed_) external;
     function removeFeed(AggregatorV3Interface toRemove_) external;
+    function getPriceFeeds() external returns(address[] memory feeds);
 }

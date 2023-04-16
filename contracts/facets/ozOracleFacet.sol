@@ -110,6 +110,16 @@ contract ozOracleFacet {
         LibCommon.remove(s.feeds, toRemove_);
     }
 
+    function getPriceFeeds() external view returns(address[] memory feeds) {
+        uint256 length = s.feeds.length;
+        feeds = new address[](length);
+
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            uint256 j = i.unwrap();
+            feeds[j] = address(s.feeds[j]);
+        }
+    }
+
 
 }
 

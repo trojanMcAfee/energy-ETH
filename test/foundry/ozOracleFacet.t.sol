@@ -37,9 +37,33 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(volAddr == deadAddr);
     }
 
+    function test_fail_changeVolatilityIndex_notOwner() public {
+        //Pre-condition
+        address volAddr = _getVolAddress();
+        assertTrue(volAddr == volIndex);
+
+        //Action
+        vm.expectRevert(notOwner);
+        OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));   
+    }
+
+    function test_addFeed() public {
+        //Pre-condition
+        address[] memory feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 3);
+
+        //Action
+        vm.prank(deployer);
+        OZL.addFeed(AggregatorV3Interface(deadAddr));
+
+        //Post-condition
+        feeds = OZL.getPriceFeeds();
+        assertTrue(feeds.length == 4);
+    }
+
     //-------- Helpers
 
-    function _getVolAddress() private returns(address volAddr) {
+    function _getVolAddress() private view returns(address volAddr) {
         bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
         volAddr = address(bytes20(volSlot << 96));
     }

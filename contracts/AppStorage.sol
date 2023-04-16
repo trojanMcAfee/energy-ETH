@@ -104,7 +104,7 @@ struct AppStorage {
     mapping(bytes32 id => address oracle) idToOracle;
     bytes[] oraclesToIds; //change this to oracles_ids
 
-    AggregatorV3Interface[] feeds;
+    AggregatorV3Interface[] feeds; //68 - change this to priceFeeds
 }
 
 /// @dev Reference for oz20Facet storage
