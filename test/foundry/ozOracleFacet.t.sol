@@ -23,6 +23,10 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(price > 0);
     }
 
+    /*///////////////////////////////////////////////////////////////
+                            Volatility Index
+    //////////////////////////////////////////////////////////////*/
+
     function test_getVolatilityIndex() public {
         int256 index = OZL.getVolatilityIndex();
         assertTrue(index > 0);
@@ -69,6 +73,10 @@ contract ozOracleFacetTest is Test, Setup {
         facet = OZL.facetAddress(selector);
         assertTrue(facet == address(newOracle));
     }
+
+    /*///////////////////////////////////////////////////////////////
+                            Add/Remove feed
+    //////////////////////////////////////////////////////////////*/
 
     function test_addFeed() public {
         //Pre-condition
@@ -144,7 +152,9 @@ contract ozOracleFacetTest is Test, Setup {
         
     }
 
-    //-------- Helpers
+    /*///////////////////////////////////////////////////////////////
+                            Helpers
+    //////////////////////////////////////////////////////////////*/
 
     function _getVolAddress() private view returns(address volAddr) {
         bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
