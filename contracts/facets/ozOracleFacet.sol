@@ -10,6 +10,11 @@ import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibDiamond.sol';
 import '../../libraries/LibCommon.sol';
 import '../../Errors.sol';
+import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+// import '@uniswap/v3-periphery/contracts/libraries/OracleLibrary.sol';
+import '../../libraries/oracle/OracleLibrary.sol';
+import '../../libraries/oracle/FullMath.sol';
+import "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol";
 
 // import 'hardhat/console.sol';
 
@@ -70,6 +75,40 @@ contract ozOracleFacet {
 
         return (infoFeeds, basePrice); 
     }
+
+    //-------------------
+
+    function getUni() public view returns(uint) { //returns(int56[] memory ticks, uint160[] memory secs)
+        address ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
+        address wethAddr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
+        address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
+
+        //-------------
+        IUniswapV3Pool pool = IUniswapV3Pool(ethUsdcPool);
+        // uint32[] memory secsAgo = new uint32[](1);
+        // secsAgo[0] = 0;
+
+        // (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s) = pool.observe(secsAgo);
+        // return (tickCumulatives, secondsPerLiquidityCumulativeX128s);
+
+        //---------
+        (int24 tick,) = OracleLibrary.consult(ethUsdcPool, uint32(10));
+        uint amountOut = OracleLibrary.getQuoteAtTick(
+            tick, 10, wethAddr, usdcAddr
+        );
+        return amountOut; 
+        //------------
+        // (uint160 sqrtPriceX96, , , , , , ) = pool.slot0();
+        // uint256 price = getPriceX96FromSqrtPriceX96(sqrtPriceX96);
+        // return price;
+
+    }
+
+    function getPriceX96FromSqrtPriceX96(uint160 sqrtPriceX96) public pure returns(uint256 priceX96) {
+        return FullMath.mulDiv(sqrtPriceX96, sqrtPriceX96, FixedPoint96.Q96);
+    }
+
+
 
 
     //------------------

@@ -2,12 +2,12 @@
   "abi": [],
   "bytecode": {
     "object": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b98b3876262004c84bf3c6c9dc2a5d19ec11f26a13e30767f81c5ac3a945018864736f6c63430008130033",
-    "sourceMap": "167:1365:36:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;167:1365:36;;;;;;;;;;;;;;;;;",
+    "sourceMap": "167:1365:40:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;167:1365:40;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
     "object": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b98b3876262004c84bf3c6c9dc2a5d19ec11f26a13e30767f81c5ac3a945018864736f6c63430008130033",
-    "sourceMap": "167:1365:36:-:0;;;;;;;;",
+    "sourceMap": "167:1365:40:-:0;;;;;;;;",
     "linkReferences": {}
   },
   "methodIdentifiers": {},
@@ -89,25 +89,25 @@
   },
   "ast": {
     "absolutePath": "libraries/LibPermit2.sol",
-    "id": 31359,
+    "id": 32667,
     "exportedSymbols": {
       "IERC20": [
-        32469
+        33777
       ],
       "IPermit2": [
-        1389
+        2225
       ],
       "LibPermit2": [
-        31358
+        32666
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:1487:36",
+    "src": "45:1487:40",
     "nodes": [
       {
-        "id": 31231,
+        "id": 32539,
         "nodeType": "PragmaDirective",
-        "src": "45:23:36",
+        "src": "45:23:40",
         "nodes": [],
         "literals": [
           "solidity",
@@ -116,63 +116,63 @@
         ]
       },
       {
-        "id": 31232,
+        "id": 32540,
         "nodeType": "ImportDirective",
-        "src": "71:56:36",
+        "src": "71:56:40",
         "nodes": [],
         "absolutePath": "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "file": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 31359,
-        "sourceUnit": 32470,
+        "scope": 32667,
+        "sourceUnit": 33778,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 31233,
+        "id": 32541,
         "nodeType": "ImportDirective",
-        "src": "128:36:36",
+        "src": "128:36:40",
         "nodes": [],
         "absolutePath": "interfaces/IPermit2.sol",
         "file": "../interfaces/IPermit2.sol",
         "nameLocation": "-1:-1:-1",
-        "scope": 31359,
-        "sourceUnit": 1390,
+        "scope": 32667,
+        "sourceUnit": 2226,
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "id": 31358,
+        "id": 32666,
         "nodeType": "ContractDefinition",
-        "src": "167:1365:36",
+        "src": "167:1365:40",
         "nodes": [
           {
-            "id": 31253,
+            "id": 32561,
             "nodeType": "FunctionDefinition",
-            "src": "193:278:36",
+            "src": "193:278:40",
             "nodes": [],
             "body": {
-              "id": 31252,
+              "id": 32560,
               "nodeType": "Block",
-              "src": "348:123:36",
+              "src": "348:123:40",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
-                    "id": 31250,
+                    "id": 32558,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 31244,
+                      "id": 32552,
                       "name": "permission",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31242,
-                      "src": "358:10:36",
+                      "referencedDeclaration": 32550,
+                      "src": "358:10:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
@@ -181,24 +181,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31247,
+                          "id": 32555,
                           "name": "token_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31236,
-                          "src": "418:6:36",
+                          "referencedDeclaration": 32544,
+                          "src": "418:6:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           }
                         },
                         {
-                          "id": 31248,
+                          "id": 32556,
                           "name": "amount_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31238,
-                          "src": "446:7:36",
+                          "referencedDeclaration": 32546,
+                          "src": "446:7:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -208,7 +208,7 @@
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           },
                           {
@@ -217,63 +217,63 @@
                           }
                         ],
                         "expression": {
-                          "id": 31245,
+                          "id": 32553,
                           "name": "IPermit2",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1389,
-                          "src": "371:8:36",
+                          "referencedDeclaration": 2225,
+                          "src": "371:8:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IPermit2_$1389_$",
+                            "typeIdentifier": "t_type$_t_contract$_IPermit2_$2225_$",
                             "typeString": "type(contract IPermit2)"
                           }
                         },
-                        "id": 31246,
+                        "id": 32554,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "380:16:36",
+                        "memberLocation": "380:16:40",
                         "memberName": "TokenPermissions",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1322,
-                        "src": "371:25:36",
+                        "referencedDeclaration": 2158,
+                        "src": "371:25:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_TokenPermissions_$1322_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_TokenPermissions_$2158_storage_ptr_$",
                           "typeString": "type(struct IPermit2.TokenPermissions storage pointer)"
                         }
                       },
-                      "id": 31249,
+                      "id": 32557,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "kind": "structConstructorCall",
                       "lValueRequested": false,
                       "nameLocations": [
-                        "411:5:36",
-                        "438:6:36"
+                        "411:5:40",
+                        "438:6:40"
                       ],
                       "names": [
                         "token",
                         "amount"
                       ],
                       "nodeType": "FunctionCall",
-                      "src": "371:93:36",
+                      "src": "371:93:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
-                    "src": "358:106:36",
+                    "src": "358:106:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                      "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                       "typeString": "struct IPermit2.TokenPermissions memory"
                     }
                   },
-                  "id": 31251,
+                  "id": 32559,
                   "nodeType": "ExpressionStatement",
-                  "src": "358:106:36"
+                  "src": "358:106:40"
                 }
               ]
             },
@@ -281,43 +281,43 @@
             "kind": "function",
             "modifiers": [],
             "name": "getTokenPermission",
-            "nameLocation": "202:18:36",
+            "nameLocation": "202:18:40",
             "parameters": {
-              "id": 31239,
+              "id": 32547,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31236,
+                  "id": 32544,
                   "mutability": "mutable",
                   "name": "token_",
-                  "nameLocation": "237:6:36",
+                  "nameLocation": "237:6:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31253,
-                  "src": "230:13:36",
+                  "scope": 32561,
+                  "src": "230:13:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC20_$32469",
+                    "typeIdentifier": "t_contract$_IERC20_$33777",
                     "typeString": "contract IERC20"
                   },
                   "typeName": {
-                    "id": 31235,
+                    "id": 32543,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 31234,
+                      "id": 32542,
                       "name": "IERC20",
                       "nameLocations": [
-                        "230:6:36"
+                        "230:6:40"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 32469,
-                      "src": "230:6:36"
+                      "referencedDeclaration": 33777,
+                      "src": "230:6:40"
                     },
-                    "referencedDeclaration": 32469,
-                    "src": "230:6:36",
+                    "referencedDeclaration": 33777,
+                    "src": "230:6:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$32469",
+                      "typeIdentifier": "t_contract$_IERC20_$33777",
                       "typeString": "contract IERC20"
                     }
                   },
@@ -325,13 +325,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31238,
+                  "id": 32546,
                   "mutability": "mutable",
                   "name": "amount_",
-                  "nameLocation": "262:7:36",
+                  "nameLocation": "262:7:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31253,
-                  "src": "254:15:36",
+                  "scope": 32561,
+                  "src": "254:15:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -339,10 +339,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31237,
+                    "id": 32545,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "254:7:36",
+                    "src": "254:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -351,85 +351,85 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "220:55:36"
+              "src": "220:55:40"
             },
             "returnParameters": {
-              "id": 31243,
+              "id": 32551,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31242,
+                  "id": 32550,
                   "mutability": "mutable",
                   "name": "permission",
-                  "nameLocation": "331:10:36",
+                  "nameLocation": "331:10:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31253,
-                  "src": "298:43:36",
+                  "scope": 32561,
+                  "src": "298:43:40",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                    "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                     "typeString": "struct IPermit2.TokenPermissions"
                   },
                   "typeName": {
-                    "id": 31241,
+                    "id": 32549,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 31240,
+                      "id": 32548,
                       "name": "IPermit2.TokenPermissions",
                       "nameLocations": [
-                        "298:8:36",
-                        "307:16:36"
+                        "298:8:40",
+                        "307:16:40"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1322,
-                      "src": "298:25:36"
+                      "referencedDeclaration": 2158,
+                      "src": "298:25:40"
                     },
-                    "referencedDeclaration": 1322,
-                    "src": "298:25:36",
+                    "referencedDeclaration": 2158,
+                    "src": "298:25:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TokenPermissions_$1322_storage_ptr",
+                      "typeIdentifier": "t_struct$_TokenPermissions_$2158_storage_ptr",
                       "typeString": "struct IPermit2.TokenPermissions"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "297:45:36"
+              "src": "297:45:40"
             },
-            "scope": 31358,
+            "scope": 32666,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 31295,
+            "id": 32603,
             "nodeType": "FunctionDefinition",
-            "src": "477:346:36",
+            "src": "477:346:40",
             "nodes": [],
             "body": {
-              "id": 31294,
+              "id": 32602,
               "nodeType": "Block",
-              "src": "650:173:36",
+              "src": "650:173:40",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
-                    "id": 31274,
+                    "id": 32582,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 31267,
+                      "id": 32575,
                       "name": "amounts",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31265,
-                      "src": "660:7:36",
+                      "referencedDeclaration": 32573,
+                      "src": "660:7:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory[] memory"
                       }
                     },
@@ -439,14 +439,14 @@
                       "arguments": [
                         {
                           "hexValue": "32",
-                          "id": 31272,
+                          "id": 32580,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "702:1:36",
+                          "src": "702:1:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_2_by_1",
                             "typeString": "int_const 2"
@@ -461,49 +461,49 @@
                             "typeString": "int_const 2"
                           }
                         ],
-                        "id": 31271,
+                        "id": 32579,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "lValueRequested": false,
                         "nodeType": "NewExpression",
-                        "src": "670:31:36",
+                        "src": "670:31:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr_$",
+                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr_$",
                           "typeString": "function (uint256) pure returns (struct IPermit2.TokenPermissions memory[] memory)"
                         },
                         "typeName": {
                           "baseType": {
-                            "id": 31269,
+                            "id": 32577,
                             "nodeType": "UserDefinedTypeName",
                             "pathNode": {
-                              "id": 31268,
+                              "id": 32576,
                               "name": "IPermit2.TokenPermissions",
                               "nameLocations": [
-                                "674:8:36",
-                                "683:16:36"
+                                "674:8:40",
+                                "683:16:40"
                               ],
                               "nodeType": "IdentifierPath",
-                              "referencedDeclaration": 1322,
-                              "src": "674:25:36"
+                              "referencedDeclaration": 2158,
+                              "src": "674:25:40"
                             },
-                            "referencedDeclaration": 1322,
-                            "src": "674:25:36",
+                            "referencedDeclaration": 2158,
+                            "src": "674:25:40",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_TokenPermissions_$1322_storage_ptr",
+                              "typeIdentifier": "t_struct$_TokenPermissions_$2158_storage_ptr",
                               "typeString": "struct IPermit2.TokenPermissions"
                             }
                           },
-                          "id": 31270,
+                          "id": 32578,
                           "nodeType": "ArrayTypeName",
-                          "src": "674:27:36",
+                          "src": "674:27:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_storage_$dyn_storage_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_storage_$dyn_storage_ptr",
                             "typeString": "struct IPermit2.TokenPermissions[]"
                           }
                         }
                       },
-                      "id": 31273,
+                      "id": 32581,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -512,54 +512,54 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "670:34:36",
+                      "src": "670:34:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory[] memory"
                       }
                     },
-                    "src": "660:44:36",
+                    "src": "660:44:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct IPermit2.TokenPermissions memory[] memory"
                     }
                   },
-                  "id": 31275,
+                  "id": 32583,
                   "nodeType": "ExpressionStatement",
-                  "src": "660:44:36"
+                  "src": "660:44:40"
                 },
                 {
                   "expression": {
-                    "id": 31283,
+                    "id": 32591,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 31276,
+                        "id": 32584,
                         "name": "amounts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31265,
-                        "src": "714:7:36",
+                        "referencedDeclaration": 32573,
+                        "src": "714:7:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                           "typeString": "struct IPermit2.TokenPermissions memory[] memory"
                         }
                       },
-                      "id": 31278,
+                      "id": 32586,
                       "indexExpression": {
                         "hexValue": "30",
-                        "id": 31277,
+                        "id": 32585,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "722:1:36",
+                        "src": "722:1:40",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
                           "typeString": "int_const 0"
@@ -571,9 +571,9 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "714:10:36",
+                      "src": "714:10:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
@@ -582,24 +582,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31280,
+                          "id": 32588,
                           "name": "token_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31256,
-                          "src": "746:6:36",
+                          "referencedDeclaration": 32564,
+                          "src": "746:6:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           }
                         },
                         {
-                          "id": 31281,
+                          "id": 32589,
                           "name": "fee_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31258,
-                          "src": "754:4:36",
+                          "referencedDeclaration": 32566,
+                          "src": "754:4:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -609,7 +609,7 @@
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           },
                           {
@@ -617,18 +617,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 31279,
+                        "id": 32587,
                         "name": "getTokenPermission",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31253,
-                        "src": "727:18:36",
+                        "referencedDeclaration": 32561,
+                        "src": "727:18:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_contract$_IERC20_$32469_$_t_uint256_$returns$_t_struct$_TokenPermissions_$1322_memory_ptr_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_contract$_IERC20_$33777_$_t_uint256_$returns$_t_struct$_TokenPermissions_$2158_memory_ptr_$",
                           "typeString": "function (contract IERC20,uint256) pure returns (struct IPermit2.TokenPermissions memory)"
                         }
                       },
-                      "id": 31282,
+                      "id": 32590,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -637,54 +637,54 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "727:32:36",
+                      "src": "727:32:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
-                    "src": "714:45:36",
+                    "src": "714:45:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                      "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                       "typeString": "struct IPermit2.TokenPermissions memory"
                     }
                   },
-                  "id": 31284,
+                  "id": 32592,
                   "nodeType": "ExpressionStatement",
-                  "src": "714:45:36"
+                  "src": "714:45:40"
                 },
                 {
                   "expression": {
-                    "id": 31292,
+                    "id": 32600,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 31285,
+                        "id": 32593,
                         "name": "amounts",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31265,
-                        "src": "769:7:36",
+                        "referencedDeclaration": 32573,
+                        "src": "769:7:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                           "typeString": "struct IPermit2.TokenPermissions memory[] memory"
                         }
                       },
-                      "id": 31287,
+                      "id": 32595,
                       "indexExpression": {
                         "hexValue": "31",
-                        "id": 31286,
+                        "id": 32594,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "777:1:36",
+                        "src": "777:1:40",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
                           "typeString": "int_const 1"
@@ -696,9 +696,9 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "769:10:36",
+                      "src": "769:10:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
@@ -707,24 +707,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31289,
+                          "id": 32597,
                           "name": "token_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31256,
-                          "src": "801:6:36",
+                          "referencedDeclaration": 32564,
+                          "src": "801:6:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           }
                         },
                         {
-                          "id": 31290,
+                          "id": 32598,
                           "name": "quote_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31260,
-                          "src": "809:6:36",
+                          "referencedDeclaration": 32568,
+                          "src": "809:6:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -734,7 +734,7 @@
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_contract$_IERC20_$32469",
+                            "typeIdentifier": "t_contract$_IERC20_$33777",
                             "typeString": "contract IERC20"
                           },
                           {
@@ -742,18 +742,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 31288,
+                        "id": 32596,
                         "name": "getTokenPermission",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31253,
-                        "src": "782:18:36",
+                        "referencedDeclaration": 32561,
+                        "src": "782:18:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_contract$_IERC20_$32469_$_t_uint256_$returns$_t_struct$_TokenPermissions_$1322_memory_ptr_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_contract$_IERC20_$33777_$_t_uint256_$returns$_t_struct$_TokenPermissions_$2158_memory_ptr_$",
                           "typeString": "function (contract IERC20,uint256) pure returns (struct IPermit2.TokenPermissions memory)"
                         }
                       },
-                      "id": 31291,
+                      "id": 32599,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -762,22 +762,22 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "782:34:36",
+                      "src": "782:34:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                         "typeString": "struct IPermit2.TokenPermissions memory"
                       }
                     },
-                    "src": "769:47:36",
+                    "src": "769:47:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TokenPermissions_$1322_memory_ptr",
+                      "typeIdentifier": "t_struct$_TokenPermissions_$2158_memory_ptr",
                       "typeString": "struct IPermit2.TokenPermissions memory"
                     }
                   },
-                  "id": 31293,
+                  "id": 32601,
                   "nodeType": "ExpressionStatement",
-                  "src": "769:47:36"
+                  "src": "769:47:40"
                 }
               ]
             },
@@ -785,43 +785,43 @@
             "kind": "function",
             "modifiers": [],
             "name": "getTokenAmounts",
-            "nameLocation": "486:15:36",
+            "nameLocation": "486:15:40",
             "parameters": {
-              "id": 31261,
+              "id": 32569,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31256,
+                  "id": 32564,
                   "mutability": "mutable",
                   "name": "token_",
-                  "nameLocation": "518:6:36",
+                  "nameLocation": "518:6:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31295,
-                  "src": "511:13:36",
+                  "scope": 32603,
+                  "src": "511:13:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IERC20_$32469",
+                    "typeIdentifier": "t_contract$_IERC20_$33777",
                     "typeString": "contract IERC20"
                   },
                   "typeName": {
-                    "id": 31255,
+                    "id": 32563,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 31254,
+                      "id": 32562,
                       "name": "IERC20",
                       "nameLocations": [
-                        "511:6:36"
+                        "511:6:40"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 32469,
-                      "src": "511:6:36"
+                      "referencedDeclaration": 33777,
+                      "src": "511:6:40"
                     },
-                    "referencedDeclaration": 32469,
-                    "src": "511:6:36",
+                    "referencedDeclaration": 33777,
+                    "src": "511:6:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IERC20_$32469",
+                      "typeIdentifier": "t_contract$_IERC20_$33777",
                       "typeString": "contract IERC20"
                     }
                   },
@@ -829,13 +829,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31258,
+                  "id": 32566,
                   "mutability": "mutable",
                   "name": "fee_",
-                  "nameLocation": "543:4:36",
+                  "nameLocation": "543:4:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31295,
-                  "src": "535:12:36",
+                  "scope": 32603,
+                  "src": "535:12:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -843,10 +843,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31257,
+                    "id": 32565,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "535:7:36",
+                    "src": "535:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -856,13 +856,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31260,
+                  "id": 32568,
                   "mutability": "mutable",
                   "name": "quote_",
-                  "nameLocation": "566:6:36",
+                  "nameLocation": "566:6:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31295,
-                  "src": "558:14:36",
+                  "scope": 32603,
+                  "src": "558:14:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -870,10 +870,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31259,
+                    "id": 32567,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "558:7:36",
+                    "src": "558:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -882,94 +882,94 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "501:77:36"
+              "src": "501:77:40"
             },
             "returnParameters": {
-              "id": 31266,
+              "id": 32574,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31265,
+                  "id": 32573,
                   "mutability": "mutable",
                   "name": "amounts",
-                  "nameLocation": "636:7:36",
+                  "nameLocation": "636:7:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31295,
-                  "src": "601:42:36",
+                  "scope": 32603,
+                  "src": "601:42:40",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct IPermit2.TokenPermissions[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 31263,
+                      "id": 32571,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 31262,
+                        "id": 32570,
                         "name": "IPermit2.TokenPermissions",
                         "nameLocations": [
-                          "601:8:36",
-                          "610:16:36"
+                          "601:8:40",
+                          "610:16:40"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1322,
-                        "src": "601:25:36"
+                        "referencedDeclaration": 2158,
+                        "src": "601:25:40"
                       },
-                      "referencedDeclaration": 1322,
-                      "src": "601:25:36",
+                      "referencedDeclaration": 2158,
+                      "src": "601:25:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TokenPermissions_$1322_storage_ptr",
+                        "typeIdentifier": "t_struct$_TokenPermissions_$2158_storage_ptr",
                         "typeString": "struct IPermit2.TokenPermissions"
                       }
                     },
-                    "id": 31264,
+                    "id": 32572,
                     "nodeType": "ArrayTypeName",
-                    "src": "601:27:36",
+                    "src": "601:27:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$1322_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_TokenPermissions_$2158_storage_$dyn_storage_ptr",
                       "typeString": "struct IPermit2.TokenPermissions[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "600:44:36"
+              "src": "600:44:40"
             },
-            "scope": 31358,
+            "scope": 32666,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 31314,
+            "id": 32622,
             "nodeType": "FunctionDefinition",
-            "src": "829:293:36",
+            "src": "829:293:40",
             "nodes": [],
             "body": {
-              "id": 31313,
+              "id": 32621,
               "nodeType": "Block",
-              "src": "985:137:36",
+              "src": "985:137:40",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
-                    "id": 31311,
+                    "id": 32619,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 31305,
+                      "id": 32613,
                       "name": "details",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31303,
-                      "src": "995:7:36",
+                      "referencedDeclaration": 32611,
+                      "src": "995:7:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
@@ -978,24 +978,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31308,
+                          "id": 32616,
                           "name": "receiver_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31297,
-                          "src": "1057:9:36",
+                          "referencedDeclaration": 32605,
+                          "src": "1057:9:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         {
-                          "id": 31309,
+                          "id": 32617,
                           "name": "amount_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31299,
-                          "src": "1097:7:36",
+                          "referencedDeclaration": 32607,
+                          "src": "1097:7:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1014,63 +1014,63 @@
                           }
                         ],
                         "expression": {
-                          "id": 31306,
+                          "id": 32614,
                           "name": "IPermit2",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1389,
-                          "src": "1005:8:36",
+                          "referencedDeclaration": 2225,
+                          "src": "1005:8:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_IPermit2_$1389_$",
+                            "typeIdentifier": "t_type$_t_contract$_IPermit2_$2225_$",
                             "typeString": "type(contract IPermit2)"
                           }
                         },
-                        "id": 31307,
+                        "id": 32615,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
-                        "memberLocation": "1014:24:36",
+                        "memberLocation": "1014:24:40",
                         "memberName": "SignatureTransferDetails",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1344,
-                        "src": "1005:33:36",
+                        "referencedDeclaration": 2180,
+                        "src": "1005:33:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_SignatureTransferDetails_$1344_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_SignatureTransferDetails_$2180_storage_ptr_$",
                           "typeString": "type(struct IPermit2.SignatureTransferDetails storage pointer)"
                         }
                       },
-                      "id": 31310,
+                      "id": 32618,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "kind": "structConstructorCall",
                       "lValueRequested": false,
                       "nameLocations": [
-                        "1053:2:36",
-                        "1080:15:36"
+                        "1053:2:40",
+                        "1080:15:40"
                       ],
                       "names": [
                         "to",
                         "requestedAmount"
                       ],
                       "nodeType": "FunctionCall",
-                      "src": "1005:110:36",
+                      "src": "1005:110:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
-                    "src": "995:120:36",
+                    "src": "995:120:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails memory"
                     }
                   },
-                  "id": 31312,
+                  "id": 32620,
                   "nodeType": "ExpressionStatement",
-                  "src": "995:120:36"
+                  "src": "995:120:40"
                 }
               ]
             },
@@ -1078,20 +1078,20 @@
             "kind": "function",
             "modifiers": [],
             "name": "getDetails",
-            "nameLocation": "838:10:36",
+            "nameLocation": "838:10:40",
             "parameters": {
-              "id": 31300,
+              "id": 32608,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31297,
+                  "id": 32605,
                   "mutability": "mutable",
                   "name": "receiver_",
-                  "nameLocation": "866:9:36",
+                  "nameLocation": "866:9:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31314,
-                  "src": "858:17:36",
+                  "scope": 32622,
+                  "src": "858:17:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1099,10 +1099,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 31296,
+                    "id": 32604,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "858:7:36",
+                    "src": "858:7:40",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1113,13 +1113,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31299,
+                  "id": 32607,
                   "mutability": "mutable",
                   "name": "amount_",
-                  "nameLocation": "894:7:36",
+                  "nameLocation": "894:7:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31314,
-                  "src": "886:15:36",
+                  "scope": 32622,
+                  "src": "886:15:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1127,10 +1127,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31298,
+                    "id": 32606,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "886:7:36",
+                    "src": "886:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1139,85 +1139,85 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "848:59:36"
+              "src": "848:59:40"
             },
             "returnParameters": {
-              "id": 31304,
+              "id": 32612,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31303,
+                  "id": 32611,
                   "mutability": "mutable",
                   "name": "details",
-                  "nameLocation": "971:7:36",
+                  "nameLocation": "971:7:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31314,
-                  "src": "930:48:36",
+                  "scope": 32622,
+                  "src": "930:48:40",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                    "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                     "typeString": "struct IPermit2.SignatureTransferDetails"
                   },
                   "typeName": {
-                    "id": 31302,
+                    "id": 32610,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 31301,
+                      "id": 32609,
                       "name": "IPermit2.SignatureTransferDetails",
                       "nameLocations": [
-                        "930:8:36",
-                        "939:24:36"
+                        "930:8:40",
+                        "939:24:40"
                       ],
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1344,
-                      "src": "930:33:36"
+                      "referencedDeclaration": 2180,
+                      "src": "930:33:40"
                     },
-                    "referencedDeclaration": 1344,
-                    "src": "930:33:36",
+                    "referencedDeclaration": 2180,
+                    "src": "930:33:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_storage_ptr",
+                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_storage_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "929:50:36"
+              "src": "929:50:40"
             },
-            "scope": 31358,
+            "scope": 32666,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 31357,
+            "id": 32665,
             "nodeType": "FunctionDefinition",
-            "src": "1129:401:36",
+            "src": "1129:401:40",
             "nodes": [],
             "body": {
-              "id": 31356,
+              "id": 32664,
               "nodeType": "Block",
-              "src": "1351:179:36",
+              "src": "1351:179:40",
               "nodes": [],
               "statements": [
                 {
                   "expression": {
-                    "id": 31336,
+                    "id": 32644,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 31329,
+                      "id": 32637,
                       "name": "details",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31327,
-                      "src": "1361:7:36",
+                      "referencedDeclaration": 32635,
+                      "src": "1361:7:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory[] memory"
                       }
                     },
@@ -1227,14 +1227,14 @@
                       "arguments": [
                         {
                           "hexValue": "32",
-                          "id": 31334,
+                          "id": 32642,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "1411:1:36",
+                          "src": "1411:1:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_2_by_1",
                             "typeString": "int_const 2"
@@ -1249,49 +1249,49 @@
                             "typeString": "int_const 2"
                           }
                         ],
-                        "id": 31333,
+                        "id": 32641,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "lValueRequested": false,
                         "nodeType": "NewExpression",
-                        "src": "1371:39:36",
+                        "src": "1371:39:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr_$",
+                          "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr_$",
                           "typeString": "function (uint256) pure returns (struct IPermit2.SignatureTransferDetails memory[] memory)"
                         },
                         "typeName": {
                           "baseType": {
-                            "id": 31331,
+                            "id": 32639,
                             "nodeType": "UserDefinedTypeName",
                             "pathNode": {
-                              "id": 31330,
+                              "id": 32638,
                               "name": "IPermit2.SignatureTransferDetails",
                               "nameLocations": [
-                                "1375:8:36",
-                                "1384:24:36"
+                                "1375:8:40",
+                                "1384:24:40"
                               ],
                               "nodeType": "IdentifierPath",
-                              "referencedDeclaration": 1344,
-                              "src": "1375:33:36"
+                              "referencedDeclaration": 2180,
+                              "src": "1375:33:40"
                             },
-                            "referencedDeclaration": 1344,
-                            "src": "1375:33:36",
+                            "referencedDeclaration": 2180,
+                            "src": "1375:33:40",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_storage_ptr",
+                              "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_storage_ptr",
                               "typeString": "struct IPermit2.SignatureTransferDetails"
                             }
                           },
-                          "id": 31332,
+                          "id": 32640,
                           "nodeType": "ArrayTypeName",
-                          "src": "1375:35:36",
+                          "src": "1375:35:40",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_storage_$dyn_storage_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_storage_$dyn_storage_ptr",
                             "typeString": "struct IPermit2.SignatureTransferDetails[]"
                           }
                         }
                       },
-                      "id": 31335,
+                      "id": 32643,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1300,54 +1300,54 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1371:42:36",
+                      "src": "1371:42:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory[] memory"
                       }
                     },
-                    "src": "1361:52:36",
+                    "src": "1361:52:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails memory[] memory"
                     }
                   },
-                  "id": 31337,
+                  "id": 32645,
                   "nodeType": "ExpressionStatement",
-                  "src": "1361:52:36"
+                  "src": "1361:52:40"
                 },
                 {
                   "expression": {
-                    "id": 31345,
+                    "id": 32653,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 31338,
+                        "id": 32646,
                         "name": "details",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31327,
-                        "src": "1423:7:36",
+                        "referencedDeclaration": 32635,
+                        "src": "1423:7:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                           "typeString": "struct IPermit2.SignatureTransferDetails memory[] memory"
                         }
                       },
-                      "id": 31340,
+                      "id": 32648,
                       "indexExpression": {
                         "hexValue": "30",
-                        "id": 31339,
+                        "id": 32647,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1431:1:36",
+                        "src": "1431:1:40",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
                           "typeString": "int_const 0"
@@ -1359,9 +1359,9 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1423:10:36",
+                      "src": "1423:10:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
@@ -1370,24 +1370,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31342,
+                          "id": 32650,
                           "name": "feeReceiver_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31316,
-                          "src": "1447:12:36",
+                          "referencedDeclaration": 32624,
+                          "src": "1447:12:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         {
-                          "id": 31343,
+                          "id": 32651,
                           "name": "fee_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31320,
-                          "src": "1461:4:36",
+                          "referencedDeclaration": 32628,
+                          "src": "1461:4:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1405,18 +1405,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 31341,
+                        "id": 32649,
                         "name": "getDetails",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31314,
-                        "src": "1436:10:36",
+                        "referencedDeclaration": 32622,
+                        "src": "1436:10:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_uint256_$returns$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_uint256_$returns$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$",
                           "typeString": "function (address,uint256) pure returns (struct IPermit2.SignatureTransferDetails memory)"
                         }
                       },
-                      "id": 31344,
+                      "id": 32652,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1425,54 +1425,54 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1436:30:36",
+                      "src": "1436:30:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
-                    "src": "1423:43:36",
+                    "src": "1423:43:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails memory"
                     }
                   },
-                  "id": 31346,
+                  "id": 32654,
                   "nodeType": "ExpressionStatement",
-                  "src": "1423:43:36"
+                  "src": "1423:43:40"
                 },
                 {
                   "expression": {
-                    "id": 31354,
+                    "id": 32662,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 31347,
+                        "id": 32655,
                         "name": "details",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31327,
-                        "src": "1476:7:36",
+                        "referencedDeclaration": 32635,
+                        "src": "1476:7:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                           "typeString": "struct IPermit2.SignatureTransferDetails memory[] memory"
                         }
                       },
-                      "id": 31349,
+                      "id": 32657,
                       "indexExpression": {
                         "hexValue": "31",
-                        "id": 31348,
+                        "id": 32656,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1484:1:36",
+                        "src": "1484:1:40",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
                           "typeString": "int_const 1"
@@ -1484,9 +1484,9 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1476:10:36",
+                      "src": "1476:10:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
@@ -1495,24 +1495,24 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 31351,
+                          "id": 32659,
                           "name": "quoteReceiver_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31318,
-                          "src": "1500:14:36",
+                          "referencedDeclaration": 32626,
+                          "src": "1500:14:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
                         {
-                          "id": 31352,
+                          "id": 32660,
                           "name": "quote_",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31322,
-                          "src": "1516:6:36",
+                          "referencedDeclaration": 32630,
+                          "src": "1516:6:40",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1530,18 +1530,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 31350,
+                        "id": 32658,
                         "name": "getDetails",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31314,
-                        "src": "1489:10:36",
+                        "referencedDeclaration": 32622,
+                        "src": "1489:10:40",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_uint256_$returns$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_uint256_$returns$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$",
                           "typeString": "function (address,uint256) pure returns (struct IPermit2.SignatureTransferDetails memory)"
                         }
                       },
-                      "id": 31353,
+                      "id": 32661,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1550,22 +1550,22 @@
                       "nameLocations": [],
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1489:34:36",
+                      "src": "1489:34:40",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails memory"
                       }
                     },
-                    "src": "1476:47:36",
+                    "src": "1476:47:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_memory_ptr",
+                      "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_memory_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails memory"
                     }
                   },
-                  "id": 31355,
+                  "id": 32663,
                   "nodeType": "ExpressionStatement",
-                  "src": "1476:47:36"
+                  "src": "1476:47:40"
                 }
               ]
             },
@@ -1573,20 +1573,20 @@
             "kind": "function",
             "modifiers": [],
             "name": "getTransferDetails",
-            "nameLocation": "1138:18:36",
+            "nameLocation": "1138:18:40",
             "parameters": {
-              "id": 31323,
+              "id": 32631,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31316,
+                  "id": 32624,
                   "mutability": "mutable",
                   "name": "feeReceiver_",
-                  "nameLocation": "1174:12:36",
+                  "nameLocation": "1174:12:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31357,
-                  "src": "1166:20:36",
+                  "scope": 32665,
+                  "src": "1166:20:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1594,10 +1594,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 31315,
+                    "id": 32623,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1166:7:36",
+                    "src": "1166:7:40",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1608,13 +1608,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31318,
+                  "id": 32626,
                   "mutability": "mutable",
                   "name": "quoteReceiver_",
-                  "nameLocation": "1204:14:36",
+                  "nameLocation": "1204:14:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31357,
-                  "src": "1196:22:36",
+                  "scope": 32665,
+                  "src": "1196:22:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1622,10 +1622,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 31317,
+                    "id": 32625,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1196:7:36",
+                    "src": "1196:7:40",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1636,13 +1636,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31320,
+                  "id": 32628,
                   "mutability": "mutable",
                   "name": "fee_",
-                  "nameLocation": "1236:4:36",
+                  "nameLocation": "1236:4:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31357,
-                  "src": "1228:12:36",
+                  "scope": 32665,
+                  "src": "1228:12:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1650,10 +1650,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31319,
+                    "id": 32627,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1228:7:36",
+                    "src": "1228:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1663,13 +1663,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 31322,
+                  "id": 32630,
                   "mutability": "mutable",
                   "name": "quote_",
-                  "nameLocation": "1259:6:36",
+                  "nameLocation": "1259:6:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31357,
-                  "src": "1251:14:36",
+                  "scope": 32665,
+                  "src": "1251:14:40",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1677,10 +1677,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 31321,
+                    "id": 32629,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1251:7:36",
+                    "src": "1251:7:40",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1689,63 +1689,63 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1156:115:36"
+              "src": "1156:115:40"
             },
             "returnParameters": {
-              "id": 31328,
+              "id": 32636,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 31327,
+                  "id": 32635,
                   "mutability": "mutable",
                   "name": "details",
-                  "nameLocation": "1337:7:36",
+                  "nameLocation": "1337:7:40",
                   "nodeType": "VariableDeclaration",
-                  "scope": 31357,
-                  "src": "1294:50:36",
+                  "scope": 32665,
+                  "src": "1294:50:40",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct IPermit2.SignatureTransferDetails[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 31325,
+                      "id": 32633,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 31324,
+                        "id": 32632,
                         "name": "IPermit2.SignatureTransferDetails",
                         "nameLocations": [
-                          "1294:8:36",
-                          "1303:24:36"
+                          "1294:8:40",
+                          "1303:24:40"
                         ],
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1344,
-                        "src": "1294:33:36"
+                        "referencedDeclaration": 2180,
+                        "src": "1294:33:40"
                       },
-                      "referencedDeclaration": 1344,
-                      "src": "1294:33:36",
+                      "referencedDeclaration": 2180,
+                      "src": "1294:33:40",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$1344_storage_ptr",
+                        "typeIdentifier": "t_struct$_SignatureTransferDetails_$2180_storage_ptr",
                         "typeString": "struct IPermit2.SignatureTransferDetails"
                       }
                     },
-                    "id": 31326,
+                    "id": 32634,
                     "nodeType": "ArrayTypeName",
-                    "src": "1294:35:36",
+                    "src": "1294:35:40",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$1344_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_SignatureTransferDetails_$2180_storage_$dyn_storage_ptr",
                       "typeString": "struct IPermit2.SignatureTransferDetails[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1293:52:36"
+              "src": "1293:52:40"
             },
-            "scope": 31358,
+            "scope": 32666,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
@@ -1758,15 +1758,15 @@
         "contractKind": "library",
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          31358
+          32666
         ],
         "name": "LibPermit2",
-        "nameLocation": "175:10:36",
-        "scope": 31359,
+        "nameLocation": "175:10:40",
+        "scope": 32667,
         "usedErrors": []
       }
     ],
     "license": "GPL-2.0-or-later"
   },
-  "id": 36
+  "id": 40
 }

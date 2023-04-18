@@ -161,7 +161,22 @@ contract ozOracleFacetTest is Test, Setup {
         volAddr = address(bytes20(volSlot << 96));
     }
 
-  
+    
+    //-----------------
+
+    function test_getUni() public view {
+        // (int56[] memory tick, uint160[] memory secs) = ozOracle.getUni();
+
+        // console.logInt(tick[0]);
+        // console.log('tickCumulatives ^^');
+        // console.log(secs[0]);
+        // console.log('secondsPerLiquidityCumulativeX128s ^^');
+
+        //-----------
+        uint amount = ozOracle.getUni();
+        console.log('price: ', amount);
+
+    }
 
 
    

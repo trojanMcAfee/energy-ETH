@@ -38,7 +38,7 @@
   "methodIdentifiers": {
     "calculateSlippage(uint256,uint256)": "4a92c260"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basisPoint_\",\"type\":\"uint256\"}],\"name\":\"calculateSlippage\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"minAmountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIExecutorFacet.sol\":\"ozIExecutorFacet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":solmate/=node_modules/solmate/\"]},\"sources\":{\"interfaces/ozIExecutorFacet.sol\":{\"keccak256\":\"0x35458269a1ab4438421054c440e608b4f66e7e51c46b080223648c65cab00b1b\",\"urls\":[\"bzz-raw://a9e68712d5f825866cd169cd68516dde17e174ba39d89cbe7bc34e9663169414\",\"dweb:/ipfs/QmVQp2x7Cq1ydxXi1wP7L8mnnkzSQ2bD1w2PtKKUFwGFL6\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount_\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"basisPoint_\",\"type\":\"uint256\"}],\"name\":\"calculateSlippage\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"minAmountOut\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"interfaces/ozIExecutorFacet.sol\":\"ozIExecutorFacet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"interfaces/ozIExecutorFacet.sol\":{\"keccak256\":\"0x35458269a1ab4438421054c440e608b4f66e7e51c46b080223648c65cab00b1b\",\"urls\":[\"bzz-raw://a9e68712d5f825866cd169cd68516dde17e174ba39d89cbe7bc34e9663169414\",\"dweb:/ipfs/QmVQp2x7Cq1ydxXi1wP7L8mnnkzSQ2bD1w2PtKKUFwGFL6\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -87,13 +87,17 @@
         ":@chainlink/=node_modules/@chainlink/",
         ":@eth-optimism/=node_modules/@eth-optimism/",
         ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
         ":@rari-capital/=node_modules/@rari-capital/",
         ":@uniswap/=node_modules/@uniswap/",
         ":base64-sol/=node_modules/base64-sol/",
         ":ds-test/=lib/forge-std/lib/ds-test/src/",
         ":forge-std/=lib/forge-std/src/",
         ":hardhat/=node_modules/hardhat/",
-        ":solmate/=node_modules/solmate/"
+        ":prb-test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":solmate/=node_modules/solmate/",
+        ":src/=lib/unchecked-counter/src/",
+        ":unchecked-counter/=lib/unchecked-counter/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -121,19 +125,19 @@
   },
   "ast": {
     "absolutePath": "interfaces/ozIExecutorFacet.sol",
-    "id": 1624,
+    "id": 2607,
     "exportedSymbols": {
       "ozIExecutorFacet": [
-        1623
+        2606
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "0:188:15",
+    "src": "0:188:18",
     "nodes": [
       {
-        "id": 1613,
+        "id": 2596,
         "nodeType": "PragmaDirective",
-        "src": "0:23:15",
+        "src": "0:23:18",
         "nodes": [],
         "literals": [
           "solidity",
@@ -142,34 +146,34 @@
         ]
       },
       {
-        "id": 1623,
+        "id": 2606,
         "nodeType": "ContractDefinition",
-        "src": "28:160:15",
+        "src": "28:160:18",
         "nodes": [
           {
-            "id": 1622,
+            "id": 2605,
             "nodeType": "FunctionDefinition",
-            "src": "62:123:15",
+            "src": "62:123:18",
             "nodes": [],
             "functionSelector": "4a92c260",
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateSlippage",
-            "nameLocation": "71:17:15",
+            "nameLocation": "71:17:18",
             "parameters": {
-              "id": 1618,
+              "id": 2601,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1615,
+                  "id": 2598,
                   "mutability": "mutable",
                   "name": "amount_",
-                  "nameLocation": "103:7:15",
+                  "nameLocation": "103:7:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1622,
-                  "src": "98:12:15",
+                  "scope": 2605,
+                  "src": "98:12:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -177,10 +181,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1614,
+                    "id": 2597,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "98:4:15",
+                    "src": "98:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -190,13 +194,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1617,
+                  "id": 2600,
                   "mutability": "mutable",
                   "name": "basisPoint_",
-                  "nameLocation": "126:11:15",
+                  "nameLocation": "126:11:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1622,
-                  "src": "121:16:15",
+                  "scope": 2605,
+                  "src": "121:16:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -204,10 +208,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1616,
+                    "id": 2599,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "121:4:15",
+                    "src": "121:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -216,21 +220,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "88:55:15"
+              "src": "88:55:18"
             },
             "returnParameters": {
-              "id": 1621,
+              "id": 2604,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1620,
+                  "id": 2603,
                   "mutability": "mutable",
                   "name": "minAmountOut",
-                  "nameLocation": "171:12:15",
+                  "nameLocation": "171:12:18",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1622,
-                  "src": "166:17:15",
+                  "scope": 2605,
+                  "src": "166:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -238,10 +242,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1619,
+                    "id": 2602,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "166:4:15",
+                    "src": "166:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -250,9 +254,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "165:19:15"
+              "src": "165:19:18"
             },
-            "scope": 1623,
+            "scope": 2606,
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
@@ -265,14 +269,14 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "linearizedBaseContracts": [
-          1623
+          2606
         ],
         "name": "ozIExecutorFacet",
-        "nameLocation": "38:16:15",
-        "scope": 1624,
+        "nameLocation": "38:16:18",
+        "scope": 2607,
         "usedErrors": []
       }
     ]
   },
-  "id": 15
+  "id": 18
 }

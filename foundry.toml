@@ -9,8 +9,8 @@ test = 'test/foundry'
 arbitrum = "${ARBITRUM}"
 mainnet = "${MAINNET}"
 
-[fuzz]
-seed = 10
+# [fuzz]
+# seed = 10
 
 # [profile.default.fuzz]
 # seed = 100
