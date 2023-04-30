@@ -6,6 +6,7 @@ import './FullMath.sol';
 // import '@uniswap/v3-core/contracts/libraries/TickMath.sol';
 import './TickMath.sol';
 import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import "forge-std/console.sol";
 
 /// @title Oracle library
 /// @notice Provides functions to integrate with V3 pool oracle
@@ -33,9 +34,9 @@ library OracleLibrary {
         uint160 secondsPerLiquidityCumulativesDelta =
             secondsPerLiquidityCumulativeX128s[1] - secondsPerLiquidityCumulativeX128s[0];
 
-        arithmeticMeanTick = int24(tickCumulativesDelta / secondsAgo);
+        arithmeticMeanTick = int24(tickCumulativesDelta / int32(secondsAgo));
         // Always round to negative infinity
-        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % secondsAgo != 0)) arithmeticMeanTick--;
+        if (tickCumulativesDelta < 0 && (tickCumulativesDelta % int32(secondsAgo) != 0)) arithmeticMeanTick--;
 
         // We are multiplying here instead of shifting to ensure that harmonicMeanLiquidity doesn't overflow uint128
         uint192 secondsAgoX160 = uint192(secondsAgo) * type(uint160).max;
@@ -53,7 +54,7 @@ library OracleLibrary {
         uint128 baseAmount,
         address baseToken,
         address quoteToken
-    ) internal pure returns (uint256 quoteAmount) {
+    ) internal view returns (uint256 quoteAmount) {
         uint160 sqrtRatioX96 = TickMath.getSqrtRatioAtTick(tick);
 
         // Calculate quoteAmount with better precision if it doesn't overflow when multiplied by itself
@@ -62,6 +63,7 @@ library OracleLibrary {
             quoteAmount = baseToken < quoteToken
                 ? FullMath.mulDiv(ratioX192, baseAmount, 1 << 192)
                 : FullMath.mulDiv(1 << 192, baseAmount, ratioX192);
+            console.log('quote 1: ', quoteAmount);
         } else {
             uint256 ratioX128 = FullMath.mulDiv(sqrtRatioX96, sqrtRatioX96, 1 << 64);
             quoteAmount = baseToken < quoteToken
@@ -118,7 +120,7 @@ library OracleLibrary {
         require(prevInitialized, 'ONI');
 
         uint32 delta = observationTimestamp - prevObservationTimestamp;
-        tick = int24((tickCumulative - prevTickCumulative) / delta);
+        tick = int24((tickCumulative - prevTickCumulative) / int32(delta));
         uint128 liquidity =
             uint128(
                 (uint192(delta) * type(uint160).max) /
@@ -152,7 +154,7 @@ library OracleLibrary {
 
         // Products fit in 152 bits, so it would take an array of length ~2**104 to overflow this logic
         for (uint256 i; i < weightedTickData.length; i++) {
-            numerator += weightedTickData[i].tick * int256(weightedTickData[i].weight);
+            numerator += weightedTickData[i].tick * int256(int128(weightedTickData[i].weight));
             denominator += weightedTickData[i].weight;
         }
 

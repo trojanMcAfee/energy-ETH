@@ -93,9 +93,12 @@ contract ozOracleFacet {
 
         //---------
         (int24 tick,) = OracleLibrary.consult(ethUsdcPool, uint32(10));
+        console.logInt(tick);
+        console.log('tick ^^');
         uint amountOut = OracleLibrary.getQuoteAtTick(
-            tick, 10, wethAddr, usdcAddr
+            tick, 1 * 1 ether, wethAddr, usdcAddr
         );
+        console.log('amountOut: ', amountOut);
         return amountOut; 
         //------------
         // (uint160 sqrtPriceX96, , , , , , ) = pool.slot0();
