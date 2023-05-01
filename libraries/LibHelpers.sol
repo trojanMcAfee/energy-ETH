@@ -43,7 +43,7 @@ library LibHelpers {
         return prevPrice;
     }
 
-    function calculateBasePrice(int256 ethPrice_) internal pure returns(int256) {
+    function formatLinkEth(int256 ethPrice_) internal pure returns(int256) {
         return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
     }
 

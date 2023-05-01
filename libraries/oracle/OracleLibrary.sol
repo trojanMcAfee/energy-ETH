@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
-// import '@uniswap/v3-core/contracts/libraries/FullMath.sol';
-import './FullMath.sol';
-// import '@uniswap/v3-core/contracts/libraries/TickMath.sol';
-import './TickMath.sol';
+
 import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
-import "forge-std/console.sol";
+import './FullMath.sol';
+import './TickMath.sol';
 
 /// @title Oracle library
 /// @notice Provides functions to integrate with V3 pool oracle
@@ -54,7 +52,7 @@ library OracleLibrary {
         uint128 baseAmount,
         address baseToken,
         address quoteToken
-    ) internal view returns (uint256 quoteAmount) {
+    ) internal pure returns (uint256 quoteAmount) {
         uint160 sqrtRatioX96 = TickMath.getSqrtRatioAtTick(tick);
 
         // Calculate quoteAmount with better precision if it doesn't overflow when multiplied by itself
@@ -63,7 +61,6 @@ library OracleLibrary {
             quoteAmount = baseToken < quoteToken
                 ? FullMath.mulDiv(ratioX192, baseAmount, 1 << 192)
                 : FullMath.mulDiv(1 << 192, baseAmount, ratioX192);
-            console.log('quote 1: ', quoteAmount);
         } else {
             uint256 ratioX128 = FullMath.mulDiv(sqrtRatioX96, sqrtRatioX96, 1 << 64);
             quoteAmount = baseToken < quoteToken

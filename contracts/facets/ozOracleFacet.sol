@@ -35,7 +35,9 @@ contract ozOracleFacet {
 
     function getEnergyPrice() external view returns(uint256) {
 
-        (DataInfo[] memory infoFeeds, int basePrice) = _getDataFeeds();
+        ( DataInfo[] memory infoFeeds, int256 basePrice ) = _getDataFeeds();
+
+        // int256 basePrice = linkEth.getBasePrice(twapEth);
       
         int256 volIndex = getVolatilityIndex();
         int256 netDiff;
@@ -71,44 +73,82 @@ contract ozOracleFacet {
         }
 
         //ethPrice feed
-        int256 basePrice = infoFeeds[1].value.calculateBasePrice();
+        // int256 twapEth = _getTwapEth();
 
-        return (infoFeeds, basePrice); 
+        int256 linkEth = infoFeeds[1].value.formatLinkEth();
+
+        // int256 basePrice = getBasePrice(infoFeeds[1]);
+        int256 base2 = getBasePrice(infoFeeds[1]);
+        console.log('base2 - same as twap: ', uint(base2));
+
+        return (infoFeeds, linkEth); 
     }
 
     //-------------------
 
-    function getUni() public view returns(uint) { //returns(int56[] memory ticks, uint160[] memory secs)
+    function _getTwapEth() public view returns(int256) { //returns(int56[] memory ticks, uint160[] memory secs)
         address ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
         address wethAddr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
         address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
-
-        //-------------
-        IUniswapV3Pool pool = IUniswapV3Pool(ethUsdcPool);
-        // uint32[] memory secsAgo = new uint32[](1);
-        // secsAgo[0] = 0;
-
-        // (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s) = pool.observe(secsAgo);
-        // return (tickCumulatives, secondsPerLiquidityCumulativeX128s);
-
-        //---------
+    
         (int24 tick,) = OracleLibrary.consult(ethUsdcPool, uint32(10));
-        console.logInt(tick);
-        console.log('tick ^^');
-        uint amountOut = OracleLibrary.getQuoteAtTick(
+
+        uint256 amountOut = OracleLibrary.getQuoteAtTick(
             tick, 1 * 1 ether, wethAddr, usdcAddr
         );
-        console.log('amountOut: ', amountOut);
-        return amountOut; 
-        //------------
-        // (uint160 sqrtPriceX96, , , , , , ) = pool.slot0();
-        // uint256 price = getPriceX96FromSqrtPriceX96(sqrtPriceX96);
-        // return price;
+    
+        return int256(amountOut * 10 ** 12); 
 
     }
 
-    function getPriceX96FromSqrtPriceX96(uint160 sqrtPriceX96) public pure returns(uint256 priceX96) {
-        return FullMath.mulDiv(sqrtPriceX96, sqrtPriceX96, FixedPoint96.Q96);
+    // function getPriceX96FromSqrtPriceX96(uint160 sqrtPriceX96) public pure returns(uint256 priceX96) {
+    //     return FullMath.mulDiv(sqrtPriceX96, sqrtPriceX96, FixedPoint96.Q96);
+    // }
+
+    function getBasePrice(DataInfo memory ethFeedInfo_) public view returns(int256) {
+        int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
+        int256 twapEth = _getTwapEth();
+        int256 linkEth = ethFeedInfo_.value.formatLinkEth();
+
+        console.log('prevLinkEth: ', uint(prevLinkEth) * 10 ** 10);
+        console.log('twapEth: ', uint(twapEth));
+        console.log('linkEth: ', uint(linkEth));
+        console.log('');
+
+        return checkEthDiff(twapEth, linkEth, prevLinkEth * 10 ** 10) ? linkEth : twapEth;
+    }
+
+
+    function checkEthDiff(int256 twap_, int256 link_, int256 prevLink_) public view returns(bool) {
+        int256 prevDiff = twap_ - prevLink_;
+        console.log('prevDiff: ', uint(prevDiff));
+        int256 diff = twap_ - link_;
+        console.log('diff: ', uint(diff));
+        int256 PERCENTAGE_DIFF = 5;
+        // twap_ --- 100%
+        // diff ----- x
+
+        int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
+        int256 perDiff = (abs(diff) * 100) / twap_;
+        console.log('prevPerDiff: ', uint(prevPerDiff));
+        console.log('perDiff: ', uint(perDiff));
+
+        return perDiff > PERCENTAGE_DIFF ? prevPerDiff > PERCENTAGE_DIFF : false;
+
+        // if (perDiff > PERCENTAGE_DIFF) {
+        //     if (prevPerDiff > PERCENTAGE_DIFF) {
+        //         return false;
+        //     }
+        // }
+
+        // return true;
+        
+    
+    }
+
+
+    function abs(int256 num_) public pure returns(int256) {
+        return num_ >= 0 ? num_ : -num_;
     }
 
 
@@ -133,10 +173,9 @@ contract ozOracleFacet {
     }
 
 
-    function getVolatilityIndex() public view returns(int256) {
-        (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
-        return volatility;
-    }
+    /*///////////////////////////////////////////////////////////////
+                            Admin methods
+    //////////////////////////////////////////////////////////////*/
 
     function changeVolatilityIndex(AggregatorV3Interface newFeed_) external {
         LibDiamond.enforceIsContractOwner();
@@ -169,6 +208,15 @@ contract ozOracleFacet {
             uint256 j = i.unwrap();
             feeds[j] = address(s.priceFeeds[j]);
         }
+    }
+
+    /*///////////////////////////////////////////////////////////////
+                            View methods
+    //////////////////////////////////////////////////////////////*/
+
+    function getVolatilityIndex() public view returns(int256) {
+        (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
+        return volatility;
     }
 
 

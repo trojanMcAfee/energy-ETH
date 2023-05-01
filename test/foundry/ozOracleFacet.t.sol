@@ -20,6 +20,7 @@ contract ozOracleFacetTest is Test, Setup {
     
     function test_getEnergyPrice() public {
         uint256 price = OZL.getEnergyPrice();
+        console.log('eETH price: ', price);
         assertTrue(price > 0);
     }
 
@@ -173,8 +174,8 @@ contract ozOracleFacetTest is Test, Setup {
         // console.log('secondsPerLiquidityCumulativeX128s ^^');
 
         //-----------
-        uint amount = ozOracle.getUni();
-        console.log('price: ', amount);
+        // uint amount = ozOracle._getTwapEth();
+        // console.log('price getTwapEth: ', amount);
 
     }
 
