@@ -35,7 +35,11 @@ contract ozOracleFacet {
 
     function getEnergyPrice() external view returns(uint256) {
 
-        ( DataInfo[] memory infoFeeds, int256 basePrice ) = _getDataFeeds();
+        ( 
+            DataInfo[] memory infoFeeds, 
+            int256 basePrice, 
+            int256 prevEth 
+        ) = _getDataFeeds();
 
         // int256 basePrice = linkEth.getBasePrice(twapEth);
       
@@ -47,7 +51,7 @@ contract ozOracleFacet {
             DataInfo memory info = infoFeeds[i.unwrap()];
 
             netDiff += _setPrice(
-                info, address(info.feed) == address(s.ethFeed) ? int256(0) : volIndex
+                info, address(info.feed) == address(s.ethFeed) ? int256(0) : volIndex, prevEth
             );
         }
 
@@ -56,7 +60,7 @@ contract ozOracleFacet {
 
 
 
-    function _getDataFeeds() private view returns(DataInfo[] memory, int256) {
+    function _getDataFeeds() private view returns(DataInfo[] memory, int256, int256) {
         uint256 length = s.priceFeeds.length;
         DataInfo[] memory infoFeeds = new DataInfo[](length);
 
@@ -73,15 +77,10 @@ contract ozOracleFacet {
         }
 
         //ethPrice feed
-        // int256 twapEth = _getTwapEth();
+        // int256 linkEth = infoFeeds[1].value.formatLinkEth();
+        (int256 basePrice, int256 prevEth) = getBasePrice(infoFeeds[1]);
 
-        int256 linkEth = infoFeeds[1].value.formatLinkEth();
-
-        // int256 basePrice = getBasePrice(infoFeeds[1]);
-        int256 base2 = getBasePrice(infoFeeds[1]);
-        console.log('base2 - same as twap: ', uint(base2));
-
-        return (infoFeeds, linkEth); 
+        return (infoFeeds, basePrice, prevEth); 
     }
 
     //-------------------
@@ -101,49 +100,32 @@ contract ozOracleFacet {
 
     }
 
-    // function getPriceX96FromSqrtPriceX96(uint160 sqrtPriceX96) public pure returns(uint256 priceX96) {
-    //     return FullMath.mulDiv(sqrtPriceX96, sqrtPriceX96, FixedPoint96.Q96);
-    // }
 
-    function getBasePrice(DataInfo memory ethFeedInfo_) public view returns(int256) {
+    function getBasePrice(DataInfo memory ethFeedInfo_) public view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
         int256 twapEth = _getTwapEth();
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
 
-        console.log('prevLinkEth: ', uint(prevLinkEth) * 10 ** 10);
-        console.log('twapEth: ', uint(twapEth));
-        console.log('linkEth: ', uint(linkEth));
-        console.log('');
-
-        return checkEthDiff(twapEth, linkEth, prevLinkEth * 10 ** 10) ? linkEth : twapEth;
+        return checkEthDiff(twapEth, linkEth, prevLinkEth * 10 ** 10) ? 
+            (linkEth, prevLinkEth) : 
+            (twapEth, prevLinkEth);
     }
 
 
-    function checkEthDiff(int256 twap_, int256 link_, int256 prevLink_) public view returns(bool) {
+    function checkEthDiff(
+        int256 twap_, 
+        int256 link_, 
+        int256 prevLink_
+    ) public pure returns(bool) 
+    {
         int256 prevDiff = twap_ - prevLink_;
-        console.log('prevDiff: ', uint(prevDiff));
         int256 diff = twap_ - link_;
-        console.log('diff: ', uint(diff));
         int256 PERCENTAGE_DIFF = 5;
-        // twap_ --- 100%
-        // diff ----- x
 
         int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
         int256 perDiff = (abs(diff) * 100) / twap_;
-        console.log('prevPerDiff: ', uint(prevPerDiff));
-        console.log('perDiff: ', uint(perDiff));
 
         return perDiff > PERCENTAGE_DIFF ? prevPerDiff > PERCENTAGE_DIFF : false;
-
-        // if (perDiff > PERCENTAGE_DIFF) {
-        //     if (prevPerDiff > PERCENTAGE_DIFF) {
-        //         return false;
-        //     }
-        // }
-
-        // return true;
-        
-    
     }
 
 
@@ -158,7 +140,8 @@ contract ozOracleFacet {
 
     function _setPrice(
         DataInfo memory feedInfo_, 
-        int256 volIndex_
+        int256 volIndex_,
+        int256 prevEthPrice_
     ) private view returns(int256) 
     {
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
@@ -166,9 +149,9 @@ contract ozOracleFacet {
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
         } else {
-            int256 prevEthPrice = feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
-            int256 netDiff = feedInfo_.value - prevEthPrice;
-            return (netDiff * 100 * EIGHT_DEC) / prevEthPrice;
+            // int256 prevEthPrice = feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
+            int256 netDiff = feedInfo_.value - prevEthPrice_;
+            return (netDiff * 100 * EIGHT_DEC) / prevEthPrice_;
         }
     }
 
