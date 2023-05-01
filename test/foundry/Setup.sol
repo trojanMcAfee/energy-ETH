@@ -52,7 +52,13 @@ contract Setup is Test {
 
     function setUp() public {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
+        _runSetup();
+        // vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
 
+        
+    }
+
+    function _runSetup() internal {
         (
             address[] memory nonRevFacets,
             address[] memory feeds

@@ -24,6 +24,7 @@ contract WtiFeed {
             case 69297699 { result := 7639200000 } 
             case 69380699 { result := 7674920000 } 
             case 69421699 { result := 7592500000 } 
+            case 69254700 { result := 7632500000 }
         }
 
         return (1,result,0,0,0);
@@ -45,6 +46,7 @@ contract WtiFeed {
             case 69297699 { result := 7674920000 }
             case 69380699 { result := 7592500000 }
             case 69421699 { result := 7632500000 }
+            case 69254700 { result := 7672000000 }
         }
 
         return (0,result,0,0,0);

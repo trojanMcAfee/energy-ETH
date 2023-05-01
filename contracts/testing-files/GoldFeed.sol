@@ -20,6 +20,7 @@ contract GoldFeed {
             case 69297699 { result := 188161500000 } 
             case 69380699 { result := 187211000000 } 
             case 69421699 { result := 188220158450 } 
+            case 69254700 { result := 188117000000 } 
         }
 
         return (1,result,0,0,0);
@@ -41,6 +42,7 @@ contract GoldFeed {
             case 69297699 { result := 187161500000 }
             case 69380699 { result := 186011000000 }
             case 69421699 { result := 185720158450 }
+            case 69254700 { result := 188917000000 }
         }
 
         return (0,result,0,0,0);
