@@ -9,10 +9,12 @@ contract DummyUniPool {
         uint160[] memory secondsPerLiquidityCumulativeX128s
     ) 
     {
-        tickCumulatives[0] = 72047099157089892 + (72047099157089892 / 1000);
-        tickCumulatives[1] = 72047099155064522 + (72047099155064522 / 1000);
+        uint56 DENOMINATOR = 1000;
 
-        secondsPerLiquidityCumulativeX128s[0] = 407410939321411974142743327702238;
-        secondsPerLiquidityCumulativeX128s[1] = 407410939322460863660779625412580;
+        tickCumulatives[0] = int56(uint56(72047099157089892) + (uint56(72047099157089892) / DENOMINATOR));
+        tickCumulatives[1] = int56(uint56(72047099155064522) + (uint56(72047099155064522) / DENOMINATOR));
+
+        secondsPerLiquidityCumulativeX128s[0] = uint160(407410939321411974142743327702238);
+        secondsPerLiquidityCumulativeX128s[1] = uint160(407410939322460863660779625412580);
     }
 }
