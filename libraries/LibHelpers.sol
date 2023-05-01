@@ -47,6 +47,26 @@ library LibHelpers {
         return ( (100 * EIGHT_DEC * ethPrice_) / 10 * EIGHT_DEC ) / BASE;
     }
 
+    function abs(int256 num_) internal pure returns(int256) {
+        return num_ >= 0 ? num_ : -num_;
+    }
+
+    function checkEthDiff(
+        int256 twap_, 
+        int256 link_, 
+        int256 prevLink_
+    ) internal pure returns(bool) 
+    {
+        int256 prevDiff = twap_ - prevLink_;
+        int256 diff = twap_ - link_;
+        int256 PERCENTAGE_DIFF = 5;
+
+        int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
+        int256 perDiff = (abs(diff) * 100) / twap_;
+
+        return perDiff > PERCENTAGE_DIFF ? prevPerDiff > PERCENTAGE_DIFF : false;
+    }
+
     //--------
     //ozCutFaceV2 helpers
 
