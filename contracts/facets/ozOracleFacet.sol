@@ -18,8 +18,6 @@ import "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol";
 
 // import 'hardhat/console.sol';
 
-//add modularity to add and remove chainlink feeds
-//add uniswap and trellors oracles as a fallback
 contract ozOracleFacet {
 
     AppStorage s;
@@ -101,6 +99,8 @@ contract ozOracleFacet {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
         int256 twapEth = getTwapEth();
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
+
+        console.log('is checkEth: ', twapEth.checkEthDiff(linkEth, prevLinkEth * 10 ** 10));
 
         return twapEth.checkEthDiff(linkEth, prevLinkEth * 10 ** 10) ? 
             (linkEth, prevLinkEth) : 

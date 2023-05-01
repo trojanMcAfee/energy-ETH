@@ -18,9 +18,15 @@ contract ozOracleFacetTest is Test, Setup {
 
     // NewOracle private newOracle;
     
-    function test_getEnergyPrice() public {
+    function test_getEnergyPrice_twap() public {
         uint256 price = OZL.getEnergyPrice();
         console.log('eETH price: ', price);
+        assertTrue(price > 0);
+    }
+
+    function test_getEnergyPrice_chainlink() public {
+        vm.rollFork(69254700);
+        uint256 price = OZL.getEnergyPrice();
         assertTrue(price > 0);
     }
 

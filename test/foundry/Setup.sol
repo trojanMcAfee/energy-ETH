@@ -128,7 +128,7 @@ contract Setup is Test {
     ) internal view returns(ozIDiamond.FacetCut memory cut) { 
         uint256 length;
         if (id_ == 0) {
-            length = 6;
+            length = 7;
         } else if (id_ == 2) {
             length = 4;
         } else if (id_ == 3) {
@@ -147,6 +147,7 @@ contract Setup is Test {
             selectors[3] = ozOracle.addFeed.selector;
             selectors[4] = ozOracle.removeFeed.selector;
             selectors[5] = ozOracle.getPriceFeeds.selector;
+            selectors[6] = ozOracle.getTwapEth.selector;
         }
         if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
         if (id_ == 2) {
