@@ -63,6 +63,10 @@ library LibHelpers {
         int256 diff = twap_ - link_;
         int256 PERCENTAGE_DIFF = 5;
 
+        console.log('twap: ', uint(twap_));
+        console.log('link: ', uint(link_));
+        console.log('prevLink: ', uint(prevLink_));
+
         int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
         int256 perDiff = (abs(diff) * 100) / twap_;
 

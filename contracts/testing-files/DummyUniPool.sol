@@ -2,6 +2,8 @@
 pragma solidity 0.8.19;
 
 
+import "forge-std/console.sol";
+
 
 contract DummyUniPool {
 
@@ -10,6 +12,7 @@ contract DummyUniPool {
         uint160[] memory secondsPerLiquidityCumulativeX128s
     ) 
     {
+        uint256 deadVar = secsAgo_;
         uint56 DENOMINATOR = 1000;
 
         tickCumulatives[0] = int56(uint56(72047099157089892) + (uint56(72047099157089892) / DENOMINATOR));
