@@ -5,7 +5,6 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import { UC, ONE, ZERO } from "unchecked-counter/UC.sol";
 import '../AppStorage.sol';
-import "forge-std/console.sol";
 import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibDiamond.sol';
 import '../../libraries/LibCommon.sol';
@@ -17,6 +16,8 @@ import '../../libraries/oracle/FullMath.sol';
 import "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol";
 
 // import 'hardhat/console.sol';
+import "forge-std/console.sol";
+
 
 contract ozOracleFacet {
 
@@ -86,6 +87,9 @@ contract ozOracleFacet {
         address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
     
         (int24 tick,) = OracleLibrary.consult(ethUsdcPool, uint32(10));
+        // console.log('tick: ', uint24(tick));
+
+        // tick = int24(uint24(16574779));
 
         uint256 amountOut = OracleLibrary.getQuoteAtTick(
             tick, 1 * 1 ether, wethAddr, usdcAddr

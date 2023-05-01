@@ -1,0 +1,881 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "secsAgo_",
+          "type": "uint256"
+        }
+      ],
+      "name": "observe",
+      "outputs": [
+        {
+          "internalType": "int56[]",
+          "name": "tickCumulatives",
+          "type": "int56[]"
+        },
+        {
+          "internalType": "uint160[]",
+          "name": "secondsPerLiquidityCumulativeX128s",
+          "type": "uint160[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x608060405234801561001057600080fd5b5061034f806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c80638002051314610030575b600080fd5b61004361003e3660046101ce565b61005a565b6040516100519291906101e7565b60405180910390f35b6060806103e8826000815181106100735761007361026e565b6020026020010151610085919061029a565b826000815181106100985761009861026e565b60200260200101516100aa91906102e6565b826000815181106100bd576100bd61026e565b602002602001019060060b908160060b815250506103e8826001815181106100e7576100e761026e565b60200260200101516100f9919061029a565b8260018151811061010c5761010c61026e565b602002602001015161011e91906102e6565b826001815181106101315761013161026e565b602002602001019060060b908160060b815250506d14163fbe5943be8a5dc8afbe7cde816000815181106101675761016761026e565b60200260200101906001600160a01b031690816001600160a01b0316815250506d14163fbe597c9ace812edff277e4816001815181106101a9576101a961026e565b60200260200101906001600160a01b031690816001600160a01b031681525050915091565b6000602082840312156101e057600080fd5b5035919050565b604080825283519082018190526000906020906060840190828701845b8281101561022357815160060b84529284019290840190600101610204565b5050508381038285015284518082528583019183019060005b818110156102615783516001600160a01b03168352928401929184019160010161023c565b5090979650505050505050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b60008160060b8360060b806102bf57634e487b7160e01b600052601260045260246000fd5b667fffffffffffff198214600019821416156102dd576102dd610284565b90059392505050565b600681810b9083900b01667fffffffffffff8113667fffffffffffff198212171561031357610313610284565b9291505056fea2646970667358221220c678566e7822f20943b36e85f34cbb03db7b73637f39b40b33396efc1abaf59764736f6c63430008130033",
+    "sourceMap": "72:535:8:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c80638002051314610030575b600080fd5b61004361003e3660046101ce565b61005a565b6040516100519291906101e7565b60405180910390f35b6060806103e8826000815181106100735761007361026e565b6020026020010151610085919061029a565b826000815181106100985761009861026e565b60200260200101516100aa91906102e6565b826000815181106100bd576100bd61026e565b602002602001019060060b908160060b815250506103e8826001815181106100e7576100e761026e565b60200260200101516100f9919061029a565b8260018151811061010c5761010c61026e565b602002602001015161011e91906102e6565b826001815181106101315761013161026e565b602002602001019060060b908160060b815250506d14163fbe5943be8a5dc8afbe7cde816000815181106101675761016761026e565b60200260200101906001600160a01b031690816001600160a01b0316815250506d14163fbe597c9ace812edff277e4816001815181106101a9576101a961026e565b60200260200101906001600160a01b031690816001600160a01b031681525050915091565b6000602082840312156101e057600080fd5b5035919050565b604080825283519082018190526000906020906060840190828701845b8281101561022357815160060b84529284019290840190600101610204565b5050508381038285015284518082528583019183019060005b818110156102615783516001600160a01b03168352928401929184019160010161023c565b5090979650505050505050565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b60008160060b8360060b806102bf57634e487b7160e01b600052601260045260246000fd5b667fffffffffffff198214600019821416156102dd576102dd610284565b90059392505050565b600681810b9083900b01667fffffffffffff8113667fffffffffffff198212171561031357610313610284565b9291505056fea2646970667358221220c678566e7822f20943b36e85f34cbb03db7b73637f39b40b33396efc1abaf59764736f6c63430008130033",
+    "sourceMap": "72:535:8:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;101:502;;;;;;:::i;:::-;;:::i;:::-;;;;;;;;:::i;:::-;;;;;;;;;167:30;208:51;345:4;324:15;340:1;324:18;;;;;;;;:::i;:::-;;;;;;;:25;;;;:::i;:::-;302:15;318:1;302:18;;;;;;;;:::i;:::-;;;;;;;:48;;;;:::i;:::-;281:15;297:1;281:18;;;;;;;;:::i;:::-;;;;;;:69;;;;;;;;;;;424:4;403:15;419:1;403:18;;;;;;;;:::i;:::-;;;;;;;:25;;;;:::i;:::-;381:15;397:1;381:18;;;;;;;;:::i;:::-;;;;;;;:48;;;;:::i;:::-;360:15;376:1;360:18;;;;;;;;:::i;:::-;;;;;;:69;;;;;;;;;;;480:33;440:34;475:1;440:37;;;;;;;;:::i;:::-;;;;;;:73;-1:-1:-1;;;;;440:73:8;;;-1:-1:-1;;;;;440:73:8;;;;;563:33;523:34;558:1;523:37;;;;;;;;:::i;:::-;;;;;;:73;-1:-1:-1;;;;;523:73:8;;;-1:-1:-1;;;;;523:73:8;;;;;101:502;;;:::o;14:180:69:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:69;;14:180;-1:-1:-1;14:180:69:o;199:1189::-;463:2;475:21;;;545:13;;448:18;;;567:22;;;415:4;;642;;620:2;605:18;;;669:15;;;415:4;712:184;726:6;723:1;720:13;712:184;;;801:13;;798:1;787:28;775:41;;836:12;;;;871:15;;;;748:1;741:9;712:184;;;-1:-1:-1;;;932:19:69;;;912:18;;;905:47;1002:13;;1024:21;;;1100:15;;;;1063:12;;;1135:1;1145:215;1161:8;1156:3;1153:17;1145:215;;;1234:15;;-1:-1:-1;;;;;1230:41:69;1216:56;;1333:17;;;;1294:14;;;;1268:1;1180:11;1145:215;;;-1:-1:-1;1377:5:69;;199:1189;-1:-1:-1;;;;;;;199:1189:69:o;1393:127::-;1454:10;1449:3;1445:20;1442:1;1435:31;1485:4;1482:1;1475:15;1509:4;1506:1;1499:15;1525:127;1586:10;1581:3;1577:20;1574:1;1567:31;1617:4;1614:1;1607:15;1641:4;1638:1;1631:15;1657:381;1695:1;1736;1733;1722:16;1772:1;1769;1758:16;1793:3;1783:134;;1839:10;1834:3;1830:20;1827:1;1820:31;1874:4;1871:1;1864:15;1902:4;1899:1;1892:15;1783:134;-1:-1:-1;;1933:30:69;;-1:-1:-1;;1965:15:69;;1929:52;1926:78;;;1984:18;;:::i;:::-;2018:14;;;1657:381;-1:-1:-1;;;1657:381:69:o;2043:206::-;2139:1;2110:16;;;2128;;;;2106:39;2201:16;2160:26;;-1:-1:-1;;2188:31:69;;2157:63;2154:89;;;2223:18;;:::i;:::-;2043:206;;;;:::o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "observe(uint256)": "80020513"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"secsAgo_\",\"type\":\"uint256\"}],\"name\":\"observe\",\"outputs\":[{\"internalType\":\"int56[]\",\"name\":\"tickCumulatives\",\"type\":\"int56[]\"},{\"internalType\":\"uint160[]\",\"name\":\"secondsPerLiquidityCumulativeX128s\",\"type\":\"uint160[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/testing-files/DummyUniPool.sol\":\"DummyUniPool\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"contracts/testing-files/DummyUniPool.sol\":{\"keccak256\":\"0x402d5997973de725d627d5b3392bcc9313e369b1a3e45e748501f48a850edf5a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://e1ef70e50c9abd260aa9516450ea056ccbd417286a86ee07538cdf4f103999fe\",\"dweb:/ipfs/QmQzy37xays3KPqG4aGZwMrZM8F7T115hKV4mtbYobciZf\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.19+commit.7dd6d404"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "secsAgo_",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "observe",
+          "outputs": [
+            {
+              "internalType": "int56[]",
+              "name": "tickCumulatives",
+              "type": "int56[]"
+            },
+            {
+              "internalType": "uint160[]",
+              "name": "secondsPerLiquidityCumulativeX128s",
+              "type": "uint160[]"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@chainlink/=node_modules/@chainlink/",
+        ":@eth-optimism/=node_modules/@eth-optimism/",
+        ":@openzeppelin/=node_modules/@openzeppelin/",
+        ":@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":@rari-capital/=node_modules/@rari-capital/",
+        ":@uniswap/=node_modules/@uniswap/",
+        ":base64-sol/=node_modules/base64-sol/",
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/",
+        ":hardhat/=node_modules/hardhat/",
+        ":prb-test/=lib/unchecked-counter/lib/prb-test/src/",
+        ":solmate/=node_modules/solmate/",
+        ":src/=lib/unchecked-counter/src/",
+        ":unchecked-counter/=lib/unchecked-counter/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "contracts/testing-files/DummyUniPool.sol": "DummyUniPool"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "contracts/testing-files/DummyUniPool.sol": {
+        "keccak256": "0x402d5997973de725d627d5b3392bcc9313e369b1a3e45e748501f48a850edf5a",
+        "urls": [
+          "bzz-raw://e1ef70e50c9abd260aa9516450ea056ccbd417286a86ee07538cdf4f103999fe",
+          "dweb:/ipfs/QmQzy37xays3KPqG4aGZwMrZM8F7T115hKV4mtbYobciZf"
+        ],
+        "license": "GPL-2.0-or-later"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "contracts/testing-files/DummyUniPool.sol",
+    "id": 1797,
+    "exportedSymbols": {
+      "DummyUniPool": [
+        1796
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "45:562:8",
+    "nodes": [
+      {
+        "id": 1741,
+        "nodeType": "PragmaDirective",
+        "src": "45:23:8",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".19"
+        ]
+      },
+      {
+        "id": 1796,
+        "nodeType": "ContractDefinition",
+        "src": "72:535:8",
+        "nodes": [
+          {
+            "id": 1795,
+            "nodeType": "FunctionDefinition",
+            "src": "101:502:8",
+            "nodes": [],
+            "body": {
+              "id": 1794,
+              "nodeType": "Block",
+              "src": "271:332:8",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "id": 1765,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 1752,
+                        "name": "tickCumulatives",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1747,
+                        "src": "281:15:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                          "typeString": "int56[] memory"
+                        }
+                      },
+                      "id": 1754,
+                      "indexExpression": {
+                        "hexValue": "30",
+                        "id": 1753,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "297:1:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "281:18:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "commonType": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      },
+                      "id": 1764,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "baseExpression": {
+                          "id": 1755,
+                          "name": "tickCumulatives",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1747,
+                          "src": "302:15:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                            "typeString": "int56[] memory"
+                          }
+                        },
+                        "id": 1757,
+                        "indexExpression": {
+                          "hexValue": "30",
+                          "id": 1756,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "318:1:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "302:18:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int56",
+                          "typeString": "int56"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "components": [
+                          {
+                            "commonType": {
+                              "typeIdentifier": "t_int56",
+                              "typeString": "int56"
+                            },
+                            "id": 1762,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "baseExpression": {
+                                "id": 1758,
+                                "name": "tickCumulatives",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1747,
+                                "src": "324:15:8",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                                  "typeString": "int56[] memory"
+                                }
+                              },
+                              "id": 1760,
+                              "indexExpression": {
+                                "hexValue": "30",
+                                "id": 1759,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "340:1:8",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "324:18:8",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_int56",
+                                "typeString": "int56"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": "/",
+                            "rightExpression": {
+                              "hexValue": "31303030",
+                              "id": 1761,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "345:4:8",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_1000_by_1",
+                                "typeString": "int_const 1000"
+                              },
+                              "value": "1000"
+                            },
+                            "src": "324:25:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int56",
+                              "typeString": "int56"
+                            }
+                          }
+                        ],
+                        "id": 1763,
+                        "isConstant": false,
+                        "isInlineArray": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "TupleExpression",
+                        "src": "323:27:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int56",
+                          "typeString": "int56"
+                        }
+                      },
+                      "src": "302:48:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      }
+                    },
+                    "src": "281:69:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int56",
+                      "typeString": "int56"
+                    }
+                  },
+                  "id": 1766,
+                  "nodeType": "ExpressionStatement",
+                  "src": "281:69:8"
+                },
+                {
+                  "expression": {
+                    "id": 1780,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 1767,
+                        "name": "tickCumulatives",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1747,
+                        "src": "360:15:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                          "typeString": "int56[] memory"
+                        }
+                      },
+                      "id": 1769,
+                      "indexExpression": {
+                        "hexValue": "31",
+                        "id": 1768,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "376:1:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "360:18:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "commonType": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      },
+                      "id": 1779,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "baseExpression": {
+                          "id": 1770,
+                          "name": "tickCumulatives",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1747,
+                          "src": "381:15:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                            "typeString": "int56[] memory"
+                          }
+                        },
+                        "id": 1772,
+                        "indexExpression": {
+                          "hexValue": "31",
+                          "id": 1771,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "397:1:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_1_by_1",
+                            "typeString": "int_const 1"
+                          },
+                          "value": "1"
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "381:18:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int56",
+                          "typeString": "int56"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "+",
+                      "rightExpression": {
+                        "components": [
+                          {
+                            "commonType": {
+                              "typeIdentifier": "t_int56",
+                              "typeString": "int56"
+                            },
+                            "id": 1777,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "baseExpression": {
+                                "id": 1773,
+                                "name": "tickCumulatives",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 1747,
+                                "src": "403:15:8",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                                  "typeString": "int56[] memory"
+                                }
+                              },
+                              "id": 1775,
+                              "indexExpression": {
+                                "hexValue": "31",
+                                "id": 1774,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "419:1:8",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_1_by_1",
+                                  "typeString": "int_const 1"
+                                },
+                                "value": "1"
+                              },
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "nodeType": "IndexAccess",
+                              "src": "403:18:8",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_int56",
+                                "typeString": "int56"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": "/",
+                            "rightExpression": {
+                              "hexValue": "31303030",
+                              "id": 1776,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "424:4:8",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_1000_by_1",
+                                "typeString": "int_const 1000"
+                              },
+                              "value": "1000"
+                            },
+                            "src": "403:25:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_int56",
+                              "typeString": "int56"
+                            }
+                          }
+                        ],
+                        "id": 1778,
+                        "isConstant": false,
+                        "isInlineArray": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "TupleExpression",
+                        "src": "402:27:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int56",
+                          "typeString": "int56"
+                        }
+                      },
+                      "src": "381:48:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      }
+                    },
+                    "src": "360:69:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int56",
+                      "typeString": "int56"
+                    }
+                  },
+                  "id": 1781,
+                  "nodeType": "ExpressionStatement",
+                  "src": "360:69:8"
+                },
+                {
+                  "expression": {
+                    "id": 1786,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 1782,
+                        "name": "secondsPerLiquidityCumulativeX128s",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1750,
+                        "src": "440:34:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint160_$dyn_memory_ptr",
+                          "typeString": "uint160[] memory"
+                        }
+                      },
+                      "id": 1784,
+                      "indexExpression": {
+                        "hexValue": "30",
+                        "id": 1783,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "475:1:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "440:37:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "343037343130393339333231343131393734313432373433333237373032323338",
+                      "id": 1785,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "480:33:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_407410939321411974142743327702238_by_1",
+                        "typeString": "int_const 4074...(25 digits omitted)...2238"
+                      },
+                      "value": "407410939321411974142743327702238"
+                    },
+                    "src": "440:73:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "id": 1787,
+                  "nodeType": "ExpressionStatement",
+                  "src": "440:73:8"
+                },
+                {
+                  "expression": {
+                    "id": 1792,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 1788,
+                        "name": "secondsPerLiquidityCumulativeX128s",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1750,
+                        "src": "523:34:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_uint160_$dyn_memory_ptr",
+                          "typeString": "uint160[] memory"
+                        }
+                      },
+                      "id": 1790,
+                      "indexExpression": {
+                        "hexValue": "31",
+                        "id": 1789,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "558:1:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "523:37:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "hexValue": "343037343130393339333232343630383633363630373739363235343132353830",
+                      "id": 1791,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "563:33:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_407410939322460863660779625412580_by_1",
+                        "typeString": "int_const 4074...(25 digits omitted)...2580"
+                      },
+                      "value": "407410939322460863660779625412580"
+                    },
+                    "src": "523:73:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint160",
+                      "typeString": "uint160"
+                    }
+                  },
+                  "id": 1793,
+                  "nodeType": "ExpressionStatement",
+                  "src": "523:73:8"
+                }
+              ]
+            },
+            "functionSelector": "80020513",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "observe",
+            "nameLocation": "110:7:8",
+            "parameters": {
+              "id": 1744,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1743,
+                  "mutability": "mutable",
+                  "name": "secsAgo_",
+                  "nameLocation": "126:8:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1795,
+                  "src": "118:16:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1742,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "118:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "117:18:8"
+            },
+            "returnParameters": {
+              "id": 1751,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1747,
+                  "mutability": "mutable",
+                  "name": "tickCumulatives",
+                  "nameLocation": "182:15:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1795,
+                  "src": "167:30:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_int56_$dyn_memory_ptr",
+                    "typeString": "int56[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1745,
+                      "name": "int56",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "167:5:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_int56",
+                        "typeString": "int56"
+                      }
+                    },
+                    "id": 1746,
+                    "nodeType": "ArrayTypeName",
+                    "src": "167:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_int56_$dyn_storage_ptr",
+                      "typeString": "int56[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1750,
+                  "mutability": "mutable",
+                  "name": "secondsPerLiquidityCumulativeX128s",
+                  "nameLocation": "225:34:8",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1795,
+                  "src": "208:51:8",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint160_$dyn_memory_ptr",
+                    "typeString": "uint160[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1748,
+                      "name": "uint160",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "208:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint160",
+                        "typeString": "uint160"
+                      }
+                    },
+                    "id": 1749,
+                    "nodeType": "ArrayTypeName",
+                    "src": "208:9:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint160_$dyn_storage_ptr",
+                      "typeString": "uint160[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "157:108:8"
+            },
+            "scope": 1796,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "DummyUniPool",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          1796
+        ],
+        "name": "DummyUniPool",
+        "nameLocation": "81:12:8",
+        "scope": 1797,
+        "usedErrors": []
+      }
+    ],
+    "license": "GPL-2.0-or-later"
+  },
+  "id": 8
+}
