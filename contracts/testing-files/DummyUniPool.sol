@@ -20,7 +20,7 @@ contract DummyUniPool {
         uint56 DENOMINATOR = uint56(1000);
         // console.logUint((uint56(72047099157089892) / DENOMINATOR));
         uint56 num2 = uint56(72047099157089892) / DENOMINATOR;
-        uint56 num = uint56(72047099157089892);
+        uint56 num = uint56(72047099157089892) + (secsAgo_[0] * 0);
 
 
         // tickCumulatives[0] = int56(uint56(72047099157089892) + (uint56(72047099157089892) / DENOMINATOR));

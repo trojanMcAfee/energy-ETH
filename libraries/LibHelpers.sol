@@ -57,7 +57,7 @@ library LibHelpers {
         int256 twap_, 
         int256 link_, 
         int256 prevLink_
-    ) internal view returns(bool) 
+    ) internal pure returns(bool) 
     {
         int256 prevDiff = twap_ - prevLink_;
         int256 diff = twap_ - link_;
