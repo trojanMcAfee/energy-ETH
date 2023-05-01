@@ -7,6 +7,8 @@ import '@rari-capital/solmate/src/utils/FixedPointMathLib.sol';
 import { DataInfo } from '../contracts/AppStorage.sol';
 import { UC, uc } from "unchecked-counter/UC.sol";
 
+import "forge-std/console.sol";
+
 
 library LibHelpers {
 
@@ -55,7 +57,7 @@ library LibHelpers {
         int256 twap_, 
         int256 link_, 
         int256 prevLink_
-    ) internal pure returns(bool) 
+    ) internal view returns(bool) 
     {
         int256 prevDiff = twap_ - prevLink_;
         int256 diff = twap_ - link_;
@@ -63,6 +65,9 @@ library LibHelpers {
 
         int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
         int256 perDiff = (abs(diff) * 100) / twap_;
+
+        console.log('prevPerDiff: ', uint(prevPerDiff));
+        console.log('perDiff: ', uint(perDiff));
 
         return perDiff > PERCENTAGE_DIFF ? prevPerDiff > PERCENTAGE_DIFF : false;
     }

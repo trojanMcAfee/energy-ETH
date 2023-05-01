@@ -25,7 +25,6 @@ contract ozOracleFacetTest is Test, Setup {
     }
 
     function test_getEnergyPrice_chainlink() public {
-        // vm.rollFork(69254700);
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254700); 
         _runSetup();
         uint256 price = OZL.getEnergyPrice();
