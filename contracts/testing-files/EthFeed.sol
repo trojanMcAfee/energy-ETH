@@ -21,7 +21,8 @@ contract EthFeed {
             case 69297699 { result := 161566898000 } 
             case 69380699 { result := 160800635124 } 
             case 69421699 { result := 158595420000 } 
-            case 69254700 { result := 194700260000 }
+            //----- test_getEnergyPrice_chainlink ----
+            case 69254700 { result := 154700260000 }
         }
 
         return (1,result,0,0,0);
@@ -44,7 +45,7 @@ contract EthFeed {
             case 69380699 { result := 158595420000 }
             case 69421699 { result := 154700260000 }
             //----- test_getEnergyPrice_chainlink ----
-            case 69254700 { result := 198142799097 }
+            case 69254700 { result := 158142799097 }
         }
 
         return (0,result,0,0,0);

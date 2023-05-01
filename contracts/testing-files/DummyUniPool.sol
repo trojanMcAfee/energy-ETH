@@ -4,7 +4,8 @@ pragma solidity 0.8.19;
 
 
 contract DummyUniPool {
-    function observe(uint256 secsAgo_) external view returns(
+
+    function observe(uint256 secsAgo_) external pure returns(
         int56[] memory tickCumulatives, 
         uint160[] memory secondsPerLiquidityCumulativeX128s
     ) 
@@ -16,5 +17,6 @@ contract DummyUniPool {
 
         secondsPerLiquidityCumulativeX128s[0] = uint160(407410939321411974142743327702238);
         secondsPerLiquidityCumulativeX128s[1] = uint160(407410939322460863660779625412580);
+
     }
 }

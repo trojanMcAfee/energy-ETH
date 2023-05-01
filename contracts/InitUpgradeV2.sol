@@ -15,7 +15,8 @@ contract InitUpgradeV2 {
 
     function init(
         address[] calldata feeds_,
-        address[] memory nonRevFacets_
+        address[] memory nonRevFacets_,
+        address[] memory otherVars_
     ) external {
 
         s.wtiFeed = AggregatorV3Interface(feeds_[0]);
@@ -33,6 +34,8 @@ contract InitUpgradeV2 {
         s.idToOracle[oracleID] = ozOracle;
         bytes memory oracleDetails = abi.encode(ozOracle, oracleID);
         s.oracles_ids.push(oracleDetails);
+
+        s.uniPoolETHUSD = otherVars_[0];
 
         LibDiamond.setNonRevenueFacets(nonRevFacets_); //test if anyone cann call setNonRevenueFacets
     

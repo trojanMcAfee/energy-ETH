@@ -85,7 +85,7 @@ contract ozOracleFacet {
         address ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
         address wethAddr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
         address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
-    
+
         (int24 tick,) = OracleLibrary.consult(ethUsdcPool, uint32(10));
         // console.log('tick: ', uint24(tick));
 

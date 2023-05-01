@@ -96,7 +96,7 @@ struct AppStorage {
                                 v2
     //////////////////////////////////////////////////////////////*/
 
-    AggregatorV3Interface wtiFeed;
+    AggregatorV3Interface wtiFeed; //change these to address. Occupies less slots
     AggregatorV3Interface volatilityFeed; //63
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
@@ -105,6 +105,8 @@ struct AppStorage {
     bytes[] oracles_ids; 
 
     AggregatorV3Interface[] priceFeeds; //68
+
+    address uniPoolETHUSD;
 }
 
 /// @dev Reference for oz20Facet storage

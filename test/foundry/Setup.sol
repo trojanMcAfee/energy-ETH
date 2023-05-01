@@ -12,6 +12,7 @@ import '../../contracts/EnergyETH.sol';
 import '../../contracts/testing-files/WtiFeed.sol';
 import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
+import '../../contracts/testing-files/DummyUniPool.sol';
 import './dummy-files/NewOracle.sol';
 
 import "forge-std/Test.sol";
@@ -30,6 +31,7 @@ contract Setup is Test {
 
     ozIDiamond internal OZL;
     InitUpgradeV2 internal initUpgrade;
+    DummyUniPool internal dummyUniPool;
 
     EnergyETH internal eETH;
 
@@ -42,7 +44,8 @@ contract Setup is Test {
     address internal deployer = 0xe738696676571D9b74C81716E4aE797c2440d306;
     address internal volIndex = 0xbcD8bEA7831f392bb019ef3a672CC15866004536;
     address internal diamond = 0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2;
-    address internal deadAddr = deadAddr = 0x000000000000000000000000000000000000dEaD;
+    address internal deadAddr = 0x000000000000000000000000000000000000dEaD;
+    address internal ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
 
@@ -65,13 +68,18 @@ contract Setup is Test {
         ) = _createContracts();
 
         initUpgrade = new InitUpgradeV2();
+        dummyUniPool = new DummyUniPool();
 
         OZL = ozIDiamond(diamond);
+
+        address[] memory otherVars = new address[](1);
+        otherVars[0] = block.number == 69254700 ? address(dummyUniPool) : ethUsdcPool;
 
         bytes memory data = abi.encodeWithSelector(
             initUpgrade.init.selector,
             feeds,
-            nonRevFacets
+            nonRevFacets,
+            otherVars
         );
 
         //Creates FacetCut array
@@ -199,6 +207,8 @@ contract Setup is Test {
         vm.label(address(ozLoupeV2), 'ozLoupeV2');
         vm.label(address(ozCutV2), 'ozCutFacetV2');
         vm.label(address(newOracle), 'newOracle');
+        vm.label(ethUsdcPool, 'ethUsdcPool');
+        vm.label(address(dummyUniPool), 'dummyUniPool');
     }
 
 
