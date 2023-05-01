@@ -265,7 +265,7 @@
         205
       ],
       "AggregatorV3Interface": [
-        34704
+        34729
       ],
       "AppStorage": [
         174
@@ -277,13 +277,13 @@
         221
       ],
       "ISwapRouter": [
-        36431
+        36456
       ],
       "IUniswapV3SwapCallback": [
-        35901
+        35926
       ],
       "ONE": [
-        31121
+        31126
       ],
       "OZLERC20": [
         185
@@ -292,19 +292,19 @@
         196
       ],
       "UC": [
-        31114
+        31119
       ],
       "ZERO": [
-        31128
+        31133
       ],
       "console": [
-        22851
+        22856
       ],
       "ozLoupeV2Facet": [
         1163
       ],
       "uc": [
-        31247
+        31252
       ]
     },
     "nodeType": "SourceUnit",
@@ -330,7 +330,7 @@
         "file": "unchecked-counter/UC.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 1164,
-        "sourceUnit": 31282,
+        "sourceUnit": 31287,
         "symbolAliases": [
           {
             "foreign": {
@@ -338,7 +338,7 @@
               "name": "UC",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 31114,
+              "referencedDeclaration": 31119,
               "src": "80:2:6",
               "typeDescriptions": {}
             },
@@ -350,7 +350,7 @@
               "name": "ONE",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 31121,
+              "referencedDeclaration": 31126,
               "src": "84:3:6",
               "typeDescriptions": {}
             },
@@ -362,7 +362,7 @@
               "name": "ZERO",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 31128,
+              "referencedDeclaration": 31133,
               "src": "89:4:6",
               "typeDescriptions": {}
             },
@@ -374,7 +374,7 @@
               "name": "uc",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
-              "referencedDeclaration": 31247,
+              "referencedDeclaration": 31252,
               "src": "95:2:6",
               "typeDescriptions": {}
             },
@@ -405,7 +405,7 @@
         "file": "forge-std/console.sol",
         "nameLocation": "-1:-1:-1",
         "scope": 1164,
-        "sourceUnit": 22852,
+        "sourceUnit": 22857,
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -809,7 +809,7 @@
                               "referencedDeclaration": 1035,
                               "src": "607:1:6",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                                "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                                 "typeString": "UC"
                               }
                             },
@@ -821,10 +821,10 @@
                             "memberLocation": "609:6:6",
                             "memberName": "unwrap",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 31264,
+                            "referencedDeclaration": 31269,
                             "src": "607:8:6",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_UC_$31114_$returns$_t_uint256_$attached_to$_t_userDefinedValueType$_UC_$31114_$",
+                              "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_UC_$31119_$returns$_t_uint256_$attached_to$_t_userDefinedValueType$_UC_$31119_$",
                               "typeString": "function (UC) pure returns (uint256)"
                             }
                           },
@@ -1249,10 +1249,10 @@
                   },
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                      "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                       "typeString": "UC"
                     },
-                    "function": 31185,
+                    "function": 31190,
                     "id": 1042,
                     "isConstant": false,
                     "isLValue": false,
@@ -1266,7 +1266,7 @@
                       "referencedDeclaration": 1035,
                       "src": "552:1:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -1298,10 +1298,10 @@
                         "name": "uc",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31247,
+                        "referencedDeclaration": 31252,
                         "src": "556:2:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_userDefinedValueType$_UC_$31114_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_userDefinedValueType$_UC_$31119_$",
                           "typeString": "function (uint256) pure returns (UC)"
                         }
                       },
@@ -1317,7 +1317,7 @@
                       "src": "556:10:6",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -1345,7 +1345,7 @@
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         },
                         "typeName": {
@@ -1358,13 +1358,13 @@
                               "541:2:6"
                             ],
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 31114,
+                            "referencedDeclaration": 31119,
                             "src": "541:2:6"
                           },
-                          "referencedDeclaration": 31114,
+                          "referencedDeclaration": 31119,
                           "src": "541:2:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
@@ -1377,10 +1377,10 @@
                       "name": "ZERO",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31128,
+                      "referencedDeclaration": 31133,
                       "src": "546:4:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -1402,7 +1402,7 @@
                         "referencedDeclaration": 1035,
                         "src": "568:1:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         }
                       },
@@ -1410,10 +1410,10 @@
                       "operator": "=",
                       "rightHandSide": {
                         "commonType": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         },
-                        "function": 31162,
+                        "function": 31167,
                         "id": 1046,
                         "isConstant": false,
                         "isLValue": false,
@@ -1427,7 +1427,7 @@
                           "referencedDeclaration": 1035,
                           "src": "572:1:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
@@ -1438,22 +1438,22 @@
                           "name": "ONE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31121,
+                          "referencedDeclaration": 31126,
                           "src": "576:3:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
                         "src": "572:7:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         }
                       },
                       "src": "568:11:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -1901,7 +1901,7 @@
                                 "referencedDeclaration": 1111,
                                 "src": "1302:1:6",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                                  "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                                   "typeString": "UC"
                                 }
                               },
@@ -1913,10 +1913,10 @@
                               "memberLocation": "1304:6:6",
                               "memberName": "unwrap",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 31264,
+                              "referencedDeclaration": 31269,
                               "src": "1302:8:6",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_UC_$31114_$returns$_t_uint256_$attached_to$_t_userDefinedValueType$_UC_$31114_$",
+                                "typeIdentifier": "t_function_internal_pure$_t_userDefinedValueType$_UC_$31119_$returns$_t_uint256_$attached_to$_t_userDefinedValueType$_UC_$31119_$",
                                 "typeString": "function (UC) pure returns (uint256)"
                               }
                             },
@@ -2191,10 +2191,10 @@
                   },
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                      "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                       "typeString": "UC"
                     },
-                    "function": 31185,
+                    "function": 31190,
                     "id": 1118,
                     "isConstant": false,
                     "isLValue": false,
@@ -2208,7 +2208,7 @@
                       "referencedDeclaration": 1111,
                       "src": "1216:1:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -2240,10 +2240,10 @@
                         "name": "uc",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 31247,
+                        "referencedDeclaration": 31252,
                         "src": "1220:2:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_userDefinedValueType$_UC_$31114_$",
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_userDefinedValueType$_UC_$31119_$",
                           "typeString": "function (uint256) pure returns (UC)"
                         }
                       },
@@ -2259,7 +2259,7 @@
                       "src": "1220:10:6",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -2287,7 +2287,7 @@
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         },
                         "typeName": {
@@ -2300,13 +2300,13 @@
                               "1205:2:6"
                             ],
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 31114,
+                            "referencedDeclaration": 31119,
                             "src": "1205:2:6"
                           },
-                          "referencedDeclaration": 31114,
+                          "referencedDeclaration": 31119,
                           "src": "1205:2:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
@@ -2319,10 +2319,10 @@
                       "name": "ZERO",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 31128,
+                      "referencedDeclaration": 31133,
                       "src": "1210:4:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },
@@ -2344,7 +2344,7 @@
                         "referencedDeclaration": 1111,
                         "src": "1232:1:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         }
                       },
@@ -2352,10 +2352,10 @@
                       "operator": "=",
                       "rightHandSide": {
                         "commonType": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         },
-                        "function": 31162,
+                        "function": 31167,
                         "id": 1122,
                         "isConstant": false,
                         "isLValue": false,
@@ -2369,7 +2369,7 @@
                           "referencedDeclaration": 1111,
                           "src": "1236:1:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
@@ -2380,22 +2380,22 @@
                           "name": "ONE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 31121,
+                          "referencedDeclaration": 31126,
                           "src": "1240:3:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                            "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                             "typeString": "UC"
                           }
                         },
                         "src": "1236:7:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                          "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                           "typeString": "UC"
                         }
                       },
                       "src": "1232:11:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_userDefinedValueType$_UC_$31114",
+                        "typeIdentifier": "t_userDefinedValueType$_UC_$31119",
                         "typeString": "UC"
                       }
                     },

@@ -63,15 +63,19 @@ library LibHelpers {
         int256 diff = twap_ - link_;
         int256 PERCENTAGE_DIFF = 5;
 
-        console.log('twap: ', uint(twap_));
-        console.log('link: ', uint(link_));
-        console.log('prevLink: ', uint(prevLink_));
+        // console.logInt(twap_ - prevLink_);
+        // console.log('diff: ', uint(diff));
+        // console.log('');
+
+        // console.log('twap: ', uint(twap_));
+        // console.log('link: ', uint(link_));
+        // console.log('prevLink: ', uint(prevLink_));
 
         int256 prevPerDiff = (abs(prevDiff) * 100) / twap_;
         int256 perDiff = (abs(diff) * 100) / twap_;
 
-        console.log('prevPerDiff: ', uint(prevPerDiff));
-        console.log('perDiff: ', uint(perDiff));
+        // console.logInt(prevPerDiff);
+        // console.log('perDiff: ', uint(perDiff));
 
         return perDiff > PERCENTAGE_DIFF ? prevPerDiff > PERCENTAGE_DIFF : false;
     }
