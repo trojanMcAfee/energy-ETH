@@ -3,9 +3,10 @@ pragma solidity 0.8.19;
 
 
 import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
-import "forge-std/console.sol";
 import './FullMath.sol';
 import './TickMath.sol';
+
+import "forge-std/console.sol";
 
 /// @title Oracle library
 /// @notice Provides functions to integrate with V3 pool oracle
@@ -26,15 +27,17 @@ library OracleLibrary {
         secondsAgos[0] = secondsAgo;
         secondsAgos[1] = 0;
 
+        console.log(1);
         (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s) =
             IUniswapV3Pool(pool).observe(secondsAgos);
+        console.log(4);
 
-        // console.log('secondsPerLiquidityCumulativeX128s[0]: ', secondsPerLiquidityCumulativeX128s[0]);
-        // console.log('secondsPerLiquidityCumulativeX128s[1]: ', secondsPerLiquidityCumulativeX128s[1]);
-        // console.log('secondsPerLiquidityCumulativeX128s[2]: ', secondsPerLiquidityCumulativeX128s[2]);
+        console.log('--in oracle lib---');
+        console.log('secondsPerLiquidityCumulativeX128s[0]: ', secondsPerLiquidityCumulativeX128s[0]);
+        console.log('secondsPerLiquidityCumulativeX128s[1]: ', secondsPerLiquidityCumulativeX128s[1]);
 
-        // console.log('tickCumulatives[0]: ', uint56(tickCumulatives[0]));
-        // console.log('tickCumulatives[1]: ', uint56(tickCumulatives[1]));
+        console.log('tickCumulatives[0]: ', uint56(tickCumulatives[0]));
+        console.log('tickCumulatives[1]: ', uint56(tickCumulatives[1]));
 
         tickCumulatives[0] = tickCumulatives[0] + (tickCumulatives[0] / 1000);
         tickCumulatives[1] = tickCumulatives[1] + (tickCumulatives[1] / 1000);

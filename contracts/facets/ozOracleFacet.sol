@@ -87,9 +87,9 @@ contract ozOracleFacet {
         // address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
 
         (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
-        // console.log('tick: ', uint24(tick));
+        console.log('tick: ', uint24(tick));
 
-        // tick = int24(uint24(16574779));
+        // tick = int24(uint24(16774273));
 
         uint256 amountOut = OracleLibrary.getQuoteAtTick(
             tick, 1 * 1 ether, s.WETH, s.USDC

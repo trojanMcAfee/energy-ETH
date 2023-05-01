@@ -57,8 +57,7 @@ contract Setup is Test {
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
         _runSetup();
         // vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
-
-        
+        //check if i can put an if for block num
     }
 
     function _runSetup() internal {
