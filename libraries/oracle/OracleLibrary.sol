@@ -6,7 +6,6 @@ import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import './FullMath.sol';
 import './TickMath.sol';
 
-import "forge-std/console.sol";
 
 /// @title Oracle library
 /// @notice Provides functions to integrate with V3 pool oracle
@@ -27,13 +26,8 @@ library OracleLibrary {
         secondsAgos[0] = secondsAgo;
         secondsAgos[1] = 0;
 
-        console.log(1);
         (int56[] memory tickCumulatives, uint160[] memory secondsPerLiquidityCumulativeX128s) =
             IUniswapV3Pool(pool).observe(secondsAgos);
-     
-
-        // tickCumulatives[0] = tickCumulatives[0] + (tickCumulatives[0] / 1000);
-        // tickCumulatives[1] = tickCumulatives[1] + (tickCumulatives[1] / 1000);
 
         int56 tickCumulativesDelta = tickCumulatives[1] - tickCumulatives[0];
         uint160 secondsPerLiquidityCumulativesDelta =

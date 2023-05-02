@@ -86,8 +86,6 @@ contract ozOracleFacet {
         int256 twapEth = getTwapEth();
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
 
-        console.log('is checkEth: ', twapEth.checkEthDiff(linkEth, prevLinkEth * 10 ** 10));
-
         return twapEth.checkEthDiff(linkEth, prevLinkEth * 10 ** 10) ? 
             (linkEth, prevLinkEth) : 
             (twapEth, prevLinkEth);
@@ -96,7 +94,6 @@ contract ozOracleFacet {
 
     function getTwapEth() public view returns(int256) { 
         (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
-        console.log('tick: ', uint24(tick));
 
         uint256 amountOut = OracleLibrary.getQuoteAtTick(
             tick, 1 * 1 ether, s.WETH, s.USDC
