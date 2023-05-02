@@ -81,24 +81,6 @@ contract ozOracleFacet {
 
     //-------------------
 
-    function getTwapEth() public view returns(int256) { 
-        // address ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
-        // address wethAddr = 0x82aF49447D8a07e3bd95BD0d56f35241523fBab1;
-        // address usdcAddr = 0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8;
-
-        (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
-        console.log('tick: ', uint24(tick));
-
-        // tick = int24(uint24(16774273));
-
-        uint256 amountOut = OracleLibrary.getQuoteAtTick(
-            tick, 1 * 1 ether, s.WETH, s.USDC
-        );
-    
-        return int256(amountOut * 10 ** 12); 
-    }
-
-
     function _getBasePrice(DataInfo memory ethFeedInfo_) private view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
         int256 twapEth = getTwapEth();
@@ -111,6 +93,17 @@ contract ozOracleFacet {
             (twapEth, prevLinkEth);
     }
 
+
+    function getTwapEth() public view returns(int256) { 
+        (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
+        console.log('tick: ', uint24(tick));
+
+        uint256 amountOut = OracleLibrary.getQuoteAtTick(
+            tick, 1 * 1 ether, s.WETH, s.USDC
+        );
+    
+        return int256(amountOut * 10 ** 12); 
+    }
 
 
 
