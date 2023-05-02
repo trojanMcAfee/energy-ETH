@@ -152,14 +152,9 @@ contract ozOracleFacet {
         LibCommon.remove(s.priceFeeds, toRemove_);
     }
 
-    function getPriceFeeds() external view returns(address[] memory feeds) {
-        uint256 length = s.priceFeeds.length;
-        feeds = new address[](length);
-
-        for (UC i=ZERO; i < uc(length); i = i + ONE) {
-            uint256 j = i.unwrap();
-            feeds[j] = address(s.priceFeeds[j]);
-        }
+    function changeUniPool(address newPool_) external {
+        LibDiamond.enforceIsContractOwner();
+        s.uniPoolETHUSD = newPool_;
     }
 
     /*///////////////////////////////////////////////////////////////
@@ -172,8 +167,22 @@ contract ozOracleFacet {
     }
 
 
-}
+    function getPriceFeeds() external view returns(address[] memory feeds) {
+        uint256 length = s.priceFeeds.length;
+        feeds = new address[](length);
 
+        for (UC i=ZERO; i < uc(length); i = i + ONE) {
+            uint256 j = i.unwrap();
+            feeds[j] = address(s.priceFeeds[j]);
+        }
+    }
+
+    function getUniPool() external view returns(address) {
+        return s.uniPoolETHUSD;
+    }
+
+
+}
 
 
 

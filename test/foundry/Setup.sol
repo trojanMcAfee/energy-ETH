@@ -51,17 +51,15 @@ contract Setup is Test {
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
-    uint256 fork399;
     uint256 fork700;
 
     bytes notOwner = bytes('LibDiamond: Must be contract owner');
 
     function setUp() public {
-        // vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
-        fork399 = vm.createFork(vm.rpcUrl('arbitrum'), 69254399);
+        console.logBytes(msg.data);
+        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399);
         fork700 = vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
-        // _runSetup();
-        //check if i can put an if for block num
+        _runSetup();
     }
 
     function _runSetup() internal {
@@ -145,7 +143,7 @@ contract Setup is Test {
     ) internal view returns(ozIDiamond.FacetCut memory cut) { 
         uint256 length;
         if (id_ == 0) {
-            length = 7;
+            length = 9;
         } else if (id_ == 2) {
             length = 4;
         } else if (id_ == 3) {
@@ -165,6 +163,8 @@ contract Setup is Test {
             selectors[4] = ozOracle.removeFeed.selector;
             selectors[5] = ozOracle.getPriceFeeds.selector;
             selectors[6] = ozOracle.getTwapEth.selector;
+            selectors[7] = ozOracle.changeUniPool.selector;
+            selectors[8] = ozOracle.getUniPool.selector;
         }
         if (id_ == 1) selectors[0] = ozExecutor2.depositFeesInDeFi.selector;
         if (id_ == 2) {

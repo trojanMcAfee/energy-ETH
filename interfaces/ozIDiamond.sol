@@ -33,4 +33,6 @@ interface ozIDiamond {
     function removeFeed(AggregatorV3Interface toRemove_) external;
     function getPriceFeeds() external returns(address[] memory feeds);
     function facetAddress(bytes4 _functionSelector) external view returns (address facetAddress_);
+    function getUniPool() external view returns(address);
+    function changeUniPool(address newPool_) external;
 }

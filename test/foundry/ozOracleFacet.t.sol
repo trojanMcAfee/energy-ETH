@@ -24,8 +24,8 @@ contract ozOracleFacetTest is Test, Setup {
     //Gets eETH price with a basePrice of TWAP price
     function test_getEnergyPrice_twap() public {
         //Pre-condition
-        vm.selectFork(fork399);
-        _runSetup();
+        // vm.selectFork(fork399);
+        // _runSetup();
 
         //Action
         uint256 price = OZL.getEnergyPrice();
@@ -174,7 +174,34 @@ contract ozOracleFacetTest is Test, Setup {
             abi.encodeWithSelector(NotFeed.selector, deadAddr)
         );
         OZL.removeFeed(AggregatorV3Interface(deadAddr));
-        
+    }
+
+    /*///////////////////////////////////////////////////////////////
+                            Change pool
+    //////////////////////////////////////////////////////////////*/
+
+    function test_changePool() public {
+        //Pre-condition
+        address uniPool = OZL.getUniPool();
+        assertTrue(uniPool == ethUsdcPool);
+
+        //Action
+        vm.prank(deployer);
+        OZL.changeUniPool(deadAddr);
+
+        //Post-condition
+        uniPool = OZL.getUniPool();
+        assertTrue(uniPool == deadAddr);
+    }
+
+    function test_fail_changePool_notOwner() public {
+        //Pre-condition
+        address uniPool = OZL.getUniPool();
+        assertTrue(uniPool == ethUsdcPool);
+
+        //Action
+        vm.expectRevert(notOwner);
+        OZL.changeUniPool(deadAddr);
     }
 
     /*///////////////////////////////////////////////////////////////
@@ -185,25 +212,6 @@ contract ozOracleFacetTest is Test, Setup {
         bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
         volAddr = address(bytes20(volSlot << 96));
     }
-
-    
-    //-----------------
-
-    function test_getUni() public view {
-        // (int56[] memory tick, uint160[] memory secs) = ozOracle.getUni();
-
-        // console.logInt(tick[0]);
-        // console.log('tickCumulatives ^^');
-        // console.log(secs[0]);
-        // console.log('secondsPerLiquidityCumulativeX128s ^^');
-
-        //-----------
-        // uint amount = ozOracle._getTwapEth();
-        // console.log('price getTwapEth: ', amount);
-
-    }
-
-
    
 
 }
