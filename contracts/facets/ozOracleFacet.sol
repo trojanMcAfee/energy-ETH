@@ -14,6 +14,7 @@ import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
 import '../../libraries/oracle/OracleLibrary.sol';
 import '../../libraries/oracle/FullMath.sol';
 import "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol";
+import '@rari-capital/solmate/src/utils/FixedPointMathLib.sol';
 
 // import 'hardhat/console.sol';
 import "forge-std/console.sol";
@@ -26,9 +27,7 @@ contract ozOracleFacet {
     using LibHelpers for *;
 
     int256 private constant EIGHT_DEC = 1e8;
-    int256 private constant NINETN_DEC = 1e19;
 
-    // error NotFeed(address feed);
 
     //**** MAIN ******/
 
@@ -86,7 +85,7 @@ contract ozOracleFacet {
         int256 twapEth = getTwapEth();
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
 
-        return twapEth.checkEthDiff(linkEth, prevLinkEth * 10 ** 10) ? 
+        return twapEth.checkEthDiff(linkEth, prevLinkEth * 1e10) ? 
             (linkEth, prevLinkEth) : 
             (twapEth, prevLinkEth);
     }
@@ -99,7 +98,7 @@ contract ozOracleFacet {
             tick, 1 ether, s.WETH, s.USDC
         );
     
-        return int256(amountOut * 10 ** 12); 
+        return int256(amountOut * 1e12); 
     }
 
 
@@ -115,7 +114,7 @@ contract ozOracleFacet {
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
             int256 currPrice = feedInfo_.value;
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
-            return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / NINETN_DEC);
+            return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19);
         } else {
             int256 netDiff = feedInfo_.value - prevEthPrice_;
             return (netDiff * 100 * EIGHT_DEC) / prevEthPrice_;

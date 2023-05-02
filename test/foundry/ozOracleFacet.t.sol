@@ -20,6 +20,8 @@ contract ozOracleFacetTest is Test, Setup {
     uint256 twapPrice = 1473593483134366243200;
     uint256 chainlinkPrice = 1425816593187981280000;
     
+
+    //Gets eETH price with a basePrice of TWAP price
     function test_getEnergyPrice_twap() public {
         //Pre-condition
         vm.selectFork(fork399);
@@ -32,6 +34,8 @@ contract ozOracleFacetTest is Test, Setup {
         price == twapPrice ? assertTrue(true) : assertTrue(false);
     }
 
+    //Gets eETH price with a basePrice of Chainlink after discrepancy with TWAP 
+    //was higher than 5% (also different with previous reading was checked)
     function test_getEnergyPrice_chainlink() public {
         //Pre-condition
         vm.selectFork(fork700);
