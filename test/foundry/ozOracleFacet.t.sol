@@ -22,17 +22,28 @@ contract ozOracleFacetTest is Test, Setup {
     uint256 chainlinkPrice = 1425816593187981280000;
     
     function test_getEnergyPrice_twap() public {
+        //Pre-condition
+        vm.selectFork(fork399);
+        _runSetup();
+
+        //Action
         uint256 price = OZL.getEnergyPrice();
         // console.log('eETH price: ', price);
+        //Post-condition
         price == twapPrice ? assertTrue(true) : assertTrue(false);
         // assertTrue(price > 0);
     }
 
     function test_getEnergyPrice_chainlink() public {
-        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254700); 
+        // vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254700); 
+        //Pre-condition
+        vm.selectFork(fork700);
         _runSetup();
+
+        //Action
         uint256 price = OZL.getEnergyPrice();
         // console.log('eETH price - no twap: ', price);
+        //Post-condition
         price == chainlinkPrice ? assertTrue(true) : assertTrue(false);
         // assertTrue(price > 0);
     }

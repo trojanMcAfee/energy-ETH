@@ -51,12 +51,16 @@ contract Setup is Test {
 
     IPermit2 permit2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
 
+    uint256 fork399;
+    uint256 fork700;
+
     bytes notOwner = bytes('LibDiamond: Must be contract owner');
 
     function setUp() public {
-        vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
-        _runSetup();
-        // vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
+        // vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399); 
+        fork399 = vm.createFork(vm.rpcUrl('arbitrum'), 69254399);
+        fork700 = vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
+        // _runSetup();
         //check if i can put an if for block num
     }
 
