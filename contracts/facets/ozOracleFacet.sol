@@ -96,7 +96,7 @@ contract ozOracleFacet {
         (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
 
         uint256 amountOut = OracleLibrary.getQuoteAtTick(
-            tick, 1 * 1 ether, s.WETH, s.USDC
+            tick, 1 ether, s.WETH, s.USDC
         );
     
         return int256(amountOut * 10 ** 12); 
