@@ -18,7 +18,7 @@ contract ozOracleFacetTest is Test, Setup {
 
     // NewOracle private newOracle;
 
-    uint256 twapPrice = 1443982584034421330400;
+    uint256 twapPrice = 1473593483134366243200;
     uint256 chainlinkPrice = 1425816593187981280000;
     
     function test_getEnergyPrice_twap() public {
@@ -28,7 +28,7 @@ contract ozOracleFacetTest is Test, Setup {
 
         //Action
         uint256 price = OZL.getEnergyPrice();
-        // console.log('eETH price: ', price);
+
         //Post-condition
         price == twapPrice ? assertTrue(true) : assertTrue(false);
         // assertTrue(price > 0);
@@ -42,7 +42,7 @@ contract ozOracleFacetTest is Test, Setup {
 
         //Action
         uint256 price = OZL.getEnergyPrice();
-        // console.log('eETH price - no twap: ', price);
+        console.log('eETH price - no twap: ', price);
         //Post-condition
         price == chainlinkPrice ? assertTrue(true) : assertTrue(false);
         // assertTrue(price > 0);
