@@ -23,10 +23,6 @@ contract ozOracleFacetTest is Test, Setup {
 
     //Gets eETH price with a basePrice of TWAP price
     function test_getEnergyPrice_twap() public {
-        //Pre-condition
-        // vm.selectFork(fork399);
-        // _runSetup();
-
         //Action
         uint256 price = OZL.getEnergyPrice();
 

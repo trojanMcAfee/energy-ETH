@@ -39,7 +39,6 @@ contract ozOracleFacet {
             int256 prevEth 
         ) = _getDataFeeds();
       
-        int256 volIndex = getVolatilityIndex();
         int256 netDiff;
 
         uint256 length = infoFeeds.length;
@@ -47,7 +46,7 @@ contract ozOracleFacet {
             DataInfo memory info = infoFeeds[i.unwrap()];
 
             netDiff += _setPrice(
-                info, address(info.feed) == address(s.ethFeed) ? int256(0) : volIndex, prevEth
+                info, address(info.feed) == address(s.ethFeed) ? int256(0) : getVolatilityIndex(), prevEth
             );
         }
 
@@ -82,12 +81,11 @@ contract ozOracleFacet {
 
     function _getBasePrice(DataInfo memory ethFeedInfo_) private view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
-        int256 twapEth = getTwapEth();
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
 
         return twapEth.checkEthDiff(linkEth, prevLinkEth * 1e10) ? 
             (linkEth, prevLinkEth) : 
-            (twapEth, prevLinkEth);
+            (getTwapEth(), prevLinkEth);
     }
 
 
@@ -121,8 +119,6 @@ contract ozOracleFacet {
         }
     }
 
-
-    
 
 
     /*///////////////////////////////////////////////////////////////
