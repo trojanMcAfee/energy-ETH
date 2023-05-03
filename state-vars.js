@@ -5,6 +5,7 @@ let volatilityFeedAddr;
 let ethUsdFeed;
 let goldFeedAddr;
 let blocks;
+let ethUsdcPool;
 const ozDiamondAddr = '0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2';
 const deployer2 = '0xe738696676571D9b74C81716E4aE797c2440d306';
 
@@ -64,6 +65,7 @@ case 'arbitrum':
     volatilityFeedAddr = '0xbcD8bEA7831f392bb019ef3a672CC15866004536';
     ethUsdFeed = '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612';
     goldFeedAddr = '0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c';
+    ethUsdcPool = '0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443';
     blocks = [
         69254391,
         69255691,
@@ -92,5 +94,6 @@ module.exports = {
     diamondABI,
     ozDiamondAddr,
     deployer2,
-    opsL2_2
+    opsL2_2,
+    ethUsdcPool
 };

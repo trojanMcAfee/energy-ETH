@@ -82,6 +82,7 @@ contract ozOracleFacet {
     function _getBasePrice(DataInfo memory ethFeedInfo_) private view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
+        int256 twapEth = getTwapEth();
 
         return twapEth.checkEthDiff(linkEth, prevLinkEth * 1e10) ? 
             (linkEth, prevLinkEth) : 

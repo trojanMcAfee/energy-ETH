@@ -14,7 +14,8 @@ const {
     diamondABI, 
     ozDiamondAddr,
     deployer2,
-    opsL2_2
+    opsL2_2,
+    ethUsdcPool
 } = require('./state-vars');
 
 
@@ -60,7 +61,7 @@ async function sendETHOps(amount, receiver) {
 
 async function getLastPrice(blockDifference_, num_) {
     const ozDiamond = await hre.ethers.getContractAt(diamondABI, ozDiamondAddr);
-    let price = await ozDiamond.getLastPrice();
+    let price = await ozDiamond.getEnergyPrice();
     console.log(`eETH price ${num_}: `, formatUnits(price, 18));
     if (blockDifference_ !== '') await mine(blockDifference_);
 }
@@ -79,9 +80,11 @@ async function addToDiamond(ozOracle, feeds) {
     ];
 
     const init = await deployContract('InitUpgradeV2');
+    
     const initData = init.interface.encodeFunctionData('init', [
         feeds,
-        facetAddresses
+        facetAddresses,
+        [ethUsdcPool]
     ]);
 
     await sendETHOps(1, deployer2);
