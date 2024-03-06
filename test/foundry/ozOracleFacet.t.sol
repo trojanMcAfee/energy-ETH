@@ -35,6 +35,7 @@ contract ozOracleFacetTest is Test, Setup {
     function test_getEnergyPrice_chainlink() public {
         //Pre-condition
         vm.selectFork(fork700);
+        vm.roll(69254700);
         _runSetup();
 
         //Action

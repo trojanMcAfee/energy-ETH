@@ -56,8 +56,8 @@ contract Setup is Test {
     bytes notOwner = bytes('LibDiamond: Must be contract owner');
 
     function setUp() public {
-        console.logBytes(msg.data);
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399);
+        vm.roll(69254399);
         fork700 = vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
         _runSetup();
     }
