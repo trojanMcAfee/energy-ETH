@@ -31,6 +31,10 @@ contract ozOracleFacet {
 
     //**** MAIN ******/
 
+    /**
+     * @dev Gets the price in USD of Energy-ETH.
+     * @return Price of eETH.
+     */
     function getEnergyPrice() external view returns(uint256) {
 
         ( 
@@ -47,7 +51,8 @@ contract ozOracleFacet {
 
             netDiff += _setPrice(
                 info, address(info.feed) == address(s.ethFeed) ? 
-                        int256(0) : getVolatilityIndex(), prevEth
+                        int256(0) : getVolatilityIndex(), 
+                prevEth
             );
         }
 
@@ -55,7 +60,12 @@ contract ozOracleFacet {
     }
 
 
-
+    /**
+     * @dev Gets base values to calculate eETH:
+     * @return Each of the feeds that compound eETH (Gold and WTI).
+     * @return Base price (ETHUSD) to which Gold and WTIY will be calculated into.
+     * @return Previous Chainlink price update of ETHUSD.
+     */
     function _getDataFeeds() private view returns(DataInfo[] memory, int256, int256) {
         uint256 length = s.priceFeeds.length;
         DataInfo[] memory infoFeeds = new DataInfo[](length);
@@ -78,8 +88,14 @@ contract ozOracleFacet {
         return (infoFeeds, basePrice, prevEth); 
     }
 
-    //-------------------
 
+    /**
+     * @dev Calculates the basePrice of eETH, after cross-checking for a deviation
+     * ration between Chailink and Uniswap TWAP Spot oracle's prices. 
+     * @param ethFeedInfo_ Struct containing the details of Chalinkink ETHUSD feed.
+     * @return ETHUSD price to use (either TWAP or Chainlink).
+     * @return The previous price reading for ETHUSD through Chainlink.
+     */
     function _getBasePrice(DataInfo memory ethFeedInfo_) private view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
         int256 linkEth = ethFeedInfo_.value.formatLinkEth();
@@ -91,6 +107,10 @@ contract ozOracleFacet {
     }
 
 
+    /**
+     * @dev Gets Uniswap's TWAP Spot Oracle price.
+     * @return ETHUSD from TWAP.
+     */
     function getTwapEth() public view returns(int256) { 
         (int24 tick,) = OracleLibrary.consult(s.uniPoolETHUSD, uint32(10));
 
@@ -102,9 +122,14 @@ contract ozOracleFacet {
     }
 
 
-
-    //------------------
-
+    /**
+     * @dev Sets the aggregated product of the combination of feed prices (WTI and Gold)
+     * plus the volatility index.
+     * @param feedInfo_ Values of price feed to manipulate.
+     * @param volIndex_ Chainlink's volatility index to influce the price differences of each feed.
+     * @param prevEthPrice_ Previous update of ETHUSD.
+     * @return Influenced (by the volatility index) product from price feed updated
+     */
     function _setPrice(
         DataInfo memory feedInfo_, 
         int256 volIndex_,
@@ -181,6 +206,4 @@ contract ozOracleFacet {
 
 
 }
-
-
 
