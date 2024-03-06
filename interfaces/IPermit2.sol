@@ -41,9 +41,9 @@ interface IPermit2 {
         uint256 requestedAmount;
     }
 
-    struct Permit2Buy { //<--- my struct
-        IERC20 token; //user_
-        uint256 amount; //eETH to buy
+    struct Permit2Buy { 
+        IERC20 token; 
+        uint256 amount; 
         uint256 nonce;
         uint256 deadline;
         bytes signature;

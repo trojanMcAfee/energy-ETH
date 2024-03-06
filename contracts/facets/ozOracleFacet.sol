@@ -38,7 +38,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Gets the price in USD of Energy-ETH.
-     * @return Price of eETH.
+     * @return price of eETH.
      */
     function getEnergyPrice() external view returns(uint256) {
 
@@ -72,9 +72,9 @@ contract ozOracleFacet {
 
     /**
      * @dev Gets base values to calculate eETH:
-     * @return Each of the feeds that compound eETH (Gold and WTI).
-     * @return Base price (ETHUSD) to which Gold and WTIY will be calculated into.
-     * @return Previous Chainlink price update of ETHUSD.
+     * @return each of the feeds that compound eETH (Gold and WTI).
+     * @return base price (ETHUSD) to which Gold and WTIY will be calculated into.
+     * @return previous Chainlink price update of ETHUSD.
      */
     function _getDataFeeds() private view returns(DataInfo[] memory, int256, int256) {
         uint256 length = s.priceFeeds.length;
@@ -102,9 +102,9 @@ contract ozOracleFacet {
     /**
      * @dev Calculates the basePrice of eETH, after cross-checking for a deviation
      * ration between Chailink and Uniswap TWAP Spot oracle's prices. 
-     * @param ethFeedInfo_ Struct containing the details of Chalinkink ETHUSD feed.
+     * @param ethFeedInfo_ contains the details of Chalinkink ETHUSD feed.
      * @return ETHUSD price to use (either TWAP or Chainlink).
-     * @return The previous price reading for ETHUSD through Chainlink.
+     * @return the previous price reading for ETHUSD through Chainlink.
      */
     function _getBasePrice(DataInfo memory ethFeedInfo_) private view returns(int256, int256) {
         int256 prevLinkEth = ethFeedInfo_.roundId.getPrevFeed(ethFeedInfo_.feed);
@@ -120,10 +120,10 @@ contract ozOracleFacet {
     /**
      * @dev Sets the aggregated product of the combination of feed prices (WTI and Gold)
      * plus the volatility index.
-     * @param feedInfo_ Values of price feed to manipulate.
-     * @param volIndex_ Chainlink's volatility index to influce the price differences of each feed.
-     * @param prevEthPrice_ Previous update of ETHUSD.
-     * @return Influenced (by the volatility index) product from price feed updated
+     * @param feedInfo_ values of price feed to manipulate.
+     * @param volIndex_ chainlink's volatility index to influce the price differences of each feed.
+     * @param prevEthPrice_ previous update of ETHUSD.
+     * @return influenced (by the volatility index) product from price feed updated
      */
     function _setPrice(
         DataInfo memory feedInfo_, 
@@ -149,7 +149,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Changes Chainlink's feed in charge of the volatility index.
-     * @param newFeed_ New volatility index feed.
+     * @param newFeed_ new volatility index feed.
      */
     function changeVolatilityIndex(AggregatorV3Interface newFeed_) external {
         LibDiamond.enforceIsContractOwner();
@@ -158,7 +158,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Adds a new feed to be part of eETH's calculations.
-     * @param newFeed_ Represents a new asset fo eETH's price action.
+     * @param newFeed_ represents a new asset fo eETH's price action.
      */
     function addFeed(AggregatorV3Interface newFeed_) external {
         LibDiamond.enforceIsContractOwner();
@@ -171,7 +171,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Removes a feed from eETH's calculations.
-     * @param toRemove_ Asset feed that will be removed.
+     * @param toRemove_ asset feed that will be removed.
      */
     function removeFeed(AggregatorV3Interface toRemove_) external {
         LibDiamond.enforceIsContractOwner();
@@ -182,6 +182,10 @@ contract ozOracleFacet {
         LibCommon.remove(s.priceFeeds, toRemove_);
     }
 
+    /**
+     * @dev Changes the Uniswap pool used as TWAP oracle.
+     * @param newPool_ new Uniswap pool.
+     */
     function changeUniPool(address newPool_) external {
         LibDiamond.enforceIsContractOwner();
         s.uniPoolETHUSD = newPool_;
@@ -208,7 +212,7 @@ contract ozOracleFacet {
     /**
      * @dev Gets Chainlink's volatility index to be used to amplify the price
      * different of each asset feed (WTI and Gold).
-     * @return Volatility index.
+     * @return volatility index.
      */
     function getVolatilityIndex() public view returns(int256) {
         (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
@@ -217,7 +221,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Gets all the feeds use in eETH's calculations.
-     * @return Array of feeds addresses.
+     * @return array of feeds addresses.
      */
     function getPriceFeeds() external view returns(address[] memory feeds) {
         uint256 length = s.priceFeeds.length;
@@ -231,7 +235,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Gets the ETHUSD 0.05% Uniswap pool. 
-     * @return Pool.
+     * @return pool.
      */
     function getUniPool() external view returns(address) {
         return s.uniPoolETHUSD;

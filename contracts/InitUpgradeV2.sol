@@ -37,7 +37,6 @@ contract InitUpgradeV2 {
 
         s.uniPoolETHUSD = otherVars_[0];
 
-        LibDiamond.setNonRevenueFacets(nonRevFacets_); //test if anyone cann call setNonRevenueFacets
-    
+        LibDiamond.setNonRevenueFacets(nonRevFacets_); 
     }
 }
