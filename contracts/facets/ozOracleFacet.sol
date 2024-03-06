@@ -46,7 +46,8 @@ contract ozOracleFacet {
             DataInfo memory info = infoFeeds[i.unwrap()];
 
             netDiff += _setPrice(
-                info, address(info.feed) == address(s.ethFeed) ? int256(0) : getVolatilityIndex(), prevEth
+                info, address(info.feed) == address(s.ethFeed) ? 
+                        int256(0) : getVolatilityIndex(), prevEth
             );
         }
 

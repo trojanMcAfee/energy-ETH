@@ -39,7 +39,7 @@ contract EnergyETHTest is Test, Setup {
     }
 
 
-    function testFuzz_issue(uint256 amount_) public {
+    function test_issue(uint256 amount_) public {
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
 
@@ -93,11 +93,6 @@ contract EnergyETHTest is Test, Setup {
 
         eETHbal = eETH.balanceOf(bob);
         assertTrue(eETHbal > 0);
-    }
-
-
-    function invariant_myTest() public {
-        assertTrue(true);
     }
 
 
