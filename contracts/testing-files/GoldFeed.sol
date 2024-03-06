@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
+import "forge-std/console.sol";
+
 
 contract GoldFeed {
 
@@ -8,11 +10,13 @@ contract GoldFeed {
         uint blockNum = block.number;
         int result;
 
+        console.log('blockNum - goldfeed: ', blockNum);
+
         assembly {
             switch blockNum
-            case 69254399 { result := 188117000000 } 
-            case 69254400 { result := 188117000000 } 
-            case 69254401 { result := 188117000000 } 
+            case 16814838 { result := 188117000000 } 
+            case 16814839 { result := 188117000000 } 
+            case 16814840 { result := 188117000000 } 
             case 69255699 { result := 189157000000 } 
             case 69260699 { result := 189157000000 } 
             case 69294699 { result := 188161500000 } 

@@ -190,7 +190,7 @@ contract Setup is Test {
 
 
     function _randomUint256() internal view returns (uint256) {
-        return block.difficulty;
+        return block.prevrandao;
     }
 
 

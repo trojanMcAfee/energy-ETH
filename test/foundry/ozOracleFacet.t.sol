@@ -17,7 +17,7 @@ contract ozOracleFacetTest is Test, Setup {
     using stdStorage for StdStorage;
 
 
-    uint256 twapPrice = 1473593483134366243200;
+    uint256 twapPrice = 20750118741723922336800; //1473593483134366243200
     uint256 chainlinkPrice = 1475510304606752115200; //1425816593187981280000
     
 
