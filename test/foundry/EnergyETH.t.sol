@@ -14,21 +14,27 @@ import '../../libraries/LibPermit2.sol';
 import '../../interfaces/IPermit2.sol';
 import './Setup.sol';
 
-import "forge-std/console.sol";
 
 
-
+/**
+ * @dev Tests that you can get and issue eETH. 
+ */
 contract EnergyETHTest is Test, Setup {
 
     using LibPermit2 for IERC20;
 
-
+    /**
+     * @dev For properly getting eETH price.
+     */
     function test_getPrice() public {
         uint price = eETH.getPrice();
         assertTrue(price > 0);
     }
 
-
+    /**
+     * @dev Tests that eETH can be issued at its proper valuation of 
+     * basePrice (ETHUSD) + (WTI + Gold * volatilityIndex)
+     */
     function test_issue(uint256 amount_) public {
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
@@ -87,11 +93,13 @@ contract EnergyETHTest is Test, Setup {
 
 
 
-    /**
-        *** HELPERS *****
-     */
+    /*///////////////////////////////////////////////////////////////
+                            Helpers
+    //////////////////////////////////////////////////////////////*/
 
-    // Generate a signature for a permit message of batch txs
+    /**
+     * @dev Generate a signature for a permit message of batch txs.
+     */
     function _signPermit(
         IPermit2.PermitBatchTransferFrom memory permit,
         address spender,
@@ -104,7 +112,9 @@ contract EnergyETHTest is Test, Setup {
     }
 
 
-    // Compute the EIP712 hash of the permit batch object.
+    /**
+     * @dev Compute the EIP712 hash of the permit batch object.
+     */
     function _getEIP712Hash(
         IPermit2.PermitBatchTransferFrom memory permit,
         address spender

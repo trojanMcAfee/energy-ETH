@@ -9,7 +9,6 @@ import '../../interfaces/ozIDiamond.sol';
 import { UC, ONE, ZERO } from "unchecked-counter/UC.sol";
 import '../../Errors.sol';
 
-import "forge-std/console.sol";
 
 
 contract ozOracleFacetTest is Test, Setup {
@@ -21,7 +20,9 @@ contract ozOracleFacetTest is Test, Setup {
     uint256 chainlinkPrice = 1425816593187981280000;
     
 
-    //Gets eETH price with a basePrice of TWAP price
+    /**
+     * @dev Gets eETH price with TWAP's ETHUSD price as basePrice. 
+     */
     function test_getEnergyPrice_twap() public {
         //Action
         uint256 price = OZL.getEnergyPrice();
@@ -30,8 +31,11 @@ contract ozOracleFacetTest is Test, Setup {
         price == twapPrice ? assertTrue(true) : assertTrue(false);
     }
 
-    //Gets eETH price with a basePrice of Chainlink after discrepancy with TWAP 
-    //was higher than 5% (also different with previous reading was checked)
+
+    /**
+     * @dev Gets eETH price with Chainlink's ETHUSD price as basePrice, after TWAP
+     * failed the 5% discrepancy check (higher than).
+     */
     function test_getEnergyPrice_chainlink() public {
         //Pre-condition
         vm.selectFork(fork700);
@@ -49,11 +53,17 @@ contract ozOracleFacetTest is Test, Setup {
                             Volatility Index
     //////////////////////////////////////////////////////////////*/
 
+    /**
+     * @dev Tests that you can successfully query Chainlink's volatility index.
+     */
     function test_getVolatilityIndex() public {
         int256 index = OZL.getVolatilityIndex();
         assertTrue(index > 0);
     }
 
+    /**
+     * @dev Tests that you can successfully change Chainlink's volatility index.
+     */
     function test_changeVolatilityIndex() public {
         //Pre-condition
         address volAddr = _getVolAddress();
@@ -68,6 +78,9 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(volAddr == deadAddr);
     }
 
+    /**
+     * @dev Tests that an non-owner can't successfully change Chainlink's volatility index.
+     */
     function test_fail_changeVolatilityIndex_notOwner() public {
         //Pre-condition
         address volAddr = _getVolAddress();
@@ -78,6 +91,10 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.changeVolatilityIndex(AggregatorV3Interface(deadAddr));   
     }
 
+
+    /**
+     * @dev Tests that the owner can successfully change Chainlink's volatility index.
+     */
     function test_change_getVolatilityIndex() public {
         //Pre-condition
         bytes4 selector = ozOracle.getVolatilityIndex.selector;
@@ -100,6 +117,9 @@ contract ozOracleFacetTest is Test, Setup {
                             Add/Remove feed
     //////////////////////////////////////////////////////////////*/
 
+    /**
+     * @dev Tests that the owner can successfully add a Chainlink's price feed.
+     */
     function test_addFeed() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
@@ -114,6 +134,9 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(feeds.length == 4);
     }
 
+    /**
+     * @dev Tests that an non-owner can't successfully add a Chainlink's price feed.
+     */
     function test_fail_addFeed_notOwner() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
@@ -124,6 +147,9 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.addFeed(AggregatorV3Interface(deadAddr));
     }
 
+    /**
+     * @dev Tests that a fee that's added already can't be re-added.
+     */
     function test_fail_addFeed_alreadyFeed() public {
         //Action
         vm.prank(deployer);
@@ -133,6 +159,9 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.addFeed(AggregatorV3Interface(address(wtiFeed)));
     }
 
+    /**
+     * @dev Tests that the owner can successfully remove a Chainlink's price feed.
+     */
     function test_removeFeed() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
@@ -154,6 +183,9 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(true);
     }
 
+    /**
+     * @dev Tests that an non-owner can't successfully remove a Chainlink's price feed.
+     */
     function test_fail_removeFeed_notOwner() public {
         //Pre-condition
         address[] memory feeds = OZL.getPriceFeeds();
@@ -164,6 +196,9 @@ contract ozOracleFacetTest is Test, Setup {
         OZL.removeFeed(AggregatorV3Interface(address(wtiFeed)));
     }
 
+    /**
+     * @dev Tests that the owner can't remove a non-existent feed.
+     */
     function test_fail_removeFeed_notFeed() public {
         //Action
         vm.prank(deployer);
@@ -177,6 +212,9 @@ contract ozOracleFacetTest is Test, Setup {
                             Change pool
     //////////////////////////////////////////////////////////////*/
 
+    /**
+     * @dev Tests that the owner can successfully change the Uniswap pool used for TWAP.
+     */
     function test_changePool() public {
         //Pre-condition
         address uniPool = OZL.getUniPool();
@@ -191,6 +229,9 @@ contract ozOracleFacetTest is Test, Setup {
         assertTrue(uniPool == deadAddr);
     }
 
+    /**
+     * @dev Tests that an non-owner can't successfully change the Uniswap pool used for TWAP.
+     */
     function test_fail_changePool_notOwner() public {
         //Pre-condition
         address uniPool = OZL.getUniPool();
