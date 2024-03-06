@@ -11,6 +11,11 @@ import '../AppStorage.sol';
 import "forge-std/console.sol";
 
 
+/**
+ * @title 2nd version of Executing contract for main account functions.
+ * @notice It extends the scope of usage of a key function so it can be
+ * called externally.  
+ */
 contract ozExecutor2Facet {
 
     AppStorage s;
@@ -18,7 +23,14 @@ contract ozExecutor2Facet {
     //put a modifier here that only eETH can call this function
     //msg.sender is eETH (checked)
 
-
+    /**
+     * @dev External implementation of _depositFeesInDeFi() from OZLFacet on v1. 
+     * @notice Opens this function, as external, from Ozel v1 so it can be used
+     * by external parties, like eETH, and deposit the protocol fees into Defi.
+     * @param fee_ fee to deposit into DeFi.
+     * @param isRetry_ bool flag to determining if the call is for retrying a failed 
+     * attempt of deposing fees or not. 
+     */
     function depositFeesInDeFi(uint fee_, bool isRetry_) external { 
         /// @dev Into Curve's Tricrypto
         (uint tokenAmountIn, uint[3] memory amounts) = _calculateTokenAmountCurve(fee_);
@@ -52,6 +64,12 @@ contract ozExecutor2Facet {
     }
 
 
+    /**
+     * @dev Calculates the amounts of token needed for Curve swaps. 
+     * @param amountIn_ amount going in into the swap. 
+     * @return output from Curve's virtual function (calc_token_amount).
+     * @return array with amountIn_ (format needed by Curve).
+     */
     function _calculateTokenAmountCurve(uint amountIn_) private view returns(uint, uint[3] memory) {
         uint[3] memory amounts;
         amounts[0] = amountIn_;
@@ -60,7 +78,4 @@ contract ozExecutor2Facet {
         uint tokenAmount = ITri(s.tricrypto).calc_token_amount(amounts, true);
         return (tokenAmount, amounts);
     }
-
-
-
 }
