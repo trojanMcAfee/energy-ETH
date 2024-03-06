@@ -5,7 +5,6 @@ pragma solidity 0.8.19;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 
-
 /**
  * @notice Library of common methods using in both L1 and L2 contracts
  */

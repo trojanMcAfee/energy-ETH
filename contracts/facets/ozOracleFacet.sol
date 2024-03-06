@@ -221,7 +221,7 @@ contract ozOracleFacet {
 
     /**
      * @dev Gets all the feeds use in eETH's calculations.
-     * @return array of feeds addresses.
+     * @return feeds - array of feeds addresses.
      */
     function getPriceFeeds() external view returns(address[] memory feeds) {
         uint256 length = s.priceFeeds.length;
