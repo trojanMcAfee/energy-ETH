@@ -14,10 +14,13 @@ import '../../contracts/testing-files/EthFeed.sol';
 import '../../contracts/testing-files/GoldFeed.sol';
 import '../../contracts/testing-files/DummyUniPool.sol';
 import './dummy-files/NewOracle.sol';
-
 import "forge-std/Test.sol";
 
 
+/**
+ * @dev Deploys the V2 upgrade to the ozDiamond already living in 
+ * Arbiutrm One, using the diamondCut() function.
+ */
 contract Setup is Test {
 
     uint256 bobKey;
@@ -186,12 +189,9 @@ contract Setup is Test {
         });
     }
 
-
     function _randomUint256() internal view returns (uint256) {
         return block.prevrandao;
     }
-
-
 
     function _setLabels() private {
         vm.label(address(ozOracle), 'ozOracle');
@@ -213,6 +213,4 @@ contract Setup is Test {
         vm.label(ethUsdcPool, 'ethUsdcPool');
         vm.label(address(dummyUniPool), 'dummyUniPool');
     }
-
-
 }
