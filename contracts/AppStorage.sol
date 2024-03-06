@@ -16,7 +16,7 @@ struct AppStorage {
     address crv2Pool;
     address yTriPool;
     address fraxPool;
-    address executor; //6
+    address executor; 
 
     //ERC20s
     address USDT;
@@ -25,59 +25,59 @@ struct AppStorage {
     address MIM;
     address WETH;
     address FRAX;
-    address ETH; //13
+    address ETH; 
 
     //Token infrastructure
-    address oz20; //14
+    address oz20; 
     OZLERC20 oz;
 
     //System config
-    uint protocolFee; //18
-    uint defaultSlippage; //19
+    uint protocolFee; 
+    uint defaultSlippage; 
     mapping(address => bool) tokenDatabase;
     mapping(address => address) tokenL1ToTokenL2;
 
     //Internal accounting vars
-    uint totalVolume; //22
+    uint totalVolume; 
     uint ozelIndex;
     uint feesVault;
-    uint failedFees; //25
+    uint failedFees; 
     mapping(address => uint) usersPayments;
     mapping(address => uint) accountPayments;
     mapping(address => address) accountToUser;
-    mapping(address => bool) isAuthorized; //29
+    mapping(address => bool) isAuthorized; 
 
     //Curve swaps config
     TradeOps mimSwap; 
     TradeOps usdcSwap; 
     TradeOps fraxSwap; 
-    TradeOps[] swaps; //42
+    TradeOps[] swaps; 
 
     //Mutex locks
     mapping(uint => uint) bitLocks;
 
     //Stabilizing mechanism (for ozelIndex)
-    uint invariant; //44
+    uint invariant; 
     uint invariant2;
     uint indexRegulator;
-    uint invariantRegulator; //47
+    uint invariantRegulator; 
     bool indexFlag;
     uint stabilizer;
     uint invariantRegulatorLimit;
-    uint regulatorCounter; //51
+    uint regulatorCounter; 
 
     //Revenue vars
-    ISwapRouter swapRouter; //52
+    ISwapRouter swapRouter; 
     AggregatorV3Interface priceFeed;
     address revenueToken;
     uint24 poolFee;
-    uint[] revenueAmounts; //55
+    uint[] revenueAmounts; 
 
     //Misc vars
     bool isEnabled;
     bool l1Check;
     bytes checkForRevenueSelec;
-    address nullAddress; //58
+    address nullAddress; 
 
     /*///////////////////////////////////////////////////////////////
                             v1.1 Upgrade
@@ -96,15 +96,15 @@ struct AppStorage {
                                 v2
     //////////////////////////////////////////////////////////////*/
 
-    AggregatorV3Interface wtiFeed; //change these to address. Occupies less slots
-    AggregatorV3Interface volatilityFeed; //63
+    AggregatorV3Interface wtiFeed; 
+    AggregatorV3Interface volatilityFeed; 
     AggregatorV3Interface ethFeed;
     AggregatorV3Interface goldFeed;
 
     mapping(bytes32 id => address oracle) idToOracle;
     bytes[] oracles_ids; 
 
-    AggregatorV3Interface[] priceFeeds; //68
+    AggregatorV3Interface[] priceFeeds; 
 
     address uniPoolETHUSD;
 }
