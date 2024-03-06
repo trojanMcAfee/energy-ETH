@@ -15,19 +15,19 @@
     }
   ],
   "bytecode": {
-    "object": "0x6080604052348015600f57600080fd5b50607780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea2646970667358221220fc911f1aaba5b860de76b18be095a7368d931bf9a9736bd0a05df423527d11c164736f6c63430008130033",
-    "sourceMap": "72:118:60:-:0;;;;;;;;;;;;;;;;;;;",
+    "object": "0x6080604052348015600f57600080fd5b50607780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea26469706673582212201dd7df4b95c1801c8d0d44962244a757c22742dc6297d5a0fde4338dd5e7fba064736f6c63430008130033",
+    "sourceMap": "72:118:65:-:0;;;;;;;;;;;;;;;;;;;",
     "linkReferences": {}
   },
   "deployedBytecode": {
-    "object": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea2646970667358221220fc911f1aaba5b860de76b18be095a7368d931bf9a9736bd0a05df423527d11c164736f6c63430008130033",
-    "sourceMap": "72:118:60:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:91;178:2;97:91;;158:25:64;;;146:2;131:18;97:91:60;;;;;;",
+    "object": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806383cf65d414602d575b600080fd5b603260405190815260200160405180910390f3fea26469706673582212201dd7df4b95c1801c8d0d44962244a757c22742dc6297d5a0fde4338dd5e7fba064736f6c63430008130033",
+    "sourceMap": "72:118:65:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;97:91;178:2;97:91;;158:25:69;;;146:2;131:18;97:91:65;;;;;;",
     "linkReferences": {}
   },
   "methodIdentifiers": {
     "getVolatilityIndex()": "83cf65d4"
   },
-  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getVolatilityIndex\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"test/foundry/dummy-files/NewOracle.sol\":\"NewOracle\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"test/foundry/dummy-files/NewOracle.sol\":{\"keccak256\":\"0x6dddc9eddd9301100ec019441466beefb0c8b3a4612009bf8bf2c7a210774b5b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f99d5fb485854eded751827c10d3064c66f58c9c253d163d4b1d5ce55c7a3f99\",\"dweb:/ipfs/QmWAELWQ74wfQ9qngdtmXE4w8DMRCLnnYp5FHeRz2tTN3C\"]}},\"version\":1}",
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getVolatilityIndex\",\"outputs\":[{\"internalType\":\"int256\",\"name\":\"\",\"type\":\"int256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"test/foundry/dummy-files/NewOracle.sol\":\"NewOracle\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@chainlink/=node_modules/@chainlink/\",\":@eth-optimism/=node_modules/@eth-optimism/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":@prb/test/=lib/unchecked-counter/lib/prb-test/src/\",\":@rari-capital/=node_modules/@rari-capital/\",\":@uniswap/=node_modules/@uniswap/\",\":base64-sol/=node_modules/base64-sol/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\",\":hardhat/=node_modules/hardhat/\",\":prb-test/=lib/unchecked-counter/lib/prb-test/src/\",\":solmate/=node_modules/solmate/\",\":src/=lib/unchecked-counter/src/\",\":unchecked-counter/=lib/unchecked-counter/src/\"]},\"sources\":{\"test/foundry/dummy-files/NewOracle.sol\":{\"keccak256\":\"0x6dddc9eddd9301100ec019441466beefb0c8b3a4612009bf8bf2c7a210774b5b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://f99d5fb485854eded751827c10d3064c66f58c9c253d163d4b1d5ce55c7a3f99\",\"dweb:/ipfs/QmWAELWQ74wfQ9qngdtmXE4w8DMRCLnnYp5FHeRz2tTN3C\"]}},\"version\":1}",
   "metadata": {
     "compiler": {
       "version": "0.8.19+commit.7dd6d404"
@@ -62,20 +62,20 @@
     },
     "settings": {
       "remappings": [
-        ":@chainlink/=node_modules/@chainlink/",
-        ":@eth-optimism/=node_modules/@eth-optimism/",
-        ":@openzeppelin/=node_modules/@openzeppelin/",
-        ":@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
-        ":@rari-capital/=node_modules/@rari-capital/",
-        ":@uniswap/=node_modules/@uniswap/",
-        ":base64-sol/=node_modules/base64-sol/",
-        ":ds-test/=lib/forge-std/lib/ds-test/src/",
-        ":forge-std/=lib/forge-std/src/",
-        ":hardhat/=node_modules/hardhat/",
-        ":prb-test/=lib/unchecked-counter/lib/prb-test/src/",
-        ":solmate/=node_modules/solmate/",
-        ":src/=lib/unchecked-counter/src/",
-        ":unchecked-counter/=lib/unchecked-counter/src/"
+        "@chainlink/=node_modules/@chainlink/",
+        "@eth-optimism/=node_modules/@eth-optimism/",
+        "@openzeppelin/=node_modules/@openzeppelin/",
+        "@prb/test/=lib/unchecked-counter/lib/prb-test/src/",
+        "@rari-capital/=node_modules/@rari-capital/",
+        "@uniswap/=node_modules/@uniswap/",
+        "base64-sol/=node_modules/base64-sol/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "forge-std/=lib/forge-std/src/",
+        "hardhat/=node_modules/hardhat/",
+        "prb-test/=lib/unchecked-counter/lib/prb-test/src/",
+        "solmate/=node_modules/solmate/",
+        "src/=lib/unchecked-counter/src/",
+        "unchecked-counter/=lib/unchecked-counter/src/"
       ],
       "optimizer": {
         "enabled": true,
@@ -103,19 +103,19 @@
   },
   "ast": {
     "absolutePath": "test/foundry/dummy-files/NewOracle.sol",
-    "id": 36017,
+    "id": 37845,
     "exportedSymbols": {
       "NewOracle": [
-        36016
+        37844
       ]
     },
     "nodeType": "SourceUnit",
-    "src": "45:145:60",
+    "src": "45:145:65",
     "nodes": [
       {
-        "id": 36004,
+        "id": 37832,
         "nodeType": "PragmaDirective",
-        "src": "45:23:60",
+        "src": "45:23:65",
         "nodes": [],
         "literals": [
           "solidity",
@@ -124,19 +124,19 @@
         ]
       },
       {
-        "id": 36016,
+        "id": 37844,
         "nodeType": "ContractDefinition",
-        "src": "72:118:60",
+        "src": "72:118:65",
         "nodes": [
           {
-            "id": 36015,
+            "id": 37843,
             "nodeType": "FunctionDefinition",
-            "src": "97:91:60",
+            "src": "97:91:65",
             "nodes": [],
             "body": {
-              "id": 36014,
+              "id": 37842,
               "nodeType": "Block",
-              "src": "154:34:60",
+              "src": "154:34:65",
               "nodes": [],
               "statements": [
                 {
@@ -144,14 +144,14 @@
                     "arguments": [
                       {
                         "hexValue": "3530",
-                        "id": 36011,
+                        "id": 37839,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "178:2:60",
+                        "src": "178:2:65",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_50_by_1",
                           "typeString": "int_const 50"
@@ -166,26 +166,26 @@
                           "typeString": "int_const 50"
                         }
                       ],
-                      "id": 36010,
+                      "id": 37838,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "ElementaryTypeNameExpression",
-                      "src": "171:6:60",
+                      "src": "171:6:65",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_int256_$",
                         "typeString": "type(int256)"
                       },
                       "typeName": {
-                        "id": 36009,
+                        "id": 37837,
                         "name": "int256",
                         "nodeType": "ElementaryTypeName",
-                        "src": "171:6:60",
+                        "src": "171:6:65",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 36012,
+                    "id": 37840,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -194,17 +194,17 @@
                     "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "171:10:60",
+                    "src": "171:10:65",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_int256",
                       "typeString": "int256"
                     }
                   },
-                  "functionReturnParameters": 36008,
-                  "id": 36013,
+                  "functionReturnParameters": 37836,
+                  "id": 37841,
                   "nodeType": "Return",
-                  "src": "164:17:60"
+                  "src": "164:17:65"
                 }
               ]
             },
@@ -213,26 +213,26 @@
             "kind": "function",
             "modifiers": [],
             "name": "getVolatilityIndex",
-            "nameLocation": "106:18:60",
+            "nameLocation": "106:18:65",
             "parameters": {
-              "id": 36005,
+              "id": 37833,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "124:2:60"
+              "src": "124:2:65"
             },
             "returnParameters": {
-              "id": 36008,
+              "id": 37836,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 36007,
+                  "id": 37835,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 36015,
-                  "src": "147:6:60",
+                  "scope": 37843,
+                  "src": "147:6:65",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -240,10 +240,10 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 36006,
+                    "id": 37834,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "147:6:60",
+                    "src": "147:6:65",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int256",
                       "typeString": "int256"
@@ -252,9 +252,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "146:8:60"
+              "src": "146:8:65"
             },
-            "scope": 36016,
+            "scope": 37844,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "public"
@@ -267,15 +267,15 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          36016
+          37844
         ],
         "name": "NewOracle",
-        "nameLocation": "81:9:60",
-        "scope": 36017,
+        "nameLocation": "81:9:65",
+        "scope": 37845,
         "usedErrors": []
       }
     ],
     "license": "GPL-2.0-or-later"
   },
-  "id": 60
+  "id": 65
 }

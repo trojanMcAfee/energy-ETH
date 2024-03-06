@@ -45,9 +45,11 @@ contract ozOracleFacet {
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
             DataInfo memory info = infoFeeds[i.unwrap()];
 
+            console.log(11);
             netDiff += _setPrice(
                 info, address(info.feed) == address(s.ethFeed) ? int256(0) : getVolatilityIndex(), prevEth
             );
+            console.log(12);
         }
 
         return uint256(basePrice + ( (netDiff * basePrice) / (100 * EIGHT_DEC) ));
@@ -59,9 +61,14 @@ contract ozOracleFacet {
         uint256 length = s.priceFeeds.length;
         DataInfo[] memory infoFeeds = new DataInfo[](length);
 
+        console.log('length: ', s.priceFeeds.length);
+        console.log('feed: ', address(s.priceFeeds[0]));
+
         for (UC i=ZERO; i < uc(length); i = i + ONE) {
             uint256 j = i.unwrap();
             (uint80 id, int256 value,,,) = s.priceFeeds[j].latestRoundData();
+
+            console.log('val in _data: ', uint(value));
 
             DataInfo memory info = DataInfo({
                 roundId: id,
@@ -110,14 +117,21 @@ contract ozOracleFacet {
         int256 prevEthPrice_
     ) private view returns(int256) 
     {
+        console.log(4);
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
+            
             int256 currPrice = feedInfo_.value;
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
+
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19);
         } else {
             int256 netDiff = feedInfo_.value - prevEthPrice_;
+            console.log(6);
+            console.log('feedInfo_.value; ', uint(feedInfo_.value));
+            console.log('prevEthPrice_: ', uint(prevEthPrice_));
             return (netDiff * 100 * EIGHT_DEC) / prevEthPrice_;
         }
+        
     }
 
 

@@ -4,6 +4,7 @@ pragma solidity 0.8.19;
 
 import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
+import '../../interfaces/ArbSys.sol';
 import '../../contracts/facets/ozOracleFacet.sol';
 import '../../contracts/facets/ozExecutor2Facet.sol';
 import '../../contracts/facets/ozLoupeV2Facet.sol';
@@ -16,6 +17,8 @@ import '../../contracts/testing-files/DummyUniPool.sol';
 import './dummy-files/NewOracle.sol';
 
 import "forge-std/Test.sol";
+
+
 
 
 contract Setup is Test {
@@ -56,7 +59,6 @@ contract Setup is Test {
     bytes notOwner = bytes('LibDiamond: Must be contract owner');
 
     function setUp() public {
-        console.logBytes(msg.data);
         vm.createSelectFork(vm.rpcUrl('arbitrum'), 69254399);
         fork700 = vm.createFork(vm.rpcUrl('arbitrum'), 69254700);
         _runSetup();

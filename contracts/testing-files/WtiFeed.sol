@@ -10,8 +10,6 @@ contract WtiFeed {
         uint blockNum = block.number;
         int result;
 
-        // console.log('blockNum: ', blockNum);
-
         assembly {
             switch blockNum 
             case 69254399 { result := 7632500000 } 
@@ -25,7 +23,7 @@ contract WtiFeed {
             case 69380699 { result := 7674920000 } 
             case 69421699 { result := 7592500000 } 
             //----- test_getEnergyPrice_chainlink ----
-            case 69254700 { result := 7632500000 }
+            case 16814848 { result := 7632500000 }
         }
 
         return (1,result,0,0,0);
@@ -48,7 +46,7 @@ contract WtiFeed {
             case 69380699 { result := 7592500000 }
             case 69421699 { result := 7632500000 }
             //----- test_getEnergyPrice_chainlink ----
-            case 69254700 { result := 7672000000 }
+            case 16814848 { result := 7672000000 }
         }
 
         return (0,result,0,0,0);

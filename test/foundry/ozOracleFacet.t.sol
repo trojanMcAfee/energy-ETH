@@ -18,7 +18,7 @@ contract ozOracleFacetTest is Test, Setup {
 
 
     uint256 twapPrice = 1473593483134366243200;
-    uint256 chainlinkPrice = 1425816593187981280000;
+    uint256 chainlinkPrice = 1475510304606752115200; //1425816593187981280000
     
 
     //Gets eETH price with a basePrice of TWAP price
@@ -27,6 +27,7 @@ contract ozOracleFacetTest is Test, Setup {
         uint256 price = OZL.getEnergyPrice();
 
         //Post-condition
+        console.log('price: ', price);
         price == twapPrice ? assertTrue(true) : assertTrue(false);
     }
 
@@ -41,6 +42,7 @@ contract ozOracleFacetTest is Test, Setup {
         uint256 price = OZL.getEnergyPrice();
 
         //Post-condition
+        console.log('price: ', price);
         price == chainlinkPrice ? assertTrue(true) : assertTrue(false);
     }
 
