@@ -95,18 +95,35 @@ contract EnergyETHTest is Test, Setup {
     function test_logPrices() public view {
         int256 ethPriceTwap = OZL.getTwapEth();
         (, int256 ethPriceCL,,,) = AggregatorV3Interface(ethUsdChainlink).latestRoundData();
-        (, int256 wtiPrice,,,) = AggregatorV3Interface(wtiChailink).latestRoundData();
-        (, int256 goldPrice,,,) = AggregatorV3Interface(goldChainlink).latestRoundData();
+
+        (uint80 roundId2, int256 wtiPrice,,,) = AggregatorV3Interface(wtiChailink).latestRoundData();
+        (,int256 prevWtiPrice,,,) = AggregatorV3Interface(wtiChailink).getRoundData(roundId2 - 1);
+
+        (uint80 roundId3, int256 goldPrice,,,) = AggregatorV3Interface(goldChainlink).latestRoundData();
+        (,int256 prevGoldPrice,,,) = AggregatorV3Interface(goldChainlink).getRoundData(roundId3 - 1);
+
         (, int256 volatility,,,) = AggregatorV3Interface(volIndex).latestRoundData();
         uint price = eETH.getPrice();
 
         console.log('ETH/USD Uniswap v3 TWAP: ', uint(ethPriceTwap) / 1e18);
         console.log('ETH/USD Chainlink: ', uint(ethPriceCL) / 1e8);
+
+        console.log('------------------------------------');
         console.log('WTI/USD: ', uint(wtiPrice) / 1e8);
+        console.log('Previous WTI/USD: ', uint(prevWtiPrice) / 1e8);
+        console.logInt((prevWtiPrice - wtiPrice) / 1e8);
+        console.log('^ Net price difference');
+        console.log('------------------------------------');
+
         console.log('XAU/USD: ', uint(goldPrice) / 1e8);
+        console.log('Previous XAU/USD: ', uint(prevGoldPrice) / 1e8);
+        console.logInt((prevGoldPrice - goldPrice) / 1e8);
+        console.log('^ Net price difference');
+        console.log('------------------------------------');
+
         console.log("Chainlink's Crypto Volatility Index: ", uint(volatility) / 1e18);
-        console.log('');
-        console.log('eETH/USD: ', price / 1e18);
+        console.log('------------------------------------');
+        console.log(' **** eETH/USD ****: ', price / 1e18);
 
     }
 
