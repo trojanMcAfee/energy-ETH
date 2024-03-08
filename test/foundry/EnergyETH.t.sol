@@ -91,7 +91,10 @@ contract EnergyETHTest is Test, Setup {
         assertTrue(eETHbal > 0);
     }
 
-
+    /**
+     * @dev Logs the prices of all fees involved + eETH, for a better
+     * visualizastion in the console.
+     */
     function test_logPrices() public view {
         int256 ethPriceTwap = OZL.getTwapEth();
         (, int256 ethPriceCL,,,) = AggregatorV3Interface(ethUsdChainlink).latestRoundData();

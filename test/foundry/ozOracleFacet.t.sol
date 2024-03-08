@@ -250,6 +250,4 @@ contract ozOracleFacetTest is Test, Setup {
         bytes32 volSlot = vm.load(address(OZL), bytes32(uint256(63)));
         volAddr = address(bytes20(volSlot << 96));
     }
-   
-
 }
