@@ -22,6 +22,8 @@ When getting the price of `eETH`, the following flow happens:
 - The previous value of ETH is queried.
    - Chainlink's price feed is used here.
 - The net differences between the current and previous price updates for `XAU` and `WTI` are calculated independently, elevated to a 100% percentage scale, the result multiplied by Chainlink's Crypto Volatility Index, and the product of each set of operations (one for `XAU` and oe for `WTI`) are added together, and then combined to `basePrice`.
+- `eETH` could be lower than `ETH` if the price fluctuation of `XAU` and/or `WTI` is negative between Chainlink updates.
+     - Since this is raw PoC implementation, the formula for calculating `eETH` can be improved to only allow positive fluctuations. 
 
 This gives us an asset that follows `ETH` trend, but it diverges towards its own price action due to the influence of `XAU` and `WTI`. 
 
