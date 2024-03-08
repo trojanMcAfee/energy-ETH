@@ -37,7 +37,9 @@ contract ozOracleFacet {
     //////////////////////////////////////////////////////////////*/
 
     /**
-     * @dev Gets the price in USD of Energy-ETH.
+     * @notice Gets the price in USD of Energy-ETH.
+     * @dev It aggregates the net price differences of WTI and Gold in
+     * function of basePrice's ratio and adds it to basePrice itself. 
      * @return price of eETH.
      */
     function getEnergyPrice() external view returns(uint256) {
@@ -118,8 +120,10 @@ contract ozOracleFacet {
 
 
     /**
-     * @dev Sets the aggregated product of the combination of feed prices (WTI and Gold)
+     * @notice Sets the aggregated product of the combination of feed prices (WTI and Gold)
      * plus the volatility index.
+     * @dev It amplifies the price difference of the prior and current price update by
+     * multipling it by CL's volatility index.
      * @param feedInfo_ values of price feed to manipulate.
      * @param volIndex_ chainlink's volatility index to influce the price differences of each feed.
      * @param prevEthPrice_ previous update of ETHUSD.

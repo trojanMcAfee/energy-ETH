@@ -35,4 +35,5 @@ interface ozIDiamond {
     function facetAddress(bytes4 _functionSelector) external view returns (address facetAddress_);
     function getUniPool() external view returns(address);
     function changeUniPool(address newPool_) external;
+    function getTwapEth() external view returns(int256);
 }

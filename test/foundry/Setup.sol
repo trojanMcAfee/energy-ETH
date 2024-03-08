@@ -49,6 +49,10 @@ contract Setup is Test {
     address internal diamond = 0x7D1f13Dd05E6b0673DC3D0BFa14d40A74Cfa3EF2;
     address internal deadAddr = 0x000000000000000000000000000000000000dEaD;
     address internal ethUsdcPool = 0xC31E54c7a869B9FcBEcc14363CF510d1c41fa443;
+    address internal ethUsdChainlink = 0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612;
+    address internal wtiChailink = 0x594b919AD828e693B935705c3F816221729E7AE8;
+    address internal goldChainlink = 0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c;
+
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
 
