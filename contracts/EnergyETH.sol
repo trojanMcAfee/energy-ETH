@@ -11,21 +11,21 @@ import '../interfaces/IPermit2.sol';
 import '../libraries/LibHelpers.sol';
 import '../libraries/LibPermit2.sol';
 
-import "forge-std/console.sol";
-// import 'hardhat/console.sol';
-
 
 error Cant_be_zero();
 error Not_enough_funds(uint256 buyerBalance);
 error Cant_approve(uint256 amount);
 error Cant_transfer(uint256 amount);
 
-//add buy with eth and usdc
 
+
+/**
+ * @title eETH as an ERC20 token.
+ * @notice Makes eETH ERC20 complaint + the logic to issue new tokens.
+ */
 contract EnergyETH is ERC20 {
 
     using LibPermit2 for *;
-
 
     IERC20 USDC = IERC20(0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8);
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
@@ -36,12 +36,20 @@ contract EnergyETH is ERC20 {
     constructor() ERC20('Energy ETH', 'eETH') {}
 
 
+    /**
+     * @dev Queries eETH price from ozOracleFacet through ozDiamond.
+     * @return price of eETH
+     */
     function getPrice() public view returns(uint256) {
         return OZL.getEnergyPrice();
     }
 
-    //calculating the % to charge as premium against frontrunning
 
+    /**
+     * @dev Issues eETH, with its proper index valuation, from external feeds 
+     * (WTI and Gold), and deposits the protocol fee into DeFi.
+     * @param buyOp_ contains the details of the buy order for eETH following Permit2.
+     */
     function issue(IPermit2.Permit2Buy memory buyOp_) external payable {
         uint256 toBuy = buyOp_.amount;
         if (toBuy == 0) revert Cant_be_zero();
@@ -63,6 +71,12 @@ contract EnergyETH is ERC20 {
     }
 
 
+    /**
+     * @dev Does the issuance heavy lifting. 
+     * @param buyOp_ buy order details under Permit2. 
+     * @param quote_ how much value in total of eETH to buy.
+     * @param fee_ protocol fee.
+     */
     function _issue(
         IPermit2.Permit2Buy memory buyOp_,
         uint256 quote_,
@@ -81,13 +95,5 @@ contract EnergyETH is ERC20 {
 
         PERMIT2.permitTransferFrom(permit, details, msg.sender, buyOp_.signature);
     }
-
-
-
-
-
-
-
-
 }
 

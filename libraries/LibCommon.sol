@@ -3,7 +3,6 @@ pragma solidity 0.8.19;
 
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-// import { UC, uc } from "unchecked-counter/UC.sol";
 
 
 /**
@@ -14,8 +13,8 @@ library LibCommon {
     /**
      * @notice L1 removal method
      * @dev Removes a token from the token database
-     * @param array_ Array of addresses where the removal will occur
-     * @param toRemove_ Token to remove
+     * @param array_ array of addresses where the removal will occur
+     * @param toRemove_ token to remove
      */
     function remove(address[] storage array_, address toRemove_) internal {
         uint256 index;
@@ -35,6 +34,12 @@ library LibCommon {
     }
 
 
+    /**
+     * @dev "Semi-overload" of function from above, but for an array of bytes
+     * instead of an array of addresses. 
+     * @param array_ array of bytes where the removal will occur. 
+     * @param toRemove_ bytes variable to remove. 
+     */
     function remove(bytes[] storage array_, bytes memory toRemove_) internal {
         uint256 index;
         for (uint256 i=0; i < array_.length;) {
@@ -57,6 +62,12 @@ library LibCommon {
     }
 
 
+    /**
+     * @dev "Semi-overload" of function from above, but for an array of
+     * AggregatorV3Interface (Chainlink feeds) instead of an array of addresses. 
+     * @param array_ array of Chainlink feeds.
+     * @param toRemove_ Chailink feed to remove.
+     */
     function remove(
         AggregatorV3Interface[] storage array_, 
         AggregatorV3Interface toRemove_
@@ -77,5 +88,4 @@ library LibCommon {
         delete array_[array_.length-1];
         array_.pop();
     }
-
 }

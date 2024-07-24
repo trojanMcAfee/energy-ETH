@@ -1,16 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
-// import 'hardhat/console.sol';
-import "forge-std/console.sol";
+
 
 contract WtiFeed {
 
     function latestRoundData() external view returns(int, int, int, int, int) {
         uint blockNum = block.number;
         int result;
-
-        console.log('blockNum - wtifeed: ', blockNum);
 
         assembly {
             switch blockNum 

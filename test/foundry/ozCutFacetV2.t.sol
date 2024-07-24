@@ -5,12 +5,16 @@ pragma solidity 0.8.19;
 import "forge-std/Test.sol";
 import './Setup.sol';
 
-import "forge-std/console.sol";
 
-
+/**
+ * @dev Tests that the new admin functions are working properly. 
+ */
 contract ozCutFacetV2Test is Test, Setup {
 
-
+    /**
+     * @dev Tests that the owner can successfully add a 
+     * new oracle to the system.
+     */
     function test_addOracle() public {
         //Pre-condition
         address[] memory oracles = OZL.getOracles();
@@ -29,6 +33,10 @@ contract ozCutFacetV2Test is Test, Setup {
         assertTrue(oracleDead == deadAddr);
     }
 
+    /**
+     * @dev Tests that the owner can successfully remove an 
+     * oracle from the system.
+     */
     function test_removeOracle() public {
         //Pre-condition
         address[] memory oracles = OZL.getOracles();
@@ -43,6 +51,9 @@ contract ozCutFacetV2Test is Test, Setup {
         assertTrue(oracles.length == 0);
     }
 
+    /**
+     * @dev Fails when a non-owner tries to add an oracle.
+     */
     function test_addOracle_notOwner() public {
         //Pre-condition
         address[] memory oracles = OZL.getOracles();
@@ -54,6 +65,9 @@ contract ozCutFacetV2Test is Test, Setup {
         OZL.addOracle(deadAddr, deadID);
     }
 
+    /**
+     * @dev Fails when a non-owner tries to remove an oracle.
+     */
     function test_removeOracle_notOwner() public {
         //Pre-condition
         address[] memory oracles = OZL.getOracles();
@@ -63,7 +77,4 @@ contract ozCutFacetV2Test is Test, Setup {
         vm.expectRevert(notOwner);
         OZL.removeOracle(address(ozOracle));
     }
-
-
-
 }

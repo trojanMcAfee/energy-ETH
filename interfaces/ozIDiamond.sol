@@ -2,7 +2,7 @@
 pragma solidity 0.8.19;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
-// import '../contracts/AppStorage.sol';
+
 
 interface ozIDiamond {
 
@@ -35,4 +35,5 @@ interface ozIDiamond {
     function facetAddress(bytes4 _functionSelector) external view returns (address facetAddress_);
     function getUniPool() external view returns(address);
     function changeUniPool(address newPool_) external;
+    function getTwapEth() external view returns(int256);
 }

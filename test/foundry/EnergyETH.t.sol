@@ -8,38 +8,34 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import '@openzeppelin/contracts/utils/Address.sol';
 import "forge-std/Test.sol";
-// import '../../contracts/facets/ozOracleFacet.sol';
-// import '../../contracts/facets/ozExecutor2Facet.sol';
-// import '../../contracts/facets/ozLoupeV2Facet.sol';
-// import '../../contracts/facets/ozCutFacetV2.sol';
-// import '../../contracts/EnergyETH.sol';
-// import '../../contracts/testing-files/WtiFeed.sol';
-// import '../../contracts/testing-files/EthFeed.sol';
-// import '../../contracts/testing-files/GoldFeed.sol';
-// import '../../contracts/InitUpgradeV2.sol';
-// import '../../interfaces/ozIDiamond.sol';
 import '../../libraries/PermitHash.sol';
 import '../../libraries/LibHelpers.sol';
 import '../../libraries/LibPermit2.sol';
 import '../../interfaces/IPermit2.sol';
 import './Setup.sol';
 
-import "forge-std/console.sol";
 
 
-
+/**
+ * @dev Tests that you can get and issue eETH. 
+ */
 contract EnergyETHTest is Test, Setup {
 
     using LibPermit2 for IERC20;
 
-
+    /**
+     * @dev For properly getting eETH price.
+     */
     function test_getPrice() public {
         uint price = eETH.getPrice();
         assertTrue(price > 0);
     }
 
-
-    function testFuzz_issue(uint256 amount_) public {
+    /**
+     * @dev Tests that eETH can be issued at its proper valuation of 
+     * basePrice (ETHUSD) + (WTI + Gold * volatilityIndex)
+     */
+    function test_issue(uint256 amount_) public {
         vm.assume(amount_ > 0);
         vm.assume(amount_ < 3);
 
@@ -95,18 +91,54 @@ contract EnergyETHTest is Test, Setup {
         assertTrue(eETHbal > 0);
     }
 
+    /**
+     * @dev Logs the prices of all fees involved + eETH, for a better
+     * visualizastion in the console.
+     */
+    function test_logPrices() public view {
+        int256 ethPriceTwap = OZL.getTwapEth();
+        (, int256 ethPriceCL,,,) = AggregatorV3Interface(ethUsdChainlink).latestRoundData();
 
-    function invariant_myTest() public {
-        assertTrue(true);
+        (uint80 roundId2, int256 wtiPrice,,,) = AggregatorV3Interface(wtiChailink).latestRoundData();
+        (,int256 prevWtiPrice,,,) = AggregatorV3Interface(wtiChailink).getRoundData(roundId2 - 1);
+
+        (uint80 roundId3, int256 goldPrice,,,) = AggregatorV3Interface(goldChainlink).latestRoundData();
+        (,int256 prevGoldPrice,,,) = AggregatorV3Interface(goldChainlink).getRoundData(roundId3 - 1);
+
+        (, int256 volatility,,,) = AggregatorV3Interface(volIndex).latestRoundData();
+        uint price = eETH.getPrice();
+
+        console.log('ETH/USD Uniswap v3 TWAP: ', uint(ethPriceTwap) / 1e18);
+        console.log('ETH/USD Chainlink: ', uint(ethPriceCL) / 1e8);
+
+        console.log('------------------------------------');
+        console.log('WTI/USD: ', uint(wtiPrice) / 1e8);
+        console.log('Previous WTI/USD: ', uint(prevWtiPrice) / 1e8);
+        console.logInt((prevWtiPrice - wtiPrice) / 1e8);
+        console.log('^ Net price difference');
+        console.log('------------------------------------');
+
+        console.log('XAU/USD: ', uint(goldPrice) / 1e8);
+        console.log('Previous XAU/USD: ', uint(prevGoldPrice) / 1e8);
+        console.logInt((prevGoldPrice - goldPrice) / 1e8);
+        console.log('^ Net price difference');
+        console.log('------------------------------------');
+
+        console.log("Chainlink's Crypto Volatility Index: ", uint(volatility) / 1e18);
+        console.log('------------------------------------');
+        console.log(' **** eETH/USD ****: ', price / 1e18);
+
     }
 
 
 
-    /**
-        *** HELPERS *****
-     */
+    /*///////////////////////////////////////////////////////////////
+                            Helpers
+    //////////////////////////////////////////////////////////////*/
 
-    // Generate a signature for a permit message of batch txs
+    /**
+     * @dev Generate a signature for a permit message of batch txs.
+     */
     function _signPermit(
         IPermit2.PermitBatchTransferFrom memory permit,
         address spender,
@@ -119,7 +151,9 @@ contract EnergyETHTest is Test, Setup {
     }
 
 
-    // Compute the EIP712 hash of the permit batch object.
+    /**
+     * @dev Compute the EIP712 hash of the permit batch object.
+     */
     function _getEIP712Hash(
         IPermit2.PermitBatchTransferFrom memory permit,
         address spender

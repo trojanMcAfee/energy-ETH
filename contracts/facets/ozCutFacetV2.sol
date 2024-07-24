@@ -10,6 +10,10 @@ import '../../libraries/LibCommon.sol';
 import '../AppStorage.sol';
 
 
+/**
+ * @title 2nd version of ozCutFacet within ozDiamond.
+ * @notice Contracts that adds to the main write admin functions of the system. 
+ */
 contract ozCutFacetV2 {
 
     AppStorage s;
@@ -19,7 +23,10 @@ contract ozCutFacetV2 {
     event OracleAdded(address newOracle, bytes32 id);
     event OracleRemoved(address removedEl);
 
-
+    /**
+     * @dev Adds a new oracle facet (for potentitally adding more indexes).
+     * @param newOracle_ address of new oracle facet.
+     */
     function addOracle(address newOracle_, bytes32 id_) external {
         LibDiamond.enforceIsContractOwner();
 
@@ -30,7 +37,10 @@ contract ozCutFacetV2 {
         emit OracleAdded(newOracle_, id_);
     }
 
-
+    /**
+     * @dev Removes an oracle facet from the system.
+     * @param toRemove_ address of facet to remove.
+     */
     function removeOracle(address toRemove_) external {
         LibDiamond.enforceIsContractOwner();
 
@@ -49,18 +59,17 @@ contract ozCutFacetV2 {
                 LibCommon.remove(s.oracles_ids, oracleDetails);
                 emit OracleRemoved(toRemove_);
             }
-
         }
-        //use them as access control in diff functions
-
     }
 
-
+    /**
+     * @dev Gets the internal ID of an oracle within the system.
+     * @param oracle_ address of the oracle to query.
+     * @return ID of the oracle. 
+     */
     function _getOracleId(address oracle_) private returns(bytes32) {
         bytes memory data = abi.encodeWithSignature('getOracleIdByAddress(address)', oracle_);
         data = address(this).functionCall(data);
         return abi.decode(data, (bytes32));
     }
-
-
 }
