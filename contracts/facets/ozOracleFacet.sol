@@ -135,7 +135,6 @@ contract ozOracleFacet {
         int256 prevEthPrice_
     ) private view returns(int256) 
     {
-        console.log(4);
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
             
             int256 currPrice = feedInfo_.value;
