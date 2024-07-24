@@ -41,8 +41,8 @@ This gives us an asset that follows `ETH` trend, but it diverges towards its own
 
 ## Running the PoC
 If you want run the Foundry test that shows the values for `eETH` as an index and the sub-values that it's made of:
-- Pull the proper Docker image with `docker pull dnyrm/energy_eth_logs:0.0.1`.
-- Run the Docker container with `docker run -it dnyrm/energy_eth_logs:0.0.1`.
+- Pull the proper Docker image with `docker pull dnyrm/energy_eth_logs:0.0.2`.
+- Run the Docker container with `docker run -it dnyrm/energy_eth_logs:0.0.2`.
 - The test that's ran is `test_logPrices()` from the file `EnergyETH.t.sol`.
 - This would be the output:
   
