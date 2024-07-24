@@ -4,7 +4,6 @@ pragma solidity 0.8.19;
 
 import '../../contracts/InitUpgradeV2.sol';
 import '../../interfaces/ozIDiamond.sol';
-import '../../interfaces/ArbSys.sol';
 import '../../contracts/facets/ozOracleFacet.sol';
 import '../../contracts/facets/ozExecutor2Facet.sol';
 import '../../contracts/facets/ozLoupeV2Facet.sol';

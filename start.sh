@@ -1,2 +1,3 @@
 #!/bin/sh
-forge test
+echo "Running start.sh"
+forge test --mt test_logPrices -vv

@@ -11,9 +11,9 @@ contract WtiFeed {
 
         assembly {
             switch blockNum 
-            case 16814838 { result := 7632500000 } 
-            case 16814839 { result := 7632500000 } 
-            case 16814840 { result := 7632500000 } 
+            case 69254399 { result := 7632500000 } 
+            case 69254400 { result := 7632500000 } 
+            case 69254401 { result := 7632500000 } 
             case 69255699 { result := 7672000000 } 
             case 69260699 { result := 7717200000 } 
             case 69294699 { result := 7677600000 } 
@@ -22,7 +22,7 @@ contract WtiFeed {
             case 69380699 { result := 7674920000 } 
             case 69421699 { result := 7592500000 } 
             //----- test_getEnergyPrice_chainlink ----
-            case 16814848 { result := 7632500000 }
+            case 69254700 { result := 7632500000 }
         }
 
         return (1,result,0,0,0);
@@ -45,7 +45,7 @@ contract WtiFeed {
             case 69380699 { result := 7592500000 }
             case 69421699 { result := 7632500000 }
             //----- test_getEnergyPrice_chainlink ----
-            case 16814848 { result := 7672000000 }
+            case 69254700 { result := 7672000000 }
         }
 
         return (0,result,0,0,0);

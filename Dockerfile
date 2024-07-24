@@ -13,5 +13,6 @@ WORKDIR /ozel-vn/contracts
 
 # Now, your final image has both Foundry and the npm dependencies installed
 COPY start.sh /ozel-vn/contracts/start.sh
-CMD ["/ozel-vn/contracts/start.sh"]
+RUN chmod +x /ozel-vn/contracts/start.sh
 
+ENTRYPOINT ["/ozel-vn/contracts/start.sh"]

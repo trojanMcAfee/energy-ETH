@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity 0.8.19;
 
-import {console} from "forge-std/console.sol";
 
 
 contract EthFeed {
@@ -10,13 +9,11 @@ contract EthFeed {
         uint blockNum = block.number;
         int result;
 
-        console.log('blockNum - ethfeed: ', blockNum);
-
         assembly {
             switch blockNum
-            case 16814838 { result := 154700260000 } 
-            case 16814839 { result := 154700260000 } 
-            case 16814840 { result := 154700260000 } 
+            case 69254399 { result := 154700260000 } 
+            case 69254400 { result := 154700260000 } 
+            case 69254401 { result := 154700260000 } 
             case 69255699 { result := 158142799097 } 
             case 69260699 { result := 158956580000 } 
             case 69294699 { result := 161684899390 } 
@@ -25,10 +22,8 @@ contract EthFeed {
             case 69380699 { result := 160800635124 } 
             case 69421699 { result := 158595420000 } 
             //----- test_getEnergyPrice_chainlink ----
-            case 16814848 { result := 154700260000 }
+            case 69254700 { result := 154700260000 }
         }
-
-        //  
 
         return (1,result,0,0,0);
     }
@@ -39,18 +34,18 @@ contract EthFeed {
 
         assembly {
             switch blockNum 
-            case 16814838 { result := 158142799097 }
-            case 16814839 { result := 158142799097 }
-            case 16814840 { result := 158142799097 }
-            // case 69255699 { result := 158956580000 }
-            // case 69260699 { result := 161684899390 }
-            // case 69294699 { result := 161691000000 }
-            // case 69295699 { result := 161566898000 }
-            // case 69297699 { result := 160800635124 }
-            // case 69380699 { result := 158595420000 }
-            // case 69421699 { result := 154700260000 }
+            case 69254399 { result := 158142799097 }
+            case 69254400 { result := 158142799097 }
+            case 69254401 { result := 158142799097 }
+            case 69255699 { result := 158956580000 }
+            case 69260699 { result := 161684899390 }
+            case 69294699 { result := 161691000000 }
+            case 69295699 { result := 161566898000 }
+            case 69297699 { result := 160800635124 }
+            case 69380699 { result := 158595420000 }
+            case 69421699 { result := 154700260000 }
             //----- test_getEnergyPrice_chainlink ----
-            case 16814848 { result := 158142799097 }
+            case 69254700 { result := 158142799097 }
         }
 
         return (0,result,0,0,0);

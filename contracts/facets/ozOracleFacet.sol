@@ -136,16 +136,13 @@ contract ozOracleFacet {
     ) private view returns(int256) 
     {
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
-            
             int256 currPrice = feedInfo_.value;
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
-
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19);
         } else {
             int256 netDiff = feedInfo_.value - prevEthPrice_;
             return (netDiff * 100 * EIGHT_DEC) / prevEthPrice_;
         }
-        
     }
 
 
