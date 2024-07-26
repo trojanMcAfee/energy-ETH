@@ -14,6 +14,7 @@ import '../../libraries/LibPermit2.sol';
 import '../../interfaces/IPermit2.sol';
 import './Setup.sol';
 
+import { console } from "forge-std/console.sol";
 
 
 /**
@@ -28,6 +29,9 @@ contract EnergyETHTest is Test, Setup {
      */
     function test_getPrice() public {
         uint price = eETH.getPrice();
+
+        console.log('eETH in test: ', price);
+
         assertTrue(price > 0);
     }
 

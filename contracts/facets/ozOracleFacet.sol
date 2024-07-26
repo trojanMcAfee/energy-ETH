@@ -15,6 +15,8 @@ import '../../libraries/oracle/FullMath.sol';
 import "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol";
 import '@rari-capital/solmate/src/utils/FixedPointMathLib.sol';
 
+import { console } from "forge-std/console.sol";
+
 
 /**
  * @title Where eETH gets created. 
@@ -62,6 +64,13 @@ contract ozOracleFacet {
                 prevEth
             );
         }
+
+        console.log('');
+        console.log('--- in getEnergyPrice ---');
+        console.log('basePrice: ', uint(basePrice));
+        console.log('infoFeeds.length - 3: ', infoFeeds.length);
+        console.log('XAU: ', uint(infoFeeds[2].value));
+        console.log('');
 
         return uint256(basePrice + ( (netDiff * basePrice) / (100 * EIGHT_DEC) ));
     }
@@ -138,6 +147,17 @@ contract ozOracleFacet {
         if (address(feedInfo_.feed) != address(s.ethFeed)) {
             int256 currPrice = feedInfo_.value;
             int256 netDiff = currPrice - feedInfo_.roundId.getPrevFeed(feedInfo_.feed);
+
+            console.log('');
+            console.log('--- in _setPrice ---');
+            console.logInt(netDiff);
+            console.log('netDiff ^^^');
+            console.log('currPrice: ', uint(currPrice));
+            console.log('volIndex_: ', uint(volIndex_));
+            console.logInt(( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19));
+            console.log('is ^^^');
+            console.log('');
+
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19);
         } else {
             int256 netDiff = feedInfo_.value - prevEthPrice_;
