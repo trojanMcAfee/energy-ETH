@@ -82,8 +82,8 @@ contract Setup is Test {
         string memory path = string.concat(root, '/garch/params.json');
         string memory json = vm.readFile(path);
         console.log('json: ', json);
-        bytes memory garchData = vm.parseJson(json);
-        Garch memory garch = abi.decode(garchData, (Garch));
+        // bytes memory garchData = vm.parseJson(json);
+        // Garch memory garch = abi.decode(garchData, (Garch));
 
         revert('here***');
 
