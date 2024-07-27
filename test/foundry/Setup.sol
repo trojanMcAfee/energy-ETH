@@ -56,9 +56,14 @@ contract Setup is Test {
     address internal wtiChailink = 0x594b919AD828e693B935705c3F816221729E7AE8;
     address internal goldChainlink = 0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c;
 
-    // struct Garch {
-
-    // }
+    struct Garch {
+        uint alpha;
+        uint beta;
+        uint lastConditional;
+        uint lastResidual;
+        uint mu;
+        uint omega;
+    }
 
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
@@ -79,11 +84,20 @@ contract Setup is Test {
     function _runSetup() internal {
 
         string memory root = vm.projectRoot();
-        string memory path = string.concat(root, '/garch/params.json');
+        string memory path = string.concat(root, '/garch/params/exponential.json');
         string memory json = vm.readFile(path);
         console.log('json: ', json);
-        // bytes memory garchData = vm.parseJson(json);
-        // Garch memory garch = abi.decode(garchData, (Garch));
+
+        bytes memory garchData = vm.parseJson(json);
+        Garch memory garch = abi.decode(garchData, (Garch));
+
+        console.log('');
+        console.log('lastConditional: ', garch.lastConditional);
+        console.log('lastResidual: ', garch.lastResidual);
+        console.log('mu: ', garch.mu);
+        console.log('omega: ', garch.omega);
+        console.log('alpha: ', garch.alpha);
+        console.log('beta: ', garch.beta);
 
         revert('here***');
 
