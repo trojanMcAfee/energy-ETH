@@ -15,6 +15,7 @@ import '../../contracts/testing-files/GoldFeed.sol';
 import '../../contracts/testing-files/DummyUniPool.sol';
 import './dummy-files/NewOracle.sol';
 import "forge-std/Test.sol";
+import "../../lib/forge-std/src/StdJson.sol";
 
 
 /**
@@ -22,6 +23,8 @@ import "forge-std/Test.sol";
  * Arbiutrm One, using the diamondCut() function.
  */
 contract Setup is Test {
+
+    using stdJson for string;
 
     uint256 bobKey;
 
@@ -70,6 +73,14 @@ contract Setup is Test {
     }
 
     function _runSetup() internal {
+
+        string memory root = vm.projectRoot();
+        string memory path = string.concat(root, '/garch/params.json');
+        string memory json = vm.readFile(path);
+        console.log('json: ', json);
+
+        revert('here***');
+
         (
             address[] memory nonRevFacets,
             address[] memory feeds

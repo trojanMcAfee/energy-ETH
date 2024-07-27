@@ -4,6 +4,7 @@ out = 'out'
 libs = ['node_modules', 'lib']
 test = 'test/foundry'
 cache_path = 'forge-cache'
+fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
 arbitrum = "${ARBITRUM}"
@@ -14,6 +15,7 @@ seed = '20'
 
 [profile.default.fuzz]
 seed = '20'
+
 
 # [profile.default.invariant]
 # runs = 100
