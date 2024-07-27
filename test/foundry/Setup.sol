@@ -56,6 +56,10 @@ contract Setup is Test {
     address internal wtiChailink = 0x594b919AD828e693B935705c3F816221729E7AE8;
     address internal goldChainlink = 0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c;
 
+    // struct Garch {
+
+    // }
+
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
 
@@ -78,6 +82,8 @@ contract Setup is Test {
         string memory path = string.concat(root, '/garch/params.json');
         string memory json = vm.readFile(path);
         console.log('json: ', json);
+        bytes memory garchData = vm.parseJson(json);
+        Garch memory garch = abi.decode(garchData, (Garch));
 
         revert('here***');
 
