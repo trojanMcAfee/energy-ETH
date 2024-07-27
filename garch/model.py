@@ -59,13 +59,23 @@ for t in range(1,len(returns)):
 
 
 garch_params = {
-    "last_conditional": conditional[-1] * 10 ** 18,
-    "last_residual": resid[-1] * 10 ** 18,
-    "mu": mu * 10 ** 18,
-    "omega": omega * 10 ** 18,
-    "alpha": alpha * 10 ** 18,
-    "beta": beta * 10 ** 18
+    "original": {
+        "last_conditional": conditional[-1],
+        "last_residual": resid[-1],
+        "mu": mu,
+        "omega": omega,
+        "alpha": alpha,
+        "beta": beta 
+    },
+    "exponential": {
+        "last_conditional": int(conditional[-1] * 10 ** 18),
+        "last_residual": int(resid[-1] * 10 ** 18),
+        "mu": int(mu * 10 ** 18),
+        "omega": int(omega * 10 ** 18),
+        "alpha": int(alpha * 10 ** 18),
+        "beta": int(beta * 10 ** 18)
+    }
 }
 
-with open('garch_params.json', 'w') as file:
+with open('./garch/params.json', 'w') as file:
     json.dump(garch_params, file, indent=4)
