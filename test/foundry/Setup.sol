@@ -16,6 +16,7 @@ import '../../contracts/testing-files/DummyUniPool.sol';
 import './dummy-files/NewOracle.sol';
 import "forge-std/Test.sol";
 import "../../lib/forge-std/src/StdJson.sol";
+import {Garch} from "../../contracts/AppStorage.sol";
 
 
 /**
@@ -56,14 +57,14 @@ contract Setup is Test {
     address internal wtiChailink = 0x594b919AD828e693B935705c3F816221729E7AE8;
     address internal goldChainlink = 0x1F954Dc24a49708C26E0C1777f16750B5C6d5a2c;
 
-    struct Garch {
-        uint alpha;
-        uint beta;
-        uint lastConditional;
-        uint lastResidual;
-        uint mu;
-        uint omega;
-    }
+    // struct Garch {
+    //     uint alpha;
+    //     uint beta;
+    //     uint lastConditional;
+    //     uint lastResidual;
+    //     uint mu;
+    //     uint omega;
+    // }
 
 
     IERC20 USDT = IERC20(0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9);
@@ -82,10 +83,6 @@ contract Setup is Test {
     }
 
     function _runSetup() internal {
-        Garch memory garch = _getGarchParams();
-
-        revert('here***');
-
         (
             address[] memory nonRevFacets,
             address[] memory feeds
@@ -103,7 +100,8 @@ contract Setup is Test {
             initUpgrade.init.selector,
             feeds,
             nonRevFacets,
-            otherVars
+            otherVars,
+            _getGarchParams()
         );
 
         //Creates FacetCut array
@@ -129,7 +127,7 @@ contract Setup is Test {
      * HELPERS
      */
 
-    function _getGarchParams() private returns(Garch memory) {
+    function _getGarchParams() private view returns(Garch memory) {
         string memory root = vm.projectRoot();
         string memory path = string.concat(root, '/garch/params/exponential.json');
         string memory json = vm.readFile(path);

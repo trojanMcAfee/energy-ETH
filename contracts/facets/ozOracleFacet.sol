@@ -70,6 +70,8 @@ contract ozOracleFacet {
         console.log('basePrice: ', uint(basePrice));
         console.log('infoFeeds.length - 3: ', infoFeeds.length);
         console.log('XAU: ', uint(infoFeeds[2].value));
+        console.log('old volatility index: ', uint(getVolatilityIndex()));
+        console.log('GARCH last conditional vol: ', getVolatilityIndex2());
         console.log('');
 
         return uint256(basePrice + ( (netDiff * basePrice) / (100 * EIGHT_DEC) ));
@@ -241,6 +243,10 @@ contract ozOracleFacet {
     function getVolatilityIndex() public view returns(int256) {
         (, int256 volatility,,,) = s.volatilityFeed.latestRoundData();
         return volatility;
+    }
+
+    function getVolatilityIndex2() public view returns(uint) {
+        return s.garch.lastConditional;
     }
 
     /**

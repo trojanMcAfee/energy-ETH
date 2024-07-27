@@ -25,7 +25,8 @@ contract InitUpgradeV2 {
     function init(
         address[] calldata feeds_,
         address[] memory nonRevFacets_,
-        address[] memory otherVars_
+        address[] memory otherVars_,
+        Garch memory garch_
     ) external {
 
         s.wtiFeed = AggregatorV3Interface(feeds_[0]);
@@ -47,5 +48,7 @@ contract InitUpgradeV2 {
         s.uniPoolETHUSD = otherVars_[0];
 
         LibDiamond.setNonRevenueFacets(nonRevFacets_); 
+
+        s.garch = garch_;
     }
 }

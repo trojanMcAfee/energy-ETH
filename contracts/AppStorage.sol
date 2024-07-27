@@ -107,6 +107,8 @@ struct AppStorage {
     AggregatorV3Interface[] priceFeeds; 
 
     address uniPoolETHUSD;
+
+    Garch garch;
 }
 
 /// @dev Reference for oz20Facet storage
@@ -150,6 +152,15 @@ struct Data {
     DataInfo wtiPrice;
     DataInfo ethPrice;
     DataInfo goldPrice;
+}
+
+struct Garch {
+    uint alpha;
+    uint beta;
+    uint lastConditional;
+    uint lastResidual;
+    uint mu;
+    uint omega;
 }
 
 
