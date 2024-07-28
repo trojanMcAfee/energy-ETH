@@ -86,13 +86,14 @@ contract Setup is Test {
 
         address[] memory otherVars = new address[](1);
         otherVars[0] = block.number == 69254700 ? address(dummyUniPool) : ethUsdcPool;
+        Garch[2] memory models = [_getGarchParams('eth'), _getGarchParams('xau')];
 
         bytes memory data = abi.encodeWithSelector(
             initUpgrade.init.selector,
             feeds,
             nonRevFacets,
             otherVars,
-            _getGarchParams('eth')
+            models
         );
 
         //Creates FacetCut array

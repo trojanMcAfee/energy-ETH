@@ -108,7 +108,8 @@ struct AppStorage {
 
     address uniPoolETHUSD;
 
-    Garch garch;
+    Garch garchETH;
+    Garch garchXAU;
 }
 
 /// @dev Reference for oz20Facet storage

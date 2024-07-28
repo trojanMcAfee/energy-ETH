@@ -26,7 +26,7 @@ contract InitUpgradeV2 {
         address[] calldata feeds_,
         address[] memory nonRevFacets_,
         address[] memory otherVars_,
-        Garch memory garch_
+        Garch[2] memory garch_
     ) external {
 
         s.wtiFeed = AggregatorV3Interface(feeds_[0]);
@@ -49,6 +49,7 @@ contract InitUpgradeV2 {
 
         LibDiamond.setNonRevenueFacets(nonRevFacets_); 
 
-        s.garch = garch_;
+        s.garchETH = garch_[0];
+        s.garchXAU = garch_[1];
     }
 }
