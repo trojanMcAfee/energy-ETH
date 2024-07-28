@@ -152,12 +152,13 @@ contract ozOracleFacet {
 
             console.log('');
             console.log('--- in _setPrice ---');
+            console.log('prevPrice: ', uint(feedInfo_.roundId.getPrevFeed(feedInfo_.feed)));
+            console.log('currPrice: ', uint(currPrice));
             console.logInt(netDiff);
             console.log('netDiff ^^^');
-            console.log('currPrice: ', uint(currPrice));
             console.log('volIndex_: ', uint(volIndex_));
             console.logInt(( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19));
-            console.log('is ^^^');
+            console.log('setPrice output ^^^');
             console.log('');
 
             return ( (netDiff * 100 * EIGHT_DEC) / currPrice ) * (volIndex_ / 1e19);
