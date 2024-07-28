@@ -92,7 +92,7 @@ contract Setup is Test {
             feeds,
             nonRevFacets,
             otherVars,
-            _getGarchParams()
+            _getGarchParams('eth')
         );
 
         //Creates FacetCut array
@@ -118,10 +118,14 @@ contract Setup is Test {
      * HELPERS
      */
 
-    function _getGarchParams() private view returns(Garch memory) {
+    function _getGarchParams(string memory path2_) private view returns(Garch memory) {
+        string memory path1 = '/garch/params/';
+        string memory path3 = '/exponential.json';
+        string memory sub_path = string.concat(path1, path2_, path3);
+
         string memory root = vm.projectRoot();
-        string memory path = string.concat(root, '/garch/params/eth/exponential.json');
-        string memory json = vm.readFile(path);
+        string memory final_path = string.concat(root, sub_path);
+        string memory json = vm.readFile(final_path);
         bytes memory garchData = vm.parseJson(json);
         return abi.decode(garchData, (Garch));
     }
