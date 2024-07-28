@@ -3,8 +3,9 @@ import yfinance as yf
 import scipy.optimize as spop
 import json
 
-
-ticker = 'ETH-USD'
+path = 'xau'
+ticker = 'ETH-USD' if path == 'eth' else 'GC=F'
+# ticker = 'GC=F' # GC=F / ETH-USD
 start = '2020-01-01'
 end = '2024-07-22'
 
@@ -76,8 +77,8 @@ garch_params_exponential = {
     "beta": int(beta * 10 ** 18)
 }
 
-with open('./garch/params/original.json', 'w') as file:
+with open(f'./garch/params/{path}/original.json', 'w') as file:
     json.dump(garch_params_original, file, indent=4)
 
-with open('./garch/params/exponential.json', 'w') as file:
+with open(f'./garch/params/{path}/exponential.json', 'w') as file:
     json.dump(garch_params_exponential, file, indent=4)
