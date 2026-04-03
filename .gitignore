@@ -8,3 +8,17 @@ typechain-types
 cache
 artifacts
 
+# Python virtualenvs and caches
+garch/model_env/
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
