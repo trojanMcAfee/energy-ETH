@@ -1,8 +1,8 @@
 # Energy ETH
 
 ## Purpose 
-This project was intended to be version 2.0.0 of [Ozel](https://ozelprotocol.xyz/) ([docs](https://docs.ozelprotocol.xyz/)), but its efforts were halted at the moment due to a shift in the priorities of the system.
-Ozel is trying to be a trust-minimized concept with the least amount possible of offchain dependencies, and the original vision of Energy ETH was requiring some serious offchain efforts for it to be a reality. 
+This project was intended to be version 2.0.0 of legacy-[Ozel](https://ozelprotocol.xyz/) ([docs](https://docs.ozelprotocol.xyz/)), but its efforts were halted at the moment due to a shift in the priorities of the system.
+Legacy-Ozel is trying to be a trust-minimized concept with the least amount possible of offchain dependencies, and the original vision of Energy ETH was requiring some serious offchain efforts for it to be a reality. 
 
 ## Vision 
 Energy ETH is an index composed of Ether (`ETH`) as the base price (`basePrice`) of the asset, and which primarily defines its behavior + the price action of Gold and WTI Crude Oil, which are both multiplied by Chainlink's Crypto Volatility index in order to amplify these differences and create a more influential performance. 
