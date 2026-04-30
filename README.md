@@ -5,7 +5,7 @@ This project was intended to be version 2.0.0 of legacy-[Ozel](https://ozelproto
 Legacy-Ozel is trying to be a trust-minimized concept with the least amount possible of offchain dependencies, and the original vision of Energy ETH was requiring some serious offchain efforts for it to be a reality. 
 
 ## Vision 
-Energy ETH is an index composed of Ether (`ETH`) as the base price (`basePrice`) of the asset, and which primarily defines its behavior + the price action of Gold and WTI Crude Oil, which are both multiplied by Chainlink's Crypto Volatility index in order to amplify these differences and create a more influential performance. Also, a GARCH volatility model was attempted to be applied onto Chainlink's Crypto Volatility index to help predicting volatility. 
+Energy ETH is an index composed of Ether (`ETH`) as the base price (`basePrice`) of the asset, and which primarily defines its behavior + the price action of Gold and WTI Crude Oil, which are both multiplied by Chainlink's Crypto Volatility index in order to amplify these differences and create a more influential performance. Also, a GARCH model (quantitative finance) was attempted to be applied onto Chainlink's Crypto Volatility index to help predicting volatility. 
 
 The price action of boths assets (`XAU` and `WTI`) is then combined and added to `basePrice` (which is `ETH`) to then form a new asset, that acts as an index, with an unique market behavior, and that it's heavily influenced by the commodities and energy markets. Hence, the name: Energy ETH. 
 
